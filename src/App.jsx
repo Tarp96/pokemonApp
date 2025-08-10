@@ -1,0 +1,204 @@
+import { useEffect, useState } from "react";
+import "./App.css";
+import PokemonDisplayCard from "./components/PokemonDisplayCard";
+import typeColors from "./typecolors";
+
+function App() {
+  const [pokemon, setPokemon] = useState([]);
+  const [filteredPokemon, setFilteredPokemon] = useState(pokemon);
+  const [activeFilter, setActiveFilter] = useState(null);
+  const [isFiltered, setIsFiltered] = useState(false);
+  const [loading, setLoading] = useState(true);
+  const [query, setQuery] = useState("");
+
+  const [pageNumber, setPageNumber] = useState(0);
+
+  useEffect(() => {
+    console.log(pageNumber);
+    fetchData(pageNumber);
+    setFilteredPokemon(pokemon);
+  }, [pageNumber]);
+
+  function firstLetterUpperCase(word) {
+    if (!word) return "";
+    return word[0].toUpperCase() + word.slice(1);
+  }
+
+  const fetchPokemonDetails = async (pokemonName) => {
+    try {
+      const response = await fetch(
+        `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
+      );
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+      const data = await response.json();
+      return data; // Return the data of the fetched Pokemon
+    } catch (error) {
+      console.error("Error fetching Pokemon details:", error);
+    }
+  };
+
+  const fetchData = async (pageNumber) => {
+    try {
+      // For pageNumber === 0, fetch the first set of Pokémon
+      let url = "https://pokeapi.co/api/v2/pokemon/";
+      if (pageNumber > 0) {
+        // For other pages, add pagination
+        url = `https://pokeapi.co/api/v2/pokemon/?offset=${pageNumber}&limit=20`;
+      }
+
+      const response = await fetch(url);
+
+      // Check if the response is ok
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      const pokemonNames = result.results.map((pokemon) => pokemon.name);
+
+      // Use Promise.all to fetch details for all Pokémon concurrently
+      const pokemonDetailsPromises = pokemonNames.map((pokemonName) =>
+        fetchPokemonDetails(pokemonName)
+      );
+
+      // Wait for all requests to resolve
+      const allPokemonDetails = await Promise.all(pokemonDetailsPromises);
+
+      // Set the state with the fetched details
+      setPokemon(allPokemonDetails);
+      setFilteredPokemon(allPokemonDetails);
+      setLoading(false); // Once data is loaded, set loading to false
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      setLoading(false);
+    }
+  };
+
+  const prevPage = () => {
+    if (pageNumber != 0) {
+      setPageNumber((prev) => prev - 20);
+    }
+  };
+
+  const nextPage = () => {
+    setPageNumber((prev) => prev + 20);
+  };
+
+  const filterPokemonByType = (key) => {
+    if (isFiltered && activeFilter === key) {
+      // If the same filter is clicked again, reset the filter
+      setFilteredPokemon(pokemon); // Reset to the full list
+      setActiveFilter(null); // Reset active filter
+    } else {
+      // Apply the filter
+      const filtered = pokemon.filter((item) =>
+        item.types.some((type) => type.type.name === key)
+      );
+      setFilteredPokemon(filtered); // Set filtered Pokémon
+      setActiveFilter(key); // Set active filter to the clicked button
+    }
+
+    // Toggle the filter state
+    setIsFiltered((prev) => !prev);
+  };
+
+  const removeFilter = () => {
+    setActiveFilter((prev) => (prev = null));
+    setFilteredPokemon(pokemon);
+  };
+
+  const filterByTypeButtons = () => {
+    const myObj = typeColors;
+    return Object.keys(myObj).map((key) => {
+      const isActive = activeFilter === key;
+
+      return (
+        <button
+          key={key}
+          style={{
+            border: `solid 2px ${myObj[key]}`,
+            backgroundColor: isActive ? myObj[key] : "white", // Set background color if active
+            color: isActive ? "white" : "black", // Change text color if active
+          }}
+          onClick={() => filterPokemonByType(key)} // Apply filter when clicked
+        >
+          {firstLetterUpperCase(key)}
+        </button>
+      );
+    });
+  };
+
+  const renderPokemonCards = () => {
+    return filteredPokemon
+      .filter((item) => {
+        return query.toLowerCase() === ""
+          ? item
+          : item.name.toLowerCase().includes(query.toLowerCase()) ||
+              item.types.some((type) =>
+                type.type.name.toLowerCase().includes(query.toLowerCase())
+              );
+      })
+      .map((pokemonItem, index) => (
+        <PokemonDisplayCard
+          key={index}
+          name={pokemonItem.name}
+          sprite={pokemonItem.sprites.front_default}
+          types={pokemonItem.types}
+          height={pokemonItem.height}
+          weight={pokemonItem.weight}
+          cries={pokemonItem.cries}
+        />
+      ));
+  };
+
+  return (
+    <div className="mainContainer">
+      <div className="header">
+        <h1>Pokemon</h1>
+      </div>
+
+      <div className="searchbarContainer">
+        <label>Search</label>
+        <input
+          type="text"
+          onChange={(e) => setQuery(e.target.value)}
+          placeholder="Example: Charizard or water 🔎"
+        />
+      </div>
+
+      <div className="filterButtonContainer">{filterByTypeButtons()}</div>
+
+      <div className="navigationButtonContainer">
+        <button onClick={prevPage} className="navigationButton">
+          <p className="navigationButtonText">Prev</p>
+        </button>
+        <button onClick={nextPage} className="navigationButton">
+          <p className="navigationButtonText">Next</p>
+        </button>
+      </div>
+
+      {loading ? (
+        <p>Loading Pokémon...</p>
+      ) : (
+        <>
+          {filteredPokemon.length > 0 ? (
+            <div className="pokemonGrid">{renderPokemonCards()}</div>
+          ) : (
+            <div className="ifNoPokemonMatchFilter">
+              <p>None of the Pokemon on current page belong to this type</p>
+              <button onClick={removeFilter}>Remove Filter</button>
+              <img
+                src="pikaconfused.gif"
+                className="ifNoPokemonInFilterImage"
+              />
+            </div>
+          )}
+        </>
+      )}
+    </div>
+  );
+}
+
+export default App;
