@@ -33,7 +33,7 @@ function App() {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
       const data = await response.json();
-      return data; // Return the data of the fetched Pokemon
+      return data;
     } catch (error) {
       console.error("Error fetching Pokemon details:", error);
     }
@@ -41,16 +41,13 @@ function App() {
 
   const fetchData = async (pageNumber) => {
     try {
-      // For pageNumber === 0, fetch the first set of Pokémon
       let url = "https://pokeapi.co/api/v2/pokemon/";
       if (pageNumber > 0) {
-        // For other pages, add pagination
         url = `https://pokeapi.co/api/v2/pokemon/?offset=${pageNumber}&limit=20`;
       }
 
       const response = await fetch(url);
 
-      // Check if the response is ok
       if (!response.ok) {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
@@ -58,18 +55,15 @@ function App() {
       const result = await response.json();
       const pokemonNames = result.results.map((pokemon) => pokemon.name);
 
-      // Use Promise.all to fetch details for all Pokémon concurrently
       const pokemonDetailsPromises = pokemonNames.map((pokemonName) =>
         fetchPokemonDetails(pokemonName)
       );
 
-      // Wait for all requests to resolve
       const allPokemonDetails = await Promise.all(pokemonDetailsPromises);
 
-      // Set the state with the fetched details
       setPokemon(allPokemonDetails);
       setFilteredPokemon(allPokemonDetails);
-      setLoading(false); // Once data is loaded, set loading to false
+      setLoading(false);
     } catch (error) {
       console.error("Error fetching data:", error);
       setLoading(false);
@@ -88,19 +82,16 @@ function App() {
 
   const filterPokemonByType = (key) => {
     if (isFiltered && activeFilter === key) {
-      // If the same filter is clicked again, reset the filter
-      setFilteredPokemon(pokemon); // Reset to the full list
-      setActiveFilter(null); // Reset active filter
+      setFilteredPokemon(pokemon);
+      setActiveFilter(null);
     } else {
-      // Apply the filter
       const filtered = pokemon.filter((item) =>
         item.types.some((type) => type.type.name === key)
       );
-      setFilteredPokemon(filtered); // Set filtered Pokémon
-      setActiveFilter(key); // Set active filter to the clicked button
+      setFilteredPokemon(filtered);
+      setActiveFilter(key);
     }
 
-    // Toggle the filter state
     setIsFiltered((prev) => !prev);
   };
 

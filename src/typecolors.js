@@ -1,5 +1,4 @@
 const typeColors = {
-  /*none: "#d3d1cfff",*/
   fire: "#f08030",
   water: "#325ec6ff",
   grass: "#78c850",
