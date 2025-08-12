@@ -1,9 +1,8 @@
 import { useEffect, useState } from "react";
 import "./styles/App.css";
 import PokemonDisplayCard from "./components/PokemonDisplayCard";
-import typeColors from "./utils/typecolors";
-import { firstLetterUpperCase } from "./utils/helperFunctions";
 import { fetchData, fetchPokemonDetails } from "./utils/pokeApi";
+import { FilterByTypeButtons } from "./components/FilterByTypeButtons";
 
 function App() {
   const [pokemon, setPokemon] = useState([]);
@@ -72,27 +71,6 @@ function App() {
     setFilteredPokemon(pokemon);
   };
 
-  const filterByTypeButtons = () => {
-    const myObj = typeColors;
-    return Object.keys(myObj).map((key) => {
-      const isActive = activeFilter === key;
-
-      return (
-        <button
-          key={key}
-          style={{
-            border: `solid 2px ${myObj[key]}`,
-            backgroundColor: isActive ? myObj[key] : "white",
-            color: isActive ? "white" : "black",
-          }}
-          onClick={() => filterPokemonByType(key)}
-        >
-          {firstLetterUpperCase(key)}
-        </button>
-      );
-    });
-  };
-
   const renderPokemonCards = () => {
     return filteredPokemon
       .filter((item) => {
@@ -131,7 +109,14 @@ function App() {
         />
       </div>
 
-      <div className="filterButtonContainer">{filterByTypeButtons()}</div>
+      <div className="filterButtonContainer">
+        {
+          <FilterByTypeButtons
+            filterByTypeFunc={filterPokemonByType}
+            activeFilter={activeFilter}
+          />
+        }
+      </div>
 
       <div className="navigationButtonContainer">
         <button onClick={prevPage} className="navigationButton">
