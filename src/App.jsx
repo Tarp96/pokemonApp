@@ -104,12 +104,10 @@ function App() {
 
       <SearchBar query={query} setQuery={setQuery} />
 
-      <div className="filterButtonContainer">
-        <FilterByTypeButtons
-          filterByTypeFunc={filterPokemonByType}
-          activeFilter={activeFilter}
-        />
-      </div>
+      <FilterByTypeButtons
+        filterByTypeFunc={filterPokemonByType}
+        activeFilter={activeFilter}
+      />
 
       <div className="navigationButtonContainer">
         <NavigationButtons prevPage={prevPage} nextPage={nextPage} />
