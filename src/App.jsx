@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import "./styles/App.css";
 import PokemonDisplayCard from "./components/PokemonDisplayCard";
 import typeColors from "./utils/typecolors";
+import { firstLetterUpperCase } from "./utils/helperFunctions";
 
 function App() {
   const [pokemon, setPokemon] = useState([]);
@@ -18,11 +19,6 @@ function App() {
     fetchData(pageNumber);
     setFilteredPokemon(pokemon);
   }, [pageNumber]);
-
-  function firstLetterUpperCase(word) {
-    if (!word) return "";
-    return word[0].toUpperCase() + word.slice(1);
-  }
 
   const fetchPokemonDetails = async (pokemonName) => {
     try {
@@ -110,10 +106,10 @@ function App() {
           key={key}
           style={{
             border: `solid 2px ${myObj[key]}`,
-            backgroundColor: isActive ? myObj[key] : "white", // Set background color if active
-            color: isActive ? "white" : "black", // Change text color if active
+            backgroundColor: isActive ? myObj[key] : "white",
+            color: isActive ? "white" : "black",
           }}
-          onClick={() => filterPokemonByType(key)} // Apply filter when clicked
+          onClick={() => filterPokemonByType(key)}
         >
           {firstLetterUpperCase(key)}
         </button>

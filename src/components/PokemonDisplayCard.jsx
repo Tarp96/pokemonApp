@@ -1,5 +1,6 @@
 import typeColors from "../utils/typecolors";
 import AudioPlayer from "./AudioPlayer";
+import { firstLetterUpperCase } from "./../utils/helperFunctions";
 
 function PokemonDisplayCard({
   name,
@@ -25,11 +26,6 @@ function PokemonDisplayCard({
           : "black",
     };
   };
-
-  function firstLetterUpperCase(word) {
-    if (!word) return "";
-    return word[0].toUpperCase() + word.slice(1);
-  }
 
   return (
     <div className="pokemon-card">
