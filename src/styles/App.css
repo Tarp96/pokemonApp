@@ -1,27 +1,27 @@
 body {
-  background-image: url("assets/backgroud.jpeg"); /* Path to the image in the public folder */
-  background-size: cover; /* Ensures the image covers the entire page */
-  background-position: center; /* Centers the image */
-  background-repeat: no-repeat; /* Prevents the image from repeating */
+  background-image: url("assets/backgroud.jpeg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   margin: 0;
   font-family: "Arial", sans-serif;
-  height: 100vh; /* Ensures the background covers the entire height of the viewport */
-  overflow: hidden; /* Prevents the page from scrolling */
+  height: 100vh;
+  overflow: hidden;
 }
 
 /*HEADER*/
 .header {
-  padding: 10px 0; /* Reduces the padding around the header */
-  margin: 0; /* Removes margin to eliminate space around the header */
-  position: absolute; /* Fixes the header to the top-left */
-  top: 0; /* Positions the header at the very top of the page */
-  left: 20px; /* Optional: Moves the header slightly from the left edge */
-  text-align: left; /* Aligns the header text to the left */
-  font-size: 2em; /* Optional: Adjust font size if needed */
+  padding: 10px 0;
+  margin: 0;
+  position: absolute;
+  top: 0;
+  left: 20px;
+  text-align: left;
+  font-size: 2em;
 }
 
 h1 {
-  margin: 0; /* Removes margin from the h1 element */
+  margin: 0;
 }
 
 .mainContainer {
@@ -69,38 +69,38 @@ h1 {
 
 /* Style for the Filter Buttons */
 .filterButtonContainer button {
-  margin: 5px; /* Adds space between buttons */
-  padding: 10px 20px; /* Adds some padding for better button size */
-  font-size: 14px; /* Adjust font size */
-  border-radius: 5px; /* Rounded corners */
-  border: 2px solid transparent; /* Transparent border by default */
-  background-color: white; /* White background */
-  color: black; /* Default text color */
-  cursor: pointer; /* Pointer cursor on hover */
-  transition: background-color 0.3s, transform 0.2s; /* Smooth transition for hover effects */
+  margin: 5px;
+  padding: 10px 20px;
+  font-size: 14px;
+  border-radius: 5px;
+  border: 2px solid transparent;
+  background-color: white;
+  color: black;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
 }
 
 .filterButtonContainer button:hover {
-  background-color: #f0f0f0; /* Light grey background on hover */
-  transform: scale(1.05); /* Slightly enlarge the button on hover */
+  background-color: #f0f0f0;
+  transform: scale(1.05);
 }
 
 .filterButtonContainer button:focus {
-  outline: none; /* Removes default focus outline */
+  outline: none;
 }
 
 .filterButtonContainer button:active {
-  transform: scale(0.95); /* Shrink button when clicked */
+  transform: scale(0.95);
 }
 
 /* Navigation Buttons */
 .navigationButton {
-  padding: 0 30px; /* Reduced height and wider width */
-  font-size: 14px; /* Font size remains the same */
+  padding: 0 30px;
+  font-size: 14px;
   margin: 0 10px;
   cursor: pointer;
-  background-color: #ff7f50; /* Set a contrasting color for the buttons */
-  color: white; /* White text */
+  background-color: #ff7f50;
+  color: white;
   border: none;
   border-radius: 8px;
   transition: background-color 0.3s ease, transform 0.2s ease;
@@ -108,13 +108,13 @@ h1 {
 }
 
 .navigationButton:hover {
-  background-color: #ff6347; /* Slightly darker orange on hover */
-  transform: scale(1.05); /* Slightly enlarge on hover */
+  background-color: #ff6347;
+  transform: scale(1.05);
 }
 
 .navigationButton:disabled {
-  background-color: #b0bec5; /* Grey color when disabled */
-  cursor: not-allowed; /* Change the cursor to indicate the button is disabled */
+  background-color: #b0bec5;
+  cursor: not-allowed;
 }
 
 .navigationButtonText {
@@ -128,25 +128,25 @@ h1 {
 .header,
 .searchbarContainer,
 .navigationButtonContainer {
-  z-index: 2; /* Ensures these elements stay on top */
+  z-index: 2;
   position: relative;
   text-align: center;
-  margin-bottom: 10px; /* Adds some space below the header */
+  margin-bottom: 10px;
 }
 
 /* Scrollable grid container */
 .pokemonGrid {
-  margin: 0 auto; /* Center the grid */
+  margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* Grid with 4 columns */
-  gap: 20px; /* Space between grid items */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
   padding: 20px;
-  max-width: 80%; /* Limit the width */
-  grid-template-rows: auto; /* Let rows adjust based on content */
-  justify-items: center; /* Centers items horizontally */
-  overflow-y: auto; /* Allows scrolling if content exceeds screen */
-  max-height: calc(100vh - 350px); /* Adjust height based on other sections */
-  padding-bottom: 20px; /* Adds space below the last row */
+  max-width: 80%;
+  grid-template-rows: auto;
+  justify-items: center;
+  overflow-y: auto;
+  max-height: calc(100vh - 350px);
+  padding-bottom: 20px;
 }
 
 /*POKEMON CARD*/
@@ -165,8 +165,8 @@ h1 {
   flex-direction: column;
   align-items: center;
   max-height: 300px;
-  position: relative; /* Required to position the audio button inside the card */
-  overflow: visible; /* Ensure the button stays visible */
+  position: relative;
+  overflow: visible;
 }
 
 .pokemon-card:hover {
@@ -214,120 +214,94 @@ h1 {
 }
 
 /*DISPLAY IF ARRAY EMPTY*/
-/* Style for when no Pokémon match the filter */
-/* Style for the No Pokémon found message */
 .ifNoPokemonMatchFilter {
-  display: flex; /* Use flexbox for centering */
-  flex-direction: column; /* Stack text and image vertically */
-  align-items: center; /* Center horizontally */
-  justify-content: center; /* Center vertically */
-  height: 100%; /* Fill available space */
-  text-align: center; /* Center the text */
-  padding: 30px; /* Adds padding for spacing */
-  margin: 40px auto; /* Centers the div horizontally */
-  max-width: 20%; /* Adjust width for better presentation */
-  background-color: #ffffff; /* White background */
-  font-size: 20px; /* Slightly smaller font size */
-  border-radius: 15px; /* Rounded corners */
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1); /* Soft shadow for floating effect */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Smooth transition */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  text-align: center;
+  padding: 30px;
+  margin: 40px auto;
+  max-width: 20%;
+  background-color: #ffffff;
+  font-size: 20px;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .ifNoPokemonMatchFilter:hover {
-  transform: translateY(-5px); /* Lift the card slightly on hover */
-  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15); /* Increase shadow on hover */
+  transform: translateY(-5px);
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
 }
 
 /* Style for the Remove Filter button */
 .ifNoPokemonMatchFilter button {
-  margin-top: 20px; /* Adds space between the message and the button */
-  padding: 10px 20px; /* Button padding */
-  font-size: 16px; /* Button font size */
-  background-color: #4a90e2; /* Blue background for the button */
-  color: white; /* White text */
-  border: none; /* Remove default border */
-  border-radius: 8px; /* Rounded corners */
-  cursor: pointer; /* Pointer cursor on hover */
-  transition: background-color 0.3s, transform 0.2s; /* Smooth transitions */
+  margin-top: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #4a90e2;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s;
   font-size: 20px;
   font-weight: bold;
 }
 
 .ifNoPokemonMatchFilter button:hover {
-  background-color: #357ab7; /* Darker blue on hover */
-  transform: scale(1.05); /* Slightly enlarge on hover */
+  background-color: #357ab7;
+  transform: scale(1.05);
 }
 
 .ifNoPokemonMatchFilter button:active {
-  transform: scale(0.95); /* Shrink when clicked */
+  transform: scale(0.95);
 }
 
 /* Style for the GIF image */
 .ifNoPokemonInFilterImage {
-  /* Adjust GIF width */
-  height: auto; /* Maintain aspect ratio */
-  margin-top: 20px; /* Space between text and GIF */
-  border-radius: 8px; /* Optional: rounded corners for the image */
+  height: auto;
+  margin-top: 20px;
+  border-radius: 8px;
 }
 
 /* Style for the Audio Button */
-
-/*
 .audioButton {
+  background-color: #abcbf0;
+  color: white;
+  font-size: 24px;
+  padding: 8px;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
   position: absolute;
   top: 10px;
   right: 10px;
-  padding: 8px 12px;
-  background-color: #4a90e2;
-  color: white;
-  border: none;
-  border-radius: 50%;
-  font-size: 18px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-}
-
-.audioButton:hover {
-  background-color: #357ab7;
-  transform: scale(1.1);
-}
-  
-*/
-/* Style for the Audio Button */
-.audioButton {
-  background-color: #abcbf0; /* Blue background */
-  color: white; /* White icon */
-  font-size: 24px; /* Larger icon size */
-  padding: 8px; /* Adjusted padding for a smaller button */
-  border: none; /* Remove the default border */
-  border-radius: 50%; /* Rounded shape */
-  cursor: pointer; /* Change the cursor to indicate it's clickable */
-  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition on hover */
-  position: absolute; /* Position the button inside the card */
-  top: 10px; /* 10px from the top */
-  right: 10px; /* 10px from the right */
-  width: 40px; /* Set the width of the button */
-  height: 40px; /* Set the height of the button */
-  display: flex; /* Flexbox to center the content */
-  align-items: center; /* Align items vertically */
-  justify-content: center; /* Center content horizontally */
-  z-index: 20; /* Ensure the button stays on top of other elements */
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 20;
 }
 
 /* Button hover and active state */
 .audioButton:hover {
-  background-color: #357ab7; /* Darker blue on hover */
-  transform: scale(1.1); /* Slightly enlarge the button on hover */
+  background-color: #357ab7;
+  transform: scale(1.1);
 }
 
 .audioButton:active {
-  background-color: #2c6491; /* Even darker blue when clicked */
-  transform: scale(0.95); /* Slightly shrink the button when clicked */
+  background-color: #2c6491;
+  transform: scale(0.95);
 }
 
 .audioButton:disabled {
-  background-color: #b0bec5; /* Grey color when disabled */
-  cursor: not-allowed; /* Change the cursor to indicate the button is disabled */
+  background-color: #b0bec5;
+  cursor: not-allowed;
 }
 
 /*TYPES*/
