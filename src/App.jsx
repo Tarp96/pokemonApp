@@ -3,6 +3,8 @@ import "./styles/App.css";
 import PokemonDisplayCard from "./components/PokemonDisplayCard";
 import { fetchData, fetchPokemonDetails } from "./utils/pokeApi";
 import { FilterByTypeButtons } from "./components/FilterByTypeButtons";
+import { SearchBar } from "./components/SearchBar";
+import { NavigationButtons } from "./components/NavigationButtons";
 
 function App() {
   const [pokemon, setPokemon] = useState([]);
@@ -100,31 +102,17 @@ function App() {
         <h1>Pokemon</h1>
       </div>
 
-      <div className="searchbarContainer">
-        <label>Search</label>
-        <input
-          type="text"
-          onChange={(e) => setQuery(e.target.value)}
-          placeholder="Example: Charizard or water 🔎"
+      <SearchBar query={query} setQuery={setQuery} />
+
+      <div className="filterButtonContainer">
+        <FilterByTypeButtons
+          filterByTypeFunc={filterPokemonByType}
+          activeFilter={activeFilter}
         />
       </div>
 
-      <div className="filterButtonContainer">
-        {
-          <FilterByTypeButtons
-            filterByTypeFunc={filterPokemonByType}
-            activeFilter={activeFilter}
-          />
-        }
-      </div>
-
       <div className="navigationButtonContainer">
-        <button onClick={prevPage} className="navigationButton">
-          <p className="navigationButtonText">Prev</p>
-        </button>
-        <button onClick={nextPage} className="navigationButton">
-          <p className="navigationButtonText">Next</p>
-        </button>
+        <NavigationButtons prevPage={prevPage} nextPage={nextPage} />
       </div>
 
       {loading ? (
