@@ -181,7 +181,7 @@ function App() {
               <p>None of the Pokemon on current page belong to this type</p>
               <button onClick={removeFilter}>Remove Filter</button>
               <img
-                src="pikaconfused.gif"
+                src="/assets/pikaconfused.gif"
                 className="ifNoPokemonInFilterImage"
               />
             </div>
