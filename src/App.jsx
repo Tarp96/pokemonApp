@@ -6,6 +6,7 @@ import { FilterByTypeButtons } from "./components/FilterByTypeButtons";
 import { SearchBar } from "./components/SearchBar";
 import { NavigationButtons } from "./components/NavigationButtons";
 import { NoPokemonMatchFilter } from "./components/NoPokemonMatchFilter";
+import { PokemonGrid } from "./components/PokemonGrid";
 
 function App() {
   const [pokemon, setPokemon] = useState([]);
@@ -110,16 +111,14 @@ function App() {
         activeFilter={activeFilter}
       />
 
-      <div className="navigationButtonContainer">
-        <NavigationButtons prevPage={prevPage} nextPage={nextPage} />
-      </div>
+      <NavigationButtons prevPage={prevPage} nextPage={nextPage} />
 
       {loading ? (
         <p>Loading Pokémon...</p>
       ) : (
         <>
           {filteredPokemon.length > 0 ? (
-            <div className="pokemonGrid">{renderPokemonCards()}</div>
+            <PokemonGrid>{renderPokemonCards()}</PokemonGrid>
           ) : (
             <NoPokemonMatchFilter onClick={removeFilter} />
           )}
