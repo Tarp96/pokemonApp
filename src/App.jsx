@@ -5,6 +5,7 @@ import { fetchData, fetchPokemonDetails } from "./utils/pokeApi";
 import { FilterByTypeButtons } from "./components/FilterByTypeButtons";
 import { SearchBar } from "./components/SearchBar";
 import { NavigationButtons } from "./components/NavigationButtons";
+import { NoPokemonMatchFilter } from "./components/NoPokemonMatchFilter";
 
 function App() {
   const [pokemon, setPokemon] = useState([]);
@@ -120,14 +121,7 @@ function App() {
           {filteredPokemon.length > 0 ? (
             <div className="pokemonGrid">{renderPokemonCards()}</div>
           ) : (
-            <div className="ifNoPokemonMatchFilter">
-              <p>None of the Pokemon on current page belong to this type</p>
-              <button onClick={removeFilter}>Remove Filter</button>
-              <img
-                src="/assets/pikaconfused.gif"
-                className="ifNoPokemonInFilterImage"
-              />
-            </div>
+            <NoPokemonMatchFilter onClick={removeFilter} />
           )}
         </>
       )}
