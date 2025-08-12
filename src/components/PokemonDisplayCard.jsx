@@ -1,4 +1,4 @@
-import typeColors from "./../typecolors";
+import typeColors from "../utils/typecolors";
 import AudioPlayer from "./AudioPlayer";
 
 function PokemonDisplayCard({

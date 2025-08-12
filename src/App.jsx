@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
-import "./App.css";
+import "./styles/App.css";
 import PokemonDisplayCard from "./components/PokemonDisplayCard";
-import typeColors from "./typecolors";
+import typeColors from "./utils/typecolors";
 
 function App() {
   const [pokemon, setPokemon] = useState([]);
