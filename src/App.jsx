@@ -3,77 +3,53 @@ import "./styles/App.css";
 import PokemonDisplayCard from "./components/PokemonDisplayCard";
 import typeColors from "./utils/typecolors";
 import { firstLetterUpperCase } from "./utils/helperFunctions";
+import { fetchData, fetchPokemonDetails } from "./utils/pokeApi";
 
 function App() {
   const [pokemon, setPokemon] = useState([]);
   const [filteredPokemon, setFilteredPokemon] = useState(pokemon);
   const [activeFilter, setActiveFilter] = useState(null);
   const [isFiltered, setIsFiltered] = useState(false);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [query, setQuery] = useState("");
-
-  const [pageNumber, setPageNumber] = useState(0);
+  const [pageNumber, setPageNumber] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
 
   useEffect(() => {
-    console.log(pageNumber);
-    fetchData(pageNumber);
-    setFilteredPokemon(pokemon);
+    loadPokemonData(pageNumber);
   }, [pageNumber]);
 
-  const fetchPokemonDetails = async (pokemonName) => {
+  const loadPokemonData = async (pageNumber) => {
     try {
-      const response = await fetch(
-        `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
-      );
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error("Error fetching Pokemon details:", error);
-    }
-  };
-
-  const fetchData = async (pageNumber) => {
-    try {
-      let url = "https://pokeapi.co/api/v2/pokemon/";
-      if (pageNumber > 0) {
-        url = `https://pokeapi.co/api/v2/pokemon/?offset=${pageNumber}&limit=20`;
-      }
-
-      const response = await fetch(url);
-
-      if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
-      }
-
-      const result = await response.json();
+      setLoading(true);
+      const result = await fetchData(pageNumber, 20);
       const pokemonNames = result.results.map((pokemon) => pokemon.name);
 
-      const pokemonDetailsPromises = pokemonNames.map((pokemonName) =>
-        fetchPokemonDetails(pokemonName)
-      );
+      const pokemonDetailPromises = pokemonNames.map((pokemonName) => {
+        return fetchPokemonDetails(pokemonName);
+      });
 
-      const allPokemonDetails = await Promise.all(pokemonDetailsPromises);
-
+      const allPokemonDetails = await Promise.all(pokemonDetailPromises);
       setPokemon(allPokemonDetails);
       setFilteredPokemon(allPokemonDetails);
       setLoading(false);
+      setTotalPages(Math.ceil(result.count / 20));
     } catch (error) {
-      console.error("Error fetching data:", error);
+      console.error("Error loading Pokemon data:", error);
       setLoading(false);
     }
   };
 
   const prevPage = () => {
-    if (pageNumber != 0) {
-      setPageNumber((prev) => prev - 20);
+    if (pageNumber > 1) {
+      setPageNumber((prev) => prev - 1);
     }
   };
 
   const nextPage = () => {
-    setPageNumber((prev) => prev + 20);
+    if (pageNumber < totalPages) {
+      setPageNumber(pageNumber + 1);
+    }
   };
 
   const filterPokemonByType = (key) => {

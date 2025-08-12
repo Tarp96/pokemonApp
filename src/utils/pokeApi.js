@@ -1,0 +1,34 @@
+export const fetchData = async (pageNumber, pokemonPerPage) => {
+  try {
+    const offset = (pageNumber - 1) * pokemonPerPage;
+    const url = `https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=${pokemonPerPage}`;
+
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error("Error fetching Pokemon data");
+    }
+
+    const result = await response.json();
+    return result;
+  } catch (error) {
+    console.error("Error fetching data, ", error);
+  }
+  throw error;
+};
+
+export const fetchPokemonDetails = async (pokemonName) => {
+  try {
+    const response = await fetch(
+      `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
+    );
+    if (!response.ok) {
+      throw new Error(`Error fetching data for ${pokemonName}`);
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching Pokemon details:", error);
+    throw error;
+  }
+};
