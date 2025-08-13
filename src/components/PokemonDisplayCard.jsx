@@ -10,6 +10,7 @@ function PokemonDisplayCard({
   weight,
   stats,
   cries,
+  onClick,
 }) {
   const getTypeClass = (type) => {
     const typeBackground = typeColors[type] || "#ccc";
@@ -28,7 +29,7 @@ function PokemonDisplayCard({
   };
 
   return (
-    <div className="pokemon-card">
+    <div className="pokemon-card" onClick={onClick}>
       {cries?.legacy && <AudioPlayer src={cries.legacy} />}
 
       <img src={sprite} alt={name} />

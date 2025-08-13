@@ -6,6 +6,7 @@ import { SearchBar } from "../components/SearchBar";
 import { NavigationButtons } from "../components/NavigationButtons";
 import { NoPokemonMatchFilter } from "../components/NoPokemonMatchFilter";
 import { PokemonGrid } from "../components/PokemonGrid";
+import { Navigate, useNavigate } from "react-router-dom";
 
 export const HomePage = () => {
   const [pokemon, setPokemon] = useState([]);
@@ -16,6 +17,8 @@ export const HomePage = () => {
   const [query, setQuery] = useState("");
   const [pageNumber, setPageNumber] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     loadPokemonData(pageNumber);
@@ -93,6 +96,7 @@ export const HomePage = () => {
           height={pokemonItem.height}
           weight={pokemonItem.weight}
           cries={pokemonItem.cries}
+          onClick={() => navigate(`/pokemon/${pokemonItem.name}`)}
         />
       ));
   };
