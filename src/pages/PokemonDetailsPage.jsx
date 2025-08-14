@@ -26,12 +26,12 @@ export const PokemonDetailsPage = () => {
     loadPokemonDetails();
   }, [name]);
 
-  const abilities = pokemon.abilities?.map((a, index) => (
-    <p key={index}>{firstLetterUpperCase(a.ability.name)}</p>
+  const abilities = pokemon.abilities?.map((a) => (
+    <p key={a.ability.name}>{firstLetterUpperCase(a.ability.name)}</p>
   ));
 
-  const types = pokemon.types?.map((type, index) => (
-    <span key={index}>{firstLetterUpperCase(type.type.name)}</span>
+  const types = pokemon.types?.map((type) => (
+    <span key={type.type.name}>{firstLetterUpperCase(type.type.name)}</span>
   ));
 
   return loading ? (
