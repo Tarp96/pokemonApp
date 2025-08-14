@@ -50,6 +50,12 @@ export const PokemonDetailsPage = () => {
         <h2>Types: </h2>
         {types}
       </div>
+      <div className="pokemonDetailPictureContainer">
+        <img src={pokemon.sprites?.front_default} alt="" />
+        <img src={pokemon.sprites?.back_default} alt="" />
+        <img src={pokemon.sprites?.front_shiny} alt="" />
+        <img src={pokemon.sprites?.back_shiny} alt="" />
+      </div>
     </div>
   );
 };
