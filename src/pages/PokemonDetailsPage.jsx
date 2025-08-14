@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { fetchPokemonDetails } from "../utils/pokeApi";
 import { useParams } from "react-router-dom";
+import { firstLetterUpperCase } from "./../utils/helperFunctions";
 
 export const PokemonDetailsPage = () => {
   const { name } = useParams();
@@ -25,5 +26,30 @@ export const PokemonDetailsPage = () => {
     loadPokemonDetails();
   }, [name]);
 
-  return <h1>{pokemon.name}</h1>;
+  const abilities = pokemon.abilities?.map((a, index) => (
+    <p key={index}>{firstLetterUpperCase(a.ability.name)}</p>
+  ));
+
+  const types = pokemon.types?.map((type, index) => (
+    <span key={index}>{firstLetterUpperCase(type.type.name)}</span>
+  ));
+
+  return loading ? (
+    <p>Loading...</p>
+  ) : (
+    <div className="detailsPageContainer">
+      <h1 className="detailsPageTitle">
+        {pokemon.name && firstLetterUpperCase(pokemon.name)}
+      </h1>
+      <p>{pokemon.id ? `Pokémon ID: ${pokemon.id}` : null}</p>
+      <div>
+        <h2>Abilities:</h2>
+        {abilities}
+      </div>
+      <div>
+        <h2>Types: </h2>
+        {types}
+      </div>
+    </div>
+  );
 };

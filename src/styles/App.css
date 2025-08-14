@@ -327,3 +327,12 @@ h1 {
   opacity: 0.8;
   transform: scale(1.05);
 }
+
+/*DETAILS PAGE*/
+.detailsPageContainer {
+}
+
+.detailsPageTitle {
+  font-size: 88px;
+  text-align: center;
+}
