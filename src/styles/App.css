@@ -330,6 +330,8 @@ h1 {
 
 /*DETAILS PAGE*/
 .detailsPageContainer {
+  border: solid 2px red;
+  text-align: center;
 }
 
 .detailsPageTitle {

@@ -41,6 +41,13 @@ export const PokemonDetailsPage = () => {
       <h1 className="detailsPageTitle">
         {pokemon.name && firstLetterUpperCase(pokemon.name)}
       </h1>
+
+      {pokemon.sprites?.other["official-artwork"]?.front_default && (
+        <img
+          src={pokemon.sprites.other["official-artwork"].front_default}
+          alt="Official artwork"
+        />
+      )}
       <p>{`Pokémon ID: ${pokemon.id}`}</p>
       <div>
         <h2>Abilities:</h2>
@@ -51,22 +58,20 @@ export const PokemonDetailsPage = () => {
         {types}
       </div>
       <div className="pokemonDetailPictureContainer">
-        <img
-          src={pokemon.sprites?.front_default}
-          alt={`Front view of default ${pokemon.name} sprite`}
-        />
-        <img
-          src={pokemon.sprites?.back_default}
-          alt={`Back view of default ${pokemon.name} sprite`}
-        />
-        <img
-          src={pokemon.sprites?.front_shiny}
-          alt={`Front view of shiny ${pokemon.name} sprite`}
-        />
-        <img
-          src={pokemon.sprites?.back_shiny}
-          alt={`Back view of shiny ${pokemon.name} sprite`}
-        />
+        {pokemon.sprites?.front_default && (
+          <img src={pokemon.sprites.front_default} alt="Front default sprite" />
+        )}
+        {pokemon.sprites?.back_default && (
+          <img src={pokemon.sprites.back_default} alt="Back default sprite" />
+        )}
+
+        {pokemon.sprites?.front_shiny && (
+          <img src={pokemon.sprites.front_shiny} alt="Front shiny sprite" />
+        )}
+
+        {pokemon.sprites?.back_shiny && (
+          <img src={pokemon.sprites.back_shiny} alt="Back shiny sprite" />
+        )}
       </div>
     </div>
   );
