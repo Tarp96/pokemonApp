@@ -1,5 +1,6 @@
 body {
-  background-image: url("assets/backgroud.jpeg");
+  background-image: url("/assets/backgroud.jpeg");
+  background-color: #f5f5f5;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -7,6 +8,7 @@ body {
   font-family: "Arial", sans-serif;
   height: 100vh;
   overflow: hidden;
+  font-family: "Montserrat", sans-serif;
 }
 
 /*HEADER*/
@@ -330,11 +332,22 @@ h1 {
 
 /*DETAILS PAGE*/
 .detailsPageContainer {
-  border: solid 2px red;
-  text-align: center;
+  width: 80%;
+  max-width: 1000px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 1rem;
+  border-radius: 8px;
 }
 
 .detailsPageTitle {
   font-size: 88px;
   text-align: center;
+}
+
+.detailsPageContainer img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+  margin: 0 auto;
 }
