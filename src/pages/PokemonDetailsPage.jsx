@@ -64,6 +64,7 @@ export const PokemonDetailsPage = () => {
 
       <div className="detailsMiddleSection">
         {pokemon.cries?.legacy && <AudioPlayer src={pokemon.cries.legacy} />}
+        {pokemon.cries?.latest && <AudioPlayer src={pokemon.cries.latest} />}
         <div className="abilitiesContainer">
           <h2>Abilities</h2>
           {abilities}

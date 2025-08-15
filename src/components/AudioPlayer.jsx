@@ -1,7 +1,7 @@
 import { useEffect, useRef } from "react";
 import { Howl } from "howler";
 
-const AudioPlayer = ({ src }) => {
+const AudioPlayer = ({ src, children }) => {
   const soundRef = useRef(null);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ const AudioPlayer = ({ src }) => {
   return (
     <>
       <button className="audioButton" onClick={playAudio}>
-        🔊
+        {children}
       </button>
     </>
   );
