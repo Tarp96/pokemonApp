@@ -369,3 +369,12 @@ h1 {
   display: block;
   margin: 0 auto;
 }
+
+.imageAndStatsContainer {
+  border: solid 2px green;
+}
+
+.mainDetailImage {
+  border: solid 2px red;
+  width: 30%;
+}

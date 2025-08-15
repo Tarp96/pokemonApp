@@ -34,6 +34,10 @@ export const PokemonDetailsPage = () => {
     <span key={type.type.name}>{firstLetterUpperCase(type.type.name)}</span>
   ));
 
+  const stats = pokemon.stats?.map((stat) => (
+    <p>{`${firstLetterUpperCase(stat.stat.name)} : ${stat.base_stat}`}</p>
+  ));
+
   return loading ? (
     <p>Loading...</p>
   ) : (
@@ -47,8 +51,11 @@ export const PokemonDetailsPage = () => {
           <img
             src={pokemon.sprites.other["official-artwork"].front_default}
             alt="Official artwork"
+            className="mainDetailImage"
           />
         )}
+
+        <div className="statsContainer">{stats}</div>
       </div>
 
       <div>
