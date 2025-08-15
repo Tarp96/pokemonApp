@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { fetchPokemonDetails } from "../utils/pokeApi";
 import { useParams } from "react-router-dom";
 import { firstLetterUpperCase } from "./../utils/helperFunctions";
+import { TypeBadge } from "../components/TypeBadge";
 
 export const PokemonDetailsPage = () => {
   const { name } = useParams();
@@ -31,7 +32,7 @@ export const PokemonDetailsPage = () => {
   ));
 
   const types = pokemon.types?.map((type) => (
-    <span key={type.type.name}>{firstLetterUpperCase(type.type.name)}</span>
+    <TypeBadge key={type.type.name} type={type.type.name} />
   ));
 
   const stats = pokemon.stats?.map((stat) => (
