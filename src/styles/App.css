@@ -352,30 +352,81 @@ h1 {
 .detailsPageContainer {
   width: 80%;
   max-width: 1000px;
-  margin: 0 auto;
+  margin: 2rem auto;
   background-color: white;
-  padding: 1rem;
+  padding: 2rem;
   border-radius: 8px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.detailsPageHeader {
+  text-align: center;
+  margin-bottom: 2rem;
 }
 
 .detailsPageTitle {
-  font-size: 88px;
+  font-size: 64px;
+  margin: 0;
+}
+
+.detailsTopSection {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.mainImageContainer {
+  flex: 1;
+  min-width: 200px;
   text-align: center;
 }
 
-.detailsPageContainer img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
+.mainImageContainer img {
+  width: 100%;
+  max-width: 300px;
 }
 
-.imageAndStatsContainer {
-  border: solid 2px green;
+.statsContainer {
+  flex: 1;
+  min-width: 200px;
   display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  font-size: 16px;
 }
 
-.mainDetailImage {
-  border: solid 2px red;
-  width: 30%;
+.detailsMiddleSection {
+  display: flex;
+  justify-content: space-between;
+  gap: 2rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.abilitiesContainer,
+.typesContainer {
+  flex: 1;
+  min-width: 200px;
+}
+
+.abilitiesContainer p,
+.typesContainer span {
+  margin-right: 8px;
+  display: inline-block;
+}
+
+.spritesSection {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.spritesSection img {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
 }
