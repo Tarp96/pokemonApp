@@ -3,6 +3,7 @@ import { fetchPokemonDetails } from "../utils/pokeApi";
 import { useParams } from "react-router-dom";
 import { firstLetterUpperCase } from "./../utils/helperFunctions";
 import { TypeBadge } from "../components/TypeBadge";
+import AudioPlayer from "./../components/AudioPlayer";
 
 export const PokemonDetailsPage = () => {
   const { name } = useParams();
@@ -62,6 +63,7 @@ export const PokemonDetailsPage = () => {
       </div>
 
       <div className="detailsMiddleSection">
+        {pokemon.cries?.legacy && <AudioPlayer src={pokemon.cries.legacy} />}
         <div className="abilitiesContainer">
           <h2>Abilities</h2>
           {abilities}

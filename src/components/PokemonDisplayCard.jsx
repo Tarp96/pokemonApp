@@ -32,7 +32,9 @@ function PokemonDisplayCard({
 
   return (
     <div className="pokemon-card">
-      {cries?.legacy && <AudioPlayer src={cries.legacy} />}
+      <div className="audioButtonCardWrapper">
+        {cries?.legacy && <AudioPlayer src={cries.legacy} />}
+      </div>
 
       <img src={sprite} alt={name} />
       <h3>{firstLetterUpperCase(name)}</h3>
