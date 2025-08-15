@@ -29,7 +29,7 @@ function PokemonDisplayCard({
   };
 
   return (
-    <div className="pokemon-card" onClick={onClick}>
+    <div className="pokemon-card">
       {cries?.legacy && <AudioPlayer src={cries.legacy} />}
 
       <img src={sprite} alt={name} />
@@ -44,8 +44,7 @@ function PokemonDisplayCard({
       </div>
 
       <div className="stats">
-        <p>Height: {height}</p>
-        <p>Weight: {weight}</p>
+        <button onClick={onClick}>Details</button>
       </div>
     </div>
   );
