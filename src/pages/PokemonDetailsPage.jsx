@@ -39,16 +39,18 @@ export const PokemonDetailsPage = () => {
   ) : (
     <div className="detailsPageContainer">
       <h1 className="detailsPageTitle">
-        {pokemon.name && firstLetterUpperCase(pokemon.name)}
+        {pokemon.name && firstLetterUpperCase(pokemon.name)} {`#${pokemon.id}`}
       </h1>
 
-      {pokemon.sprites?.other["official-artwork"]?.front_default && (
-        <img
-          src={pokemon.sprites.other["official-artwork"].front_default}
-          alt="Official artwork"
-        />
-      )}
-      <p>{`Pokémon ID: ${pokemon.id}`}</p>
+      <div className="imageAndStatsContainer">
+        {pokemon.sprites?.other["official-artwork"]?.front_default && (
+          <img
+            src={pokemon.sprites.other["official-artwork"].front_default}
+            alt="Official artwork"
+          />
+        )}
+      </div>
+
       <div>
         <h2>Abilities:</h2>
         {abilities}
