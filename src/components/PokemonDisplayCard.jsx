@@ -33,7 +33,7 @@ function PokemonDisplayCard({
   return (
     <div className="pokemon-card">
       <div className="audioButtonCardWrapper">
-        {cries?.legacy && <AudioPlayer src={cries.legacy} />}
+        {cries?.legacy && <AudioPlayer src={cries.legacy}>🔊</AudioPlayer>}
       </div>
 
       <img src={sprite} alt={name} />

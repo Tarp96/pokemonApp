@@ -63,8 +63,16 @@ export const PokemonDetailsPage = () => {
       </div>
 
       <div className="detailsMiddleSection">
-        {pokemon.cries?.legacy && <AudioPlayer src={pokemon.cries.legacy} />}
-        {pokemon.cries?.latest && <AudioPlayer src={pokemon.cries.latest} />}
+        {pokemon.cries?.legacy && (
+          <AudioPlayer src={pokemon.cries.legacy}>
+            <span className="audioButtonExpanded">🔊 Play legacy cry</span>
+          </AudioPlayer>
+        )}
+        {pokemon.cries?.latest && (
+          <AudioPlayer src={pokemon.cries.latest}>
+            <span className="audioButtonExpanded">🔊 Play latest cry</span>
+          </AudioPlayer>
+        )}
         <div className="abilitiesContainer">
           <h2>Abilities</h2>
           {abilities}
