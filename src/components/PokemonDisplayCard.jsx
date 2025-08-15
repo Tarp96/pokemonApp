@@ -2,6 +2,7 @@ import typeColors from "../utils/typecolors";
 import AudioPlayer from "./AudioPlayer";
 import { firstLetterUpperCase } from "./../utils/helperFunctions";
 import { FaArrowRight } from "react-icons/fa6";
+import { TypeBadge } from "./TypeBadge";
 
 function PokemonDisplayCard({
   name,
@@ -37,10 +38,8 @@ function PokemonDisplayCard({
       <h3>{firstLetterUpperCase(name)}</h3>
 
       <div className="types">
-        {types.map((type, index) => (
-          <span key={index} style={getTypeClass(type.type.name)}>
-            {firstLetterUpperCase(type.type.name)}
-          </span>
+        {types.map((typeObj) => (
+          <TypeBadge key={typeObj.type.name} type={typeObj.type.name} />
         ))}
       </div>
 
