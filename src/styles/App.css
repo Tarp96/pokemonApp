@@ -206,19 +206,31 @@ h1 {
 }
 
 .linkToDetailsPageButton {
-  margin-top: 10px;
-  border-radius: 25px;
+  background-color: #4a90e2;
+  color: white;
   border: none;
-  padding: 10px 15px;
-  font-size: 18px;
-
+  border-radius: 20px;
+  padding: 6px 12px;
+  font-size: 14px;
   display: flex;
-  align-items: center; /* Ensures icon is vertically centered with text */
+  align-items: center;
   justify-content: center;
+  margin-top: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.linkToDetailsPageButton:hover {
+  background-color: #357ab7;
+  transform: scale(1.05);
 }
 
 .linkToDetailsPageButton svg {
-  margin-left: 8px;
+  margin-left: 6px;
+  position: relative;
+  top: 1px;
+  font-size: 16px;
 }
 
 /*DISPLAY IF ARRAY EMPTY*/
