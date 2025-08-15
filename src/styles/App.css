@@ -205,14 +205,20 @@ h1 {
   color: #555;
 }
 
-.pokemon-card .stats {
-  font-size: 0.8em;
-  color: #555;
+.linkToDetailsPageButton {
   margin-top: 10px;
+  border-radius: 25px;
+  border: none;
+  padding: 10px 15px;
+  font-size: 18px;
+
+  display: flex;
+  align-items: center; /* Ensures icon is vertically centered with text */
+  justify-content: center;
 }
 
-.pokemon-card .stats p {
-  margin: 2px 0;
+.linkToDetailsPageButton svg {
+  margin-left: 8px;
 }
 
 /*DISPLAY IF ARRAY EMPTY*/

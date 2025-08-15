@@ -1,6 +1,7 @@
 import typeColors from "../utils/typecolors";
 import AudioPlayer from "./AudioPlayer";
 import { firstLetterUpperCase } from "./../utils/helperFunctions";
+import { FaArrowRight } from "react-icons/fa6";
 
 function PokemonDisplayCard({
   name,
@@ -43,8 +44,11 @@ function PokemonDisplayCard({
         ))}
       </div>
 
-      <div className="stats">
-        <button onClick={onClick}>Details</button>
+      <div className="linkToDetailPageBtnContainer">
+        <button onClick={onClick} className="linkToDetailsPageButton">
+          Details
+          <FaArrowRight />
+        </button>
       </div>
     </div>
   );
