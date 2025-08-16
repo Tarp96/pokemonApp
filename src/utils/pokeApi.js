@@ -32,3 +32,20 @@ export const fetchPokemonDetails = async (pokemonName) => {
     throw error;
   }
 };
+
+export const fetchPokemonSpeciesDetails = async (pokemonName) => {
+  try {
+    const response = await fetch(
+      `https://pokeapi.co/api/v2/pokemon-species/${pokemonName}`
+    );
+    if (!response.ok) {
+      throw new Error(`Error fetching data for ${pokemonName}`);
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching Pokemon species details:", error);
+    throw error;
+  }
+};
