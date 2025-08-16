@@ -1,5 +1,8 @@
 import { useState, useEffect } from "react";
-import { fetchPokemonDetails } from "../utils/pokeApi";
+import {
+  fetchPokemonDetails,
+  fetchPokemonSpeciesDetails,
+} from "../utils/pokeApi";
 import { useParams } from "react-router-dom";
 import { firstLetterUpperCase } from "./../utils/helperFunctions";
 import { TypeBadge } from "../components/TypeBadge";
@@ -9,6 +12,7 @@ export const PokemonDetailsPage = () => {
   const { name } = useParams();
 
   const [pokemon, setPokemon] = useState({});
+  const [pokemonSpecies, setPokemonSpecies] = useState({});
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
@@ -17,7 +21,8 @@ export const PokemonDetailsPage = () => {
         setLoading(true);
         const data = await fetchPokemonDetails(name);
         setPokemon(data);
-        console.log(data);
+        const speciesData = await fetchPokemonSpeciesDetails(name);
+        console.log(speciesData);
       } catch (error) {
         console.error("Failed to fetch Pokémon details:", error);
       } finally {
