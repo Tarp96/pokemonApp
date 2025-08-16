@@ -45,9 +45,13 @@ export const PokemonDetailsPage = () => {
     <p>{`${firstLetterUpperCase(stat.stat.name)} : ${stat.base_stat}`}</p>
   ));
 
-  const englishFlavorText = pokemonSpecies.flavor_text_entries?.filter(
-    (item) => item.language.name === "en"
-  );
+  const englishFlavorText =
+    pokemonSpecies?.flavor_text_entries?.filter(
+      (item) => item.language.name === "en"
+    ) || [];
+
+  const displayEnglishFavorText =
+    englishFlavorText[0]?.flavor_text || "No description available.";
 
   return loading ? (
     <p>Loading...</p>
@@ -91,6 +95,8 @@ export const PokemonDetailsPage = () => {
           {types}
         </div>
       </div>
+
+      <div className="flavorTextContainer">{displayEnglishFavorText}</div>
 
       <div className="spritesSection">
         {pokemon.sprites?.front_default && (
