@@ -387,21 +387,34 @@ h1 {
 
 .detailsTopSection {
   display: flex;
+
   gap: 2rem;
-  align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
+  margin-bottom: 2rem;
 }
 
 .mainImageContainer {
-  flex: 1;
-  min-width: 200px;
-  text-align: center;
+  flex-shrink: 0;
 }
 
-.mainImageContainer img {
-  width: 100%;
+.mainDetailImage {
   max-width: 300px;
+  height: auto;
+  border-radius: 50%;
+  padding: 10px;
+}
+
+.typeGradientBorder {
+  padding: 6px;
+  border-radius: 50%;
+  display: inline-block;
+  background: gray;
+}
+
+.flavorTextContainer {
+  max-width: 600px;
+  line-height: 1.6;
+  font-size: 1.1rem;
+  border: solid 2px green;
 }
 
 .statsContainer {
@@ -446,4 +459,77 @@ h1 {
   width: 100px;
   height: 100px;
   object-fit: contain;
+}
+
+/*TYPE GRADIENT BORDER*/
+.typeGradientBorder.normal {
+  background: linear-gradient(135deg, #a8a77a, #d1ccc0);
+}
+
+.typeGradientBorder.fire {
+  background: linear-gradient(135deg, #f08030, #f05d23);
+}
+
+.typeGradientBorder.water {
+  background: linear-gradient(135deg, #6890f0, #3b9eff);
+}
+
+.typeGradientBorder.electric {
+  background: linear-gradient(135deg, #f8d030, #ffef78);
+}
+
+.typeGradientBorder.grass {
+  background: linear-gradient(135deg, #78c850, #a0e36f);
+}
+
+.typeGradientBorder.ice {
+  background: linear-gradient(135deg, #98d8d8, #e0f7ff);
+}
+
+.typeGradientBorder.fighting {
+  background: linear-gradient(135deg, #c03028, #ff5e57);
+}
+
+.typeGradientBorder.poison {
+  background: linear-gradient(135deg, #a040a0, #c56cf0);
+}
+
+.typeGradientBorder.ground {
+  background: linear-gradient(135deg, #e0c068, #d9a441);
+}
+
+.typeGradientBorder.flying {
+  background: linear-gradient(135deg, #a890f0, #c3dafe);
+}
+
+.typeGradientBorder.psychic {
+  background: linear-gradient(135deg, #f85888, #f282bc);
+}
+
+.typeGradientBorder.bug {
+  background: linear-gradient(135deg, #a8b820, #c4d73f);
+}
+
+.typeGradientBorder.rock {
+  background: linear-gradient(135deg, #b8a038, #e6d478);
+}
+
+.typeGradientBorder.ghost {
+  background: linear-gradient(135deg, #705898, #9b6bd3);
+}
+
+.typeGradientBorder.dragon {
+  background: linear-gradient(135deg, #7038f8, #b889f4);
+}
+
+.typeGradientBorder.dark {
+  background: linear-gradient(135deg, #705848, #8b6e58);
+}
+
+.typeGradientBorder.steel {
+  background: linear-gradient(135deg, #b8b8d0, #c4c4cc);
+}
+
+.typeGradientBorder.fairy {
+  background: linear-gradient(135deg, #ee99ac, #f6c1d3);
 }

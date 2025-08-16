@@ -62,17 +62,29 @@ export const PokemonDetailsPage = () => {
           {pokemon.name && firstLetterUpperCase(pokemon.name)} #{pokemon.id}
         </h1>
       </div>
+
       <div className="detailsTopSection">
-        <div className="mainImageContainer">
-          {pokemon.sprites?.other["official-artwork"]?.front_default && (
-            <img
-              src={pokemon.sprites.other["official-artwork"].front_default}
-              alt="Official artwork"
-              className="mainDetailImage"
-            />
-          )}
+        <div>
+          <div
+            className={`mainImageContainer typeGradientBorder ${pokemon.types?.[0]?.type.name}`}
+          >
+            {pokemon.sprites?.other["official-artwork"]?.front_default && (
+              <img
+                src={pokemon.sprites.other["official-artwork"].front_default}
+                alt="Official artwork"
+                className="mainDetailImage"
+              />
+            )}
+          </div>
         </div>
-        <div className="statsContainer">{stats}</div>
+
+        <div className="flavorTextContainer">
+          {displayEnglishFavorText}
+          <h2>Abilities</h2>
+          {abilities}
+          <h2>Types</h2>
+          {types}
+        </div>
       </div>
 
       <div className="detailsMiddleSection">
@@ -95,8 +107,6 @@ export const PokemonDetailsPage = () => {
           {types}
         </div>
       </div>
-
-      <div className="flavorTextContainer">{displayEnglishFavorText}</div>
 
       <div className="spritesSection">
         {pokemon.sprites?.front_default && (
