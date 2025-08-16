@@ -413,17 +413,13 @@ h1 {
 .flavorTextContainer {
   max-width: 600px;
   line-height: 1.6;
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   border: solid 2px green;
 }
 
-.statsContainer {
-  flex: 1;
-  min-width: 200px;
+.abilitiesAndTypesContainer {
+  border: solid 2px orange;
   display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-  font-size: 16px;
 }
 
 .detailsMiddleSection {

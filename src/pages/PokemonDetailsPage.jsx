@@ -80,10 +80,12 @@ export const PokemonDetailsPage = () => {
 
         <div className="flavorTextContainer">
           {displayEnglishFavorText}
-          <h2>Abilities</h2>
-          {abilities}
-          <h2>Types</h2>
-          {types}
+          <div className="abilitiesAndTypesContainer">
+            <h2>Abilities</h2>
+            {abilities}
+            <h2>Types</h2>
+            {types}
+          </div>
         </div>
       </div>
 
@@ -98,14 +100,6 @@ export const PokemonDetailsPage = () => {
             <span className="audioButtonExpanded">🔊 Play latest cry</span>
           </AudioPlayer>
         )}
-        <div className="abilitiesContainer">
-          <h2>Abilities</h2>
-          {abilities}
-        </div>
-        <div className="typesContainer">
-          <h2>Types</h2>
-          {types}
-        </div>
       </div>
 
       <div className="spritesSection">
