@@ -22,7 +22,7 @@ export const PokemonDetailsPage = () => {
         const data = await fetchPokemonDetails(name);
         setPokemon(data);
         const speciesData = await fetchPokemonSpeciesDetails(name);
-        console.log(speciesData);
+        setPokemonSpecies(speciesData);
       } catch (error) {
         console.error("Failed to fetch Pokémon details:", error);
       } finally {
@@ -44,6 +44,10 @@ export const PokemonDetailsPage = () => {
   const stats = pokemon.stats?.map((stat) => (
     <p>{`${firstLetterUpperCase(stat.stat.name)} : ${stat.base_stat}`}</p>
   ));
+
+  const englishFlavorText = pokemonSpecies.flavor_text_entries?.filter(
+    (item) => item.language.name === "en"
+  );
 
   return loading ? (
     <p>Loading...</p>
@@ -87,6 +91,7 @@ export const PokemonDetailsPage = () => {
           {types}
         </div>
       </div>
+
       <div className="spritesSection">
         {pokemon.sprites?.front_default && (
           <img src={pokemon.sprites.front_default} alt="Front default sprite" />
