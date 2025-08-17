@@ -91,18 +91,20 @@ export const PokemonDetailsPage = () => {
               <div className="typeList">{types}</div>
             </div>
           </div>
-          <div className="criesContainer">
+          <div className="infoSection">
             <h2 className="sectionTitle">Cries</h2>
-            {pokemon.cries?.legacy && (
-              <AudioPlayer src={pokemon.cries.legacy}>
-                <span className="audioButtonExpanded">🔊 Legacy cry</span>
-              </AudioPlayer>
-            )}
-            {pokemon.cries?.latest && (
-              <AudioPlayer src={pokemon.cries.latest}>
-                <span className="audioButtonExpanded">🔊 Latest cry</span>
-              </AudioPlayer>
-            )}
+            <div className="criesButtons">
+              {pokemon.cries?.legacy && (
+                <AudioPlayer src={pokemon.cries.legacy}>
+                  <span className="audioButtonExpanded">🔊 Legacy cry</span>
+                </AudioPlayer>
+              )}
+              {pokemon.cries?.latest && (
+                <AudioPlayer src={pokemon.cries.latest}>
+                  <span className="audioButtonExpanded">🔊 Latest cry</span>
+                </AudioPlayer>
+              )}
+            </div>
           </div>
         </div>
       </div>
