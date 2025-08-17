@@ -92,6 +92,7 @@ export const PokemonDetailsPage = () => {
             </div>
           </div>
           <div className="criesContainer">
+            <h2 className="sectionTitle">Cries</h2>
             {pokemon.cries?.legacy && (
               <AudioPlayer src={pokemon.cries.legacy}>
                 <span className="audioButtonExpanded">🔊 Legacy cry</span>
