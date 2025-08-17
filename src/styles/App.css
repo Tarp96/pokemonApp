@@ -461,6 +461,26 @@ h1 {
   gap: 0.5rem;
 }
 
+.criesContainer {
+  border: solid 2px blue;
+  display: flex;
+  justify-content: space-between;
+}
+
+.audioButtonExpanded {
+  background-color: #abcbf0;
+  color: white;
+  font-size: 18px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
 .detailsMiddleSection {
   display: flex;
   justify-content: space-between;
