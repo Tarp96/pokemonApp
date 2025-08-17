@@ -418,8 +418,10 @@ h1 {
 }
 
 .flavorText {
+  font-size: 1.2rem;
   margin-bottom: 1rem;
   font-style: italic;
+  font-weight: bold;
   color: #444;
   line-height: 1.4;
 }
@@ -443,12 +445,14 @@ h1 {
 
 .sectionTitle {
   margin-bottom: 0.5rem;
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   color: #e68a00;
 }
 
 .infoText {
   color: #333;
+  font-size: 1.2rem;
+  font-weight: 600;
 }
 
 .typeList {
