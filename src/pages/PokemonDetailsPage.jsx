@@ -79,12 +79,17 @@ export const PokemonDetailsPage = () => {
         </div>
 
         <div className="flavorTextContainer">
-          {displayEnglishFavorText}
+          <p className="flavorText">{displayEnglishFavorText}</p>
+
           <div className="abilitiesAndTypesContainer">
-            <h2>Abilities</h2>
-            {abilities}
-            <h2>Types</h2>
-            {types}
+            <div className="infoSection">
+              <h2 className="sectionTitle">Abilities</h2>
+              <p className="infoText">{abilities}</p>
+            </div>
+            <div className="infoSection">
+              <h2 className="sectionTitle">Types</h2>
+              <div className="typeList">{types}</div>
+            </div>
           </div>
         </div>
       </div>
