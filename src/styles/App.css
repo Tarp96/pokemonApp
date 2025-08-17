@@ -411,15 +411,50 @@ h1 {
 }
 
 .flavorTextContainer {
-  max-width: 600px;
-  line-height: 1.6;
-  font-size: 1.4rem;
-  border: solid 2px green;
+  padding: 1rem;
+  background-color: #fff5e6; /* light warm background */
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.flavorText {
+  margin-bottom: 1rem;
+  font-style: italic;
+  color: #444;
+  line-height: 1.4;
 }
 
 .abilitiesAndTypesContainer {
-  border: solid 2px orange;
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 1rem;
+  border-top: 2px solid orange;
+  padding-top: 1rem;
+}
+
+.infoSection {
+  flex: 1;
+  background-color: #fff;
+  border: 1px solid #ffa500;
+  border-radius: 8px;
+  padding: 0.75rem;
+}
+
+.sectionTitle {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  color: #e68a00;
+}
+
+.infoText {
+  color: #333;
+}
+
+.typeList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
 }
 
 .detailsMiddleSection {
@@ -429,18 +464,6 @@ h1 {
   margin-top: 2rem;
   flex-wrap: wrap;
   border: solid 2px red;
-}
-
-.abilitiesContainer,
-.typesContainer {
-  flex: 1;
-  min-width: 200px;
-}
-
-.abilitiesContainer p,
-.typesContainer span {
-  margin-right: 8px;
-  display: inline-block;
 }
 
 .spritesSection {
