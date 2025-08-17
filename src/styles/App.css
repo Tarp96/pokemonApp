@@ -441,9 +441,11 @@ h1 {
   border: 1px solid #ffa500;
   border-radius: 8px;
   padding: 0.75rem;
+  margin: 10px;
 }
 
 .sectionTitle {
+  margin-top: 0;
   margin-bottom: 0.5rem;
   font-size: 1.4rem;
   color: #e68a00;
@@ -454,6 +456,7 @@ h1 {
   font-size: 1.2rem;
   font-weight: 600;
 }
+
 .typeList {
   display: flex;
   flex-wrap: wrap;
@@ -463,21 +466,21 @@ h1 {
 .criesButtons {
   display: flex;
   gap: 0.75rem;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  flex-wrap: nowrap;
+  justify-content: space-around;
 }
 
 .audioButtonExpanded {
   background-color: #4f83cc;
   color: white;
   font-size: 1rem;
-  padding: 8px 16px;
+  padding: 5px 20px;
   border: none;
   border-radius: 6px;
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
   display: inline-flex;
-  align-items: center;
+
   gap: 6px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
 }
