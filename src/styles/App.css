@@ -387,7 +387,6 @@ h1 {
 
 .detailsTopSection {
   display: flex;
-
   gap: 2rem;
   margin-bottom: 2rem;
 }
@@ -461,6 +460,7 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   gap: 0.5rem;
+  margin-top: 1.75rem;
 }
 
 .criesButtons {
