@@ -84,7 +84,7 @@ export const PokemonDetailsPage = () => {
           <div className="abilitiesAndTypesContainer">
             <div className="infoSection">
               <h2 className="sectionTitle">Abilities</h2>
-              <p className="infoText">{abilities}</p>
+              <div className="infoText">{abilities}</div>
             </div>
             <div className="infoSection">
               <h2 className="sectionTitle">Types</h2>
