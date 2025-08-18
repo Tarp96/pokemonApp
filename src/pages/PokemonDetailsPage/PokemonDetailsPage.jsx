@@ -55,12 +55,10 @@ export const PokemonDetailsPage = () => {
   ) : (
     <div className="detailsPageContainer">
       <div className="detailsPageHeader">
-        <Link to="..">
-          <div className="navigateBackButton">
-            <FaArrowLeft className="backIcon" />
-            <span className="backText">Back</span>
-          </div>
-        </Link>
+        <NavLink to="/" className="navigateBackButton">
+          <FaArrowLeft className="backIcon" />
+          <span className="backText">Back</span>
+        </NavLink>
         <h1 className="detailsPageTitle">
           {pokemon.name && firstLetterUpperCase(pokemon.name)} #{pokemon.id}
         </h1>
