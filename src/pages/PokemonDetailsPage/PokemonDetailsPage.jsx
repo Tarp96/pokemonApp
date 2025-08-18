@@ -48,6 +48,9 @@ export const PokemonDetailsPage = () => {
 
       <div className="detailsNavigationBar">
         <NavLink to="" end>
+          Overview
+        </NavLink>
+        <NavLink to="stats" end>
           Stats
         </NavLink>
         <NavLink to="photos" end>
