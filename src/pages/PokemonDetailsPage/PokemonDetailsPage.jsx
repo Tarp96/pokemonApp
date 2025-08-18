@@ -44,6 +44,7 @@ export const PokemonDetailsPage = () => {
         <h1 className="detailsPageTitle">
           {pokemon.name && firstLetterUpperCase(pokemon.name)} #{pokemon.id}
         </h1>
+        <div></div>
       </div>
 
       <div className="detailsNavigationBar">

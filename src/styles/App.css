@@ -376,13 +376,14 @@ h1 {
 }
 
 .navigateBackButton {
-  display: flex;
+  display: inline-flex;
   align-items: center;
   gap: 0.4rem;
   cursor: pointer;
-  transition: all 0.2s ease;
   font-size: 24px;
-  width: fit-content;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.2s ease;
 }
 
 .backIcon,
@@ -399,13 +400,14 @@ h1 {
 }
 
 .detailsPageHeader {
-  text-align: center;
-  margin-bottom: 2rem;
+  margin: 0;
+  line-height: 1.1;
+  display: flex;
+  justify-content: space-between;
 }
 
 .detailsPageTitle {
   font-size: 64px;
-  margin: 0;
 }
 
 .detailsTopSection {
@@ -434,7 +436,7 @@ h1 {
 
 .flavorTextContainer {
   padding: 1rem;
-  background-color: #fff5e6; /* light warm background */
+  background-color: #fff5e6;
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
