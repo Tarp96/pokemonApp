@@ -375,12 +375,16 @@ h1 {
   font-family: "Montserrat", sans-serif;
 }
 
+.navigateBackButton {
+  display: flex;
+}
+
 .detailsPageHeader {
   text-align: center;
   margin-bottom: 2rem;
 }
 
-.detailsPageTitle {
+.navigateBackButton .detailsPageTitle {
   font-size: 64px;
   margin: 0;
 }
