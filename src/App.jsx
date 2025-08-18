@@ -13,6 +13,7 @@ function App() {
 
       <Route path="/pokemon/:name" element={<PokemonDetailsPage />}>
         <Route index element={<PokemonDetailOverView />} />
+        <Route path="stats" element={<PokemonStats />} />
         <Route path="photos" element={<PokemonPhotos />} />
       </Route>
     </Routes>
