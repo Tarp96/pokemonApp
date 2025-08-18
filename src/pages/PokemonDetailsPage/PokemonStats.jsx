@@ -1,5 +1,6 @@
 import { useOutletContext } from "react-router-dom";
 import { firstLetterUpperCase } from "./../../utils/helperFunctions";
+import ApexCharts from "apexcharts";
 
 export const PokemonStats = () => {
   const { pokemon } = useOutletContext();
