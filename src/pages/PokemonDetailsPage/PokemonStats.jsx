@@ -6,9 +6,9 @@ export const PokemonStats = () => {
 
   console.log("From Pokemonstats:", pokemon);
 
-  const stats = pokemon.stats?.map((stat) => (
-    <p>{`${firstLetterUpperCase(stat.stat.name)} : ${stat.base_stat}`}</p>
-  ));
-
-  return <h1>Pokemon Stats</h1>;
+  return (
+    <>
+      <h1>Pokemon Stats</h1>
+    </>
+  );
 };
