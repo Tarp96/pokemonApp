@@ -64,6 +64,15 @@ export const PokemonDetailsPage = () => {
         </h1>
       </div>
 
+      <div className="detailsNavigationBar">
+        <NavLink to="" end>
+          Stats
+        </NavLink>
+        <NavLink to="photos" end>
+          Photo
+        </NavLink>
+      </div>
+
       <div className="detailsTopSection">
         <div>
           <div
@@ -109,15 +118,6 @@ export const PokemonDetailsPage = () => {
             </div>
           </div>
         </div>
-      </div>
-
-      <div className="detailsNavigationBar">
-        <NavLink to="" end>
-          Stats
-        </NavLink>
-        <NavLink to="photos" end>
-          Photo
-        </NavLink>
       </div>
 
       <Outlet context={{ pokemon, pokemonSpecies }} />
