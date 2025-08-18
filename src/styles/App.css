@@ -380,6 +380,20 @@ h1 {
   align-items: center;
   gap: 0.4rem;
   cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.backIcon,
+.backText {
+  transition: transform 0.2s ease, font-size 0.2s ease;
+}
+
+.navigateBackButton:hover .backIcon {
+  transform: scale(1.2);
+}
+
+.navigateBackButton:hover .backText {
+  font-size: 1.1em;
 }
 
 .detailsPageHeader {
