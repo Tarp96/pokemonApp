@@ -110,6 +110,10 @@ export const PokemonDetailsPage = () => {
         </div>
       </div>
 
+      <div className="detailsNavigationBar">
+        <p>Item</p>
+      </div>
+
       <Outlet />
     </div>
   );
