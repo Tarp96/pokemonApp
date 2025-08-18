@@ -4,6 +4,7 @@ import { HomePage } from "./pages/HomePage";
 import { PokemonDetailsPage } from "./pages/PokemonDetailsPage/PokemonDetailsPage";
 import { PokemonStats } from "./pages/PokemonDetailsPage/PokemonStats";
 import { PokemonPhotos } from "./pages/PokemonDetailsPage/PokemonPhotos";
+import { PokemonDetailOverView } from "./pages/PokemonDetailsPage/PokemonDetailOverview";
 
 function App() {
   return (
@@ -11,7 +12,7 @@ function App() {
       <Route path="/" element={<HomePage />} />
 
       <Route path="/pokemon/:name" element={<PokemonDetailsPage />}>
-        <Route index element={<PokemonStats />} />
+        <Route index element={<PokemonDetailOverView />} />
         <Route path="photos" element={<PokemonPhotos />} />
       </Route>
     </Routes>
