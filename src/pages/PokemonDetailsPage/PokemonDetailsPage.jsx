@@ -57,8 +57,8 @@ export const PokemonDetailsPage = () => {
       <div className="detailsPageHeader">
         <Link to="..">
           <div className="navigateBackButton">
-            <FaArrowLeft />
-            <p>Back</p>
+            <FaArrowLeft className="backIcon" />
+            <span className="backText">Back</span>
           </div>
         </Link>
         <h1 className="detailsPageTitle">
