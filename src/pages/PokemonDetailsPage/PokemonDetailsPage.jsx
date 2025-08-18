@@ -112,21 +112,6 @@ export const PokemonDetailsPage = () => {
 
       <div className="detailsMiddleSection"></div>
 
-      <div className="spritesSection">
-        {pokemon.sprites?.front_default && (
-          <img src={pokemon.sprites.front_default} alt="Front default sprite" />
-        )}
-        {pokemon.sprites?.back_default && (
-          <img src={pokemon.sprites.back_default} alt="Back default sprite" />
-        )}
-        {pokemon.sprites?.front_shiny && (
-          <img src={pokemon.sprites.front_shiny} alt="Front shiny sprite" />
-        )}
-        {pokemon.sprites?.back_shiny && (
-          <img src={pokemon.sprites.back_shiny} alt="Back shiny sprite" />
-        )}
-      </div>
-
       <Outlet />
     </div>
   );
