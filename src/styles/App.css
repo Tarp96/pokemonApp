@@ -410,6 +410,47 @@ h1 {
   font-size: 64px;
 }
 
+/*DETAIL PAGE NAVBAR*/
+
+.detailsNavigationBar {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 0.5rem;
+}
+
+.detailsNavigationBar a {
+  position: relative;
+  font-size: 20px;
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+  padding: 0.3rem 0;
+  transition: color 0.2s ease;
+}
+
+.detailsNavigationBar a:hover {
+  color: #000;
+}
+
+.detailsNavigationBar a.active {
+  color: #222;
+  font-weight: 600;
+}
+
+.detailsNavigationBar a.active::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: #ffcb05;
+  border-radius: 2px;
+}
+
 .detailsTopSection {
   display: flex;
   gap: 2rem;
