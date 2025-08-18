@@ -119,7 +119,7 @@ export const PokemonDetailsPage = () => {
         </NavLink>
       </div>
 
-      <Outlet />
+      <Outlet context={{ pokemon, pokemonSpecies }} />
     </div>
   );
 };
