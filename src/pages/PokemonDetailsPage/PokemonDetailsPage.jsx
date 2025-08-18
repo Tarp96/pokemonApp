@@ -5,8 +5,6 @@ import {
 } from "../../utils/pokeApi";
 import { useParams, Outlet, NavLink } from "react-router-dom";
 import { firstLetterUpperCase } from "../../utils/helperFunctions";
-import { TypeBadge } from "../../components/TypeBadge";
-import AudioPlayer from "../../components/AudioPlayer";
 import { FaArrowLeft } from "react-icons/fa6";
 
 export const PokemonDetailsPage = () => {
