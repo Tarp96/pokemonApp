@@ -3,10 +3,11 @@ import {
   fetchPokemonDetails,
   fetchPokemonSpeciesDetails,
 } from "../../utils/pokeApi";
-import { useParams, Outlet, NavLink } from "react-router-dom";
+import { useParams, Outlet, NavLink, Link } from "react-router-dom";
 import { firstLetterUpperCase } from "../../utils/helperFunctions";
 import { TypeBadge } from "../../components/TypeBadge";
 import AudioPlayer from "../../components/AudioPlayer";
+import { FaArrowLeft } from "react-icons/fa6";
 
 export const PokemonDetailsPage = () => {
   const { name } = useParams();
@@ -54,6 +55,10 @@ export const PokemonDetailsPage = () => {
   ) : (
     <div className="detailsPageContainer">
       <div className="detailsPageHeader">
+        <Link to="..">
+          <FaArrowLeft />
+          <p>Back</p>
+        </Link>
         <h1 className="detailsPageTitle">
           {pokemon.name && firstLetterUpperCase(pokemon.name)} #{pokemon.id}
         </h1>
