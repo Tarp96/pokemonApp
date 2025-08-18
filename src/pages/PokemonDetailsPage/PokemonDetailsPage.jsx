@@ -41,10 +41,6 @@ export const PokemonDetailsPage = () => {
     <TypeBadge key={type.type.name} type={type.type.name} />
   ));
 
-  const stats = pokemon.stats?.map((stat) => (
-    <p>{`${firstLetterUpperCase(stat.stat.name)} : ${stat.base_stat}`}</p>
-  ));
-
   const englishFlavorText =
     pokemonSpecies?.flavor_text_entries?.filter(
       (item) => item.language.name === "en"
