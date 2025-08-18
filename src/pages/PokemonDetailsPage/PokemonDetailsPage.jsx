@@ -110,8 +110,6 @@ export const PokemonDetailsPage = () => {
         </div>
       </div>
 
-      <div className="detailsMiddleSection"></div>
-
       <Outlet />
     </div>
   );

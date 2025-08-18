@@ -490,29 +490,6 @@ h1 {
   transform: translateY(-2px);
 }
 
-.detailsMiddleSection {
-  display: flex;
-  justify-content: space-between;
-  gap: 2rem;
-  margin-top: 2rem;
-  flex-wrap: wrap;
-  border: solid 2px red;
-}
-
-.spritesSection {
-  margin-top: 2rem;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 1rem;
-}
-
-.spritesSection img {
-  width: 100px;
-  height: 100px;
-  object-fit: contain;
-}
-
 /*TYPE GRADIENT BORDER*/
 .typeGradientBorder.normal {
   background: linear-gradient(135deg, #a8a77a, #d1ccc0);
