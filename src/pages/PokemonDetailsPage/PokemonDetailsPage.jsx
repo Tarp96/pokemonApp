@@ -3,7 +3,7 @@ import {
   fetchPokemonDetails,
   fetchPokemonSpeciesDetails,
 } from "../../utils/pokeApi";
-import { useParams, Outlet } from "react-router-dom";
+import { useParams, Outlet, NavLink } from "react-router-dom";
 import { firstLetterUpperCase } from "../../utils/helperFunctions";
 import { TypeBadge } from "../../components/TypeBadge";
 import AudioPlayer from "../../components/AudioPlayer";
@@ -111,7 +111,12 @@ export const PokemonDetailsPage = () => {
       </div>
 
       <div className="detailsNavigationBar">
-        <p>Item</p>
+        <NavLink to="" end>
+          Stats
+        </NavLink>
+        <NavLink to="photos" end>
+          Photo
+        </NavLink>
       </div>
 
       <Outlet />
