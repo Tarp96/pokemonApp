@@ -3,7 +3,7 @@ import {
   fetchPokemonDetails,
   fetchPokemonSpeciesDetails,
 } from "../../utils/pokeApi";
-import { useParams } from "react-router-dom";
+import { useParams, Outlet } from "react-router-dom";
 import { firstLetterUpperCase } from "../../utils/helperFunctions";
 import { TypeBadge } from "../../components/TypeBadge";
 import AudioPlayer from "../../components/AudioPlayer";
@@ -126,6 +126,8 @@ export const PokemonDetailsPage = () => {
           <img src={pokemon.sprites.back_shiny} alt="Back shiny sprite" />
         )}
       </div>
+
+      <Outlet />
     </div>
   );
 };
