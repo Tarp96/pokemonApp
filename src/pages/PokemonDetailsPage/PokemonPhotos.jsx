@@ -33,6 +33,11 @@ export const PokemonPhotos = () => {
   return (
     <div className="photosPageContainer">
       <h1>Photos Page</h1> 
+      <div className="image-grid">
+        {pokemonImages.map((img) => (
+          <img key={img.key + img.url} src={img.url} alt={img.key} />
+        ))}
+      </div>
     </div>
   );
 };

@@ -598,6 +598,18 @@ h1 {
   transform: translateY(-4px);
 }
 
+/*PHOTOS PAGE*/
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.image-grid img {
+  width: 100%;
+  object-fit: contain;
+}
+
 /*TYPE GRADIENT BORDER*/
 .typeGradientBorder.normal {
   background: linear-gradient(135deg, #a8a77a, #d1ccc0);
