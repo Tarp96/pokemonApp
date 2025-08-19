@@ -64,7 +64,13 @@ export const PokemonStats = () => {
                 categories: statNames,
               },
               yaxis: {
+                min: 0,
                 max: 252,
+                labels: {
+                  style: {
+                    fontSize: "14px",
+                  },
+                },
               },
             }}
           />
