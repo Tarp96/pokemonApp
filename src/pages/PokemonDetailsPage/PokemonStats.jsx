@@ -40,7 +40,7 @@ export const PokemonStats = () => {
           <ReactApexChart
             type="bar"
             width={800}
-            height={700}
+            height={400}
             series={[
               {
                 name: "Stats",
@@ -51,6 +51,12 @@ export const PokemonStats = () => {
               chart: {
                 type: "bar",
                 height: 700,
+              },
+              grid: {
+                padding: {
+                  top: 0,
+                  bottom: 0,
+                },
               },
               plotOptions: {
                 bar: {
