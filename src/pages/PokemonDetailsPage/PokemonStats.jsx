@@ -5,6 +5,9 @@ import ApexCharts from "apexcharts";
 export const PokemonStats = () => {
   const { pokemon } = useOutletContext();
 
+  const [statNames, setStatNames] = useState();
+  const [statNums, setStatNums] = useState();
+
   console.log("From Pokemonstats:", pokemon);
 
   return (
