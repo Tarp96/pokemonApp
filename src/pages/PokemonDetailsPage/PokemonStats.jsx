@@ -33,12 +33,12 @@ export const PokemonStats = () => {
   }
 
   return (
-    <>
+    <div className="statsPageContainer">
       <h1>Pokemon Stats</h1>
       {statNames.length > 0 && statNums.length > 0 && (
         <ReactApexChart
           type="bar"
-          width={1380}
+          width={800}
           height={700}
           series={[
             {
@@ -62,9 +62,12 @@ export const PokemonStats = () => {
             xaxis: {
               categories: statNames,
             },
+            yaxis: {
+              max: 252,
+            },
           }}
         />
       )}
-    </>
+    </div>
   );
 };
