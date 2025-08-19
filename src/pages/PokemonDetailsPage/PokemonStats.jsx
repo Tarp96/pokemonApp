@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
 import { firstLetterUpperCase } from "./../../utils/helperFunctions";
 import ReactApexChart from "react-apexcharts";
-import Chart from "react-apexcharts";
 
 export const PokemonStats = () => {
   const { pokemon } = useOutletContext();
@@ -27,7 +26,7 @@ export const PokemonStats = () => {
     const statNameArrToPopulate = [];
     pokemon.stats?.map((item) => {
       statNumArrToPopulate.push(item.base_stat);
-      statNameArrToPopulate.push(item.stat.name);
+      statNameArrToPopulate.push(firstLetterUpperCase(item.stat.name));
     });
     setStatNames(statNameArrToPopulate);
     setStatNums(statNumArrToPopulate);
