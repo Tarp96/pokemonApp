@@ -1,3 +1,9 @@
+import { useOutletContext } from "react-router-dom";
+
 export const PokemonPhotos = () => {
-  return <h1>Pokemon Photos!</h1>;
+  return (
+    <div className="photosPageContainer">
+      <h1>Photos Page</h1>
+    </div>
+  );
 };
