@@ -1,7 +1,16 @@
 import { useOutletContext } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 export const PokemonPhotos = () => {
   const { pokemon } = useOutletContext();
+  const [pokemonImages, setPokemonImages] = useState([]);
+
+  useEffect(() => {
+    if (pokemon?.sprites) {
+      const images = extractImageUrls(pokemon.sprites);
+      setPokemonImages(images);
+    }
+  }, [pokemon]);
 
   function extractImageUrls(spriteObj) {
     const images = [];
@@ -17,31 +26,13 @@ export const PokemonPhotos = () => {
     }
 
     recurse(spriteObj);
+    console.log(images);
     return images;
   }
 
   return (
     <div className="photosPageContainer">
       <h1>Photos Page</h1> 
-      <section className="defaultSpritesSection">
-        {pokemon.sprites?.front_default && (
-          <img
-            src={
-              "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/382.png"
-            }
-            alt="Default front sprite"
-          />
-        )}
-
-        {pokemon.sprites?.front_shiny && (
-          <img
-            src={
-              "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/shiny/382.png"
-            }
-            alt="Default front sprite"
-          />
-        )}
-      </section>
     </div>
   );
 };
