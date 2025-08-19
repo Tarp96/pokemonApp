@@ -36,37 +36,39 @@ export const PokemonStats = () => {
     <div className="statsPageContainer">
       <h1 className="statsTitle">Pokémon Stats</h1>
       {statNames.length > 0 && statNums.length > 0 && (
-        <ReactApexChart
-          type="bar"
-          width={800}
-          height={700}
-          series={[
-            {
-              name: "Stats",
-              data: statNums,
-            },
-          ]}
-          options={{
-            chart: {
-              type: "bar",
-              height: 700,
-            },
-            plotOptions: {
-              bar: {
-                borderRadius: 4,
+        <div className="chartCard">
+          <ReactApexChart
+            type="bar"
+            width={800}
+            height={700}
+            series={[
+              {
+                name: "Stats",
+                data: statNums,
               },
-            },
-            dataLabels: {
-              enabled: false,
-            },
-            xaxis: {
-              categories: statNames,
-            },
-            yaxis: {
-              max: 252,
-            },
-          }}
-        />
+            ]}
+            options={{
+              chart: {
+                type: "bar",
+                height: 700,
+              },
+              plotOptions: {
+                bar: {
+                  borderRadius: 4,
+                },
+              },
+              dataLabels: {
+                enabled: false,
+              },
+              xaxis: {
+                categories: statNames,
+              },
+              yaxis: {
+                max: 252,
+              },
+            }}
+          />
+        </div>
       )}
     </div>
   );
