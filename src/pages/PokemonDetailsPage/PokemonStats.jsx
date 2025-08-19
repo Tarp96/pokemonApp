@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
 import { firstLetterUpperCase } from "./../../utils/helperFunctions";
-import ApexCharts from "apexcharts";
+import ReactApexChart from "react-apexcharts";
+import Chart from "react-apexcharts";
 
 export const PokemonStats = () => {
   const { pokemon } = useOutletContext();
 
-  const [statNames, setStatNames] = useState();
-  const [statNums, setStatNums] = useState();
+  const [statNames, setStatNames] = useState([]);
+  const [statNums, setStatNums] = useState([]);
 
   useEffect(() => {
     populateArrays();
@@ -30,13 +31,41 @@ export const PokemonStats = () => {
     });
     setStatNames(statNameArrToPopulate);
     setStatNums(statNumArrToPopulate);
-    console.log("StatNumArr:", statNums);
-    console.log("StatNumArr:", statNames);
   }
 
   return (
     <>
       <h1>Pokemon Stats</h1>
+      {statNames.length > 0 && statNums.length > 0 && (
+        <ReactApexChart
+          type="bar"
+          width={1380}
+          height={700}
+          series={[
+            {
+              name: "Stats",
+              data: statNums,
+            },
+          ]}
+          options={{
+            chart: {
+              type: "bar",
+              height: 700,
+            },
+            plotOptions: {
+              bar: {
+                borderRadius: 4,
+              },
+            },
+            dataLabels: {
+              enabled: false,
+            },
+            xaxis: {
+              categories: statNames,
+            },
+          }}
+        />
+      )}
     </>
   );
 };
