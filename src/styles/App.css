@@ -419,6 +419,7 @@ h1 {
   display: flex;
   justify-content: center;
   gap: 2rem;
+  margin-top: 2rem;
   margin-bottom: 2rem;
   border-bottom: 2px solid #e0e0e0;
   padding-bottom: 0.5rem;
