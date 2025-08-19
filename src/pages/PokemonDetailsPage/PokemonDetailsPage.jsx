@@ -55,7 +55,7 @@ export const PokemonDetailsPage = () => {
           Stats
         </NavLink>
         <NavLink to="photos" end>
-          Photo
+          Photos
         </NavLink>
       </div>
 
