@@ -6,6 +6,7 @@ import { PokemonStats } from "./pages/PokemonDetailsPage/PokemonStats";
 import { PokemonPhotos } from "./pages/PokemonDetailsPage/PokemonPhotos";
 import { PokemonDetailOverView } from "./pages/PokemonDetailsPage/PokemonDetailOverview";
 import { PokemonGames } from "./pages/PokemonDetailsPage/PokemonGames";
+import { PokemonMoves } from "./pages/PokemonDetailsPage/PokemonMoves";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="stats" element={<PokemonStats />} />
         <Route path="photos" element={<PokemonPhotos />} />
         <Route path="games" element={<PokemonGames />} />
+        <Route path="moves" element={<PokemonMoves />} />
       </Route>
     </Routes>
   );
