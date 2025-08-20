@@ -6,17 +6,11 @@ export const PokemonMoves = () => {
   const [moves, setMoves] = useState([]);
 
   useEffect(() => {
-    populateMoveArr();
-  }, []);
+    const moveNames = pokemon.moves?.map((m) => m.move.name) || [];
+    setMoves(moveNames);
+  }, [pokemon]);
 
-  function populateMoveArr() {
-    const emptyArr = [];
-    pokemon.moves?.map((m) => emptyArr.push(m.move.name));
-    setMoves(emptyArr);
-    console.log(emptyArr);
-  }
-
-  const displayMoves = moves.map((m) => <li>{m}</li>);
+  const displayMoves = moves.map((m) => <li key={m}>{m}</li>);
 
   return (
     <div>
