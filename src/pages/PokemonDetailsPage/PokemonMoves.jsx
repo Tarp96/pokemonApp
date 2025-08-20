@@ -18,7 +18,15 @@ export const PokemonMoves = () => {
 
   return (
     <div className="movesPage">
-      <h1 className="movesTitle">Pokémon Moves</h1>
+      <div className="movesHeader">
+        <img
+          className="pokemonImage"
+          src={pokemon.sprites?.other["official-artwork"]?.front_default}
+          alt={pokemon.name}
+        />
+        <h1 className="movesTitle">Pokémon Moves</h1>
+      </div>
+
       <div className="movesGrid">
         {moves.map((m) => (
           <div className="moveCard" key={m}>
