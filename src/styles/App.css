@@ -602,6 +602,7 @@ h1 {
 /*PHOTOS PAGE*/
 .modeToggle {
   margin-bottom: 16px;
+  text-align: center;
 }
 
 .modeButton {

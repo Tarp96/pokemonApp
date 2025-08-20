@@ -37,7 +37,6 @@ export const PokemonPhotos = () => {
 
   return (
     <div className="photosPageContainer">
-      <h1>Photos Page</h1> 
       <div className="modeToggle">
         <button
           className={`modeButton ${mode === "normal" ? "active" : ""}`}
