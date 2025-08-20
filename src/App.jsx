@@ -15,6 +15,7 @@ function App() {
         <Route index element={<PokemonDetailOverView />} />
         <Route path="stats" element={<PokemonStats />} />
         <Route path="photos" element={<PokemonPhotos />} />
+        <Route path="games" element={<PokemonGamesPage />} />
       </Route>
     </Routes>
   );
