@@ -24,7 +24,9 @@ export const PokemonMoves = () => {
           src={pokemon.sprites?.other["official-artwork"]?.front_default}
           alt={pokemon.name}
         />
-        <h1 className="movesTitle">Pokémon Moves</h1>
+        <h1 className="movesTitle">{`${firstLetterUpperCase(
+          pokemon.name
+        )} moves`}</h1>
       </div>
 
       <div className="movesGrid">
