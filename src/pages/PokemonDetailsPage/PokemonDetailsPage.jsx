@@ -57,6 +57,9 @@ export const PokemonDetailsPage = () => {
         <NavLink to="photos" end>
           Photos
         </NavLink>
+        <NavLink to="games" end>
+          Games
+        </NavLink>
       </div>
 
       <Outlet context={{ pokemon, pokemonSpecies }} />

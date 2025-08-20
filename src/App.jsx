@@ -5,6 +5,7 @@ import { PokemonDetailsPage } from "./pages/PokemonDetailsPage/PokemonDetailsPag
 import { PokemonStats } from "./pages/PokemonDetailsPage/PokemonStats";
 import { PokemonPhotos } from "./pages/PokemonDetailsPage/PokemonPhotos";
 import { PokemonDetailOverView } from "./pages/PokemonDetailsPage/PokemonDetailOverview";
+import { PokemonGames } from "./pages/PokemonDetailsPage/PokemonGames";
 
 function App() {
   return (
@@ -15,7 +16,7 @@ function App() {
         <Route index element={<PokemonDetailOverView />} />
         <Route path="stats" element={<PokemonStats />} />
         <Route path="photos" element={<PokemonPhotos />} />
-        <Route path="games" element={<PokemonGamesPage />} />
+        <Route path="games" element={<PokemonGames />} />
       </Route>
     </Routes>
   );
