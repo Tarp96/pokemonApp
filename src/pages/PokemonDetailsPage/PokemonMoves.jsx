@@ -12,10 +12,6 @@ export const PokemonMoves = () => {
     setMoves(moveNames);
   }, [pokemon]);
 
-  const displayMoves = moves.map((m) => (
-    <li key={m}>{firstLetterUpperCase(m)}</li>
-  ));
-
   return (
     <div className="movesPage">
       <div className="movesHeader">
