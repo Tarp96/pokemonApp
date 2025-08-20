@@ -17,9 +17,15 @@ export const PokemonMoves = () => {
   ));
 
   return (
-    <div>
-      <h1>Pokemon Moves</h1>
-      <ul>{displayMoves}</ul>
+    <div className="movesPage">
+      <h1 className="movesTitle">Pokémon Moves</h1>
+      <div className="movesGrid">
+        {moves.map((m) => (
+          <div className="moveCard" key={m}>
+            {m}
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
