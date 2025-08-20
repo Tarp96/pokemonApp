@@ -1,3 +1,5 @@
+import { useOutletContext } from "react-router-dom";
+
 export const PokemonMoves = () => {
   return (
     <div>
