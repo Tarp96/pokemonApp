@@ -1,5 +1,6 @@
 import { useOutletContext } from "react-router-dom";
 import { gameImages } from "./../../utils/gameImages";
+import { firstLetterUpperCase } from "../../utils/helperFunctions";
 
 export const PokemonGames = () => {
   const { pokemon } = useOutletContext();
@@ -9,7 +10,7 @@ export const PokemonGames = () => {
 
     return (
       <div key={g.version.name}>
-        <p>{g.version.name}</p>
+        <p>{firstLetterUpperCase(g.version.name)}</p>
         {matchedImage ? (
           <img src={matchedImage.imgUrl} alt={g.version.name} />
         ) : (
@@ -19,5 +20,5 @@ export const PokemonGames = () => {
     );
   });
 
-  return <div>{displayGames}</div>;
+  return <div className="gamePageContainer">{displayGames}</div>;
 };
