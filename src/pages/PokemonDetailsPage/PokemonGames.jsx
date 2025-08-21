@@ -9,7 +9,7 @@ export const PokemonGames = () => {
     const matchedImage = gameImages.find((img) => img.name === g.version.name);
 
     return (
-      <div key={g.version.name}>
+      <div key={g.version.name} className="gameCard">
         <p>{firstLetterUpperCase(g.version.name)}</p>
         {matchedImage ? (
           <img src={matchedImage.imgUrl} alt={g.version.name} />
