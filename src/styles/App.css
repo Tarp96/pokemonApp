@@ -462,18 +462,26 @@ h1 {
 }
 
 .mainImageContainer {
-  flex-shrink: 0;
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: gray;
+  padding: 10px;
+  box-sizing: border-box;
+  overflow: visible;
 }
 
 .mainDetailImage {
-  max-width: 300px;
+  width: 90%;
   height: auto;
-  border-radius: 50%;
-  padding: 10px;
+  object-fit: contain;
 }
 
 .typeGradientBorder {
-  padding: 6px;
+  padding: 30px;
   border-radius: 50%;
   display: inline-block;
   background: gray;
