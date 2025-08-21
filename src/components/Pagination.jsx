@@ -49,12 +49,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
         <img
           src="/assets/pokeb.png"
           alt="Pokeball"
-          style={{
-            width: "20px",
-            height: "auto",
-            marginRight: "8px",
-            verticalAlign: "middle",
-          }}
+          className="paginationButtonImage"
         />
       </button>
     );

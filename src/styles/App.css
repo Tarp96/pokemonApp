@@ -379,6 +379,13 @@ h1 {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
+.paginationButtonImage {
+  width: 20px;
+  height: auto;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
 .pagination-container button:hover {
   background: linear-gradient(to bottom right, #ffcb05, #ffdf70);
   color: #1a1a1a;
