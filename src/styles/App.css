@@ -658,6 +658,17 @@ h1 {
   padding: 20px;
 }
 
+.gamePageTitle {
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  color: #333;
+  font-weight: bold;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+}
+
 .gameCard {
   border: 1px solid #e0e0e0;
   border-radius: 8px;

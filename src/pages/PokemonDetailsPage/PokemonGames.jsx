@@ -20,5 +20,10 @@ export const PokemonGames = () => {
     );
   });
 
-  return <div className="gamePageContainer">{displayGames}</div>;
+  return (
+    <div>
+      <h1 className="gamePageTitle">Games {pokemon.name} features in</h1>
+      <div className="gamePageContainer">{displayGames}</div>
+    </div>
+  );
 };
