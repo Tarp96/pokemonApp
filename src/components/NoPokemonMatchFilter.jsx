@@ -1,5 +1,3 @@
-import React from "react";
-
 export const NoPokemonMatchFilter = ({ onClick }) => {
   return (
     <div className="ifNoPokemonMatchFilter">

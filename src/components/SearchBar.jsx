@@ -1,5 +1,3 @@
-import React from "react";
-
 export const SearchBar = ({ query, setQuery }) => {
   return (
     <div className="searchbarContainer">
