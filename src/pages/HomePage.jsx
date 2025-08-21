@@ -7,6 +7,7 @@ import { NavigationButtons } from "../components/NavigationButtons";
 import { NoPokemonMatchFilter } from "../components/NoPokemonMatchFilter";
 import { PokemonGrid } from "../components/PokemonGrid";
 import { Navigate, useNavigate } from "react-router-dom";
+import Pagination from "../components/Pagination";
 
 export const HomePage = () => {
   const [pokemon, setPokemon] = useState([]);
@@ -114,7 +115,11 @@ export const HomePage = () => {
         activeFilter={activeFilter}
       />
 
-      <NavigationButtons prevPage={prevPage} nextPage={nextPage} />
+      <Pagination
+        currentPage={pageNumber}
+        totalPages={totalPages}
+        onPageChange={(newPage) => setPageNumber(newPage)}
+      />
 
       {loading ? (
         <p>Loading Pokémon...</p>
