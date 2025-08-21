@@ -4,10 +4,16 @@ import { gameImages } from "./../../utils/gameImages";
 
 export const PokemonGames = () => {
   const { pokemon } = useOutletContext();
+  const [games, setGames] = useState([]);
 
-  return (
-    <div>
-      <h1>Pokemon Games Page</h1>
-    </div>
-  );
+  useEffect(() => {
+    const pokemonGames = pokemon.game_indices.map((g) => g.version.name) || [];
+    setGames(games);
+  }, [pokemon]);
+
+  games.map((g) => {
+    const matchedImage = gameImages.find((img) => img.name === g);
+  });
+
+  return <div>{}</div>;
 };
