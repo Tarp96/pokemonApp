@@ -378,30 +378,6 @@ h1 {
   font-family: "Montserrat", sans-serif;
 }
 
-.navigateBackButton {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
-  cursor: pointer;
-  font-size: 24px;
-  text-decoration: none;
-  color: inherit;
-  transition: all 0.2s ease;
-}
-
-.backIcon,
-.backText {
-  transition: transform 0.2s ease, font-size 0.2s ease;
-}
-
-.navigateBackButton:hover .backIcon {
-  transform: scale(1.2);
-}
-
-.navigateBackButton:hover .backText {
-  font-size: 1.1em;
-}
-
 .detailsPageHeader {
   margin: 0;
   line-height: 1.1;
