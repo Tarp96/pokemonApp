@@ -359,24 +359,37 @@ h1 {
 
 .pagination-container {
   display: flex;
-  gap: 8px;
-  margin-top: 20px;
-  flex-wrap: wrap;
   justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
 }
 
 .pagination-container button {
-  padding: 6px 12px;
-  border: 1px solid #ccc;
-  background-color: white;
+  padding: 8px 16px;
+  font-size: 16px;
+  font-weight: 500;
+  border: 2px solid #3b4cca;
+  background: linear-gradient(to bottom right, #e0e0e0, #ffffff);
+  color: #3b4cca;
+  border-radius: 8px;
   cursor: pointer;
-  border-radius: 4px;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.pagination-container button:hover {
+  background: linear-gradient(to bottom right, #ffcb05, #ffdf70);
+  color: #1a1a1a;
+  transform: translateY(-2px);
 }
 
 .pagination-container button.active-page {
-  background-color: #facc15;
-  border: 2px solid #f59e0b;
+  background: linear-gradient(to bottom right, #ffcb05, #ffa500);
+  border-color: #dba600;
+  color: #1a1a1a;
   font-weight: bold;
+  transform: scale(1.05);
 }
 
 /*DETAIL PAGE NAVBAR*/
