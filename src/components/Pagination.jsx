@@ -46,6 +46,16 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
     pageButtons.push(
       <button key="next" onClick={() => onPageChange(currentPage + 1)}>
         Next
+        <img
+          src="/assets/pokeb.png"
+          alt="Pokeball"
+          style={{
+            width: "20px",
+            height: "auto",
+            marginRight: "8px",
+            verticalAlign: "middle",
+          }}
+        />
       </button>
     );
   }
