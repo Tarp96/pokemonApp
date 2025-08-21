@@ -366,6 +366,7 @@ h1 {
 }
 
 .pagination-container button {
+  font-family: "Press Start 2P", cursive;
   padding: 8px 16px;
   font-size: 16px;
   font-weight: 500;
