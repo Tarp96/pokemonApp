@@ -34,7 +34,7 @@ export const PokemonStats = () => {
 
   return (
     <div className="statsPageContainer">
-      <h1 className="statsTitle">Pokémon Stats</h1>
+      <h1 className="statsTitle">{firstLetterUpperCase(pokemon.name)} Stats</h1>
       {statNames.length > 0 && statNums.length > 0 && (
         <div className="chartCard">
           <ReactApexChart
