@@ -389,6 +389,28 @@ h1 {
   font-size: 64px;
 }
 
+.pagination-container {
+  display: flex;
+  gap: 8px;
+  margin-top: 20px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.pagination-container button {
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  background-color: white;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.pagination-container button.active-page {
+  background-color: #facc15;
+  border: 2px solid #f59e0b;
+  font-weight: bold;
+}
+
 /*DETAIL PAGE NAVBAR*/
 
 .detailsNavigationBar {
