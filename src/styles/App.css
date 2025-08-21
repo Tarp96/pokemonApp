@@ -98,41 +98,9 @@ h1 {
   transform: scale(0.95);
 }
 
-/* Navigation Buttons */
-.navigationButton {
-  padding: 0 30px;
-  font-size: 14px;
-  margin: 0 10px;
-  cursor: pointer;
-  background-color: #ff7f50;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  letter-spacing: 2px;
-}
-
-.navigationButton:hover {
-  background-color: #ff6347;
-  transform: scale(1.05);
-}
-
-.navigationButton:disabled {
-  background-color: #b0bec5;
-  cursor: not-allowed;
-}
-
-.navigationButtonText {
-  font-size: 18px;
-  font-weight: bold;
-  text-align: center;
-  margin-top: 10px;
-}
-
 /*GRID*/
 .header,
-.searchbarContainer,
-.navigationButtonContainer {
+.searchbarContainer {
   z-index: 2;
   position: relative;
   text-align: center;

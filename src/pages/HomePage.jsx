@@ -3,10 +3,9 @@ import PokemonDisplayCard from "../components/PokemonDisplayCard";
 import { fetchData, fetchPokemonDetails } from "../utils/pokeApi";
 import { FilterByTypeButtons } from "../components/FilterByTypeButtons";
 import { SearchBar } from "../components/SearchBar";
-import { NavigationButtons } from "../components/NavigationButtons";
 import { NoPokemonMatchFilter } from "../components/NoPokemonMatchFilter";
 import { PokemonGrid } from "../components/PokemonGrid";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Pagination from "../components/Pagination";
 
 export const HomePage = () => {
