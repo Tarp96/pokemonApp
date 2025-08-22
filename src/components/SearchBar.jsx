@@ -1,4 +1,4 @@
-export const SearchBar = ({ query, setQuery }) => {
+export const SearchBar = ({ query, setQuery, onClick }) => {
   return (
     <div className="searchbarContainer">
       <input
@@ -6,6 +6,7 @@ export const SearchBar = ({ query, setQuery }) => {
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Example: Charizard or water 🔎"
       />
+      <button onClick={onClick}>Search 🔎</button>
     </div>
   );
 };

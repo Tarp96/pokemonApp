@@ -63,16 +63,26 @@ export const HomePage = () => {
   const removeFilter = () => {
     setActiveFilter((prev) => (prev = null));
     setFilteredPokemon(pokemon);
+    setQuery("");
   };
 
-  const renderQueryPokemonCard = () => {};
+  const renderQueryPokemonCard = async () => {
+    const pokemonDetails = await fetchPokemonDetails(query);
+    if (pokemonDetails) {
+      console.log(pokemonDetails);
+      setFilteredPokemon([pokemonDetails]);
+      setPageNumber(1);
+    } else {
+      console.log("Pokemon not found");
+    }
+  };
 
   const renderPokemonCards = () => {
     return filteredPokemon
       .filter((item) => {
         return query.toLowerCase() === ""
           ? item
-          : item.name.toLowerCase().includes(query.toLowerCase());
+          : item.name.toLowerCase() === query.toLowerCase();
       })
       .map((pokemonItem, index) => (
         <PokemonDisplayCard
@@ -94,7 +104,11 @@ export const HomePage = () => {
         <h1>Pokemon</h1>
       </div>
 
-      <SearchBar query={query} setQuery={setQuery} />
+      <SearchBar
+        query={query}
+        setQuery={setQuery}
+        onClick={renderQueryPokemonCard}
+      />
 
       <FilterByTypeButtons
         filterByTypeFunc={filterPokemonByType}
