@@ -73,7 +73,6 @@ export const HomePage = () => {
 
   const renderQueryPokemonCard = async () => {
     if (!query.trim()) {
-      console.log("Search query is empty. Ignoring search.");
       alert("Please enter a Pokémon name before searching.");
       return;
     }
@@ -81,6 +80,10 @@ export const HomePage = () => {
     try {
       const pokemonDetails = await fetchPokemonDetails(query.toLowerCase());
       setFilteredPokemon([pokemonDetails]);
+
+      const updatedHistory = [...searchHistory, query];
+      setSearchHistory(updatedHistory);
+      setItem("searchHistory", updatedHistory);
     } catch (error) {
       console.log("Pokemon not found");
       setFilteredPokemon([]);
