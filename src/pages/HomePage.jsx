@@ -65,15 +65,14 @@ export const HomePage = () => {
     setFilteredPokemon(pokemon);
   };
 
+  const renderQueryPokemonCard = () => {};
+
   const renderPokemonCards = () => {
     return filteredPokemon
       .filter((item) => {
         return query.toLowerCase() === ""
           ? item
-          : item.name.toLowerCase().includes(query.toLowerCase()) ||
-              item.types.some((type) =>
-                type.type.name.toLowerCase().includes(query.toLowerCase())
-              );
+          : item.name.toLowerCase().includes(query.toLowerCase());
       })
       .map((pokemonItem, index) => (
         <PokemonDisplayCard
