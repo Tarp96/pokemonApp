@@ -67,13 +67,12 @@ export const HomePage = () => {
   };
 
   const renderQueryPokemonCard = async () => {
-    const pokemonDetails = await fetchPokemonDetails(query);
-    if (pokemonDetails) {
-      console.log(pokemonDetails);
+    try {
+      const pokemonDetails = await fetchPokemonDetails(query.toLowerCase());
       setFilteredPokemon([pokemonDetails]);
-      setPageNumber(1);
-    } else {
+    } catch (error) {
       console.log("Pokemon not found");
+      setFilteredPokemon([]);
     }
   };
 
