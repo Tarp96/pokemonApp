@@ -38,9 +38,12 @@ h1 {
 /* Search bar container */
 .searchbarContainer {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
-  margin: 10px 0;
+  justify-content: center;
+  margin: 20px 0;
+  gap: 8px;
+  width: 100%;
 }
 
 .searchbarContainer label {
@@ -61,6 +64,29 @@ h1 {
 .searchbarContainer input:focus {
   border-color: #4a90e2;
   box-shadow: 0 0 8px rgba(74, 144, 226, 0.5);
+}
+
+.searchBarButton {
+  padding: 10px 16px;
+  font-size: 16px;
+  font-weight: 600;
+  background: linear-gradient(to bottom right, #ffcb05, #ffdf70);
+  color: #2a2a2a;
+  border: 2px solid #3b4cca;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
+.searchBarButton:hover {
+  background: linear-gradient(to bottom right, #fcd34d, #fde68a);
+  transform: translateY(-1px);
+}
+
+.searchBarButton:active {
+  transform: translateY(1px);
+  box-shadow: none;
 }
 
 /* Filter Buttons Bar */
