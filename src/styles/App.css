@@ -357,6 +357,32 @@ h1 {
   font-size: 64px;
 }
 
+.navigateBackButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  background: linear-gradient(to bottom right, #e0e0e0, #ffffff);
+  border: 2px solid #3b4cca;
+  padding: 8px 12px;
+  border-radius: 8px;
+  color: #3b4cca;
+  font-weight: 600;
+  font-size: 16px;
+  box-shadow: 2px 2px 0 #000;
+  transition: all 0.2s ease-in-out;
+}
+
+.navigateBackButton:hover {
+  background: linear-gradient(to bottom right, #ffcb05, #ffdf70);
+  color: #1a1a1a;
+  transform: translateY(-2px);
+}
+
+.backIcon {
+  font-size: 20px;
+}
+
 .pagination-container {
   display: flex;
   justify-content: center;
