@@ -36,7 +36,17 @@ h1 {
 }
 
 /* Search bar container */
-.searchbarContainer {
+.searchBarContainer {
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 12px;
+  padding: 5px 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  max-width: 440px;
+  margin: 0 auto 24px;
+  backdrop-filter: blur(6px);
+}
+
+.searchBarDiv {
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -46,13 +56,13 @@ h1 {
   width: 100%;
 }
 
-.searchbarContainer label {
+.searchBarDiv label {
   font-size: 16px;
   font-weight: bold;
   margin-bottom: 5px;
 }
 
-.searchbarContainer input {
+.searchBarDiv input {
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ddd;
@@ -61,7 +71,7 @@ h1 {
   width: 250px;
 }
 
-.searchbarContainer input:focus {
+.searchBarDiv input:focus {
   border-color: #4a90e2;
   box-shadow: 0 0 8px rgba(74, 144, 226, 0.5);
 }
