@@ -67,6 +67,12 @@ export const HomePage = () => {
   };
 
   const renderQueryPokemonCard = async () => {
+    if (!query.trim()) {
+      console.log("Search query is empty. Ignoring search.");
+      alert("Please enter a Pokémon name before searching.");
+      return;
+    }
+
     try {
       const pokemonDetails = await fetchPokemonDetails(query.toLowerCase());
       setFilteredPokemon([pokemonDetails]);
