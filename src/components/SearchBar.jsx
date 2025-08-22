@@ -17,9 +17,19 @@ export const SearchBar = ({ query, setQuery, onClick, list }) => {
           Search 🔎
         </button>
       </div>
-      {list.map((item) => (
-        <li>{item}</li>
-      ))}
+      {list.length > 0 && (
+        <ul className="searchHistoryList">
+          {list.map((item, index) => (
+            <li
+              key={index}
+              className="searchHistoryItem"
+              onClick={() => setQuery(item)}
+            >
+              {item}
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };
