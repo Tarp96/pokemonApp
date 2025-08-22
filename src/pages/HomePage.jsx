@@ -45,18 +45,6 @@ export const HomePage = () => {
     }
   };
 
-  const prevPage = () => {
-    if (pageNumber > 1) {
-      setPageNumber((prev) => prev - 1);
-    }
-  };
-
-  const nextPage = () => {
-    if (pageNumber < totalPages) {
-      setPageNumber(pageNumber + 1);
-    }
-  };
-
   const filterPokemonByType = (key) => {
     if (isFiltered && activeFilter === key) {
       setFilteredPokemon(pokemon);
