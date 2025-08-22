@@ -7,7 +7,7 @@ import { NoPokemonMatchFilter } from "../components/NoPokemonMatchFilter";
 import { PokemonGrid } from "../components/PokemonGrid";
 import { useNavigate } from "react-router-dom";
 import Pagination from "../components/Pagination";
-import { getItem } from "../utils/localStorage";
+import { getItem, setItem } from "../utils/localStorage";
 
 export const HomePage = () => {
   const [pokemon, setPokemon] = useState([]);
