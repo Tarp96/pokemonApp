@@ -7,7 +7,9 @@ export const SearchBar = ({ query, setQuery, onClick }) => {
         onChange={(e) => setQuery(e.target.value)}
         placeholder="Example: Charizard or Latios 🔎"
       />
-      <button onClick={onClick}>Search 🔎</button>
+      <button onClick={onClick} className="searchBarButton">
+        Search 🔎
+      </button>
     </div>
   );
 };
