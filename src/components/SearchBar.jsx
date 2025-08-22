@@ -1,4 +1,4 @@
-export const SearchBar = ({ query, setQuery, onClick }) => {
+export const SearchBar = ({ query, setQuery, onClick, list }) => {
   return (
     <div className="searchBarContainer">
       <div className="searchBarDiv">
@@ -17,6 +17,9 @@ export const SearchBar = ({ query, setQuery, onClick }) => {
           Search 🔎
         </button>
       </div>
+      {list.map((item) => (
+        <li>{item}</li>
+      ))}
     </div>
   );
 };

@@ -115,6 +115,7 @@ export const HomePage = () => {
         query={query}
         setQuery={setQuery}
         onClick={renderQueryPokemonCard}
+        list={searchHistory}
       />
 
       <FilterByTypeButtons
