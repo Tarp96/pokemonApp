@@ -78,24 +78,18 @@ export const HomePage = () => {
   };
 
   const renderPokemonCards = () => {
-    return filteredPokemon
-      .filter((item) => {
-        return query.toLowerCase() === ""
-          ? item
-          : item.name.toLowerCase() === query.toLowerCase();
-      })
-      .map((pokemonItem, index) => (
-        <PokemonDisplayCard
-          key={index}
-          name={pokemonItem.name}
-          sprite={pokemonItem.sprites.front_default}
-          types={pokemonItem.types}
-          height={pokemonItem.height}
-          weight={pokemonItem.weight}
-          cries={pokemonItem.cries}
-          onClick={() => navigate(`/pokemon/${pokemonItem.name}`)}
-        />
-      ));
+    return filteredPokemon.map((pokemonItem, index) => (
+      <PokemonDisplayCard
+        key={index}
+        name={pokemonItem.name}
+        sprite={pokemonItem.sprites.front_default}
+        types={pokemonItem.types}
+        height={pokemonItem.height}
+        weight={pokemonItem.weight}
+        cries={pokemonItem.cries}
+        onClick={() => navigate(`/pokemon/${pokemonItem.name}`)}
+      />
+    ));
   };
 
   return (
