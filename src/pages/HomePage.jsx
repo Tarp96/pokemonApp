@@ -17,6 +17,7 @@ export const HomePage = () => {
   const [query, setQuery] = useState("");
   const [pageNumber, setPageNumber] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
+  const [searchHistory, setSearchHistory] = useState(() => {});
 
   const navigate = useNavigate();
 
