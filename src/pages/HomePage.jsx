@@ -127,7 +127,10 @@ export const HomePage = () => {
           {filteredPokemon.length > 0 ? (
             <PokemonGrid>{renderPokemonCards()}</PokemonGrid>
           ) : (
-            <NoPokemonMatchFilter onClick={removeFilter} />
+            <NoPokemonMatchFilter
+              onClick={removeFilter}
+              type={activeFilter ? "type" : query ? "search" : null}
+            />
           )}
         </>
       )}
