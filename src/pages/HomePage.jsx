@@ -73,7 +73,7 @@ export const HomePage = () => {
   };
 
   const renderQueryPokemonCard = async (customQuery) => {
-    const searchTerm = (customQuery ?? query).trim();
+    const searchTerm = String(customQuery ?? query).trim();
 
     if (!searchTerm) {
       alert("Please enter a Pokémon name before searching.");
