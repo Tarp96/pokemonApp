@@ -178,6 +178,11 @@ h1 {
   background-color: #f0f0f0;
 }
 
+.prevSearchListItemDiv {
+  display: flex;
+  justify-content: space-between;
+}
+
 .searchHistoryPokeball {
   width: 25px;
 }
