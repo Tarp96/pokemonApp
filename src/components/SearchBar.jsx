@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { firstLetterUpperCase } from "../utils/helperFunctions";
 
 export const SearchBar = ({
   query,
