@@ -160,6 +160,16 @@ h1 {
   text-align: left;
 }
 
+.searchHistoryItem:hover {
+  background-color: #f0f0f0;
+}
+
+.searchHistoryItem.active {
+  background-color: #ffe082;
+  font-weight: bold;
+  transform: scale(0.98);
+}
+
 .searchHistoryItem:last-child {
   border-bottom: none;
 }

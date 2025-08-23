@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 export const SearchBar = ({
   query,
   setQuery,
@@ -7,6 +9,8 @@ export const SearchBar = ({
   showSearches,
   setShowSearches,
 }) => {
+  const [activeIndex, setActiveIndex] = useState(null);
+
   return (
     <div className="searchBarContainer">
       <div className="searchBarDiv">
@@ -46,10 +50,13 @@ export const SearchBar = ({
             {list.map((item, index) => (
               <li
                 key={index}
-                className="searchHistoryItem"
+                className={`searchHistoryItem ${
+                  activeIndex === index ? "active" : ""
+                }`}
                 onClick={() => {
                   setQuery(item);
                   onClick(item);
+                  setTimeout(() => setActiveIndex(null), 300);
                 }}
               >
                 {item}
