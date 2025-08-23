@@ -60,9 +60,12 @@ export const SearchBar = ({
                   setTimeout(() => setActiveIndex(null), 300);
                 }}
               >
-                <div>
+                <div className="prevSearchListItemDiv">
                   {firstLetterUpperCase(item)}
-                  <img src="assets/pokeb.png" />
+                  <img
+                    src="assets/pokeb.png"
+                    className="searchHistoryPokeball"
+                  />
                 </div>
               </li>
             ))}

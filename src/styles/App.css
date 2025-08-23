@@ -178,6 +178,10 @@ h1 {
   background-color: #f0f0f0;
 }
 
+.searchHistoryPokeball {
+  width: 25px;
+}
+
 .prevSearchesTitle {
   font-size: 16px;
   text-align: center;
