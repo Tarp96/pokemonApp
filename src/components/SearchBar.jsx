@@ -47,7 +47,10 @@ export const SearchBar = ({
               <li
                 key={index}
                 className="searchHistoryItem"
-                onClick={() => setQuery(item)}
+                onClick={() => {
+                  setQuery(item);
+                  onClick(item);
+                }}
               >
                 {item}
               </li>

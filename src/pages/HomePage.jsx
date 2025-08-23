@@ -72,19 +72,26 @@ export const HomePage = () => {
     setQuery("");
   };
 
-  const renderQueryPokemonCard = async () => {
-    if (!query.trim()) {
+  const renderQueryPokemonCard = async (customQuery) => {
+    const searchTerm = (customQuery ?? query).trim();
+
+    if (!searchTerm) {
       alert("Please enter a Pokémon name before searching.");
       return;
     }
 
     try {
-      const pokemonDetails = await fetchPokemonDetails(query.toLowerCase());
+      const pokemonDetails = await fetchPokemonDetails(
+        searchTerm.toLowerCase()
+      );
       setFilteredPokemon([pokemonDetails]);
 
-      const updatedHistory = Array.from(new Set([query, ...searchHistory]));
+      const updatedHistory = Array.from(
+        new Set([searchTerm, ...searchHistory])
+      ).slice(0, 10);
       setSearchHistory(updatedHistory);
       setItem("searchHistory", updatedHistory);
+      setQuery(searchTerm);
     } catch (error) {
       console.log("Pokemon not found");
       setFilteredPokemon([]);
