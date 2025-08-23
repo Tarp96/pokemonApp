@@ -82,7 +82,7 @@ export const HomePage = () => {
       const pokemonDetails = await fetchPokemonDetails(query.toLowerCase());
       setFilteredPokemon([pokemonDetails]);
 
-      const updatedHistory = [...searchHistory, query];
+      const updatedHistory = Array.from(new Set([query, ...searchHistory]));
       setSearchHistory(updatedHistory);
       setItem("searchHistory", updatedHistory);
     } catch (error) {
