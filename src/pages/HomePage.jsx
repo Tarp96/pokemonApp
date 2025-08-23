@@ -22,6 +22,7 @@ export const HomePage = () => {
     const item = getItem("searchHistory");
     return item || [];
   });
+  const [showSearches, setShowSearches] = useState(false);
 
   const navigate = useNavigate();
 
@@ -116,6 +117,8 @@ export const HomePage = () => {
         setQuery={setQuery}
         onClick={renderQueryPokemonCard}
         list={searchHistory}
+        showSearches={showSearches}
+        setShowSearches={setShowSearches}
       />
 
       <FilterByTypeButtons

@@ -1,4 +1,12 @@
-export const SearchBar = ({ query, setQuery, onClick, list }) => {
+export const SearchBar = ({
+  query,
+  setQuery,
+  onClick,
+  list,
+  displayPrevSearches,
+  showSearches,
+  setShowSearches,
+}) => {
   return (
     <div className="searchBarContainer">
       <div className="searchBarDiv">
@@ -6,6 +14,8 @@ export const SearchBar = ({ query, setQuery, onClick, list }) => {
           type="text"
           value={query}
           onChange={(e) => setQuery(e.target.value)}
+          onFocus={() => setShowSearches(true)}
+          onBlur={() => setTimeout(() => setShowSearches(false), 200)}
           onKeyDown={(e) => {
             if (e.key === "Enter") {
               onClick();
@@ -17,7 +27,8 @@ export const SearchBar = ({ query, setQuery, onClick, list }) => {
           Search 🔎
         </button>
       </div>
-      {list.length > 0 && (
+
+      {showSearches && list.length > 0 && (
         <ul className="searchHistoryList">
           {list.map((item, index) => (
             <li
