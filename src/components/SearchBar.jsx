@@ -10,19 +10,30 @@ export const SearchBar = ({
   return (
     <div className="searchBarContainer">
       <div className="searchBarDiv">
-        <input
-          type="text"
-          value={query}
-          onChange={(e) => setQuery(e.target.value)}
-          onFocus={() => setShowSearches(true)}
-          onBlur={() => setTimeout(() => setShowSearches(false), 200)}
-          onKeyDown={(e) => {
-            if (e.key === "Enter") {
-              onClick();
-            }
-          }}
-          placeholder="Example: Charizard or Latios"
-        />
+        <div className="searchBarAndClearBtn">
+          <input
+            type="text"
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            onFocus={() => setShowSearches(true)}
+            onBlur={() => setTimeout(() => setShowSearches(false), 200)}
+            onKeyDown={(e) => {
+              if (e.key === "Enter") {
+                onClick();
+              }
+            }}
+            placeholder="Example: Charizard or Latios"
+          />
+          {query && (
+            <button
+              className="clearSearchButton"
+              onClick={() => setQuery("")}
+              aria-label="Clear search input"
+            >
+              ✕
+            </button>
+          )}
+        </div>
         <button onClick={onClick} className="searchBarButton">
           Search 🔎
         </button>
