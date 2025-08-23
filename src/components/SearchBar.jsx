@@ -60,7 +60,10 @@ export const SearchBar = ({
                   setTimeout(() => setActiveIndex(null), 300);
                 }}
               >
-                {item}
+                <div>
+                  {firstLetterUpperCase(item)}
+                  <img src="assets/pokeb.png" />
+                </div>
               </li>
             ))}
           </ul>
