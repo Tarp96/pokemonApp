@@ -40,17 +40,20 @@ export const SearchBar = ({
       </div>
 
       {showSearches && list.length > 0 && (
-        <ul className="searchHistoryList">
-          {list.map((item, index) => (
-            <li
-              key={index}
-              className="searchHistoryItem"
-              onClick={() => setQuery(item)}
-            >
-              {item}
-            </li>
-          ))}
-        </ul>
+        <>
+          <h2 className="prevSearchesTitle">Previous searches:</h2>
+          <ul className="searchHistoryList">
+            {list.map((item, index) => (
+              <li
+                key={index}
+                className="searchHistoryItem"
+                onClick={() => setQuery(item)}
+              >
+                {item}
+              </li>
+            ))}
+          </ul>
+        </>
       )}
     </div>
   );
