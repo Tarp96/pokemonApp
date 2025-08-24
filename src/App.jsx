@@ -14,7 +14,7 @@ function App() {
     <Routes>
       <Route path="/" element={<HomePageLayout />}>
         <Route index element={<HomePage />} />
-        <Route index element={<HomePage />} />
+        <Route path="profilepage" element={<HomePage />} />
       </Route>
 
       <Route path="/pokemon/:name" element={<PokemonDetailsPage />}>
