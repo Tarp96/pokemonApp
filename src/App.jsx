@@ -7,11 +7,14 @@ import { PokemonPhotos } from "./pages/PokemonDetailsPage/PokemonPhotos";
 import { PokemonDetailOverView } from "./pages/PokemonDetailsPage/PokemonDetailOverview";
 import { PokemonGames } from "./pages/PokemonDetailsPage/PokemonGames";
 import { PokemonMoves } from "./pages/PokemonDetailsPage/PokemonMoves";
+import { HomePageLayout } from "./pages/HomePageLayout";
 
 function App() {
   return (
     <Routes>
-      <Route path="/" element={<HomePage />} />
+      <Route path="/" element={<HomePageLayout />}>
+        <Route index element={<HomePage />} />
+      </Route>
 
       <Route path="/pokemon/:name" element={<PokemonDetailsPage />}>
         <Route index element={<PokemonDetailOverView />} />
