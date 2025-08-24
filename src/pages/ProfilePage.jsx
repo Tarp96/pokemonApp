@@ -1,4 +1,4 @@
-export const UserPage = () => {
+export const ProfilePage = () => {
   return (
     <div>
       <h1>Users Page</h1>
