@@ -4,6 +4,13 @@ export const Header = () => {
   return (
     <>
       <header className="headerContainer">
+        <div>
+          <img
+            src="assets/pikalogo.png"
+            alt=""
+            className="pageTitlePokeBallImg"
+          />
+        </div>
         <div className="pageTitleDiv">
           <img
             src="assets/pokelogo.png"
