@@ -21,6 +21,8 @@ body {
   align-items: center;
   padding: 1.5rem 3rem;
   position: absolute;
+  max-width: 70%;
+  margin: 0 auto;
   top: 0;
   left: 0;
   right: 0;
