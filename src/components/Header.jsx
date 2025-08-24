@@ -8,8 +8,12 @@ export const Header = () => {
           <h1 className="pageTitleText">Pokemon</h1>
         </div>
         <div className="headerNavigationButtonsDiv">
-          <NavLink to="/">Home</NavLink>
-          <NavLink to="/profilepage">Profile</NavLink>
+          <NavLink to="/" className="headerNavBtn">
+            Home
+          </NavLink>
+          <NavLink to="/profilepage" className="headerNavBtn">
+            Profile
+          </NavLink>
         </div>
       </header>
     </>
