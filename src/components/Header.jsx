@@ -5,7 +5,11 @@ export const Header = () => {
     <>
       <header className="headerContainer">
         <div className="pageTitleDiv">
-          <h1 className="pageTitleText">Pokemon</h1>
+          <img
+            src="assets/pokelogo.png"
+            alt="Title that says Pokemon in yellow text"
+            className="headerImage"
+          />
         </div>
         <div className="headerNavigationButtonsDiv">
           <NavLink to="/" className="headerNavBtn">

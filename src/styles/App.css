@@ -38,11 +38,19 @@ body {
 }
 
 .pageTitleText {
-  font-size: 1.8rem;
-  font-weight: 700;
-  color: white;
+  font-size: 2rem;
+  font-weight: 800;
   font-family: "Poppins", sans-serif;
-  letter-spacing: 1px;
+  color: transparent;
+  background: linear-gradient(to right, #ffcc01, #ffde59, #fff176);
+  -webkit-background-clip: text;
+  background-clip: text;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+  letter-spacing: 2px;
+}
+
+.headerImage {
+  max-width: 20%;
 }
 
 .headerNavigationButtonsDiv {
