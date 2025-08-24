@@ -115,10 +115,6 @@ export const HomePage = () => {
 
   return (
     <div className="mainContainer">
-      <div className="header">
-        <h1>Pokemon</h1>
-      </div>
-
       <SearchBar
         query={query}
         setQuery={setQuery}
