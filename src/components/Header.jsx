@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 export const Header = () => {
   return (
     <>
@@ -5,7 +7,10 @@ export const Header = () => {
         <div className="pageTitleDiv">
           <h1 className="pageTitleText">Pokemon</h1>
         </div>
-        <div className="headerNavigationButtonsDiv"></div>
+        <div className="headerNavigationButtonsDiv">
+          <NavLink to="/">Home</NavLink>
+          <NavLink to="/profilepage">Profile</NavLink>
+        </div>
       </header>
     </>
   );
