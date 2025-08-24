@@ -17,16 +17,61 @@ body {
 /*HEADER*/
 .headerContainer {
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.5rem 3rem;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 10;
+  background-color: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
-h1 {
-  margin: 0;
+.pageTitleDiv {
+  display: flex;
+  align-items: center;
 }
 
-.mainContainer {
-  position: relative;
-  min-height: 100vh;
-  overflow: hidden;
+.pageTitleText {
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  letter-spacing: 1px;
+}
+
+.headerNavigationButtonsDiv {
+  display: flex;
+  gap: 2rem;
+}
+
+.headerNavBtn {
+  font-size: 1rem;
+  font-weight: 500;
+  color: white;
+  text-decoration: none;
+  padding: 0.4rem 1.2rem;
+  border-radius: 999px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.headerNavBtn:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+  transform: scale(1.05);
+}
+
+.headerNavBtn.active {
+  background-color: rgba(255, 255, 255, 0.3);
+  color: #000;
+}
+
+.mainContent {
+  padding-top: 150px;
 }
 
 /* Search bar container */

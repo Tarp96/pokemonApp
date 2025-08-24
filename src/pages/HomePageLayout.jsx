@@ -5,7 +5,9 @@ export const HomePageLayout = () => {
   return (
     <>
       <Header />
-      <Outlet />
+      <div className="mainContent">
+        <Outlet />
+      </div>
     </>
   );
 };
