@@ -5,6 +5,7 @@ export const Header = () => {
         <div className="pageTitleDiv">
           <h1 className="pageTitleText">Pokemon</h1>
         </div>
+        <div className="headerNavigationButtonsDiv"></div>
       </header>
     </>
   );
