@@ -10,6 +10,7 @@ import { PokemonMoves } from "./pages/PokemonDetailsPage/PokemonMoves";
 import { HomePageLayout } from "./pages/HomePageLayout";
 import { ProfilePageOverview } from "./pages/ProfilePage/ProfilePageOverview";
 import { ProfilePage } from "./pages/ProfilePage/ProfilePage";
+import { FavoritePokemonsPage } from "./pages/ProfilePage/FavoritePokemonsPage";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route index element={<HomePage />} />
         <Route path="profilepage" element={<ProfilePageOverview />}>
           <Route index element={<ProfilePage />} />
+          <Route path="favorites" element={<FavoritePokemonsPage />} />
         </Route>
       </Route>
 
