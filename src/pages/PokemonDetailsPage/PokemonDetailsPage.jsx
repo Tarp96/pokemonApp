@@ -6,6 +6,7 @@ import {
 import { useParams, Outlet, NavLink } from "react-router-dom";
 import { firstLetterUpperCase } from "../../utils/helperFunctions";
 import { FaArrowLeft } from "react-icons/fa6";
+import { PageNavigationBar } from "../../components/PageNavigationbar";
 
 export const PokemonDetailsPage = () => {
   const { name } = useParams();
@@ -47,23 +48,15 @@ export const PokemonDetailsPage = () => {
         <div></div>
       </div>
 
-      <div className="detailsNavigationBar">
-        <NavLink to="" end>
-          Overview
-        </NavLink>
-        <NavLink to="stats" end>
-          Stats
-        </NavLink>
-        <NavLink to="photos" end>
-          Photos
-        </NavLink>
-        <NavLink to="games" end>
-          Games
-        </NavLink>
-        <NavLink to="moves" end>
-          Moves
-        </NavLink>
-      </div>
+      <PageNavigationBar
+        links={[
+          { path: "", label: "Overview" },
+          { path: "stats", label: "Stats" },
+          { path: "photos", label: "Photos" },
+          { path: "games", label: "Games" },
+          { path: "moves", label: "Moves" },
+        ]}
+      />
 
       <Outlet context={{ pokemon, pokemonSpecies }} />
     </div>
