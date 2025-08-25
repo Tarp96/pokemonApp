@@ -1,16 +1,12 @@
 export const ProfilePage = () => {
   return (
-    <div className="profilePageContainer">
+    <div>
       <section className="profileInfoSection">
         <img
           src="https://boxchatter.wordpress.com/wp-content/uploads/2013/06/pkmn-trainer-red.jpg"
           alt="Trainer"
           className="profilePageImage"
         />
-        <div className="profileInfoText">
-          <h3>Trainer Name</h3>
-          <p>Welcome back, Trainer!</p>
-        </div>
       </section>
 
       <section className="profileSection">
