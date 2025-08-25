@@ -10,7 +10,12 @@ export const ProfilePageOverview = () => {
       </section>
 
       <div>
-        <PageNavigationBar />
+        <PageNavigationBar
+          links={[
+            { path: "", label: "Trainer Info" },
+            { path: "favorites", label: "Favorites" },
+          ]}
+        />
       </div>
 
       <Outlet />
