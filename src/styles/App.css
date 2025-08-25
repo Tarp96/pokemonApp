@@ -948,6 +948,70 @@ body {
   cursor: pointer;
 }
 
+/*PROFILE PAGE*/
+.profilePageContainer {
+  max-width: 1000px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  font-family: "Montserrat", sans-serif;
+}
+
+.profilePageHeaderContainer {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.profilePageTitle {
+  font-size: 2.2rem;
+  color: #3b4cca;
+  text-shadow: 1px 1px #ffcb05;
+}
+
+.profileInfoSection {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.profilePageImage {
+  width: 150px;
+  border-radius: 50%;
+  border: 4px solid #3b4cca;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.profileInfoText h3 {
+  margin: 0;
+  font-size: 1.6rem;
+  color: #2d2d2d;
+}
+
+.profileInfoText p {
+  margin-top: 0.4rem;
+  color: #555;
+}
+
+.profileSection {
+  margin-bottom: 2.5rem;
+  padding: 1rem;
+  border-top: 2px solid #ffcb05;
+}
+
+.profileSectionTitle {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: #3b4cca;
+  border-left: 4px solid #3b4cca;
+  padding-left: 10px;
+}
+/*PROFILE PAGE END*/
+
 /*TYPE GRADIENT BORDER*/
 .typeGradientBorder.normal {
   background: linear-gradient(135deg, #a8a77a, #d1ccc0);

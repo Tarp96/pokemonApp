@@ -9,13 +9,16 @@ import { PokemonGames } from "./pages/PokemonDetailsPage/PokemonGames";
 import { PokemonMoves } from "./pages/PokemonDetailsPage/PokemonMoves";
 import { HomePageLayout } from "./pages/HomePageLayout";
 import { ProfilePageOverview } from "./pages/ProfilePage/ProfilePageOverview";
+import { ProfilePage } from "./pages/ProfilePage/ProfilePage";
 
 function App() {
   return (
     <Routes>
       <Route path="/" element={<HomePageLayout />}>
         <Route index element={<HomePage />} />
-        <Route path="profilepage" element={<ProfilePageOverview />} />
+        <Route path="profilepage" element={<ProfilePageOverview />}>
+          <Route index element={<ProfilePage />} />
+        </Route>
       </Route>
 
       <Route path="/pokemon/:name" element={<PokemonDetailsPage />}>
