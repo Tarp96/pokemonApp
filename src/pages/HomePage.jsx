@@ -25,7 +25,10 @@ export const HomePage = () => {
   const [showSearches, setShowSearches] = useState(false);
   const [favoritePokemon, setFavoritePokemon] = useState(() => {
     const favorites = getItem("favorites");
-    return favorites || [];
+
+    return Array.isArray(favorites)
+      ? favorites.filter((fav) => fav && fav.name)
+      : [];
   });
 
   const navigate = useNavigate();
@@ -103,9 +106,22 @@ export const HomePage = () => {
   };
 
   const addFavoritePokemonToLs = (item) => {
-    const ifItemAlreadyExists = favoritePokemon.find(
-      (fav) => fav.name === item.name
+    if (!item || !item.name) {
+      console.error("Invalid item passed to addFavoritePokemonToLs:", item);
+      return;
+    }
+
+    const itemName = item.name.toLowerCase();
+
+    const alreadyExists = favoritePokemon.some(
+      (fav) => fav?.name?.toLowerCase?.() === itemName
     );
+
+    console.log(
+      "Current favorites:",
+      favoritePokemon.map((p) => p.name)
+    );
+    console.log("Trying to add:", item.name);
 
     if (!alreadyExists) {
       const updatedList = [item, ...favoritePokemon];
@@ -128,10 +144,16 @@ export const HomePage = () => {
         weight={pokemonItem.weight}
         cries={pokemonItem.cries}
         onClick={() => navigate(`/pokemon/${pokemonItem.name}`)}
-        favoriteOnClick={() => addFavoritePokemonToLs(pokemonItem.name)}
+        favoriteOnClick={() => addFavoritePokemonToLs(pokemonItem)}
       />
     ));
   };
+
+  console.log(
+    "searchHistory:",
+    JSON.parse(localStorage.getItem("searchHistory"))
+  );
+  console.log("favorites:", JSON.parse(localStorage.getItem("favorites")));
 
   return (
     <div className="mainContainer">
