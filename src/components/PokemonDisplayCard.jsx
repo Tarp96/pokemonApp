@@ -3,6 +3,7 @@ import AudioPlayer from "./AudioPlayer";
 import { firstLetterUpperCase } from "./../utils/helperFunctions";
 import { FaArrowRight } from "react-icons/fa6";
 import { TypeBadge } from "./TypeBadge";
+import { FavoriteButton } from "./FavoriteButton";
 
 function PokemonDisplayCard({
   name,
@@ -32,6 +33,10 @@ function PokemonDisplayCard({
 
   return (
     <div className="pokemon-card">
+      <div className="favoriteButtonContainer">
+        <FavoriteButton />
+      </div>
+
       <div className="audioButtonCardWrapper">
         {cries?.legacy && <AudioPlayer src={cries.legacy}>🔊</AudioPlayer>}
       </div>
