@@ -10,10 +10,6 @@ export const ProfilePage = () => {
       </section>
 
       <section className="profileSection">
-        <h3 className="profileSectionTitle">Favorite Pokémon</h3>
-      </section>
-
-      <section className="profileSection">
         <h3 className="profileSectionTitle">Your Team</h3>
       </section>
 
