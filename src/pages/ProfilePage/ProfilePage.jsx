@@ -1,21 +1,38 @@
 export const ProfilePage = () => {
   return (
-    <div>
-      <section className="profileInfoSection">
+    <div className="trainerInfoContainer">
+      <div className="trainerInfoHeader">
         <img
           src="https://boxchatter.wordpress.com/wp-content/uploads/2013/06/pkmn-trainer-red.jpg"
-          alt="Trainer"
-          className="profilePageImage"
+          alt="Trainer Avatar"
+          className="trainerAvatar"
         />
-      </section>
+        <div className="trainerDetails">
+          <h2 className="trainerName">Trainer Red</h2>
+          <p className="trainerSubtitle">
+            The very best, like no one ever was.
+          </p>
+        </div>
+      </div>
 
-      <section className="profileSection">
-        <h3 className="profileSectionTitle">Your Team</h3>
-      </section>
-
-      <section className="profileSection">
-        <h3 className="profileSectionTitle">Saved Pokémon</h3>
-      </section>
+      <div className="trainerStatsGrid">
+        <div className="trainerStatCard">
+          <h4>Pokémon Caught</h4>
+          <p>84</p>
+        </div>
+        <div className="trainerStatCard">
+          <h4>Team Size</h4>
+          <p>6</p>
+        </div>
+        <div className="trainerStatCard">
+          <h4>Coin Balance</h4>
+          <p>230</p>
+        </div>
+        <div className="trainerStatCard">
+          <h4>Coins Spent</h4>
+          <p>120</p>
+        </div>
+      </div>
     </div>
   );
 };
