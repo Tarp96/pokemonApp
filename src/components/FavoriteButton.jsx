@@ -1,4 +1,4 @@
-export const FavoriteButton = (onClick, isClicked) => {
+export const FavoriteButton = ({ onClick, isClicked }) => {
   return (
     <div>
       <button onClick={onClick}>Favorite!</button>

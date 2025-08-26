@@ -14,27 +14,12 @@ function PokemonDisplayCard({
   stats,
   cries,
   onClick,
+  favoriteOnClick,
 }) {
-  const getTypeClass = (type) => {
-    const typeBackground = typeColors[type] || "#ccc";
-    return {
-      backgroundColor: typeBackground,
-      color:
-        type === "ghost" ||
-        type === "dragon" ||
-        type === "poison" ||
-        type === "dark" ||
-        type === "fighting" ||
-        type === "water"
-          ? "white"
-          : "black",
-    };
-  };
-
   return (
     <div className="pokemon-card">
       <div className="favoriteButtonContainer">
-        <FavoriteButton />
+        <FavoriteButton onClick={favoriteOnClick} />
       </div>
 
       <div className="audioButtonCardWrapper">

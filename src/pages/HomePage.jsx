@@ -23,6 +23,10 @@ export const HomePage = () => {
     return item || [];
   });
   const [showSearches, setShowSearches] = useState(false);
+  const [favoritePokemon, setFavoritePokemon] = useState(() => {
+    const favorites = getItem("favorites");
+    return favorites || [];
+  });
 
   const navigate = useNavigate();
 
@@ -98,6 +102,11 @@ export const HomePage = () => {
     }
   };
 
+  const addFavoritePokemonToLs = (item) => {
+    setItem("favorites", item);
+    console.log("Item added");
+  };
+
   const renderPokemonCards = () => {
     return filteredPokemon.map((pokemonItem, index) => (
       <PokemonDisplayCard
@@ -109,6 +118,7 @@ export const HomePage = () => {
         weight={pokemonItem.weight}
         cries={pokemonItem.cries}
         onClick={() => navigate(`/pokemon/${pokemonItem.name}`)}
+        favoriteOnClick={() => addFavoritePokemonToLs(pokemonItem.name)}
       />
     ));
   };
