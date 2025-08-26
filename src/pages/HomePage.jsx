@@ -103,8 +103,10 @@ export const HomePage = () => {
   };
 
   const addFavoritePokemonToLs = (item) => {
-    setItem("favorites", item);
-    console.log("Item added");
+    const updatedFavoriteList = Array.from(new Set([item, ...favoritePokemon]));
+
+    setItem("favorites", updatedFavoriteList);
+    console.log("Pokemon added to favorites");
   };
 
   const renderPokemonCards = () => {
