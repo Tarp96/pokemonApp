@@ -103,10 +103,18 @@ export const HomePage = () => {
   };
 
   const addFavoritePokemonToLs = (item) => {
-    const updatedFavoriteList = Array.from(new Set([item, ...favoritePokemon]));
+    const ifItemAlreadyExists = favoritePokemon.find(
+      (fav) => fav.name === item.name
+    );
 
-    setItem("favorites", updatedFavoriteList);
-    console.log("Pokemon added to favorites");
+    if (!alreadyExists) {
+      const updatedList = [item, ...favoritePokemon];
+      setFavoritePokemon(updatedList);
+      setItem("favorites", updatedList);
+      console.log("Pokemon added to favorites");
+    } else {
+      console.log("Pokemon already in favorites");
+    }
   };
 
   const renderPokemonCards = () => {
