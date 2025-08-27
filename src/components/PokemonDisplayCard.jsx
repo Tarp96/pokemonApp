@@ -1,4 +1,3 @@
-import typeColors from "../utils/typecolors";
 import AudioPlayer from "./AudioPlayer";
 import { firstLetterUpperCase } from "./../utils/helperFunctions";
 import { FaArrowRight } from "react-icons/fa6";
