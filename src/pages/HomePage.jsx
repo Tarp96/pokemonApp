@@ -8,6 +8,7 @@ import { PokemonGrid } from "../components/PokemonGrid";
 import { useNavigate } from "react-router-dom";
 import Pagination from "../components/Pagination";
 import { getItem, setItem } from "../utils/localStorage";
+import { addFavorite } from "../services/favoritesService";
 
 export const HomePage = () => {
   const [pokemon, setPokemon] = useState([]);
@@ -109,7 +110,7 @@ export const HomePage = () => {
         weight={pokemonItem.weight}
         cries={pokemonItem.cries}
         onClick={() => navigate(`/pokemon/${pokemonItem.name}`)}
-        favoriteOnClick={() => addFavoritePokemonToLs(pokemonItem)}
+        favoriteOnClick={() => addFavorite(pokemonItem.name)}
       />
     ));
   };
