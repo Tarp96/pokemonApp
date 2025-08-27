@@ -23,13 +23,6 @@ export const HomePage = () => {
     return item || [];
   });
   const [showSearches, setShowSearches] = useState(false);
-  const [favoritePokemon, setFavoritePokemon] = useState(() => {
-    const favorites = getItem("favorites");
-
-    return Array.isArray(favorites)
-      ? favorites.filter((fav) => fav && fav.name)
-      : [];
-  });
 
   const navigate = useNavigate();
 
@@ -102,34 +95,6 @@ export const HomePage = () => {
     } catch (error) {
       console.log("Pokemon not found");
       setFilteredPokemon([]);
-    }
-  };
-
-  const addFavoritePokemonToLs = (item) => {
-    if (!item || !item.name) {
-      console.error("Invalid item passed to addFavoritePokemonToLs:", item);
-      return;
-    }
-
-    const itemName = item.name.toLowerCase();
-
-    const alreadyExists = favoritePokemon.some(
-      (fav) => fav?.name?.toLowerCase?.() === itemName
-    );
-
-    console.log(
-      "Current favorites:",
-      favoritePokemon.map((p) => p.name)
-    );
-    console.log("Trying to add:", item.name);
-
-    if (!alreadyExists) {
-      const updatedList = [item, ...favoritePokemon];
-      setFavoritePokemon(updatedList);
-      setItem("favorites", updatedList);
-      console.log("Pokemon added to favorites");
-    } else {
-      console.log("Pokemon already in favorites");
     }
   };
 
