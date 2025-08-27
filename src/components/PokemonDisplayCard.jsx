@@ -3,6 +3,7 @@ import { firstLetterUpperCase } from "./../utils/helperFunctions";
 import { FaArrowRight } from "react-icons/fa6";
 import { TypeBadge } from "./TypeBadge";
 import { FavoriteButton } from "./FavoriteButton";
+import { AiTwotoneSound } from "react-icons/ai";
 
 function PokemonDisplayCard({
   name,
@@ -19,7 +20,11 @@ function PokemonDisplayCard({
       </div>
 
       <div className="audioButtonCardWrapper">
-        {cries?.legacy && <AudioPlayer src={cries.legacy}>🔊</AudioPlayer>}
+        {cries?.legacy && (
+          <AudioPlayer src={cries.legacy}>
+            <AiTwotoneSound />
+          </AudioPlayer>
+        )}
       </div>
 
       <img src={sprite} alt={name} />
