@@ -4,6 +4,7 @@ import { FaArrowRight } from "react-icons/fa6";
 import { TypeBadge } from "./TypeBadge";
 import { FavoriteButton } from "./FavoriteButton";
 import { AiTwotoneSound } from "react-icons/ai";
+import { useState } from "react";
 
 function PokemonDisplayCard({
   name,
@@ -11,8 +12,11 @@ function PokemonDisplayCard({
   types,
   cries,
   onClick,
+  clicked,
   favoriteOnClick,
 }) {
+  const [isFavorite, setIsFavorite] = useState(false);
+
   return (
     <div className="pokemon-card">
       <div className="favoriteButtonContainer">
