@@ -12,14 +12,14 @@ import db from "../firebaseConfig";
 const favoritesRef = collection(db, "favorites");
 
 export const isAlreadyFavorited = async (name) => {
-  const q = query(collection(db, "favorites"), where("name", "==", name));
+  const q = query(collection(db, favoritesRef), where("name", "==", name));
   const snapshot = await getDocs(q);
   return !snapshot.empty;
 };
 
 export const addFavorite = async (pokemon) => {
   try {
-    await addDoc(collection(db, "favorites"), {
+    await addDoc(collection(db, favoritesRef), {
       name: pokemon.name,
       id: pokemon.id,
       sprite: pokemon.sprites.front_default,
