@@ -4,7 +4,7 @@ export const FavoriteButton = ({ onClick, isClicked }) => {
   return (
     <div>
       <button onClick={onClick}>
-        {isClicked ? <TbStarFilled /> : <TbStar />}
+        {isClicked ? <TbStarFilled className="filledIcon" /> : <TbStar />}
       </button>
     </div>
   );

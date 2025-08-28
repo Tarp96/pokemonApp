@@ -12,9 +12,8 @@ import db from "../firebaseConfig";
 const favoritesRef = collection(db, "favorites");
 
 export const isAlreadyFavorited = async (name) => {
-  const q = query(collection(db, favoritesRef), where("name", "==", name));
-  const snapshot = await getDocs(q);
-  return !snapshot.empty;
+  const snapshot = await getDocs(collection(db, "favorites"));
+  return snapshot.docs.map((doc) => doc.data().name).includes(name);
 };
 
 export const addFavorite = async (pokemon) => {

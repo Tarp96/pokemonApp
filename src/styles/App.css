@@ -445,6 +445,10 @@ body {
   cursor: not-allowed;
 }
 
+.filledIcon {
+  color: yellow;
+}
+
 .favoriteButtonContainer,
 .audioButtonCardWrapper {
   position: absolute;

@@ -4,11 +4,24 @@ import { FaArrowRight } from "react-icons/fa6";
 import { TypeBadge } from "./TypeBadge";
 import { FavoriteButton } from "./FavoriteButton";
 import { AiTwotoneSound } from "react-icons/ai";
-import { useState } from "react";
-import { addFavorite, removeFavorite } from "../services/favoritesService";
+import { useState, useEffect } from "react";
+import {
+  addFavorite,
+  removeFavorite,
+  isAlreadyFavorited,
+} from "../services/favoritesService";
 
 function PokemonDisplayCard({ name, sprite, types, cries, onClick, pokemon }) {
   const [isFavorite, setIsFavorite] = useState(false);
+
+  useEffect(() => {
+    const checkFavorite = async () => {
+      const exists = await isAlreadyFavorited(pokemon.name);
+      setIsFavorite(exists);
+    };
+
+    checkFavorite();
+  }, [pokemon.name]);
 
   const handleFavoriteClick = async (pokemon) => {
     if (isFavorite) {
