@@ -5,22 +5,28 @@ import { TypeBadge } from "./TypeBadge";
 import { FavoriteButton } from "./FavoriteButton";
 import { AiTwotoneSound } from "react-icons/ai";
 import { useState } from "react";
+import { addFavorite, removeFavorite } from "../services/favoritesService";
 
-function PokemonDisplayCard({
-  name,
-  sprite,
-  types,
-  cries,
-  onClick,
-  clicked,
-  favoriteOnClick,
-}) {
+function PokemonDisplayCard({ name, sprite, types, cries, onClick, pokemon }) {
   const [isFavorite, setIsFavorite] = useState(false);
+
+  const handleFavoriteClick = async (pokemon) => {
+    if (isFavorite) {
+      await removeFavorite(pokemon.name);
+    } else {
+      await addFavorite(pokemon);
+    }
+
+    setIsFavorite(!isFavorite);
+  };
 
   return (
     <div className="pokemon-card">
       <div className="favoriteButtonContainer">
-        <FavoriteButton onClick={favoriteOnClick} />
+        <FavoriteButton
+          onClick={() => handleFavoriteClick(pokemon)}
+          isClicked={isFavorite}
+        />
       </div>
 
       <div className="audioButtonCardWrapper">

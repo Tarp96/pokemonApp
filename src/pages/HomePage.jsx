@@ -110,7 +110,7 @@ export const HomePage = () => {
         weight={pokemonItem.weight}
         cries={pokemonItem.cries}
         onClick={() => navigate(`/pokemon/${pokemonItem.name}`)}
-        favoriteOnClick={() => addFavorite(pokemonItem)}
+        pokemon={pokemonItem}
       />
     ));
   };
