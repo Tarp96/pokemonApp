@@ -446,7 +446,22 @@ body {
 }
 
 .filledIcon {
-  color: yellow;
+  color: #facc15;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  filter: drop-shadow(0 0 1px rgba(0, 0, 0, 0.4));
+  font-size: 1.8rem;
+  transition: transform 0.2s ease;
+}
+
+.filledIcon:hover {
+  transform: scale(1.2);
+}
+
+.favoriteButtonContainer button {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 50%;
+  padding: 4px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
 }
 
 .favoriteButtonContainer,
