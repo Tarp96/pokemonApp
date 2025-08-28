@@ -45,9 +45,12 @@ export const removeFavorite = async (pokemonName) => {
 export const getAllFavorites = async () => {
   try {
     const snapshot = await getDocs(favoritesRef);
-    return snapshot.docs.map((doc) => doc.data.name);
+    return snapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
   } catch (error) {
-    console.error("Error retreving favorites", error);
+    console.error("Error retrieving favorites", error);
     return [];
   }
 };
