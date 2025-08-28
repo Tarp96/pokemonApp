@@ -1,3 +1,6 @@
+import { useState } from "react";
+import { getAllFavorites } from "../../services/favoritesService";
+
 export const FavoritePokemonsPage = () => {
   return (
     <div>
