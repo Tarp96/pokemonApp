@@ -11,11 +11,15 @@ import db from "../firebaseConfig";
 
 const favoritesRef = collection(db, "favorites");
 
-export const addFavorite = async (pokemonName) => {
+export const addFavorite = async (pokemon) => {
   try {
-    const docRef = await addDoc(favoritesRef, { name: pokemonName });
-    return docRef.id;
+    await addDoc(collection(db, "favorites"), {
+      name: pokemon.name,
+      id: pokemon.id,
+      sprite: pokemon.sprites.front_default,
+      types: pokemon.types.map((t) => t.type.name),
+    });
   } catch (error) {
-    console.error("Error adding favorite", error);
+    console.error("Error adding pokemon to database:", error);
   }
 };
