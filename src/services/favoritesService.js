@@ -19,7 +19,7 @@ export const isAlreadyFavorited = async (name) => {
 
 export const addFavorite = async (pokemon) => {
   try {
-    await addDoc(collection(db, favoritesRef), {
+    await addDoc(favoritesRef, {
       name: pokemon.name,
       id: pokemon.id,
       sprite: pokemon.sprites.front_default,
