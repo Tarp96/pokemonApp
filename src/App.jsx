@@ -34,6 +34,15 @@ function App() {
           <Route path="moves" element={<PokemonMoves />} />
         </Route>
       </Routes>
+
+      <ToastContainer
+        position="top-center"
+        autoClose={2000}
+        pauseOnHover
+        hideProgressBar={false}
+        closeOnClick
+        draggable
+      />
     </>
   );
 }
