@@ -11,6 +11,8 @@ import { HomePageLayout } from "./pages/HomePageLayout";
 import { ProfilePageOverview } from "./pages/ProfilePage/ProfilePageOverview";
 import { ProfilePage } from "./pages/ProfilePage/ProfilePage";
 import { FavoritePokemonsPage } from "./pages/ProfilePage/FavoritePokemonsPage";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function App() {
   return (
