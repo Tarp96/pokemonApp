@@ -115,12 +115,6 @@ export const HomePage = () => {
     ));
   };
 
-  console.log(
-    "searchHistory:",
-    JSON.parse(localStorage.getItem("searchHistory"))
-  );
-  console.log("favorites:", JSON.parse(localStorage.getItem("favorites")));
-
   return (
     <div className="mainContainer">
       <SearchBar
