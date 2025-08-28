@@ -12,7 +12,15 @@ import {
 } from "../services/favoritesService";
 import { toast } from "react-toastify";
 
-function PokemonDisplayCard({ name, sprite, types, cries, onClick, pokemon }) {
+function PokemonDisplayCard({
+  name,
+  sprite,
+  types,
+  cries,
+  onClick,
+  pokemon,
+  fromFavorites,
+}) {
   const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
@@ -24,7 +32,7 @@ function PokemonDisplayCard({ name, sprite, types, cries, onClick, pokemon }) {
     checkFavorite();
   }, [pokemon.name]);
 
-  const handleFavoriteClick = async (pokemon) => {
+  const handleFavoriteClick = async () => {
     if (isFavorite) {
       await removeFavorite(pokemon.name);
       toast.info(
@@ -38,13 +46,16 @@ function PokemonDisplayCard({ name, sprite, types, cries, onClick, pokemon }) {
     setIsFavorite(!isFavorite);
   };
 
+  const renderTypes = types.map((typeObj, index) => {
+    const typeName =
+      typeof typeObj === "string" ? typeObj : typeObj?.type?.name;
+    return <TypeBadge key={index} type={typeName} />;
+  });
+
   return (
     <div className="pokemon-card">
       <div className="favoriteButtonContainer">
-        <FavoriteButton
-          onClick={() => handleFavoriteClick(pokemon)}
-          isClicked={isFavorite}
-        />
+        <FavoriteButton onClick={handleFavoriteClick} isClicked={isFavorite} />
       </div>
 
       <div className="audioButtonCardWrapper">
@@ -58,11 +69,7 @@ function PokemonDisplayCard({ name, sprite, types, cries, onClick, pokemon }) {
       <img src={sprite} alt={name} />
       <h3>{firstLetterUpperCase(name)}</h3>
 
-      <div className="types">
-        {types.map((typeObj) => (
-          <TypeBadge key={typeObj.type.name} type={typeObj.type.name} />
-        ))}
-      </div>
+      <div className="types">{renderTypes}</div>
 
       <div className="linkToDetailPageBtnContainer">
         <button onClick={onClick} className="linkToDetailsPageButton">
