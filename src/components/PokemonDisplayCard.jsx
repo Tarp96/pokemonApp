@@ -10,6 +10,7 @@ import {
   removeFavorite,
   isAlreadyFavorited,
 } from "../services/favoritesService";
+import { toast } from "react-toastify";
 
 function PokemonDisplayCard({ name, sprite, types, cries, onClick, pokemon }) {
   const [isFavorite, setIsFavorite] = useState(false);
