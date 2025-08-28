@@ -8,7 +8,6 @@ import { PokemonGrid } from "../components/PokemonGrid";
 import { useNavigate } from "react-router-dom";
 import Pagination from "../components/Pagination";
 import { getItem, setItem } from "../utils/localStorage";
-import { addFavorite } from "../services/favoritesService";
 
 export const HomePage = () => {
   const [pokemon, setPokemon] = useState([]);
