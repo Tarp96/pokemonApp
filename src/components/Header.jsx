@@ -1,6 +1,8 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 export const Header = () => {
+  let navigate = useNavigate();
+
   return (
     <>
       <header className="headerContainer">
@@ -16,6 +18,7 @@ export const Header = () => {
             src="assets/pokelogo.png"
             alt="Title that says Pokemon in yellow text"
             className="headerImage"
+            onClick={() => navigate("/")}
           />
         </div>
         <div className="headerNavigationButtonsDiv">
