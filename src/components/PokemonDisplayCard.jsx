@@ -27,8 +27,12 @@ function PokemonDisplayCard({ name, sprite, types, cries, onClick, pokemon }) {
   const handleFavoriteClick = async (pokemon) => {
     if (isFavorite) {
       await removeFavorite(pokemon.name);
+      toast.info(
+        `${firstLetterUpperCase(pokemon.name)} removed from favorites`
+      );
     } else {
       await addFavorite(pokemon);
+      toast.success(`${firstLetterUpperCase(pokemon.name)} added to favorites`);
     }
 
     setIsFavorite(!isFavorite);
