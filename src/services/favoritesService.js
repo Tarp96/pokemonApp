@@ -29,3 +29,16 @@ export const addFavorite = async (pokemon) => {
     console.error("Error adding pokemon to database:", error);
   }
 };
+
+export const removeFavorite = async (pokemonName) => {
+  try {
+    const q = query(favoritesRef, where("name", "==", pokemonName));
+    const snapshot = await getDocs(q);
+
+    snapshot.forEach(async (docItem) => {
+      await deleteDoc(doc(db, "favorites", docItem.id));
+    });
+  } catch (error) {
+    console.error("Error removing pokemon from favorites", error);
+  }
+};
