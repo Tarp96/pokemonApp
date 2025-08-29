@@ -30,7 +30,7 @@ export const FavoritePokemonsPage = () => {
   return (
     <div>
       <h1>Your Favorite Pokemon</h1>
-      {displayFavorites}
+      <div className="favoritePageGridContainer">{displayFavorites}</div>
     </div>
   );
 };
