@@ -1100,6 +1100,16 @@ body {
 
 /*PROFILE PAGE END*/
 
+/*FAVORITES PAGE*/
+.favoritePageGridContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  justify-items: center; /* optional: center cards horizontally */
+}
+/*FAVORITES PAGE END*/
+
 /*TYPE GRADIENT BORDER*/
 .typeGradientBorder.normal {
   background: linear-gradient(135deg, #a8a77a, #d1ccc0);
