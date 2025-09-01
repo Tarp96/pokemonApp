@@ -19,7 +19,7 @@ function PokemonDisplayCard({
   cries,
   onClick,
   pokemon,
-  fromFavorites,
+  generation,
 }) {
   const [isFavorite, setIsFavorite] = useState(false);
 
@@ -68,6 +68,8 @@ function PokemonDisplayCard({
 
       <img src={sprite} alt={name} />
       <h3>{firstLetterUpperCase(name)}</h3>
+
+      <p>{generation}</p>
 
       <div className="types">{renderTypes}</div>
 
