@@ -1,13 +1,13 @@
 import { Routes, Route } from "react-router-dom";
 import "./styles/App.css";
-import { HomePage } from "./pages/HomePage";
+import { HomePage } from "./pages/HomePage/HomePage";
 import { PokemonDetailsPage } from "./pages/PokemonDetailsPage/PokemonDetailsPage";
 import { PokemonStats } from "./pages/PokemonDetailsPage/PokemonStats";
 import { PokemonPhotos } from "./pages/PokemonDetailsPage/PokemonPhotos";
 import { PokemonDetailOverView } from "./pages/PokemonDetailsPage/PokemonDetailOverview";
 import { PokemonGames } from "./pages/PokemonDetailsPage/PokemonGames";
 import { PokemonMoves } from "./pages/PokemonDetailsPage/PokemonMoves";
-import { HomePageLayout } from "./pages/HomePageLayout";
+import { HomePageLayout } from "./pages/HomePage/HomePageLayout";
 import { ProfilePageOverview } from "./pages/ProfilePage/ProfilePageOverview";
 import { ProfilePage } from "./pages/ProfilePage/ProfilePage";
 import { FavoritePokemonsPage } from "./pages/ProfilePage/FavoritePokemonsPage";
