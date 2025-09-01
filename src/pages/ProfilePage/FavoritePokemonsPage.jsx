@@ -1,9 +1,11 @@
 import { useEffect, useState } from "react";
 import { getAllFavorites } from "../../services/favoritesService";
 import PokemonDisplayCard from "../../components/PokemonDisplayCard";
+import { useNavigate } from "react-router-dom";
 
 export const FavoritePokemonsPage = () => {
   const [favoritesList, setFavoritesList] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const load = async () => {
