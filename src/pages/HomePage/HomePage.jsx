@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import PokemonDisplayCard from "../../components/PokemonDisplayCard";
-import { fetchData, fetchPokemonDetails } from "../../utils/pokeApi";
+import {
+  fetchData,
+  fetchPokemonDetails,
+  fetchPokemonSpeciesDetails,
+} from "../../utils/pokeApi";
 import { FilterByTypeButtons } from "../../components/FilterByTypeButtons";
 import { SearchBar } from "../../components/SearchBar";
 import { NoPokemonMatchFilter } from "../../components/NoPokemonMatchFilter";
@@ -36,8 +40,16 @@ export const HomePage = () => {
       const result = await fetchData(pageNumber, 20);
       const pokemonNames = result.results.map((pokemon) => pokemon.name);
 
-      const pokemonDetailPromises = pokemonNames.map((pokemonName) => {
-        return fetchPokemonDetails(pokemonName);
+      const pokemonDetailPromises = pokemonNames.map(async (pokemonName) => {
+        const [details, species] = await Promise.all([
+          fetchPokemonDetails(pokemonName),
+          fetchPokemonSpeciesDetails(pokemonName),
+        ]);
+
+        return {
+          ...details,
+          generation: species.generation?.name || "unknown",
+        };
       });
 
       const allPokemonDetails = await Promise.all(pokemonDetailPromises);
