@@ -16,25 +16,30 @@ export const FavoritePokemonsPage = () => {
     load();
   }, []);
 
-  const displayFavorites = favoritesList.map((pokemon) => (
-    <PokemonDisplayCard
-      key={pokemon.name}
-      name={pokemon.name}
-      sprite={pokemon.sprite}
-      types={pokemon.types}
-      onClick={() => navigate(`/pokemon/${pokemon.name}`)}
-      pokemon={pokemon}
-      fromFavorites={true}
-      type={pokemon.types?.map((t) =>
-        typeof t === "string" ? { type: { name: t } } : t
-      )}
-      cries={
-        typeof pokemon.cries === "string"
-          ? { legacy: pokemon.cries }
-          : pokemon.cries
-      }
-    />
-  ));
+  const displayFavorites = favoritesList.map((pokemon, index) => {
+    const normalizedTypes = pokemon.types?.map((t) =>
+      typeof t === "string" ? { type: { name: t } } : t
+    );
+
+    const normalizedCries =
+      typeof pokemon.cries === "string"
+        ? { legacy: pokemon.cries }
+        : pokemon.cries;
+
+    return (
+      <PokemonDisplayCard
+        key={pokemon.name}
+        name={pokemon.name}
+        sprite={pokemon.sprite}
+        types={normalizedTypes}
+        cries={normalizedCries}
+        onClick={() => navigate(`/pokemon/${pokemon.name}`)}
+        pokemon={pokemon}
+        fromFavorites
+        generation={pokemon.generation}
+      />
+    );
+  });
 
   return (
     <div>
