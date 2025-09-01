@@ -13,6 +13,7 @@ import { ProfilePage } from "./pages/ProfilePage/ProfilePage";
 import { FavoritePokemonsPage } from "./pages/ProfilePage/FavoritePokemonsPage";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import LoginPage from "./pages/Auth/LoginPage";
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
             <Route index element={<ProfilePage />} />
             <Route path="favorites" element={<FavoritePokemonsPage />} />
           </Route>
+          <Route path="login" element={<LoginPage />} />
         </Route>
 
         <Route path="/pokemon/:name" element={<PokemonDetailsPage />}>

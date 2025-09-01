@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import "./LoginPage.css";
-import pokemonLogo from "../assets/pokemon_logo.png";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -15,12 +13,16 @@ const LoginPage = () => {
   };
 
   return (
-    <div className="login-container">
-      <div className="login-card">
-        <img src={pokemonLogo} alt="Pokémon Logo" className="pokemon-logo" />
-        <h2 className="login-title">Welcome Trainer!</h2>
+    <div className="loginContainer">
+      <div className="loginCard">
+        <img
+          src="assets/pokeb.png"
+          alt="Pokémon Logo"
+          className="pokemonLogo"
+        />
+        <h2 className="loginTitle">Welcome Trainer!</h2>
 
-        <form onSubmit={handleLogin} className="login-form">
+        <form onSubmit={handleLogin} className="loginForm">
           <label htmlFor="email">Email</label>
           <input
             id="email"
@@ -39,9 +41,9 @@ const LoginPage = () => {
             onChange={(e) => setPassword(e.target.value)}
           />
 
-          {error && <div className="error-message">{error}</div>}
+          {error && <div className="errorMessage">{error}</div>}
 
-          <button type="submit" className="login-button">
+          <button type="submit" className="loginButton">
             Log In
           </button>
         </form>
