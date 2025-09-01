@@ -5,15 +5,14 @@ import PokemonDisplayCard from "../../components/PokemonDisplayCard";
 export const FavoritePokemonsPage = () => {
   const [favoritesList, setFavoritesList] = useState([]);
 
-  const getFavorites = async () => {
-    const externalList = await getAllFavorites();
-    setFavoritesList(externalList);
-    console.log(externalList);
-  };
-
   useEffect(() => {
-    getFavorites();
-  }, [favoritesList]);
+    const load = async () => {
+      const externalList = await getAllFavorites();
+      setFavoritesList(externalList);
+      console.log(externalList);
+    };
+    load();
+  }, []);
 
   const displayFavorites = favoritesList.map((pokemon, index) => (
     <PokemonDisplayCard
@@ -24,6 +23,14 @@ export const FavoritePokemonsPage = () => {
       onClick={() => navigate(`/pokemon/${pokemon.name}`)}
       pokemon={pokemon}
       fromFavorites={true}
+      type={pokemon.types?.map((t) =>
+        typeof t === "string" ? { type: { name: t } } : t
+      )}
+      cries={
+        typeof pokemon.cries === "string"
+          ? { legacy: pokemon.cries }
+          : pokemon.cries
+      }
     />
   ));
 
