@@ -1,18 +1,33 @@
 import { useState } from "react";
 import { Navigate, Link } from "react-router-dom";
-import { doSignInWithEmailAndPassword } from "./../../services/authService";
+import {
+  doSignInWithEmailAndPassword,
+  doSignInWithGoogle,
+} from "./../../services/authService";
 import { useAuth } from "./../../contexts/authContext/AuthContext";
 
 const LoginPage = () => {
+  const { userLoggedIn } = useAuth();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [isSigningIn, setIsSigningIn] = useState(false);
   const [error, setError] = useState("");
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
+    if (!isSigningIn) {
+      setIsSigningIn(true);
+      await doSignInWithEmailAndPassword(email, password);
+    }
+  };
 
-    console.log("Email:", email);
-    console.log("Password:", password);
+  const googleSignIn = (e) => {
+    e.preventDefault();
+    if (!isSigningIn) {
+      setIsSigningIn(true);
+      doSignInWithGoogle().catch((err) => {});
+    }
   };
 
   return (
@@ -46,7 +61,7 @@ const LoginPage = () => {
 
           {error && <div className="errorMessage">{error}</div>}
 
-          <button type="submit" className="loginButton">
+          <button type="submit" className="loginButton" onClick={handleLogin}>
             Log In
           </button>
         </form>
