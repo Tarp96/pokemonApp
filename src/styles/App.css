@@ -1164,7 +1164,7 @@ body {
 .loginButton {
   padding: 12px;
   font-size: 16px;
-  background-color: #facc15;
+  background-color: #4a90e2;
   border: none;
   border-radius: 8px;
   color: white;
@@ -1174,7 +1174,7 @@ body {
 }
 
 .loginButton:hover {
-  background-color: #eab308;
+  transform: scale(1.05);
 }
 
 .errorMessage {
