@@ -115,6 +115,7 @@ export const HomePage = () => {
       <PokemonDisplayCard
         key={index}
         name={pokemonItem.name}
+        generation={pokemonItem.generation}
         sprite={pokemonItem.sprites.front_default}
         types={pokemonItem.types}
         height={pokemonItem.height}

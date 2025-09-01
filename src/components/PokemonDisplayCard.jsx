@@ -69,7 +69,7 @@ function PokemonDisplayCard({
       <img src={sprite} alt={name} />
       <h3>{firstLetterUpperCase(name)}</h3>
 
-      <p>{generation}</p>
+      <p>{firstLetterUpperCase(generation)}</p>
 
       <div className="types">{renderTypes}</div>
 
