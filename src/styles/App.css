@@ -1110,6 +1110,81 @@ body {
 }
 /*FAVORITES PAGE END*/
 
+/*LOGIN PAGE*/
+.loginContainer {
+  background: linear-gradient(to bottom, #fdf6b2, #fde68a);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 60%;
+  margin: 0 auto;
+}
+
+.loginCard {
+  background-color: #fff;
+  border: 2px solid #facc15;
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.pokemonLogo {
+  width: 150px;
+  margin-bottom: 16px;
+}
+
+.loginTitle {
+  font-size: 24px;
+  margin-bottom: 24px;
+  color: #333;
+}
+
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+}
+
+.loginForm label {
+  font-weight: bold;
+  color: #444;
+}
+
+.loginForm input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.loginButton {
+  padding: 12px;
+  font-size: 16px;
+  background-color: #facc15;
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.loginButton:hover {
+  background-color: #eab308;
+}
+
+.errorMessage {
+  color: red;
+  text-align: center;
+  font-size: 14px;
+}
+
+/*LOGIN PAGE END*/
+
 /*TYPE GRADIENT BORDER*/
 .typeGradientBorder.normal {
   background: linear-gradient(135deg, #a8a77a, #d1ccc0);
