@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebaseConfig";
-import pokeb from "../../../public/assets/pokeb.png";
 
 const RegisterUserPage = () => {
   const [email, setEmail] = useState("");
@@ -37,7 +36,11 @@ const RegisterUserPage = () => {
   return (
     <div className="registerContainer">
       <div className="registerCard">
-        <img src={pokemonLogo} alt="Pokémon Logo" className="pokemonLogo" />
+        <img
+          src="assets/pokeb.png"
+          alt="Pokémon Logo"
+          className="pokemonLogo"
+        />
         <h2 className="registerTitle">Join the Adventure!</h2>
 
         <form onSubmit={handleRegister} className="registerForm">

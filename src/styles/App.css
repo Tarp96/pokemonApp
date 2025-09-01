@@ -1100,6 +1100,10 @@ body {
 
 /*PROFILE PAGE END*/
 
+/*AUTH LAYOUT PAGE*/
+
+/*AUTH LAYOUT PAGE END*/
+
 /*FAVORITES PAGE*/
 .favoritePageGridContainer {
   display: grid;
@@ -1187,6 +1191,55 @@ body {
 }
 
 /*LOGIN PAGE END*/
+
+/*REGISTER ACCOUNT PAGE*/
+.registerForm {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  text-align: left;
+}
+
+.registerForm label {
+  font-weight: bold;
+  color: #444;
+}
+
+.registerForm input {
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+}
+
+.registerButton {
+  padding: 12px;
+  font-size: 16px;
+  background-color: #4a90e2; /* same blue as login button */
+  border: none;
+  border-radius: 8px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.registerButton:hover {
+  transform: scale(1.05);
+}
+
+.errorMessage {
+  color: red;
+  text-align: center;
+  font-size: 14px;
+}
+
+.successMessage {
+  color: green;
+  text-align: center;
+  font-size: 14px;
+}
+/*REGISTER ACCOUNT PAGE END*/
 
 /*TYPE GRADIENT BORDER*/
 .typeGradientBorder.normal {

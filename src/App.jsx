@@ -15,6 +15,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import LoginPage from "./pages/Auth/LoginPage";
 import { AuthLayout } from "./pages/Auth/AuthLayout";
+import RegisterUserPage from "./pages/Auth/RegisterUserPage";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           </Route>
           <Route path="login" element={<AuthLayout />}>
             <Route index element={<LoginPage />} />
+            <Route path="register" element={<RegisterUserPage />} />
           </Route>
         </Route>
 

@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Navigate, Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import {
   doSignInWithEmailAndPassword,
   doSignInWithGoogle,
@@ -65,6 +65,9 @@ const LoginPage = () => {
             Log In
           </button>
         </form>
+      </div>
+      <div className="createAccountInfoDiv">
+        <NavLink to="register">Dont have an account? Create one here!</NavLink>
       </div>
     </div>
   );
