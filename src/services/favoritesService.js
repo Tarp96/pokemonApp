@@ -7,7 +7,7 @@ import {
   query,
   where,
 } from "firebase/firestore";
-import db from "../firebaseConfig";
+import { db } from "../firebaseConfig";
 
 const favoritesRef = collection(db, "favorites");
 
