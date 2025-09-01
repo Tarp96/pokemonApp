@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Navigate, Link } from "react-router-dom";
+import { doSignInWithEmailAndPassword } from "./../../services/authService";
 
 const LoginPage = () => {
   const [email, setEmail] = useState("");
