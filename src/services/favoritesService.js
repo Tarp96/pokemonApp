@@ -23,6 +23,8 @@ export const addFavorite = async (pokemon) => {
       id: pokemon.id,
       sprite: pokemon.sprites.front_default,
       types: pokemon.types.map((t) => t.type.name),
+      generation: pokemon.generation,
+      cries: pokemon.cries?.legacy,
     });
   } catch (error) {
     console.error("Error adding pokemon to database:", error);
