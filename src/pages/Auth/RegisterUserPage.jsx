@@ -37,7 +37,7 @@ const RegisterUserPage = () => {
     <div className="registerContainer">
       <div className="registerCard">
         <img
-          src="assets/pokeb.png"
+          src="/assets/pokeb.png"
           alt="Pokémon Logo"
           className="pokemonLogo"
         />
