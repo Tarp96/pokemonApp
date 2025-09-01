@@ -28,6 +28,9 @@ export const Header = () => {
           <NavLink to="/profilepage" className="headerNavBtn">
             Profile
           </NavLink>
+          <NavLink to="/login" className="headerNavBtn">
+            Log In
+          </NavLink>
         </div>
       </header>
     </>
