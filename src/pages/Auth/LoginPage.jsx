@@ -33,6 +33,7 @@ const LoginPage = () => {
   return (
     <div className="loginContainer">
       <div className="loginCard">
+        <h2>Log in or register!</h2>
         <img
           src="assets/pokeb.png"
           alt="Pokémon Logo"
@@ -65,9 +66,11 @@ const LoginPage = () => {
             Log In
           </button>
         </form>
-      </div>
-      <div className="createAccountInfoDiv">
-        <NavLink to="register">Dont have an account? Create one here!</NavLink>
+        <div className="createAccountInfoDiv">
+          <NavLink to="register">
+            Dont have an account? Create one here!
+          </NavLink>
+        </div>
       </div>
     </div>
   );
