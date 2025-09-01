@@ -1100,10 +1100,6 @@ body {
 
 /*PROFILE PAGE END*/
 
-/*AUTH LAYOUT PAGE*/
-
-/*AUTH LAYOUT PAGE END*/
-
 /*FAVORITES PAGE*/
 .favoritePageGridContainer {
   display: grid;
@@ -1114,6 +1110,12 @@ body {
 }
 /*FAVORITES PAGE END*/
 
+/*AUTH LAYOUT PAGE*/
+.authLayoutContainer {
+  max-width: 50%;
+}
+/*AUTH LAYOUT PAGE END*/
+
 /*LOGIN PAGE*/
 .loginContainer {
   background-color: rgba(255, 255, 255, 0.05);
@@ -1123,7 +1125,7 @@ body {
   justify-content: center;
   align-items: center;
   padding: 20px;
-  max-width: 50%;
+
   margin: 0 auto;
 }
 
