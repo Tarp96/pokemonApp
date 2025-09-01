@@ -22,7 +22,18 @@ export function AuthProvider({ children }) {
       setCurrentUser(null);
       setUserLoggedIn(false);
     }
-
     setLoading(false);
   }
+
+  const value = {
+    currentUser,
+    userLoggedIn,
+    loading,
+  };
+
+  return (
+    <AuthContext.Provider value={value}>
+      {!loading && children}
+    </AuthContext.Provider>
+  );
 }
