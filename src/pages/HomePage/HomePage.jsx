@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import PokemonDisplayCard from "../components/PokemonDisplayCard";
-import { fetchData, fetchPokemonDetails } from "../utils/pokeApi";
-import { FilterByTypeButtons } from "../components/FilterByTypeButtons";
-import { SearchBar } from "../components/SearchBar";
-import { NoPokemonMatchFilter } from "../components/NoPokemonMatchFilter";
-import { PokemonGrid } from "../components/PokemonGrid";
+import PokemonDisplayCard from "../../components/PokemonDisplayCard";
+import { fetchData, fetchPokemonDetails } from "../../utils/pokeApi";
+import { FilterByTypeButtons } from "../../components/FilterByTypeButtons";
+import { SearchBar } from "../../components/SearchBar";
+import { NoPokemonMatchFilter } from "../../components/NoPokemonMatchFilter";
+import { PokemonGrid } from "../../components/PokemonGrid";
 import { useNavigate } from "react-router-dom";
-import Pagination from "../components/Pagination";
-import { getItem, setItem } from "../utils/localStorage";
+import Pagination from "../../components/Pagination";
+import { getItem, setItem } from "../../utils/localStorage";
 
 export const HomePage = () => {
   const [pokemon, setPokemon] = useState([]);
