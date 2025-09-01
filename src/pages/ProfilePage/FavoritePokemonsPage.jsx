@@ -18,7 +18,7 @@ export const FavoritePokemonsPage = () => {
 
   const displayFavorites = favoritesList.map((pokemon, index) => (
     <PokemonDisplayCard
-      key={index}
+      key={pokemon.name}
       name={pokemon.name}
       sprite={pokemon.sprite}
       types={pokemon.types}
