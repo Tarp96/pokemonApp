@@ -1191,6 +1191,21 @@ body {
   font-size: 14px;
 }
 
+.navigateToRegisterPageButton {
+  display: block;
+  margin-top: 20px;
+  text-align: center;
+  color: #4a90e2;
+  font-weight: 700;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.navigateToRegisterPageButton:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
+}
+
 /*LOGIN PAGE END*/
 
 /*REGISTER ACCOUNT PAGE*/

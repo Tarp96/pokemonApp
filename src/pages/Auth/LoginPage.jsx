@@ -95,6 +95,10 @@ const LoginPage = () => {
             {submitting ? "Logging in…" : "Log In"}
           </button>
         </form>
+
+        <NavLink to="register" className="navigateToRegisterPageButton">
+          Dont have an account? Create one here
+        </NavLink>
       </div>
     </div>
   );
