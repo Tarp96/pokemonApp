@@ -19,9 +19,29 @@ const LoginPage = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    if (!isSigningIn) {
-      setIsSigningIn(true);
+    setError("");
+    setSuccess("");
+    setSubmitting(true);
+
+    try {
       await doSignInWithEmailAndPassword(email, password);
+      setSuccess("Logged in successfully! 🎉 Redirecting…");
+      setTimeout(() => navigate("/", { replace: true }), 1500);
+    } catch (err) {
+      console.error("Login error:", err);
+      const msg =
+        err.code === "auth/user-not-found"
+          ? "No account found for this email."
+          : err.code === "auth/wrong-password"
+          ? "Incorrect password."
+          : err.code === "auth/invalid-email"
+          ? "Please enter a valid email address."
+          : err.code === "auth/too-many-requests"
+          ? "Too many attempts. Please try again later."
+          : "Failed to log in. Please try again.";
+      setError(msg);
+    } finally {
+      setSubmitting(false);
     }
   };
 
