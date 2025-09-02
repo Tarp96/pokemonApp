@@ -61,9 +61,9 @@ const LoginPage = () => {
     <div className="loginContainer">
       <div className="loginCard">
         <img
-          src="/assets/pokeb.png"
+          src="https://www.redbrick.me/wp-content/uploads/2020/03/ESb0DWWXkAMxSzI.jpg"
           alt="Pokémon Logo"
-          className="pokemonLogo"
+          className="loginPagePicture"
         />
         <h2 className="loginTitle">Welcome Trainer!</h2>
 

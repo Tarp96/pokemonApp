@@ -1140,9 +1140,8 @@ body {
   text-align: center;
 }
 
-.pokemonLogo {
-  width: 150px;
-  margin-bottom: 16px;
+.loginPagePicture {
+  width: 100%;
 }
 
 .loginTitle {
