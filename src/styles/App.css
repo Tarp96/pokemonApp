@@ -1252,16 +1252,22 @@ body {
   transform: scale(1.05);
 }
 
-.errorMessage {
-  color: red;
+.loginRegisterFeedbackMessage {
+  max-width: 90%;
+  margin: 0 auto;
+  color: white;
   text-align: center;
   font-size: 14px;
+  padding: 10px;
+  border-radius: 25px;
+}
+
+.errorMessage {
+  color: red;
 }
 
 .successMessage {
-  color: green;
-  text-align: center;
-  font-size: 14px;
+  background-color: green;
 }
 /*REGISTER ACCOUNT PAGE END*/
 

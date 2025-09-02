@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebaseConfig";
+import { useNavigate } from "react-router-dom";
 
 const RegisterUserPage = () => {
   const [email, setEmail] = useState("");
@@ -8,6 +9,7 @@ const RegisterUserPage = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [accountRegistered, setAccountRegistered] = useState(false);
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -27,6 +29,7 @@ const RegisterUserPage = () => {
       );
       console.log("User registered:", userCredential.user);
       setSuccess("Account created successfully! 🎉");
+      accountRegistered(true);
     } catch (err) {
       console.error("Error registering user:", err);
       setError(err.message);
@@ -71,14 +74,29 @@ const RegisterUserPage = () => {
             onChange={(e) => setConfirmPassword(e.target.value)}
           />
 
-          {error && <div className="errorMessage">{error}</div>}
-          {success && <div className="successMessage">{success}</div>}
+          {error && (
+            <div className="errorMessage loginRegisterFeedbackMessage">
+              {error}
+            </div>
+          )}
+          {success && (
+            <div className="successMessage loginRegisterFeedbackMessage">
+              {success}
+            </div>
+          )}
 
-          <button type="submit" className="registerButton">
+          <button
+            type="submit"
+            className="registerButton"
+            onClick={handleRegister}
+          >
             Register
           </button>
         </form>
       </div>
+
+      {accountRegistered && ()}    
+
     </div>
   );
 };
