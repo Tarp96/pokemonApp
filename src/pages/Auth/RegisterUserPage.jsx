@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../../firebaseConfig";
-import { useNavigate, Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const RegisterUserPage = () => {
   const [email, setEmail] = useState("");
@@ -9,6 +9,8 @@ const RegisterUserPage = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+
+  const navigate = useNavigate();
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -27,7 +29,12 @@ const RegisterUserPage = () => {
         password
       );
       console.log("User registered:", userCredential.user);
-      setSuccess("Account created successfully! 🎉");
+
+      setSuccess("Account created successfully! 🎉 Redirecting...");
+
+      setTimeout(() => {
+        navigate("/login", { replace: true });
+      }, 2000);
     } catch (err) {
       console.error("Error registering user:", err);
       setError(err.message);
