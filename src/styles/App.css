@@ -1113,6 +1113,7 @@ body {
 /*AUTH LAYOUT PAGE*/
 .authLayoutContainer {
   max-width: 50%;
+  margin: 0 auto;
 }
 /*AUTH LAYOUT PAGE END*/
 
@@ -1125,7 +1126,6 @@ body {
   justify-content: center;
   align-items: center;
   padding: 20px;
-
   margin: 0 auto;
 }
 
@@ -1195,6 +1195,28 @@ body {
 /*LOGIN PAGE END*/
 
 /*REGISTER ACCOUNT PAGE*/
+.registerContainer {
+  background-color: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+.registerCard {
+  background-color: #fff;
+  border: 2px solid #facc15;
+  border-radius: 16px;
+  padding: 32px;
+  max-width: 400px;
+  width: 100%;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
 .registerForm {
   display: flex;
   flex-direction: column;
