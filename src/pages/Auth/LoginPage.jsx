@@ -8,7 +8,7 @@ import { useAuth } from "./../../contexts/authContext/AuthContext";
 import { Navigate, useNavigate } from "react-router-dom";
 
 const LoginPage = () => {
-  const { userLoggedIn } = useAuth();
+  const { userLoggedIn, loading } = useAuth();
   const navigate = useNavigate();
 
   const [email, setEmail] = useState("");
@@ -53,16 +53,15 @@ const LoginPage = () => {
     }
   };
 
-  if (userLoggedIn) {
+  if (!loading && userLoggedIn) {
     return <Navigate to="/" replace />;
   }
 
   return (
     <div className="loginContainer">
       <div className="loginCard">
-        <h2>Log in or register!</h2>
         <img
-          src="assets/pokeb.png"
+          src="/assets/pokeb.png"
           alt="Pokémon Logo"
           className="pokemonLogo"
         />
@@ -76,6 +75,7 @@ const LoginPage = () => {
             required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            disabled={submitting}
           />
 
           <label htmlFor="password">Password</label>
@@ -85,19 +85,16 @@ const LoginPage = () => {
             required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            disabled={submitting}
           />
 
           {error && <div className="errorMessage">{error}</div>}
+          {success && <div className="successMessage">{success}</div>}
 
-          <button type="submit" className="loginButton" onClick={handleLogin}>
-            Log In
+          <button type="submit" className="loginButton" disabled={submitting}>
+            {submitting ? "Logging in…" : "Log In"}
           </button>
         </form>
-        <div className="createAccountInfoDiv">
-          <NavLink to="register" className="navigateToRegisterBtn">
-            Dont have an account? Create one here!
-          </NavLink>
-        </div>
       </div>
     </div>
   );
