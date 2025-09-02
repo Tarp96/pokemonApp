@@ -67,7 +67,7 @@ const LoginPage = () => {
           </button>
         </form>
         <div className="createAccountInfoDiv">
-          <NavLink to="register">
+          <NavLink to="register" className="navigateToRegisterBtn">
             Dont have an account? Create one here!
           </NavLink>
         </div>
