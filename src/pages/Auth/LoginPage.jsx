@@ -31,6 +31,10 @@ const LoginPage = () => {
     }
   };
 
+  if (userLoggedIn) {
+    return <Navigate to="/" replace />;
+  }
+
   return (
     <div className="loginContainer">
       <div className="loginCard">
