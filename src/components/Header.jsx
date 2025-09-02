@@ -1,5 +1,5 @@
 import { NavLink, useNavigate } from "react-router-dom";
-import { useAuth } from "../../contexts/authContext/AuthContext";
+import { useAuth } from "../contexts/authContext/AuthContext";
 
 export const Header = () => {
   let navigate = useNavigate();
@@ -30,9 +30,15 @@ export const Header = () => {
           <NavLink to="/profilepage" className="headerNavBtn">
             Profile
           </NavLink>
-          <NavLink to="/login" className="headerNavBtn">
-            Log In
-          </NavLink>
+          {userLoggedIn ? (
+            <button onClick={logout} className="headerNavBtn">
+              Log Out
+            </button>
+          ) : (
+            <NavLink to="/login" className="headerNavBtn">
+              Log In
+            </NavLink>
+          )}
         </div>
       </header>
     </>
