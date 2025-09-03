@@ -7,7 +7,7 @@ import { db } from "../../firebaseConfig";
 
 const RegisterUserPage = () => {
   const [email, setEmail] = useState("");
-  const [userName, setUserName] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
@@ -66,7 +66,7 @@ const RegisterUserPage = () => {
               id="username"
               type="text"
               required
-              value={userName}
+              value={username}
               onChange={(e) => setUsername(e.target.value)}
             />
 
