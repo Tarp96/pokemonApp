@@ -4,12 +4,11 @@ import {
   deleteDoc,
   doc,
   getDocs,
+  setDoc,
   query,
   where,
 } from "firebase/firestore";
 import { db, auth } from "../firebaseConfig";
-
-const favoritesRef = collection(db, "favorites");
 
 export const isAlreadyFavorited = async (name) => {
   const user = auth.currentUser;
