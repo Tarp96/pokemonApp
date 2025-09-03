@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 const RegisterUserPage = () => {
   const [email, setEmail] = useState("");
+  const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
