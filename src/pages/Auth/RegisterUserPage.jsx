@@ -33,8 +33,8 @@ const RegisterUserPage = () => {
       );
       const user = userCredential.user;
 
-      await setDoc(doc(db, "users", user.uid, "profileData"), {
-        username,
+      await setDoc(doc(db, "users", user.uid), {
+        username: username,
         email: user.email,
         createdAt: new Date(),
       });
