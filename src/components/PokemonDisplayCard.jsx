@@ -12,6 +12,7 @@ import {
 } from "../services/favoritesService";
 import { toast } from "react-toastify";
 import { useAuth } from "../contexts/authContext/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 function PokemonDisplayCard({
   name,
@@ -23,6 +24,8 @@ function PokemonDisplayCard({
   generation,
 }) {
   const { userLoggedIn } = useAuth();
+
+  const navigate = useNavigate();
 
   const [isFavorite, setIsFavorite] = useState(false);
 
@@ -38,6 +41,7 @@ function PokemonDisplayCard({
   const handleFavoriteClick = async () => {
     if (!userLoggedIn) {
       toast.error("You must be logged in to save favorites");
+      setTimeout(() => navigate("/login"), 1000);
       return;
     }
 
