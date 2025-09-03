@@ -45,10 +45,10 @@ export const addFavorite = async (pokemon) => {
     await setDoc(favoriteRef, {
       name: pokemon.name,
       id: pokemon.id,
-      sprite: pokemon.sprites.front_default,
-      types: pokemon.types.map((t) => t.type.name),
-      generation: pokemon.generation,
-      cries: pokemon.cries?.legacy,
+      sprite: pokemon.sprites?.front_default || null,
+      types: pokemon.types?.map((t) => t.type.name) || [],
+      generation: pokemon.generation ?? "unknown",
+      cries: pokemon.cries?.legacy ?? null,
       savedAt: new Date(),
     });
   } catch (error) {
