@@ -31,10 +31,15 @@ const RegisterUserPage = () => {
         email,
         password
       );
-      console.log("User registered:", userCredential.user);
+      const user = userCredential.user;
+
+      await setDoc(doc(db, "users", user.uid, "profileData"), {
+        username,
+        email: user.email,
+        createdAt: new Date(),
+      });
 
       setSuccess("Account created successfully! 🎉 Redirecting...");
-
       setTimeout(() => {
         navigate("/login", { replace: true });
       }, 2000);
