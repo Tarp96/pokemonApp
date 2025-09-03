@@ -12,8 +12,20 @@ import { db, auth } from "../firebaseConfig";
 const favoritesRef = collection(db, "favorites");
 
 export const isAlreadyFavorited = async (name) => {
-  const snapshot = await getDocs(collection(db, "favorites"));
-  return snapshot.docs.map((doc) => doc.data().name).includes(name);
+  const user = auth.currentUser;
+  if (!user) {
+    return false;
+  }
+
+  const favoritesRef = collection(db, "users", user.uid, "favorites");
+
+  try {
+    const snapshot = await getDocs(favoritesRef);
+    return snapshot.docs.some((doc) => doc.data().name === name);
+  } catch (error) {
+    console.error("Error checking favorite:", error);
+    return false;
+  }
 };
 
 export const addFavorite = async (pokemon) => {
