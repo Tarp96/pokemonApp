@@ -100,7 +100,7 @@ export const HomePage = () => {
 
       const updatedHistory = Array.from(
         new Set([searchTerm, ...searchHistory])
-      ).slice(0, 10);,
+      ).slice(0, 10);
       setSearchHistory(updatedHistory);
       setItem("searchHistory", updatedHistory);
       setQuery(searchTerm);
