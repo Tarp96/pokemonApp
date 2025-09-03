@@ -11,6 +11,7 @@ import {
   isAlreadyFavorited,
 } from "../services/favoritesService";
 import { toast } from "react-toastify";
+import { useAuth } from "../contexts/authContext/AuthContext";
 
 function PokemonDisplayCard({
   name,
@@ -21,6 +22,8 @@ function PokemonDisplayCard({
   pokemon,
   generation,
 }) {
+  const { userLoggedIn } = useAuth();
+
   const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
