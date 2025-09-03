@@ -46,15 +46,22 @@ export const addFavorite = async (pokemon) => {
 };
 
 export const removeFavorite = async (pokemonName) => {
-  try {
-    const q = query(favoritesRef, where("name", "==", pokemonName));
-    const snapshot = await getDocs(q);
+  const user = auth.currentUser;
+  if (!user) {
+    throw new Error("User not authenticated");
+  }
 
-    snapshot.forEach(async (docItem) => {
-      await deleteDoc(doc(db, "favorites", docItem.id));
-    });
+  const favoritesRef = collection(db, "users", user.uid, "favorites");
+  const q = query(favoritesRef, where("name", "==", pokemonName));
+
+  try {
+    const snapshot = await getDocs(q);
+    const batch = snapshot.docs.map((docItem) =>
+      deleteDoc(doc(db, "users", user.uid, "favorites", docItem.id))
+    );
+    await Promise.all(batch);
   } catch (error) {
-    console.error("Error removing pokemon from favorites", error);
+    console.error("Error removing Pokémon from favorites:", error);
   }
 };
 
