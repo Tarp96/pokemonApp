@@ -1,5 +1,8 @@
 import { Outlet } from "react-router-dom";
 import { PageNavigationBar } from "../../components/PageNavigationbar";
+import { useEffect, useState } from "react";
+import { doc, getDoc } from "firebase/firestore";
+import { db, auth } from "../../firebaseConfig";
 
 export const ProfilePageOverview = () => {
   return (
