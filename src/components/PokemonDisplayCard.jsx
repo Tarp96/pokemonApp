@@ -36,6 +36,11 @@ function PokemonDisplayCard({
   }, [pokemon.name]);
 
   const handleFavoriteClick = async () => {
+    if (!userLoggedIn) {
+      toast.error("You must be logged in to save favorites");
+      return;
+    }
+
     if (isFavorite) {
       await removeFavorite(pokemon.name);
       toast.info(
