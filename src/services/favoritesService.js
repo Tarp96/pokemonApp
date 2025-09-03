@@ -7,8 +7,7 @@ import {
   query,
   where,
 } from "firebase/firestore";
-import { db } from "../firebaseConfig";
-import { auth } from "../contexts/authContext/AuthContext";
+import { db, auth } from "../firebaseConfig";
 
 const favoritesRef = collection(db, "favorites");
 
