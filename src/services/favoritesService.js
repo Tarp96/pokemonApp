@@ -8,6 +8,10 @@ import {
   where,
 } from "firebase/firestore";
 import { db } from "../firebaseConfig";
+import { useAuth } from "../contexts/authContext/AuthContext";
+
+const { currentUser } = useAuth();
+const uid = currentUser?.uid;
 
 const favoritesRef = collection(db, "favorites");
 
