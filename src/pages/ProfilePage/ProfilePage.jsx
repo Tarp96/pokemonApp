@@ -1,8 +1,35 @@
 import { useEffect, useState } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { db, auth } from "../../firebaseConfig";
+import { firstLetterUpperCase } from "../../utils/helperFunctions";
 
 export const ProfilePage = () => {
+  const [username, setUsername] = useState("");
+
+  useEffect(() => {
+    const fetchUsername = async () => {
+      const user = auth.currentUser;
+
+      if (!user) return;
+
+      try {
+        const docRef = doc(db, "users", user.uid);
+        const docSnap = await getDoc(docRef);
+
+        if (docSnap.exists()) {
+          const data = docSnap.data();
+          setUsername(data.username);
+        } else {
+          console.warn("No profile found for this user.");
+        }
+      } catch (err) {
+        console.error("Error fetching username:", err);
+      }
+    };
+
+    fetchUsername();
+  }, []);
+
   return (
     <div className="trainerInfoContainer">
       <div className="trainerInfoHeader">
@@ -12,7 +39,9 @@ export const ProfilePage = () => {
           className="trainerAvatar"
         />
         <div className="trainerDetails">
-          <h2 className="trainerName">Trainer Red</h2>
+          <h2 className="trainerName">
+            {firstLetterUpperCase(username) || "Trainer"}
+          </h2>
           <p className="trainerSubtitle">
             The very best, like no one ever was.
           </p>
