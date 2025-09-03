@@ -27,9 +27,12 @@ export const Header = () => {
           <NavLink to="/" className="headerNavBtn">
             Home
           </NavLink>
-          <NavLink to="/profilepage" className="headerNavBtn">
-            Profile
-          </NavLink>
+          {userLoggedIn ? (
+            <NavLink to="/profilepage" className="headerNavBtn">
+              Profile
+            </NavLink>
+          ) : null}
+
           {userLoggedIn ? (
             <button onClick={logout} className="headerNavBtn">
               Log Out
