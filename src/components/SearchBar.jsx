@@ -24,7 +24,7 @@ export const SearchBar = ({
             onBlur={() => setTimeout(() => setShowSearches(false), 200)}
             onKeyDown={(e) => {
               if (e.key === "Enter") {
-                onClick();
+                onClick(query);
               }
             }}
             placeholder="Example: Charizard or Latios"
@@ -39,7 +39,7 @@ export const SearchBar = ({
             </button>
           )}
         </div>
-        <button onClick={onClick} className="searchBarButton">
+        <button onClick={() => onClick(query)} className="searchBarButton">
           Search 🔎
         </button>
       </div>
