@@ -1220,6 +1220,10 @@ body {
   margin: 0 auto;
 }
 
+.registerPagePicture {
+  width: 80%;
+}
+
 .registerCard {
   background-color: #fff;
   border: 2px solid #facc15;

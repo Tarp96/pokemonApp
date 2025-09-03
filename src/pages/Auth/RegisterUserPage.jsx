@@ -46,9 +46,9 @@ const RegisterUserPage = () => {
       <div className="registerContainer">
         <div className="registerCard">
           <img
-            src="/assets/pokeb.png"
+            src="https://64.media.tumblr.com/f3cf3c3c5083acf7ab7444abc7698737/50fc556398e85aa7-a2/s1280x1920/59b1238ca19f82b5e7b1b24061911267a3e9abbc.jpg"
             alt="Pokémon Logo"
-            className="pokemonLogo"
+            className="registerPagePicture"
           />
           <h2 className="registerTitle">Join the Adventure!</h2>
 
