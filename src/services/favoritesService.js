@@ -8,10 +8,7 @@ import {
   where,
 } from "firebase/firestore";
 import { db } from "../firebaseConfig";
-import { useAuth } from "../contexts/authContext/AuthContext";
-
-const { currentUser } = useAuth();
-const uid = currentUser?.uid;
+import { auth } from "../contexts/authContext/AuthContext";
 
 const favoritesRef = collection(db, "favorites");
 
@@ -21,17 +18,31 @@ export const isAlreadyFavorited = async (name) => {
 };
 
 export const addFavorite = async (pokemon) => {
+  const user = auth.currentUser;
+  if (!user) {
+    throw new Error("User not authenticated");
+  }
+
+  const favoriteRef = doc(
+    db,
+    "users",
+    user.uid,
+    "favorites",
+    pokemon.id.toString()
+  );
+
   try {
-    await addDoc(favoritesRef, {
+    await setDoc(favoriteRef, {
       name: pokemon.name,
       id: pokemon.id,
       sprite: pokemon.sprites.front_default,
       types: pokemon.types.map((t) => t.type.name),
       generation: pokemon.generation,
       cries: pokemon.cries?.legacy,
+      savedAt: new Date(),
     });
   } catch (error) {
-    console.error("Error adding pokemon to database:", error);
+    console.error("Error saving favorite:", error);
   }
 };
 
