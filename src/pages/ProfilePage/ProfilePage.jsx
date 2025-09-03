@@ -1,3 +1,7 @@
+import { useEffect, useState } from "react";
+import { doc, getDoc } from "firebase/firestore";
+import { db, auth } from "../../firebaseConfig";
+
 export const ProfilePage = () => {
   return (
     <div className="trainerInfoContainer">
