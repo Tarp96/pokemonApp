@@ -78,6 +78,13 @@ export const removeFavorite = async (pokemonName) => {
 };
 
 export const getAllFavorites = async () => {
+  const user = auth.currentUser;
+  if (!user) {
+    return [];
+  }
+
+  const favoritesRef = collection(db, "users", user.uid, "favorites");
+
   try {
     const snapshot = await getDocs(favoritesRef);
     return snapshot.docs.map((doc) => ({
@@ -85,7 +92,7 @@ export const getAllFavorites = async () => {
       ...doc.data(),
     }));
   } catch (error) {
-    console.error("Error retrieving favorites", error);
+    console.error("Error retrieving favorites:", error);
     return [];
   }
 };
