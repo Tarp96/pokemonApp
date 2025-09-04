@@ -16,7 +16,7 @@ export const FavoritePokemonsPage = () => {
     load();
   }, []);
 
-  const displayFavorites = favoritesList.map((pokemon, index) => {
+  const displayFavorites = favoritesList.map((pokemon) => {
     const normalizedTypes = pokemon.types?.map((t) =>
       typeof t === "string" ? { type: { name: t } } : t
     );
