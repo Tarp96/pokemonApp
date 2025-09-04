@@ -89,7 +89,7 @@ export const PokemonDetailOverView = () => {
           <div className="abilitiesAndTypesContainer">
             <div className="infoSection">
               <h2 className="sectionTitle">Abilities</h2>
-              <div className="infoText">{abilities}</div>
+              <div className="infoText">{renderedAbilities}</div>
             </div>
             <div className="infoSection">
               <h2 className="sectionTitle">Types</h2>
