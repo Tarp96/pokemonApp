@@ -1,0 +1,427 @@
+/*DETAILS PAGE*/
+.detailsPageContainer {
+  width: 80%;
+  max-width: 1000px;
+  margin: 2rem auto;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 8px;
+  font-family: "Montserrat", sans-serif;
+}
+
+.detailsPageHeader {
+  margin: 0;
+  line-height: 1.1;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.detailsPageTitle {
+  font-size: 64px;
+}
+
+.navigateBackButton {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-decoration: none;
+  background: linear-gradient(to bottom right, #e0e0e0, #ffffff);
+  border: 2px solid #3b4cca;
+  padding: 8px 12px;
+  border-radius: 8px;
+  color: #3b4cca;
+  font-weight: 600;
+  font-size: 16px;
+  box-shadow: 2px 2px 0 #000;
+  transition: all 0.2s ease-in-out;
+}
+
+.navigateBackButton:hover {
+  background: linear-gradient(to bottom right, #ffcb05, #ffdf70);
+  color: #1a1a1a;
+  transform: translateY(-2px);
+}
+
+.backIcon {
+  font-size: 20px;
+}
+
+.pagination-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.pagination-container button {
+  font-family: "Press Start 2P", cursive;
+  padding: 8px 16px;
+  font-size: 16px;
+  font-weight: 500;
+  border: 2px solid #3b4cca;
+  background: linear-gradient(to bottom right, #e0e0e0, #ffffff);
+  color: #3b4cca;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.paginationButtonImage {
+  width: 20px;
+  height: auto;
+  margin-right: 8px;
+  vertical-align: middle;
+}
+
+.pagination-container button:hover {
+  background: linear-gradient(to bottom right, #ffcb05, #ffdf70);
+  color: #1a1a1a;
+  transform: translateY(-2px);
+}
+
+.pagination-container button.active-page {
+  background: linear-gradient(to bottom right, #ffcb05, #ffa500);
+  border-color: #dba600;
+  color: #1a1a1a;
+  font-weight: bold;
+  transform: scale(1.05);
+}
+
+/*DETAIL PAGE NAVBAR*/
+
+.detailsNavigationBar {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  border-bottom: 2px solid #e0e0e0;
+  padding-bottom: 0.5rem;
+}
+
+.detailsNavigationBar a {
+  position: relative;
+  font-size: 20px;
+  text-decoration: none;
+  color: #555;
+  font-weight: 500;
+  padding: 0.3rem 0;
+  transition: color 0.2s ease;
+}
+
+.detailsNavigationBar a:hover {
+  color: #000;
+}
+
+.detailsNavigationBar a.active {
+  color: #222;
+  font-weight: 600;
+}
+
+.detailsNavigationBar a.active::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background-color: #ffcb05;
+  border-radius: 2px;
+}
+
+.detailsTopSection {
+  display: flex;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.mainImageContainer {
+  width: 380px;
+  height: 380px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: gray;
+  padding: 10px;
+  box-sizing: border-box;
+  overflow: visible;
+}
+
+.mainDetailImage {
+  width: 90%;
+  height: auto;
+  object-fit: contain;
+}
+
+.typeGradientBorder {
+  padding: 30px;
+  border-radius: 50%;
+  display: inline-block;
+  background: gray;
+}
+
+.flavorTextContainer {
+  padding: 1rem;
+  background-color: #fff5e6;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.flavorText {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  font-style: italic;
+  font-weight: bold;
+  color: #444;
+  line-height: 1.4;
+}
+
+.abilitiesAndTypesContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 1rem;
+  border-top: 2px solid orange;
+  padding-top: 1rem;
+}
+
+.infoSection {
+  flex: 1;
+  background-color: #fff;
+  border: 1px solid #ffa500;
+  border-radius: 8px;
+  padding: 0.75rem;
+  margin: 10px;
+}
+
+.sectionTitle {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
+  color: #e68a00;
+}
+
+.infoText {
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.typeList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-top: 1.75rem;
+}
+
+.criesButtons {
+  display: flex;
+  gap: 0.75rem;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+}
+
+.audioButtonExpanded {
+  background-color: #4f83cc;
+  color: white;
+  font-size: 1rem;
+  padding: 5px 20px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  display: inline-flex;
+
+  gap: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
+}
+
+.audioButtonExpanded:hover {
+  background-color: #3c6db3;
+  transform: translateY(-2px);
+}
+
+/*STATS PAGE*/
+.statsPageContainer {
+  width: 100%;
+  padding: 40px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  background: linear-gradient(to right, #f5f7fa, #c3cfe2);
+}
+
+.statsTitle {
+  font-family: "Verdana", sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 30px;
+  color: #2b2b2b;
+  text-shadow: 1px 1px #ffffff;
+}
+
+.chartCard {
+  height: auto;
+  width: fit-content;
+  padding: 20px 30px;
+  box-sizing: border-box;
+  background-color: #fff;
+  border-radius: 16px;
+  padding: 16px 30px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  width: 90%;
+  max-width: 900px;
+  transition: transform 0.2s ease;
+  box-sizing: border-box;
+}
+
+.chartCard:hover {
+  transform: translateY(-4px);
+}
+
+/*PHOTOS PAGE*/
+.modeToggle {
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.modeButton {
+  padding: 10px 25px;
+  margin-right: 8px;
+  border: 1px solid #d1d5db;
+  background-color: #e5e7eb;
+  color: #111827;
+  cursor: pointer;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 1.1em;
+  transition: background-color 0.2s ease;
+}
+
+.modeButton:hover {
+  background-color: #d1d5db;
+}
+
+.modeButton.active {
+  background-color: #facc15;
+}
+
+.modeToggle .modeButton:nth-of-type(2).active {
+  background-color: #60a5fa;
+}
+
+.imageGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.imageCard {
+  text-align: center;
+}
+
+.imageCard img {
+  width: 100%;
+  object-fit: contain;
+}
+
+.imageCard p {
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+/*GAMES PAGE*/
+.gamePageContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 16px;
+  padding: 20px;
+}
+
+.gamePageTitle {
+  text-align: center;
+  font-size: 2rem;
+  margin-top: 30px;
+  margin-bottom: 20px;
+  color: #333;
+  font-weight: bold;
+  text-transform: capitalize;
+  letter-spacing: 1px;
+}
+
+.gameCard {
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  text-align: center;
+  padding: 10px;
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.gameCard img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+/*MOVES PAGE*/
+.movesTitle {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: #333;
+  margin: 0;
+}
+
+.movesHeader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: nowrap;
+}
+
+.pokemonImage {
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.movesPage {
+  padding: 24px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.movesGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: center;
+}
+
+.moveCard {
+  background-color: #f4f4f4;
+  border: 1px solid #e0e0e0;
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 1rem;
+  font-weight: 500;
+  text-transform: capitalize;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease;
+  min-width: 120px;
+  text-align: center;
+}
+
+.moveCard:hover {
+  transform: translateY(-2px);
+  background-color: #fef08a;
+  cursor: pointer;
+}

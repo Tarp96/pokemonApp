@@ -2,6 +2,7 @@ import { useOutletContext } from "react-router-dom";
 import { firstLetterUpperCase } from "../../utils/helperFunctions";
 import { TypeBadge } from "../../components/TypeBadge";
 import AudioPlayer from "../../components/AudioPlayer";
+import "../../styles/DetailPageStyle.css";
 
 export const PokemonDetailOverView = () => {
   const { pokemon, pokemonSpecies } = useOutletContext();
