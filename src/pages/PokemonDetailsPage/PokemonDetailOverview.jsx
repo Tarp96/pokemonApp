@@ -9,6 +9,8 @@ import { fetchAbilityDetails } from "../../utils/pokeApi";
 export const PokemonDetailOverView = () => {
   const [abilityDetails, setAbilityDetails] = useState([]);
 
+  const { pokemon, pokemonSpecies } = useOutletContext();
+
   useEffect(() => {
     const controller = new AbortController();
 
@@ -41,8 +43,6 @@ export const PokemonDetailOverView = () => {
 
     return () => controller.abort();
   }, [pokemon]);
-
-  const { pokemon, pokemonSpecies } = useOutletContext();
 
   const abilities = pokemon.abilities?.map((a) => (
     <p key={a.ability.name}>{firstLetterUpperCase(a.ability.name)}</p>
