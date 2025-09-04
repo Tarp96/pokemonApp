@@ -3,8 +3,12 @@ import { firstLetterUpperCase } from "../../utils/helperFunctions";
 import { TypeBadge } from "../../components/TypeBadge";
 import AudioPlayer from "../../components/AudioPlayer";
 import "../../styles/DetailPageStyle.css";
+import { useState, useEffect } from "react";
+import { fetchAbilityDetails } from "../../utils/pokeApi";
 
 export const PokemonDetailOverView = () => {
+  const [abilityDetails, setAbilityDetails] = useState([]);
+
   const { pokemon, pokemonSpecies } = useOutletContext();
 
   const abilities = pokemon.abilities?.map((a) => (

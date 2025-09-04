@@ -49,3 +49,20 @@ export const fetchPokemonSpeciesDetails = async (pokemonName) => {
     throw error;
   }
 };
+
+export const fetchAbilityDetails = async (ability) => {
+  try {
+    const response = await fetch(
+      `https://pokeapi.co/api/v2/ability/${ability}/`
+    );
+    if (!response.ok) {
+      throw new Error(`Error fetching data for ${ability}`);
+    }
+
+    const data = await response.json();
+    return data;
+  } catch (error) {
+    console.error("Error fetching ability details:", error);
+    throw error;
+  }
+};
