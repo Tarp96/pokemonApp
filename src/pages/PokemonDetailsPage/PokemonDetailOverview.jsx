@@ -44,8 +44,14 @@ export const PokemonDetailOverView = () => {
     return () => controller.abort();
   }, [pokemon]);
 
-  const abilities = pokemon.abilities?.map((a) => (
-    <p key={a.ability.name}>{firstLetterUpperCase(a.ability.name)}</p>
+  const renderedAbilities = abilityDetails.map((ab) => (
+    <div key={ab.name} className="abilityCard">
+      <p className="abilityName">
+        {firstLetterUpperCase(ab.name)}{" "}
+        {ab.isHidden && <span className="hiddenTag">Hidden</span>}
+      </p>
+      <p className="abilityEffect">{ab.effect}</p>
+    </div>
   ));
 
   const types = pokemon.types?.map((type) => (
