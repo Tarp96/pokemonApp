@@ -26,7 +26,7 @@ export const PokemonDetailOverView = () => {
   return (
     <>
       <div className="detailsTopSection">
-        <div>
+        <div className="mainImageOuterContainer">
           <div
             className={`mainImageContainer typeGradientBorder ${pokemon.types?.[0]?.type.name}`}
           >
