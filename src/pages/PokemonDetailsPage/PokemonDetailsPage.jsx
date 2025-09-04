@@ -16,22 +16,37 @@ export const PokemonDetailsPage = () => {
   const [loading, setLoading] = useState(false);
 
   useEffect(() => {
-    const loadPokemonDetails = async () => {
+    const controller = new AbortController();
+
+    const loadAbilityDetails = async () => {
+      if (!pokemon.abilities) return;
+
       try {
-        setLoading(true);
-        const data = await fetchPokemonDetails(name);
-        setPokemon(data);
-        const speciesData = await fetchPokemonSpeciesDetails(name);
-        setPokemonSpecies(speciesData);
+        const fetchedDetails = await Promise.all(
+          pokemon.abilities.map(async (a) => {
+            const detail = await fetchAbilityDetails(a.ability.name);
+            const englishEntry = detail.effect_entries.find(
+              (entry) => entry.language.name === "en"
+            );
+
+            return {
+              name: a.ability.name,
+              isHidden: a.is_hidden,
+              effect: englishEntry?.short_effect || "No description available.",
+            };
+          })
+        );
+
+        setAbilityDetails(fetchedDetails);
       } catch (error) {
-        console.error("Failed to fetch Pokémon details:", error);
-      } finally {
-        setLoading(false);
+        console.error("Failed to load ability details:", error);
       }
     };
 
-    loadPokemonDetails();
-  }, [name]);
+    loadAbilityDetails();
+
+    return () => controller.abort();
+  }, [pokemon]);
 
   return loading ? (
     <p>Loading...</p>
