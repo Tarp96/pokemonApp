@@ -9,6 +9,39 @@ import { fetchAbilityDetails } from "../../utils/pokeApi";
 export const PokemonDetailOverView = () => {
   const [abilityDetails, setAbilityDetails] = useState([]);
 
+  useEffect(() => {
+    const controller = new AbortController();
+
+    const loadAbilityDetails = async () => {
+      if (!pokemon.abilities) return;
+
+      try {
+        const fetchedDetails = await Promise.all(
+          pokemon.abilities.map(async (a) => {
+            const detail = await fetchAbilityDetails(a.ability.name);
+            const englishEntry = detail.effect_entries.find(
+              (entry) => entry.language.name === "en"
+            );
+
+            return {
+              name: a.ability.name,
+              isHidden: a.is_hidden,
+              effect: englishEntry?.short_effect || "No description available.",
+            };
+          })
+        );
+
+        setAbilityDetails(fetchedDetails);
+      } catch (error) {
+        console.error("Failed to load ability details:", error);
+      }
+    };
+
+    loadAbilityDetails();
+
+    return () => controller.abort();
+  }, [pokemon]);
+
   const { pokemon, pokemonSpecies } = useOutletContext();
 
   const abilities = pokemon.abilities?.map((a) => (
