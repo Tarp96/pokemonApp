@@ -2,6 +2,12 @@ import { cacheGet, cacheSet, cacheGetStale } from "./cache";
 
 const ONE_DAY = 24 * 60 * 60 * 1000;
 
+const pageKey = (pageNumber, pageSize) =>
+  `cache:v1:page:${pageNumber}:${pageSize}`;
+const detailKey = (name) => `cache:v1:pokemon:${name.toLowerCase()}`;
+const speciesKey = (name) => `cache:v1:species:${name.toLowerCase()}`;
+const metaKey = `cache:v1:meta:count`;
+
 export const fetchData = async (pageNumber, pokemonPerPage) => {
   try {
     const offset = (pageNumber - 1) * pokemonPerPage;
