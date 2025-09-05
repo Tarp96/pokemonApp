@@ -12,7 +12,6 @@ import { PokemonGrid } from "../../components/PokemonGrid";
 import { useNavigate } from "react-router-dom";
 import Pagination from "../../components/Pagination";
 import { getItem, setItem } from "../../utils/localStorage";
-import { getCachedPageFull, setCachedPageFull } from "../../utils/cache";
 
 export const HomePage = () => {
   const [pokemon, setPokemon] = useState([]);
