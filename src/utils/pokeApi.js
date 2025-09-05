@@ -1,5 +1,7 @@
 import { cacheGet, cacheSet, cacheGetStale } from "./cache";
 
+const ONE_DAY = 24 * 60 * 60 * 1000;
+
 export const fetchData = async (pageNumber, pokemonPerPage) => {
   try {
     const offset = (pageNumber - 1) * pokemonPerPage;
