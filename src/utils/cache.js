@@ -1,6 +1,7 @@
 import { getItem, setItem } from "./localStorage";
 
 const PREFIX = "cache:v1:";
+const ONE_DAY = 24 * 60 * 60 * 1000;
 
 export function cacheSet(key, value) {
   const payload = { t: Date.now(), v: value };
@@ -32,12 +33,12 @@ export function cacheGetStale(key) {
 }
 
 export function clearCachePrefix(prefix = PREFIX) {
-  const keysToRemove = [];
+  const toRemove = [];
   for (let i = 0; i < localStorage.length; i++) {
     const k = localStorage.key(i);
-    if (k && k.startsWith(prefix)) keysToRemove.push(k);
+    if (k && k.startsWith(prefix)) toRemove.push(k);
   }
-  keysToRemove.forEach((k) => localStorage.removeItem(k));
+  toRemove.forEach((k) => localStorage.removeItem(k));
 }
 
 function isQuotaExceeded(e) {
@@ -51,20 +52,51 @@ function isQuotaExceeded(e) {
 }
 
 function tryEvictOldest(n = 5) {
-  const keys = [];
+  const items = [];
   for (let i = 0; i < localStorage.length; i++) {
     const k = localStorage.key(i);
-    if (k && k.startsWith(PREFIX)) {
-      try {
-        const p = JSON.parse(localStorage.getItem(k));
-        keys.push({ k, t: p?.t ?? 0 });
-      } catch {
-        keys.push({ k, t: 0 });
-      }
+    if (!k || !k.startsWith(PREFIX)) continue;
+    try {
+      const parsed = JSON.parse(localStorage.getItem(k));
+      items.push({ k, t: parsed?.t ?? 0 });
+    } catch {
+      items.push({ k, t: 0 });
     }
   }
-  keys.sort((a, b) => a.t - b.t);
-  for (let i = 0; i < Math.min(n, keys.length); i++) {
-    localStorage.removeItem(keys[i].k);
+  items.sort((a, b) => a.t - b.t);
+  for (let i = 0; i < Math.min(n, items.length); i++) {
+    localStorage.removeItem(items[i].k);
   }
+}
+
+const pageFullKey = (pageNumber) => `${PREFIX}pageFull:${pageNumber}`;
+const pagesIndexKey = `${PREFIX}pages:index`;
+const MAX_PAGES = 5;
+
+export function getCachedPageFull(pageNumber, ttlMs = ONE_DAY) {
+  return cacheGet(pageFullKey(pageNumber), ttlMs);
+}
+
+export function setCachedPageFull(pageNumber, value) {
+  cacheSet(pageFullKey(pageNumber), value);
+
+  let idx = [];
+  try {
+    idx = JSON.parse(localStorage.getItem(pagesIndexKey) || "[]");
+  } catch {
+    idx = [];
+  }
+  idx = [pageNumber, ...idx.filter((p) => p !== pageNumber)].slice(
+    0,
+    MAX_PAGES
+  );
+  localStorage.setItem(pagesIndexKey, JSON.stringify(idx));
+
+  const keep = new Set(idx.map((p) => pageFullKey(p)));
+  const toRemove = [];
+  for (let i = 0; i < localStorage.length; i++) {
+    const k = localStorage.key(i);
+    if (k?.startsWith(`${PREFIX}pageFull:`) && !keep.has(k)) toRemove.push(k);
+  }
+  toRemove.forEach((k) => localStorage.removeItem(k));
 }
