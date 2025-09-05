@@ -1,3 +1,5 @@
+import { cacheGet, cacheSet, cacheGetStale } from "./cache";
+
 export const fetchData = async (pageNumber, pokemonPerPage) => {
   try {
     const offset = (pageNumber - 1) * pokemonPerPage;
