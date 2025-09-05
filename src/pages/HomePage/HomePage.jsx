@@ -32,14 +32,6 @@ export const HomePage = () => {
   }, [pageNumber]);
 
   const loadPokemonData = async (pageNumber) => {
-    const cachedFull = getCachedPageFull(pageNumber);
-    if (cachedFull?.list?.length) {
-      setPokemon(cachedFull.list);
-      setFilteredPokemon(cachedFull.list);
-      setTotalPages(cachedFull.totalPages ?? 0);
-      return;
-    }
-
     try {
       setLoading(true);
 

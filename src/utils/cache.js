@@ -3,6 +3,23 @@ import { getItem, setItem } from "./localStorage";
 const PREFIX = "cache:v1:";
 const ONE_DAY = 24 * 60 * 60 * 1000;
 
+export function getCachedPageFull(pageNumber, ttlMs = ONE_DAY) {
+  const raw = localStorage.getItem(pageFullKey(pageNumber));
+  if (!raw) return null;
+  try {
+    const { t, v } = JSON.parse(raw);
+    if (Date.now() - t > ttlMs) return null;
+    return v;
+  } catch {
+    return null;
+  }
+}
+
+export function setCachedPageFull(pageNumber, value) {
+  const payload = { t: Date.now(), v: value };
+  localStorage.setItem(pageFullKey(pageNumber), JSON.stringify(payload));
+}
+
 export function cacheSet(key, value) {
   const payload = { t: Date.now(), v: value };
   try {
