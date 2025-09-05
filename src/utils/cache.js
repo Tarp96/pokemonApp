@@ -13,3 +13,8 @@ export function cacheGet(key, maxAgeMs) {
   if (Date.now() - t > maxAgeMs) return null;
   return v;
 }
+
+export function cacheGetStale(key) {
+  const payload = getItem(key);
+  return payload ? payload.v ?? null : null;
+}
