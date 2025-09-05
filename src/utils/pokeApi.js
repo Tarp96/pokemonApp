@@ -35,6 +35,10 @@ export const fetchData = async (pageNumber, pokemonPerPage) => {
 };
 
 export const fetchPokemonDetails = async (pokemonName) => {
+  const key = detailKey(pokemonName);
+  const cached = cacheGet(key, ONE_DAY);
+  if (cached) return cached;
+
   try {
     const response = await fetch(
       `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
