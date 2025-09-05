@@ -70,8 +70,6 @@ function tryEvictOldest(n = 5) {
 }
 
 const pageFullKey = (pageNumber) => `${PREFIX}pageFull:${pageNumber}`;
-const pagesIndexKey = `${PREFIX}pages:index`;
-const MAX_PAGES = 5;
 
 export function getCachedPageFull(pageNumber, ttlMs = ONE_DAY) {
   const raw = localStorage.getItem(pageFullKey(pageNumber));
