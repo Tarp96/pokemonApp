@@ -43,14 +43,14 @@ export const fetchPokemonDetails = async (pokemonName) => {
     const response = await fetch(
       `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
     );
-    if (!response.ok) {
-      throw new Error(`Error fetching data for ${pokemonName}`);
-    }
-
+    if (!response.ok) throw new Error(`Error fetching data for ${pokemonName}`);
     const data = await response.json();
+    cacheSet(key, data);
     return data;
   } catch (error) {
     console.error("Error fetching Pokemon details:", error);
+    const stale = cacheGetStale(key);
+    if (stale) return stale;
     throw error;
   }
 };
