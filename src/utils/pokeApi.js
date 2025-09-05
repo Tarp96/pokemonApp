@@ -56,18 +56,22 @@ export const fetchPokemonDetails = async (pokemonName) => {
 };
 
 export const fetchPokemonSpeciesDetails = async (pokemonName) => {
+  const key = speciesKey(pokemonName);
+  const cached = cacheGet(key, ONE_DAY);
+  if (cached) return cached;
+
   try {
     const response = await fetch(
       `https://pokeapi.co/api/v2/pokemon-species/${pokemonName}`
     );
-    if (!response.ok) {
-      throw new Error(`Error fetching data for ${pokemonName}`);
-    }
-
+    if (!response.ok) throw new Error(`Error fetching data for ${pokemonName}`);
     const data = await response.json();
+    cacheSet(key, data);
     return data;
   } catch (error) {
     console.error("Error fetching Pokemon species details:", error);
+    const stale = cacheGetStale(key);
+    if (stale) return stale;
     throw error;
   }
 };
