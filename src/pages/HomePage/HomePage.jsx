@@ -9,6 +9,7 @@ import { useNavigate } from "react-router-dom";
 import Pagination from "../../components/Pagination";
 import { getItem, setItem } from "../../utils/localStorage";
 import { fetchPokemonCardData } from "../../utils/pokeApiCard";
+import { getCachedPageFull, setCachedPageFull } from "../../utils/cache";
 
 export const HomePage = () => {
   const [pokemon, setPokemon] = useState([]);

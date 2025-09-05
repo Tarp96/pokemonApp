@@ -3,23 +3,6 @@ import { getItem, setItem } from "./localStorage";
 const PREFIX = "cache:v1:";
 const ONE_DAY = 24 * 60 * 60 * 1000;
 
-export function getCachedPageFull(pageNumber, ttlMs = ONE_DAY) {
-  const raw = localStorage.getItem(pageFullKey(pageNumber));
-  if (!raw) return null;
-  try {
-    const { t, v } = JSON.parse(raw);
-    if (Date.now() - t > ttlMs) return null;
-    return v;
-  } catch {
-    return null;
-  }
-}
-
-export function setCachedPageFull(pageNumber, value) {
-  const payload = { t: Date.now(), v: value };
-  localStorage.setItem(pageFullKey(pageNumber), JSON.stringify(payload));
-}
-
 export function cacheSet(key, value) {
   const payload = { t: Date.now(), v: value };
   try {
@@ -91,29 +74,18 @@ const pagesIndexKey = `${PREFIX}pages:index`;
 const MAX_PAGES = 5;
 
 export function getCachedPageFull(pageNumber, ttlMs = ONE_DAY) {
-  return cacheGet(pageFullKey(pageNumber), ttlMs);
+  const raw = localStorage.getItem(pageFullKey(pageNumber));
+  if (!raw) return null;
+  try {
+    const { t, v } = JSON.parse(raw);
+    if (Date.now() - t > ttlMs) return null;
+    return v;
+  } catch {
+    return null;
+  }
 }
 
 export function setCachedPageFull(pageNumber, value) {
-  cacheSet(pageFullKey(pageNumber), value);
-
-  let idx = [];
-  try {
-    idx = JSON.parse(localStorage.getItem(pagesIndexKey) || "[]");
-  } catch {
-    idx = [];
-  }
-  idx = [pageNumber, ...idx.filter((p) => p !== pageNumber)].slice(
-    0,
-    MAX_PAGES
-  );
-  localStorage.setItem(pagesIndexKey, JSON.stringify(idx));
-
-  const keep = new Set(idx.map((p) => pageFullKey(p)));
-  const toRemove = [];
-  for (let i = 0; i < localStorage.length; i++) {
-    const k = localStorage.key(i);
-    if (k?.startsWith(`${PREFIX}pageFull:`) && !keep.has(k)) toRemove.push(k);
-  }
-  toRemove.forEach((k) => localStorage.removeItem(k));
+  const payload = { t: Date.now(), v: value };
+  localStorage.setItem(pageFullKey(pageNumber), JSON.stringify(payload));
 }
