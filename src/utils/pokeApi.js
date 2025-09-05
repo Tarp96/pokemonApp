@@ -15,21 +15,23 @@ export const fetchData = async (pageNumber, pokemonPerPage) => {
   ));
   if (cached) return cached;
 
+  const offset = (pageNumber - 1) * pokemonPerPage;
+  const url = `https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=${pokemonPerPage}`;
+
   try {
-    const offset = (pageNumber - 1) * pokemonPerPage;
-    const url = `https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=${pokemonPerPage}`;
-
     const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error("Error fetching Pokemon data");
-    }
-
+    if (!response.ok) throw new Error("Error fetching Pokemon data");
     const result = await response.json();
+
+    cacheSet(pageKey(pageNumber, pokemonPerPage), result);
+    if (typeof result.count === "number") cacheSet(metaKey, result.count);
     return result;
   } catch (error) {
     console.error("Error fetching data, ", error);
+    const stale = cacheGetStale(pageKey(pageNumber, pokemonPerPage));
+    if (stale) return stale;
+    throw error;
   }
-  throw error;
 };
 
 export const fetchPokemonDetails = async (pokemonName) => {
