@@ -1,15 +1,6 @@
 import { getItem, setItem } from "./localStorage";
 
-const pageFullKey = (pageNumber) => `cache:v1:pageFull:${pageNumber}`;
-const ONE_DAY = 24 * 60 * 60 * 1000;
-
-export function getCachedPageFull(pageNumber) {
-  return cacheGet(pageFullKey(pageNumber), ONE_DAY);
-}
-
-export function setCachedPageFull(pageNumber, value) {
-  cacheSet(pageFullKey(pageNumber), value);
-}
+const PREFIX = "cache:v1:";
 
 export function cacheSet(key, value) {
   const payload = { t: Date.now(), v: value };
