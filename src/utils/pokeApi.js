@@ -9,6 +9,12 @@ const speciesKey = (name) => `cache:v1:species:${name.toLowerCase()}`;
 const metaKey = `cache:v1:meta:count`;
 
 export const fetchData = async (pageNumber, pokemonPerPage) => {
+  const cached = (cached = cacheGet(
+    pageKey(pageNumber, pokemonPerPage),
+    ONE_DAY
+  ));
+  if (cached) return cached;
+
   try {
     const offset = (pageNumber - 1) * pokemonPerPage;
     const url = `https://pokeapi.co/api/v2/pokemon/?offset=${offset}&limit=${pokemonPerPage}`;
