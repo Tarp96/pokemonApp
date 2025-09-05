@@ -12,6 +12,7 @@ import { PokemonGrid } from "../../components/PokemonGrid";
 import { useNavigate } from "react-router-dom";
 import Pagination from "../../components/Pagination";
 import { getItem, setItem } from "../../utils/localStorage";
+import { getCachedPageFull, setCachedPageFull } from "../../utils/cache";
 
 export const HomePage = () => {
   const [pokemon, setPokemon] = useState([]);
@@ -35,10 +36,19 @@ export const HomePage = () => {
   }, [pageNumber]);
 
   const loadPokemonData = async (pageNumber) => {
+    const cachedFull = getCachedPageFull(pageNumber);
+    if (cachedFull?.list?.length) {
+      setPokemon(cachedFull.list);
+      setFilteredPokemon(cachedFull.list);
+      setTotalPages(cachedFull.totalPages ?? 0);
+      return;
+    }
+
     try {
       setLoading(true);
+
       const result = await fetchData(pageNumber, 20);
-      const pokemonNames = result.results.map((pokemon) => pokemon.name);
+      const pokemonNames = result.results.map((p) => p.name);
 
       const pokemonDetailPromises = pokemonNames.map(async (pokemonName) => {
         const [details, species] = await Promise.all([
@@ -53,12 +63,19 @@ export const HomePage = () => {
       });
 
       const allPokemonDetails = await Promise.all(pokemonDetailPromises);
+
+      const pages = Math.ceil((result.count ?? 0) / 20);
       setPokemon(allPokemonDetails);
       setFilteredPokemon(allPokemonDetails);
-      setLoading(false);
-      setTotalPages(Math.ceil(result.count / 20));
+      setTotalPages(pages);
+
+      setCachedPageFull(pageNumber, {
+        list: allPokemonDetails,
+        totalPages: pages,
+      });
     } catch (error) {
       console.error("Error loading Pokemon data:", error);
+    } finally {
       setLoading(false);
     }
   };
