@@ -1,6 +1,7 @@
 const files = import.meta.glob("../assets/typeIcons/*.svg", {
   eager: true,
-  as: "url",
+  query: "?url",
+  import: "default",
 });
 
 const iconMap = Object.fromEntries(
