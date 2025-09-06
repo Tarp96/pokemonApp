@@ -150,13 +150,13 @@
   display: flex;
   width: 50%;
   margin: 0 auto;
-  border: 2px solid #ccc;       
+  border: 2px solid #ccc;
   border-radius: 10px;
-  overflow: hidden;             
+  overflow: hidden;
 }
 
 .tabButton {
-  flex: 1;                      
+  flex: 1;
   padding: 10px 0;
   border: none;
   background-color: #f9f9f9;
@@ -170,13 +170,13 @@
 }
 
 .tabButton.active {
-  background-color: #ffcc00;    
+  background-color: #ffcc00;
   font-weight: bold;
 }
 
 .tabButton:not(.active) {
-  color: #666;                 
-
+  color: #666;
+}
 
 /*DETAIL OVERVIEW PAGE END*/
 

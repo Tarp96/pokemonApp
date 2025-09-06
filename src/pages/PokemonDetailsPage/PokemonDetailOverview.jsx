@@ -99,6 +99,7 @@ export const PokemonDetailOverView = () => {
           </div>
         </div>
         <div className="overviewPageTopInfoSection">
+          <h2>{firstLetterUpperCase(pokemon.name)}</h2>
           {displayEnglishFavorText}
         </div>
       </div>
