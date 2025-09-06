@@ -8,6 +8,7 @@ import { fetchAbilityDetails } from "../../utils/pokeApi";
 
 export const PokemonDetailOverView = () => {
   const [abilityDetails, setAbilityDetails] = useState([]);
+  const [shiny, setShiny] = useState(false);
 
   const { pokemon, pokemonSpecies } = useOutletContext();
 
@@ -44,6 +45,10 @@ export const PokemonDetailOverView = () => {
     return () => controller.abort();
   }, [pokemon]);
 
+  const sprite = shiny
+    ? pokemon.sprites?.other["official-artwork"]?.front_shiny
+    : pokemon.sprites?.other["official-artwork"]?.front_default;
+
   const renderedAbilities = abilityDetails.map((ab) => (
     <div key={ab.name} className="abilityCard">
       <p className="abilityName">
@@ -69,13 +74,18 @@ export const PokemonDetailOverView = () => {
   return (
     <>
       <div className="detailsTopSection">
-        {pokemon.sprites?.other["official-artwork"]?.front_default && (
-          <img
-            src={pokemon.sprites.other["official-artwork"].front_default}
-            alt="Official artwork"
-            className="mainDetailImage"
-          />
-        )}
+        <div className="detailPageMainImageContainer">
+          {sprite && (
+            <img
+              src={sprite}
+              alt={shiny ? "Shiny artwork" : "Official artwork"}
+              className="mainDetailImage"
+            />
+          )}
+
+          <button onClick={() => setShiny(false)}>Normal</button>
+          <button onClick={() => setShiny(true)}>Shiny</button>
+        </div>
       </div>
     </>
   );
