@@ -135,9 +135,49 @@
 /*DETAIL PAGE NAVBAR END*/
 
 /*DETAIL OVERVIEW PAGE*/
-.detailPageMainImageContainer {
-  border: solid 2px red;
+.detailsTopSection {
+  display: flex;
 }
+
+.overviewPageMainImageContainer {
+  border: solid 2px red;
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+}
+
+.overViewPageImageSwitchButtonContainer {
+  display: flex;
+  width: 50%;
+  margin: 0 auto;
+  border: 2px solid #ccc;       
+  border-radius: 10px;
+  overflow: hidden;             
+}
+
+.tabButton {
+  flex: 1;                      
+  padding: 10px 0;
+  border: none;
+  background-color: #f9f9f9;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.tabButton:hover {
+  background-color: #eee;
+}
+
+.tabButton.active {
+  background-color: #ffcc00;    
+  font-weight: bold;
+}
+
+.tabButton:not(.active) {
+  color: #666;                 
+
+
 /*DETAIL OVERVIEW PAGE END*/
 
 /*STATS PAGE*/

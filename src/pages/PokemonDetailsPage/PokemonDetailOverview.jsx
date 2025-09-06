@@ -74,7 +74,7 @@ export const PokemonDetailOverView = () => {
   return (
     <>
       <div className="detailsTopSection">
-        <div className="detailPageMainImageContainer">
+        <div className="overviewPageMainImageContainer">
           {sprite && (
             <img
               src={sprite}
@@ -83,8 +83,23 @@ export const PokemonDetailOverView = () => {
             />
           )}
 
-          <button onClick={() => setShiny(false)}>Normal</button>
-          <button onClick={() => setShiny(true)}>Shiny</button>
+          <div className="overViewPageImageSwitchButtonContainer">
+            <button
+              className={`tabButton ${!shiny ? "active" : ""}`}
+              onClick={() => setShiny(false)}
+            >
+              Normal
+            </button>
+            <button
+              className={`tabButton ${shiny ? "active" : ""}`}
+              onClick={() => setShiny(true)}
+            >
+              Shiny
+            </button>
+          </div>
+        </div>
+        <div className="overviewPageTopInfoSection">
+          {displayEnglishFavorText}
         </div>
       </div>
     </>
