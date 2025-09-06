@@ -69,50 +69,13 @@ export const PokemonDetailOverView = () => {
   return (
     <>
       <div className="detailsTopSection">
-        <div className="mainImageOuterContainer">
-          <div
-            className={`mainImageContainer typeGradientBorder ${pokemon.types?.[0]?.type.name}`}
-          >
-            {pokemon.sprites?.other["official-artwork"]?.front_default && (
-              <img
-                src={pokemon.sprites.other["official-artwork"].front_default}
-                alt="Official artwork"
-                className="mainDetailImage"
-              />
-            )}
-          </div>
-        </div>
-
-        <div className="flavorTextContainer">
-          <p className="flavorText">{displayEnglishFavorText}</p>
-
-          <div className="abilitiesAndTypesContainer">
-            <div className="infoSection">
-              <h2 className="sectionTitle">Abilities</h2>
-              <div className="infoText">{renderedAbilities}</div>
-            </div>
-            <div className="infoSection">
-              <h2 className="sectionTitle">Types</h2>
-              <div className="typeList">{types}</div>
-            </div>
-          </div>
-
-          <div className="infoSection">
-            <h2 className="sectionTitle">Cries</h2>
-            <div className="criesButtons">
-              {pokemon.cries?.legacy && (
-                <AudioPlayer src={pokemon.cries.legacy}>
-                  <span className="audioButtonExpanded"> Legacy 🔊</span>
-                </AudioPlayer>
-              )}
-              {pokemon.cries?.latest && (
-                <AudioPlayer src={pokemon.cries.latest}>
-                  <span className="audioButtonExpanded"> Latest 🔊 </span>
-                </AudioPlayer>
-              )}
-            </div>
-          </div>
-        </div>
+        {pokemon.sprites?.other["official-artwork"]?.front_default && (
+          <img
+            src={pokemon.sprites.other["official-artwork"].front_default}
+            alt="Official artwork"
+            className="mainDetailImage"
+          />
+        )}
       </div>
     </>
   );
