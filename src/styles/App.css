@@ -363,15 +363,6 @@ body {
   margin: 5px 0;
 }
 
-.pokemon-card .type {
-  background-color: #f2f2f2;
-  padding: 5px 10px;
-  border-radius: 5px;
-  margin: 0 5px;
-  font-size: 0.8em;
-  color: #555;
-}
-
 .linkToDetailsPageButton {
   background-color: #4a90e2;
   color: white;
@@ -564,25 +555,14 @@ body {
 }
 
 /*TYPES*/
-
 .types {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   margin-top: 10px;
 }
-.types span {
-  padding: 5px 12px;
-  font-size: 14px;
-  border-radius: 20px;
-  font-weight: bold;
-  text-align: center;
-  display: inline-block;
-  text-transform: capitalize;
-  transition: all 0.3s ease;
-}
 
-.types span:hover {
+.types .typeBadge:hover {
   opacity: 0.8;
   transform: scale(1.05);
 }
