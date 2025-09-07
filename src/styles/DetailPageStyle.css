@@ -191,6 +191,12 @@
   padding-bottom: 5px;
 }
 
+.topInfoSectionTypeBadges {
+  width: 40%;
+  display: flex;
+  justify-content: space-between;
+}
+
 /*DETAIL OVERVIEW PAGE END*/
 
 /*STATS PAGE*/
