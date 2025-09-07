@@ -60,7 +60,12 @@ export const PokemonDetailOverView = () => {
   ));
 
   const types = pokemon.types?.map((type) => (
-    <TypeBadge key={type.type.name} type={type.type.name} />
+    <TypeBadge
+      key={type.type.name}
+      type={type.type.name}
+      withIcon
+      variant="detail"
+    />
   ));
 
   const englishFlavorText =
@@ -99,7 +104,9 @@ export const PokemonDetailOverView = () => {
           </div>
         </div>
         <div className="overviewPageTopInfoSection">
-          <h2>{firstLetterUpperCase(pokemon.name)}</h2>
+          <h2 className="pageTopInfoTitle">
+            {firstLetterUpperCase(pokemon.name)}
+          </h2>
           <div className="topInfoSectionTypeBadges">{types}</div>
           {displayEnglishFavorText}
         </div>

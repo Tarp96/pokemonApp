@@ -178,6 +178,19 @@
   color: #666;
 }
 
+.overviewPageTopInfoSection {
+  border: solid 2px red;
+  padding-left: 5px;
+}
+
+.pageTopInfoTitle {
+  margin-top: 0;
+  margin-bottom: 0.25rem;
+  font-size: 2rem;
+  line-height: 1.2;
+  padding-bottom: 5px;
+}
+
 /*DETAIL OVERVIEW PAGE END*/
 
 /*STATS PAGE*/

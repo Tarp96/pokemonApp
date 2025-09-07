@@ -16,6 +16,7 @@ const typeColors = {
   steel: "#74b0cb",
   ice: "#47c8c8",
   dark: "#4f4747",
+  flying: "#74aad0",
 };
 
 export default typeColors;
