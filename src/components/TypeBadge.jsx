@@ -1,26 +1,29 @@
 import typeColors from "../utils/typecolors";
 import { firstLetterUpperCase } from "../utils/helperFunctions";
+import { getTypeIcon } from "../utils/typeIcons";
 
-export const TypeBadge = ({ type }) => {
-  const color = typeColors[type] || "#ccc";
+export const TypeBadge = ({
+  type,
+  withIcon = false,
+  variant = "compact",
+  className = "",
+}) => {
+  const bg = typeColors[type] || "#888";
+  const iconUrl = withIcon ? getTypeIcon(type) : null;
 
   return (
     <span
-      className="typeBadge"
-      style={{
-        backgroundColor: color,
-        color: "white",
-        display: "inline-block",
-        padding: "5px 12px",
-        fontSize: "14px",
-        borderRadius: "20px",
-        fontWeight: "bold",
-        textTransform: "capitalize",
-        marginRight: "8px",
-        marginBottom: "8px",
-        transition: "all 0.3s ease",
-      }}
+      className={`typeBadge ${variant} ${className}`}
+      style={{ backgroundColor: bg, color: "white" }}
     >
+      {iconUrl && (
+        <img
+          src={iconUrl}
+          alt=""
+          aria-hidden="true"
+          className="typeBadgeIcon"
+        />
+      )}
       {firstLetterUpperCase(type)}
     </span>
   );
