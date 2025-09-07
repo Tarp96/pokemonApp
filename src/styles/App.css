@@ -565,6 +565,8 @@ body {
   white-space: nowrap;
   transition: transform 0.2s ease, opacity 0.2s ease;
   gap: 5px;
+  border-radius: 999px;
+  margin: 8px;
 }
 
 .typeBadge:hover {
