@@ -106,9 +106,10 @@ export const PokemonDetailOverView = () => {
         <div className="overviewPageTopInfoSection">
           <h2 className="pageTopInfoTitle">
             {firstLetterUpperCase(pokemon.name)}
+            <div className="topInfoSectionTypeBadges">{types}</div>
           </h2>
-          <div className="topInfoSectionTypeBadges">{types}</div>
-          {displayEnglishFavorText}
+
+          <div className="flavorTextDiv">{displayEnglishFavorText}</div>
         </div>
       </div>
     </>
