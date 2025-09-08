@@ -14,24 +14,41 @@ export const PokemonDetailsPage = () => {
   const [pokemon, setPokemon] = useState({});
   const [pokemonSpecies, setPokemonSpecies] = useState({});
   const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
+    let cancelled = false;
+
     const loadPokemonDetails = async () => {
       try {
+        setError(null);
         setLoading(true);
-        const data = await fetchPokemonDetails(name);
+
+        const [data, speciesData] = await Promise.all([
+          fetchPokemonDetails(name),
+          fetchPokemonSpeciesDetails(name),
+        ]);
+
+        if (cancelled) return;
         setPokemon(data);
-        const speciesData = await fetchPokemonSpeciesDetails(name);
         setPokemonSpecies(speciesData);
-      } catch (error) {
-        console.error("Failed to fetch Pokémon details:", error);
+      } catch (err) {
+        console.error("Failed to fetch Pokémon details:", err);
+        if (!cancelled) setError("Could not load Pokémon data.");
       } finally {
-        setLoading(false);
+        if (!cancelled) setLoading(false);
       }
     };
 
     loadPokemonDetails();
+    return () => {
+      cancelled = true;
+    };
   }, [name]);
+
+  if (loading || !pokemon || !pokemonSpecies) {
+    return <p>Loading...</p>;
+  }
 
   return loading ? (
     <p>Loading...</p>

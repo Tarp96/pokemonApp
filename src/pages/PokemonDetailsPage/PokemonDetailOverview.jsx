@@ -93,14 +93,26 @@ export const PokemonDetailOverView = () => {
           <div className="flavorTextDiv">{displayEnglishFavorText}</div>
           <div className="infoList">
             <ul>
-              <li>Pokedex number: {pokemon.order}</li>
-              <li>Introduced: {pokemonSpecies.generation.name}</li>
-              <li>Height: {heightAndWeightConverter(pokemon.height)} metres</li>
-              <li>Weight: {heightAndWeightConverter(pokemon.weight)} kg</li>
-              <li>Shape: {pokemonSpecies.shape.name}</li>
-              <li>Color: {pokemonSpecies.color.name}</li>
+              <li>Pokedex number: {pokemon?.order ?? "—"}</li>
+              <li>Introduced: {pokemonSpecies?.generation?.name ?? "—"}</li>
+              <li>
+                Height:{" "}
+                {pokemon?.height != null
+                  ? `${heightAndWeightConverter(pokemon.height)} metres`
+                  : "—"}
+              </li>
+              <li>
+                Weight:{" "}
+                {pokemon?.weight != null
+                  ? `${heightAndWeightConverter(pokemon.weight)} kg`
+                  : "—"}
+              </li>
+              <li>Shape: {pokemonSpecies?.shape?.name ?? "—"}</li>
+              <li>Color: {pokemonSpecies?.color?.name ?? "—"}</li>
             </ul>
           </div>
+
+          <div className="abilityInfoContainer">{renderedAbilities}</div>
         </div>
         <div className="overviewPageMainImageContainer">
           {sprite && (
