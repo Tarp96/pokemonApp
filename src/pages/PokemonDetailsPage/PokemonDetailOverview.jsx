@@ -53,7 +53,7 @@ export const PokemonDetailOverView = () => {
     <div key={ab.name} className="abilityCard">
       <p className="abilityName">
         {firstLetterUpperCase(ab.name)}{" "}
-        {ab.isHidden && <span className="hiddenTag">Hidden</span>}
+        {ab.isHidden && <span className="hiddenTag">(Hidden)</span>}
       </p>
       <p className="abilityEffect">{ab.effect}</p>
     </div>
