@@ -93,26 +93,42 @@ export const PokemonDetailOverView = () => {
           <div className="flavorTextDiv">{displayEnglishFavorText}</div>
           <div className="infoList">
             <ul>
-              <li>Pokedex number: {pokemon?.order ?? "—"}</li>
-              <li>Introduced: {pokemonSpecies?.generation?.name ?? "—"}</li>
               <li>
-                Height:{" "}
+                <span className="listItemTopic">Pokedex number: </span>
+                {pokemon?.order ?? "—"}
+              </li>
+              <li>
+                <span className="listItemTopic">Introduced:</span>{" "}
+                {pokemonSpecies?.generation?.name ?? "—"}
+              </li>
+              <li>
+                <span className="listItemTopic">Height: </span>
                 {pokemon?.height != null
                   ? `${heightAndWeightConverter(pokemon.height)} metres`
                   : "—"}
               </li>
               <li>
-                Weight:{" "}
+                <span className="listItemTopic">Weight: </span>
+
                 {pokemon?.weight != null
                   ? `${heightAndWeightConverter(pokemon.weight)} kg`
                   : "—"}
               </li>
-              <li>Shape: {pokemonSpecies?.shape?.name ?? "—"}</li>
-              <li>Color: {pokemonSpecies?.color?.name ?? "—"}</li>
+              <li>
+                <span className="listItemTopic">Shape:</span>{" "}
+                {pokemonSpecies?.shape?.name ?? "—"}
+              </li>
+              <li>
+                <span className="listItemTopic">Color:</span>{" "}
+                {pokemonSpecies?.color?.name ?? "—"}
+              </li>
             </ul>
           </div>
 
-          <div className="abilityInfoContainer">{renderedAbilities}</div>
+          <div className="abilityInfoContainer">
+            <h3>Abilities</h3>
+            {renderedAbilities}
+          </div>
         </div>
         <div className="overviewPageMainImageContainer">
           {sprite && (

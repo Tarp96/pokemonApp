@@ -135,6 +135,7 @@
 /*DETAIL PAGE NAVBAR END*/
 
 /*DETAIL OVERVIEW PAGE*/
+
 .detailsTopSection {
   display: flex;
 }
@@ -177,35 +178,140 @@
   color: #666;
 }
 
+:root {
+  --accent: #ffcb05; /* Poké yellow */
+  --ink: #0f172a; /* slate-900-ish */
+  --muted: #475569; /* slate-600-ish */
+  --hairline: rgba(0, 0, 0, 0.1);
+}
+
+/* Container */
 .overviewPageTopInfoSection {
-  padding-left: 5px;
+  background: var(--accent);
+  padding: 20px 10px; /* space around the white cards */
+  border-radius: 12px; /* optional, if you want rounded section edges */
 }
 
+.infoList,
+.flavorTextDiv,
+.abilityInfoContainer {
+  background: #fff5e6;
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-top: 14px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Title row (name + badges) */
 .pageTopInfoTitle {
-  margin-top: 0;
-  margin-bottom: 0.25rem;
-  font-size: 2.8rem;
-  line-height: 1.2;
-  padding-bottom: 5px;
+  margin: 0 0 0.5rem 0;
+  line-height: 1.1;
   display: flex;
-  align-items: center;
-  font-weight: lighter;
-  border-bottom: 2px solid #000;
+  align-items: flex-end;
+  gap: 1rem;
+  font-weight: 300;
+  color: var(--ink);
+  /* underline accent */
+  padding-bottom: 8px;
+  border-bottom: 2px solid var(--accent);
 }
 
-.pageTopInfoTitle > h2 {
-  font-size: 32px;
+/* Keep title large but comfortable on small screens */
+.pageTopInfoTitle {
+  font-size: clamp(1.8rem, 2.5vw + 1rem, 2.8rem);
 }
 
+/* (Optional) if you wrap the name with a span.pokemonName as earlier suggested */
+.pokemonName {
+  font-weight: 400;
+  letter-spacing: 0.2px;
+}
+
+/* Type badges row next to the name */
 .topInfoSectionTypeBadges {
-  width: 40%;
+  margin-left: auto; /* push badges to the right of the name */
   display: flex;
-  justify-content: space-between;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  align-items: center;
+  width: auto; /* let content size itself */
 }
 
+/* If your type badges are buttons/divs, give them a consistent size */
+.topInfoSectionTypeBadges > * {
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  line-height: 1;
+  border: 1px solid var(--hairline);
+}
+
+/* Flavor text */
 .flavorTextDiv {
-  font-size: 1.2rem;
-  margin-top: 10px;
+  font-size: 1.075rem;
+  color: var(--muted);
+  margin-top: 12px;
+  line-height: 1.6;
+  max-width: 70ch;
+}
+
+/* Info list layout: neat, compact, readable */
+.infoList {
+  margin-top: 14px;
+  text-transform: capitalize;
+}
+
+.listItemTopic {
+  font-weight: bold;
+}
+
+.infoList ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px 16px;
+  border-top: 1px solid var(--hairline);
+  padding-top: 12px;
+}
+
+/* Two columns on larger screens */
+@media (min-width: 700px) {
+  .infoList ul {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.infoList li {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 6px 0;
+  border-bottom: 1px dashed var(--hairline);
+}
+
+.infoList li:last-child,
+.infoList li:nth-last-child(2) {
+  border-bottom: none;
+}
+
+/* Optional: emphasize the label part before the colon without changing markup */
+.infoList li::first-line {
+  font-weight: 500; /* gives a subtle weight to the label chunk */
+}
+
+/* Headings inside ability block */
+.abilityInfoContainer {
+  margin-top: 18px;
+}
+
+.abilityInfoContainer h3 {
+  margin: 0 0 10px 0;
+  font-weight: 500;
+  font-size: 1.25rem;
+  border-bottom: 1px solid var(--hairline);
+  padding-bottom: 6px;
 }
 
 /*DETAIL OVERVIEW PAGE END*/
