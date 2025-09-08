@@ -209,18 +209,16 @@
   gap: 1rem;
   font-weight: 300;
   color: var(--ink);
-
   padding-bottom: 8px;
   border-bottom: 2px solid var(--accent);
 }
 
 .pageTopInfoTitle {
-  font-size: clamp(1.8rem, 2.5vw + 1rem, 2.8rem);
+  font-size: 2.5rem;
 }
 
 .pokemonName {
   font-weight: 400;
-  letter-spacing: 0.2px;
 }
 
 .topInfoSectionTypeBadges {
@@ -233,7 +231,7 @@
 }
 
 .topInfoSectionTypeBadges > * {
-  padding: 4px 10px;
+  padding: 2px 8px;
   border-radius: 999px;
   font-size: 0.9rem;
   line-height: 1;
