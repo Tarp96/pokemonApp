@@ -76,6 +76,11 @@ export const PokemonDetailOverView = () => {
   const displayEnglishFavorText =
     englishFlavorText[0]?.flavor_text || "No description available.";
 
+  const heightAndWeightConverter = (statToConvert) => {
+    const convertedStat = statToConvert / 10;
+    return convertedStat;
+  };
+
   return (
     <>
       <div className="detailsTopSection">
@@ -86,6 +91,16 @@ export const PokemonDetailOverView = () => {
           </h2>
 
           <div className="flavorTextDiv">{displayEnglishFavorText}</div>
+          <div className="infoList">
+            <ul>
+              <li>Pokedex number: {pokemon.order}</li>
+              <li>Introduced: {pokemonSpecies.generation.name}</li>
+              <li>Height: {heightAndWeightConverter(pokemon.height)} metres</li>
+              <li>Weight: {heightAndWeightConverter(pokemon.weight)} kg</li>
+              <li>Shape: {pokemonSpecies.shape.name}</li>
+              <li>Color: {pokemonSpecies.color.name}</li>
+            </ul>
+          </div>
         </div>
         <div className="overviewPageMainImageContainer">
           {sprite && (
