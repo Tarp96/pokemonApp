@@ -593,6 +593,7 @@ body {
   object-fit: contain;
   display: block;
   flex-shrink: 0;
+  border: solid 0.2px white;
 }
 
 .typeBadge.detail .typeBadgeIcon {

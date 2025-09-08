@@ -79,6 +79,14 @@ export const PokemonDetailOverView = () => {
   return (
     <>
       <div className="detailsTopSection">
+        <div className="overviewPageTopInfoSection">
+          <h2 className="pageTopInfoTitle">
+            {firstLetterUpperCase(pokemon.name)}
+            <div className="topInfoSectionTypeBadges">{types}</div>
+          </h2>
+
+          <div className="flavorTextDiv">{displayEnglishFavorText}</div>
+        </div>
         <div className="overviewPageMainImageContainer">
           {sprite && (
             <img
@@ -102,14 +110,6 @@ export const PokemonDetailOverView = () => {
               Shiny
             </button>
           </div>
-        </div>
-        <div className="overviewPageTopInfoSection">
-          <h2 className="pageTopInfoTitle">
-            {firstLetterUpperCase(pokemon.name)}
-            <div className="topInfoSectionTypeBadges">{types}</div>
-          </h2>
-
-          <div className="flavorTextDiv">{displayEnglishFavorText}</div>
         </div>
       </div>
     </>
