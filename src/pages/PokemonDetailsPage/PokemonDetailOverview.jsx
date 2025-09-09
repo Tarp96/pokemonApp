@@ -197,9 +197,8 @@ export const PokemonDetailOverView = () => {
               {eggStepCounter(pokemonSpecies.hatch_counter)} steps)
             </li>
             <li>
-              <span className="listItemTopic">
-                Egg Groups: {displayEggGroups}
-              </span>
+              <span className="listItemTopic">Egg Groups:</span>
+              {displayEggGroups}
             </li>
             <li>
               <span className="listItemTopic">
