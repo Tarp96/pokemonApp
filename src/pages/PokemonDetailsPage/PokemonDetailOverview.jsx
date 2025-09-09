@@ -5,6 +5,7 @@ import AudioPlayer from "../../components/AudioPlayer";
 import "../../styles/DetailPageStyle.css";
 import { useState, useEffect } from "react";
 import { fetchAbilityDetails } from "../../utils/pokeApi";
+import { BsGenderFemale, BsGenderMale } from "react-icons/bs";
 
 export const PokemonDetailOverView = () => {
   const [abilityDetails, setAbilityDetails] = useState([]);
@@ -154,6 +155,11 @@ export const PokemonDetailOverView = () => {
             </button>
           </div>
         </div>
+      </div>
+      <div className="middleSection">
+        <div className="middleSectionInfo"></div>
+        <div></div>
+        <div></div>
       </div>
     </>
   );
