@@ -82,6 +82,17 @@ export const PokemonDetailOverView = () => {
     return convertedStat;
   };
 
+  const genderRate = (genderRate) => {
+    const femaleRate = (genderRate / 8) * 100;
+    const maleRate = ((8 - genderRate) / 8) * 100;
+    return (
+      <p>
+        Female <BsGenderFemale />: {femaleRate}% Male <BsGenderMale />:
+        {maleRate}%
+      </p>
+    );
+  };
+
   return (
     <>
       <div className="detailsTopSection">
@@ -157,7 +168,13 @@ export const PokemonDetailOverView = () => {
         </div>
       </div>
       <div className="middleSection">
-        <div className="middleSectionInfo"></div>
+        <div className="middleSectionInfo">
+          <ul>
+            <li>
+              Gender Distribution: {genderRate(pokemonSpecies.gender_rate)}
+            </li>
+          </ul>
+        </div>
         <div></div>
         <div></div>
       </div>
