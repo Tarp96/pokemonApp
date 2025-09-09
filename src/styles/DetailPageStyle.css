@@ -138,6 +138,8 @@
 
 .detailsTopSection {
   display: flex;
+  border-bottom: 1px solid var(--hairline);
+  padding: 5px;
 }
 
 .overviewPageMainImageContainer {
@@ -185,7 +187,8 @@
   --hairline: rgba(0, 0, 0, 0.1);
 }
 
-.overviewPageTopInfoSection {
+.overviewPageTopInfoSection,
+.overViewMiddleSection {
   background: #fff5e6;
   padding: 20px 10px;
   border-radius: 12px;
@@ -319,6 +322,11 @@
   font-weight: lighter;
   font-size: 1rem;
 }
+
+.overViewMiddleSection {
+  display: flex;
+}
+
 /*DETAIL OVERVIEW PAGE END*/
 
 /*STATS PAGE*/

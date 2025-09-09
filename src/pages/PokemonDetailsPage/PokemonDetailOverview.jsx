@@ -83,14 +83,26 @@ export const PokemonDetailOverView = () => {
   };
 
   const genderRate = (genderRate) => {
+    if (genderRate === -1) {
+      return <>Genderless</>;
+    }
+
     const femaleRate = (genderRate / 8) * 100;
     const maleRate = ((8 - genderRate) / 8) * 100;
     return (
-      <p>
-        Female <BsGenderFemale />: {femaleRate}% Male <BsGenderMale />:
+      <>
+        {<BsGenderFemale />} {femaleRate}% Male {<BsGenderMale />}
         {maleRate}%
-      </p>
+      </>
     );
+  };
+
+  const displayEggGroups =
+    pokemonSpecies?.egg_groups?.map((e) => <>{e.name}</>) || [];
+
+  const eggStepCounter = (hatchCounter) => {
+    const steps = 256 * (hatchCounter + 1);
+    return steps;
   };
 
   return (
@@ -167,16 +179,41 @@ export const PokemonDetailOverView = () => {
           </div>
         </div>
       </div>
-      <div className="middleSection">
+      <div className="overViewMiddleSection">
         <div className="middleSectionInfo">
-          <ul>
+          <h3>Breeding</h3>
+          <ul className="infoList">
             <li>
-              Gender Distribution: {genderRate(pokemonSpecies.gender_rate)}
+              <span className="listItemTopic">Gender Distribution:</span>{" "}
+              {genderRate(pokemonSpecies.gender_rate)}
+            </li>
+            <li>
+              <span className="listItemTopic">Growth Rate:</span>
+              {pokemonSpecies.growth_rate?.name}
+            </li>
+            <li>
+              <span className="listItemTopic">Egg Cycles:</span>{" "}
+              {pokemonSpecies.hatch_counter} cycles (
+              {eggStepCounter(pokemonSpecies.hatch_counter)} steps)
+            </li>
+            <li>
+              <span className="listItemTopic">
+                Egg Groups: {displayEggGroups}
+              </span>
+            </li>
+            <li>
+              <span className="listItemTopic">
+                Habitat:{pokemonSpecies.habitat?.name}
+              </span>
             </li>
           </ul>
         </div>
-        <div></div>
-        <div></div>
+        <div>
+          <h3>Training</h3>
+        </div>
+        <div>
+          <h3>Relations</h3>
+        </div>
       </div>
     </>
   );
