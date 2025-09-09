@@ -91,7 +91,7 @@ export const PokemonDetailOverView = () => {
     const maleRate = ((8 - genderRate) / 8) * 100;
     return (
       <>
-        {<BsGenderFemale />} {femaleRate}% Male {<BsGenderMale />}
+        {<BsGenderFemale />} {femaleRate}% {<BsGenderMale />}
         {maleRate}%
       </>
     );
@@ -210,6 +210,23 @@ export const PokemonDetailOverView = () => {
         </div>
         <div>
           <h3>Training</h3>
+          <ul className="infoList">
+            <li>
+              <span className="listItemTopic">Catch Rate:</span>
+              {pokemonSpecies?.capture_rate}
+            </li>
+            <li>
+              <span className="listItemTopic">Base Happiness:</span>
+              {pokemonSpecies?.base_happiness}
+            </li>
+            <li>
+              <span className="listItemTopic">Base XP:</span>
+              {pokemon?.base_experience}
+            </li>
+            <li>
+              <span className="listItemTopic">Held Items</span>
+            </li>
+          </ul>
         </div>
         <div>
           <h3>Relations</h3>
