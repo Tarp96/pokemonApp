@@ -58,3 +58,13 @@ function applyOffensiveRelations(best, damageRelations) {
     best[name] = Math.max(best[name], 0);
   });
 }
+
+const _typeCache = new Map();
+async function fetchTypeByUrl(url) {
+  if (_typeCache.has(url)) return _typeCache.get(url);
+  const res = await fetch(url);
+  if (!res.ok) throw new Error(`Failed to fetch ${url}`);
+  const data = await res.json();
+  _typeCache.set(url, data);
+  return data;
+}
