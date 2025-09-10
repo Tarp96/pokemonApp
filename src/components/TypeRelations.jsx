@@ -68,3 +68,48 @@ async function fetchTypeByUrl(url) {
   _typeCache.set(url, data);
   return data;
 }
+
+export default function Relations({ pokemon }) {
+  const [status, setStatus] = useState("idle");
+  const [typeDatas, setTypeDatas] = useState([]);
+  const [errMsg, setErrMsg] = useState("");
+
+  const pokemonTypes =
+    pokemon?.types?.map((t) => ({
+      name: t.type?.name,
+      url: t.type?.url,
+    })) ?? [];
+
+  useEffect(() => {
+    let cancelled = false;
+
+    async function load() {
+      try {
+        setStatus("loading");
+        const datas = await Promise.all(
+          pokemonTypes.map((t) => fetchTypeByUrl(t.url))
+        );
+        if (!cancelled) {
+          setTypeDatas(datas);
+          setStatus("ready");
+        }
+      } catch (e) {
+        if (!cancelled) {
+          setErrMsg(e?.message || "Failed to load type data");
+          setStatus("error");
+        }
+      }
+    }
+
+    if (pokemonTypes.length > 0) {
+      load();
+    } else {
+      setTypeDatas([]);
+      setStatus("ready");
+    }
+
+    return () => {
+      cancelled = true;
+    };
+  }, [pokemonTypes.map((t) => t.url).join(",")]);
+}
