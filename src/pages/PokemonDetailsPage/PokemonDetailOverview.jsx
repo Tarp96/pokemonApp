@@ -6,6 +6,7 @@ import "../../styles/DetailPageStyle.css";
 import { useState, useEffect } from "react";
 import { fetchAbilityDetails } from "../../utils/pokeApi";
 import { BsGenderFemale, BsGenderMale } from "react-icons/bs";
+import TypeRelations from "../../components/TypeRelations";
 
 export const PokemonDetailOverView = () => {
   const [abilityDetails, setAbilityDetails] = useState([]);
@@ -230,6 +231,7 @@ export const PokemonDetailOverView = () => {
         <div>
           <div>
             <h3>Relations</h3>
+            <TypeRelations pokemon={pokemon} />
           </div>
         </div>
       </div>

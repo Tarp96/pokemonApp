@@ -148,12 +148,6 @@ export default function TypeRelations({ pokemon, view = "offense" }) {
 
   return (
     <div className="relationsSection">
-      {renderHeader ? (
-        renderHeader({ view, types: pokemonTypes.map((t) => t.name) })
-      ) : (
-        <h3>Relations</h3>
-      )}
-
       {status === "loading" && (
         <div className="skeletonRelations">
           <div className="skeletonBar" />
