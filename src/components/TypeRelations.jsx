@@ -40,3 +40,21 @@ function applyDefensiveRelation(acc, damageRelations) {
     acc[name] = 0;
   });
 }
+
+function applyOffensiveRelations(best, damageRelations) {
+  const {
+    double_damage_to = [],
+    half_damage_to = [],
+    no_damage_to = [],
+  } = damageRelations;
+
+  double_damage_to.forEach(({ name }) => {
+    best[name] = Math.max(best[name], 2);
+  });
+  half_damage_to.forEach(({ name }) => {
+    best[name] = Math.max(best[name], 0.5);
+  });
+  no_damage_to.forEach(({ name }) => {
+    best[name] = Math.max(best[name], 0);
+  });
+}
