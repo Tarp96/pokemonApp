@@ -69,7 +69,7 @@ async function fetchTypeByUrl(url) {
   return data;
 }
 
-export default function TypeRelations({ pokemon }) {
+export default function TypeRelations({ pokemon, view = "offense" }) {
   const [status, setStatus] = useState("idle");
   const [typeDatas, setTypeDatas] = useState([]);
   const [errMsg, setErrMsg] = useState("");
@@ -120,4 +120,21 @@ export default function TypeRelations({ pokemon }) {
     );
     return incoming;
   }, [typeDatas]);
+
+  function groupByMultiplier(mapObj) {
+    const groups = Object.fromEntries(DISPLAY_BUCKETS.map((m) => [m, []]));
+    for (const [type, mult] of Object.entries(mapObj)) {
+      let bucket = 1;
+      if (mult === 0) bucket = 0;
+      else if (Math.abs(mult - 4) < 1e-6) bucket = 4;
+      else if (Math.abs(mult - 2) < 1e-6) bucket = 2;
+      else if (Math.abs(mult - 0.5) < 1e-6) bucket = 0.5;
+      else if (Math.abs(mult - 0.25) < 1e-6) bucket = 0.25;
+      groups[bucket].push(type);
+    }
+    return groups;
+  }
+
+  const chosenMap = view === "defense" ? defensive : offensive;
+  const groups = useMemo(() => groupByMultiplier(chosenMap), [chosenMap]);
 }
