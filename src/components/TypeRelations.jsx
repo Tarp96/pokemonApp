@@ -23,7 +23,7 @@ const ALL_TYPES = [
 
 const DISPLAY_BUCKETS = [4, 2, 1, 0.5, 0.25, 0];
 
-function applyDefensiveRelation(acc, damageRelations) {
+function applyDefensiveRelations(acc, damageRelations) {
   const {
     double_damage_from = [],
     half_damage_from = [],
@@ -69,7 +69,7 @@ async function fetchTypeByUrl(url) {
   return data;
 }
 
-export default function Relations({ pokemon }) {
+export default function TypeRelations({ pokemon }) {
   const [status, setStatus] = useState("idle");
   const [typeDatas, setTypeDatas] = useState([]);
   const [errMsg, setErrMsg] = useState("");
@@ -112,4 +112,12 @@ export default function Relations({ pokemon }) {
       cancelled = true;
     };
   }, [pokemonTypes.map((t) => t.url).join(",")]);
+
+  const defensive = useMemo(() => {
+    const incoming = Object.fromEntries(ALL_TYPES.map((t) => [t, 1]));
+    typeDatas.forEach((td) =>
+      applyDefensiveRelations(incoming, td.damage_relations || {})
+    );
+    return incoming;
+  }, [typeDatas]);
 }
