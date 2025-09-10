@@ -1,4 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
+import { getTypeIcon } from "../utils/typeIcons";
+import { firstLetterUpperCase } from "../utils/helperFunctions";
 
 const ALL_TYPES = [
   "normal",
@@ -20,6 +22,27 @@ const ALL_TYPES = [
   "steel",
   "fairy",
 ];
+
+function TypeIcon({ type }) {
+  const src = getTypeIcon(type);
+  const name = firstLetterUpperCase(type);
+
+  if (!src) {
+    return <span className={`typeBadge type-${type}`}>{name}</span>;
+  }
+
+  return (
+    <img
+      src={src}
+      alt={`${name} type`}
+      title={name}
+      className="typeIcon"
+      loading="lazy"
+      width={24}
+      height={24}
+    />
+  );
+}
 
 const DISPLAY_BUCKETS = [4, 2, 1, 0.5, 0.25, 0];
 
@@ -190,9 +213,7 @@ function GroupRow({ label, types }) {
       <span className="groupLabel">{label}</span>
       <div className="typeRow">
         {types.map((t) => (
-          <span key={t} className={`typeBadge type-${t}`}>
-            {t.charAt(0).toUpperCase() + t.slice(1)}
-          </span>
+          <TypeIcon key={t} type={t} />
         ))}
       </div>
     </div>
