@@ -228,7 +228,9 @@ export const PokemonDetailOverView = () => {
           </ul>
         </div>
         <div>
-          <h3>Relations</h3>
+          <div>
+            <h3>Relations</h3>
+          </div>
         </div>
       </div>
     </>
