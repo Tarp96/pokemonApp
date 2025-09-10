@@ -46,6 +46,14 @@ function TypeIcon({ type }) {
 
 const DISPLAY_BUCKETS = [4, 2, 1, 0.5, 0.25, 0];
 
+const ORDERED_ROWS = [
+  { mult: 0, label: "No Damage" },
+  { mult: 0.25, label: "Quarter Damage" },
+  { mult: 0.5, label: "Half Damage" },
+  { mult: 2, label: "Double Damage" },
+  { mult: 4, label: "Quadruple Damage" },
+];
+
 function applyDefensiveRelations(acc, damageRelations) {
   const {
     double_damage_from = [],
@@ -197,9 +205,23 @@ export default function TypeRelations({ pokemon, view = "offense" }) {
             )}
           </div>
 
-          {DISPLAY_BUCKETS.map((m) => (
-            <GroupRow key={`${view}-${m}`} label={`×${m}`} types={groups[m]} />
-          ))}
+          <ul className="relationRows">
+            {ORDERED_ROWS.map(({ mult, label }) => {
+              const types = groups[mult] || [];
+              return (
+                <li key={mult} className="relationRow">
+                  <span className="relationLabel">{label}</span>
+                  <div className="relationTypes">
+                    {types.length ? (
+                      types.map((t) => <TypeIcon key={t} type={t} />)
+                    ) : (
+                      <span className="relationEmpty">—</span>
+                    )}
+                  </div>
+                </li>
+              );
+            })}
+          </ul>
         </div>
       )}
     </div>
