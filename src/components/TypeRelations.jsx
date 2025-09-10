@@ -121,6 +121,14 @@ export default function TypeRelations({ pokemon, view = "offense" }) {
     return incoming;
   }, [typeDatas]);
 
+  const offensive = useMemo(() => {
+    const best = Object.fromEntries(ALL_TYPES.map((t) => [t, 1]));
+    typeDatas.forEach((td) =>
+      applyOffensiveRelations(best, td.damage_relations || {})
+    );
+    return best;
+  }, [typeDatas]);
+
   function groupByMultiplier(mapObj) {
     const groups = Object.fromEntries(DISPLAY_BUCKETS.map((m) => [m, []]));
     for (const [type, mult] of Object.entries(mapObj)) {
@@ -137,4 +145,62 @@ export default function TypeRelations({ pokemon, view = "offense" }) {
 
   const chosenMap = view === "defense" ? defensive : offensive;
   const groups = useMemo(() => groupByMultiplier(chosenMap), [chosenMap]);
+
+  return (
+    <div className="relationsSection">
+      {renderHeader ? (
+        renderHeader({ view, types: pokemonTypes.map((t) => t.name) })
+      ) : (
+        <h3>Relations</h3>
+      )}
+
+      {status === "loading" && (
+        <div className="skeletonRelations">
+          <div className="skeletonBar" />
+          <div className="skeletonBar" />
+          <div className="skeletonBar" />
+        </div>
+      )}
+
+      {status === "error" && (
+        <p className="errorText">Couldn’t load type relations: {errMsg}</p>
+      )}
+
+      {status === "ready" && (
+        <div className="relationsSingle">
+          <div className="multiplierHeader">
+            <span className="multiplierTag">{view.toUpperCase()}</span>
+            {view === "offense" ? (
+              <span className="subtitle">
+                Best effectiveness of{" "}
+                {pokemonTypes.map((t) => t.name).join(" / ") || "—"} moves
+              </span>
+            ) : (
+              <span className="subtitle">Incoming damage to this Pokémon</span>
+            )}
+          </div>
+
+          {DISPLAY_BUCKETS.map((m) => (
+            <GroupRow key={`${view}-${m}`} label={`×${m}`} types={groups[m]} />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function GroupRow({ label, types }) {
+  if (!types || !types.length) return null;
+  return (
+    <div className="groupRow">
+      <span className="groupLabel">{label}</span>
+      <div className="typeRow">
+        {types.map((t) => (
+          <span key={t} className={`typeBadge type-${t}`}>
+            {t.charAt(0).toUpperCase() + t.slice(1)}
+          </span>
+        ))}
+      </div>
+    </div>
+  );
 }
