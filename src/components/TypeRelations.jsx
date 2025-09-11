@@ -227,17 +227,3 @@ export default function TypeRelations({ pokemon, view = "offense" }) {
     </div>
   );
 }
-
-function GroupRow({ label, types }) {
-  if (!types || !types.length) return null;
-  return (
-    <div className="groupRow">
-      <span className="groupLabel">{label}</span>
-      <div className="typeRow">
-        {types.map((t) => (
-          <TypeIcon key={t} type={t} />
-        ))}
-      </div>
-    </div>
-  );
-}
