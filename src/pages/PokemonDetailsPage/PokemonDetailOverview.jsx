@@ -229,10 +229,11 @@ export const PokemonDetailOverView = () => {
           </ul>
         </div>
         <div>
-          <div>
+          <div className="relationsTitleContainer">
             <h3>Relations</h3>
-            <TypeRelations pokemon={pokemon} />
+            <button className="pillButton">Add</button>
           </div>
+          <TypeRelations pokemon={pokemon} />
         </div>
       </div>
     </>
