@@ -1,17 +1,17 @@
-export const SwitchButton = ({ onClick, condition }) => {
+export const SwitchButton = ({ onClick, condition, firstText, secondText }) => {
   return (
     <>
       <button
         className={`tabButton ${!condition ? "active" : ""}`}
         onClick={onClick}
       >
-        Normal
+        {firstText}
       </button>
       <button
         className={`tabButton ${condition ? "active" : ""}`}
         onClick={onClick}
       >
-        Shiny
+        {secondText}
       </button>
     </>
   );
