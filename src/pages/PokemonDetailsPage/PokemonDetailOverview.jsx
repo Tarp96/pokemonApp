@@ -227,9 +227,18 @@ export const PokemonDetailOverView = () => {
         <div>
           <div className="relationsTitleContainer">
             <h3>Relations</h3>
-            <button className="pillButton">Add</button>
+            <SwitchButton
+              condition={showOffense}
+              onClick={() => setShowOffense((prev) => !prev)}
+              firstText={"Offense"}
+              secondText={"Defense"}
+            />
           </div>
-          <TypeRelations pokemon={pokemon} />
+          {showOffense ? (
+            <TypeRelations pokemon={pokemon} view="defense" />
+          ) : (
+            <TypeRelations pokemon={pokemon} />
+          )}
         </div>
       </div>
     </>
