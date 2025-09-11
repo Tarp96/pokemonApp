@@ -170,8 +170,8 @@ export const PokemonDetailOverView = () => {
             <SwitchButton
               condition={shiny}
               onClick={() => setShiny((prev) => !prev)}
-              firstText={"Normal"}
-              secondText={"Shiny"}
+              firstText="Normal"
+              secondText="Shiny"
             />
           </div>
         </div>
@@ -227,12 +227,15 @@ export const PokemonDetailOverView = () => {
         <div>
           <div className="relationsTitleContainer">
             <h3>Relations</h3>
-            <SwitchButton
-              condition={showOffense}
-              onClick={() => setShowOffense((prev) => !prev)}
-              firstText={"Offense"}
-              secondText={"Defense"}
-            />
+            <div className="relationsSwitchGroup">
+              <SwitchButton
+                condition={showOffense}
+                onClick={() => setShowOffense((prev) => !prev)}
+                firstText="Offense"
+                secondText="Defense"
+                className="relationsTabButton"
+              />
+            </div>
           </div>
           {showOffense ? (
             <TypeRelations pokemon={pokemon} view="defense" />
