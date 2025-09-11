@@ -7,10 +7,12 @@ import { useState, useEffect } from "react";
 import { fetchAbilityDetails } from "../../utils/pokeApi";
 import { BsGenderFemale, BsGenderMale } from "react-icons/bs";
 import TypeRelations from "../../components/TypeRelations";
+import { SwitchButton } from "../../components/SwitchButton";
 
 export const PokemonDetailOverView = () => {
   const [abilityDetails, setAbilityDetails] = useState([]);
   const [shiny, setShiny] = useState(false);
+  const [showOffense, setShowOffense] = useState(true);
 
   const { pokemon, pokemonSpecies } = useOutletContext();
 
@@ -165,18 +167,12 @@ export const PokemonDetailOverView = () => {
           )}
 
           <div className="overViewPageImageSwitchButtonContainer">
-            <button
-              className={`tabButton ${!shiny ? "active" : ""}`}
-              onClick={() => setShiny(false)}
-            >
-              Normal
-            </button>
-            <button
-              className={`tabButton ${shiny ? "active" : ""}`}
-              onClick={() => setShiny(true)}
-            >
-              Shiny
-            </button>
+            <SwitchButton
+              condition={shiny}
+              onClick={() => setShiny((prev) => !prev)}
+              firstText={"Normal"}
+              secondText={"Shiny"}
+            />
           </div>
         </div>
       </div>
