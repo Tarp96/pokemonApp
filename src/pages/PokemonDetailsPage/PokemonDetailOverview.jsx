@@ -172,13 +172,14 @@ export const PokemonDetailOverView = () => {
               onClick={() => setShiny((prev) => !prev)}
               firstText="Normal"
               secondText="Shiny"
+              className="imageSwitchButton"
             />
           </div>
         </div>
       </div>
       <div className="overViewMiddleSection">
         <div className="middleSectionInfo">
-          <h3>Breeding</h3>
+          <h3 className="middleSectionTitleUnderline">Breeding</h3>
           <ul className="infoList">
             <li>
               <span className="listItemTopic">Gender Distribution:</span>{" "}
@@ -205,7 +206,7 @@ export const PokemonDetailOverView = () => {
           </ul>
         </div>
         <div>
-          <h3>Training</h3>
+          <h3 className="middleSectionTitleUnderline">Training</h3>
           <ul className="infoList">
             <li>
               <span className="listItemTopic">Catch Rate:</span>

@@ -158,12 +158,9 @@
 }
 
 .tabButton {
-  flex: 1;
-  padding: 10px 0;
   border: none;
   background-color: #f5f5f5;
   color: #2a2a2a;
-  font-size: 1rem;
   cursor: pointer;
   transition: background-color 200ms ease, color 200ms ease,
     box-shadow 200ms ease;
@@ -183,19 +180,9 @@
   color: #666;
 }
 
-.relationsTabButton {
-  padding: 0.3rem 0.8rem;
-  font-size: 0.85rem;
-  flex: 0 0 auto; /* don’t force equal grow in tight spaces */
-}
-
-/* optional: gives the two buttons a segmented-toggle look */
-.relationsSwitchGroup {
-  display: inline-flex;
-  gap: 0;
-  border: 1px solid #ddd;
-  border-radius: 8px;
-  overflow: hidden;
+.imageSwitchButton {
+  flex: 1;
+  padding: 10px 0;
 }
 
 :root {
@@ -368,8 +355,11 @@
   font-weight: bold;
   margin-bottom: 12px;
   color: #2a75bb;
-  border-bottom: 2px solid #ffcb05;
   padding-bottom: 4px;
+}
+
+.middleSectionTitleUnderline {
+  border-bottom: 2px solid #ffcb05;
 }
 
 /*TYPE RELATIONS*/
@@ -381,14 +371,42 @@
 }
 
 .relationsTitleContainer {
-  border-bottom: 2px solid #ffcb05;
   display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.relationsSwitchGroup {
+  display: inline-flex;
+  gap: 0;
+  padding: 0 !important;
+  margin: 0;
+  border: 0;
+  line-height: 0;
 }
 
-.relationsTabButton {
-  padding: 0.3rem 0.8rem;
-  font-size: 0.85rem;
-  flex: 0 0 auto;
+.relationsSwitchGroup .tabButton {
+  height: 22px;
+  line-height: 22px;
+  padding: 0 10px;
+  font-size: 0.8rem;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  margin: 0;
+}
+
+.relationsSwitchGroup .tabButton:first-child {
+  border-right: 0;
+  border-radius: 6px 0 0 6px;
+}
+
+.relationsSwitchGroup .tabButton:last-child {
+  border-radius: 0 6px 6px 0;
+}
+
+.relationsSwitchGroup .tabButton.active {
+  background-color: #ffcb05;
+  color: #1a1a1a;
+  font-weight: 700;
 }
 
 .relationRows {
