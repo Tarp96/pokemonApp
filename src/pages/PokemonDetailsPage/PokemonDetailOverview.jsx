@@ -2,7 +2,6 @@ import { useOutletContext } from "react-router-dom";
 import {
   firstLetterUpperCase,
   heightAndWeightConverter,
-  getEggStepCount,
   formatEggCycles,
 } from "../../utils/helperFunctions";
 import { TypeBadge } from "../../components/TypeBadge";
