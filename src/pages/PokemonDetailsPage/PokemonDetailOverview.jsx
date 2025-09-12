@@ -13,7 +13,7 @@ import { InformationList } from "../../components/InformationList";
 export const PokemonDetailOverView = () => {
   const [abilityDetails, setAbilityDetails] = useState([]);
   const [shiny, setShiny] = useState(false);
-  const [showOffense, setShowOffense] = useState(true);
+  const [showDefense, setShowDefense] = useState(true);
 
   const { pokemon, pokemonSpecies } = useOutletContext();
 
@@ -229,15 +229,15 @@ export const PokemonDetailOverView = () => {
             <h3>Relations</h3>
             <div className="relationsSwitchGroup">
               <SwitchButton
-                condition={showOffense}
-                onClick={() => setShowOffense((prev) => !prev)}
+                condition={showDefense}
+                onClick={() => setShowDefense((prev) => !prev)}
                 firstText="Offense"
                 secondText="Defense"
                 className="relationsTabButton"
               />
             </div>
           </div>
-          {showOffense ? (
+          {showDefense ? (
             <TypeRelations pokemon={pokemon} view="defense" />
           ) : (
             <TypeRelations pokemon={pokemon} />
