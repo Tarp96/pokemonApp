@@ -120,26 +120,29 @@ export const PokemonDetailOverView = () => {
 
           <div className="flavorTextDiv">{displayEnglishFavorText}</div>
           <InformationList
-            labelOne="Pokedex number"
-            labelTwo="Introduced"
-            labelThree="Height"
-            labelFour="Weight"
-            labelFive="Shape"
-            labelSix="Color"
-            listItemOne={pokemon?.order ?? "—"}
-            listItemTwo={pokemonSpecies?.generation?.name ?? "—"}
-            listItemThree={
-              pokemon?.height != null
-                ? `${heightAndWeightConverter(pokemon.height)} metres`
-                : "—"
-            }
-            listItemFour={
-              pokemon?.weight != null
-                ? `${heightAndWeightConverter(pokemon.weight)} kg`
-                : "—"
-            }
-            listItemFive={pokemonSpecies?.shape?.name ?? "—"}
-            listItemSix={pokemonSpecies?.color?.name ?? "—"}
+            items={[
+              { label: "Pokedex number", value: pokemon?.order ?? "—" },
+              {
+                label: "Introduced",
+                value: pokemonSpecies?.generation?.name ?? "—",
+              },
+              {
+                label: "Height",
+                value:
+                  pokemon?.height != null
+                    ? `${heightAndWeightConverter(pokemon.height)} metres`
+                    : "—",
+              },
+              {
+                label: "Weight",
+                value:
+                  pokemon?.weight != null
+                    ? `${heightAndWeightConverter(pokemon.weight)} kg`
+                    : "—",
+              },
+              { label: "Shape", value: pokemonSpecies?.shape?.name ?? "—" },
+              { label: "Color", value: pokemonSpecies?.color?.name ?? "—" },
+            ]}
           />
 
           <div className="abilityInfoContainer">
