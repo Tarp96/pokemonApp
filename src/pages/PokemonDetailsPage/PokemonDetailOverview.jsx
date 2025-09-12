@@ -102,7 +102,7 @@ export const PokemonDetailOverView = () => {
   };
 
   const displayEggGroups =
-    pokemonSpecies?.egg_groups?.map((e) => <>{e.name}</>) || [];
+    pokemonSpecies?.egg_groups?.map((e) => e.name).join(", ") ?? "—";
 
   const eggStepCounter = (hatchCounter) => {
     const steps = 256 * (hatchCounter + 1);
