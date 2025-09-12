@@ -3,9 +3,14 @@ export function firstLetterUpperCase(word) {
   return word[0].toUpperCase() + word.slice(1);
 }
 
-export const heightAndWeightConverter = (statToConvert) => {
-  const convertedStat = statToConvert / 10;
-  return convertedStat;
+export const formatHeight = (decimeters) => {
+  if (decimeters == null) return "—";
+  return `${decimeters / 10} m`;
+};
+
+export const formatWeight = (hectograms) => {
+  if (hectograms == null) return "—";
+  return `${hectograms / 10} kg`;
 };
 
 export const getEggStepCount = (hatchCounter) => {
