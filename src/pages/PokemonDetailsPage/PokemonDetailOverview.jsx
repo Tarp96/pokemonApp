@@ -15,6 +15,7 @@ import TypeRelations from "../../components/TypeRelations";
 import { SwitchButton } from "../../components/SwitchButton";
 import { InformationList } from "../../components/InformationList";
 import { GenderRate } from "../../components/GenderRate";
+import { AbilitiesList } from "../../components/AbilitiesList";
 
 export const PokemonDetailOverView = () => {
   const [abilityDetails, setAbilityDetails] = useState([]);
@@ -59,16 +60,6 @@ export const PokemonDetailOverView = () => {
   const sprite = shiny
     ? pokemon.sprites?.other["official-artwork"]?.front_shiny
     : pokemon.sprites?.other["official-artwork"]?.front_default;
-
-  const renderedAbilities = abilityDetails.map((ab) => (
-    <div key={ab.name} className="abilityCard">
-      <p className="abilityName">
-        {firstLetterUpperCase(ab.name)}{" "}
-        {ab.isHidden && <span className="hiddenTag">(Hidden)</span>}
-      </p>
-      <p className="abilityEffect">{ab.effect}</p>
-    </div>
-  ));
 
   const types = pokemon.types?.map((type) => (
     <TypeBadge
@@ -129,7 +120,7 @@ export const PokemonDetailOverView = () => {
 
           <div className="abilityInfoContainer">
             <h3>Abilities</h3>
-            {renderedAbilities}
+            <AbilitiesList abilities={abilityDetails} />
           </div>
         </div>
         <div className="overviewPageMainImageContainer">
