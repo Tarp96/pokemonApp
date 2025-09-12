@@ -12,3 +12,9 @@ export const getEggStepCount = (hatchCounter) => {
   if (hatchCounter == null) return null;
   return 256 * (hatchCounter + 1);
 };
+
+export const formatEggCycles = (hatchCounter) => {
+  if (hatchCounter == null) return "—";
+  const steps = getEggStepCount(hatchCounter);
+  return `${hatchCounter} cycles (${steps} steps)`;
+};

@@ -3,6 +3,7 @@ import {
   firstLetterUpperCase,
   heightAndWeightConverter,
   getEggStepCount,
+  formatEggCycles,
 } from "../../utils/helperFunctions";
 import { TypeBadge } from "../../components/TypeBadge";
 import AudioPlayer from "../../components/AudioPlayer";
@@ -91,13 +92,6 @@ export const PokemonDetailOverView = () => {
       .filter(Boolean)
       .join(", ") || "—";
 
-  const eggCyclesText =
-    pokemonSpecies?.hatch_counter != null
-      ? `${pokemonSpecies.hatch_counter} cycles (${getEggStepCount(
-          pokemonSpecies.hatch_counter
-        )} steps)`
-      : "—";
-
   const heldItemsText =
     (pokemon?.held_items ?? [])
       .map((h) => h?.item?.name)
@@ -181,7 +175,10 @@ export const PokemonDetailOverView = () => {
                 label: "Growth rate",
                 value: pokemonSpecies?.growth_rate?.name ?? "—",
               },
-              { label: "Egg Cycles", value: eggCyclesText },
+              {
+                label: "Egg Cycles",
+                value: formatEggCycles(pokemonSpecies?.hatch_counter),
+              },
               { label: "Egg Groups", value: eggGroupsText },
               { label: "Habitat", value: pokemonSpecies?.habitat?.name ?? "—" },
             ]}
