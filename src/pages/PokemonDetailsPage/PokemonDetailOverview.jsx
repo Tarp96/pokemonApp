@@ -106,6 +106,10 @@ export const PokemonDetailOverView = () => {
       .filter(Boolean)
       .join(", ") || "—";
 
+  const eggStepCounter = (hatchCounter) => {
+    return 256 * (hatchCounter + 1);
+  };
+
   const eggCyclesText =
     pokemonSpecies?.hatch_counter != null
       ? `${pokemonSpecies.hatch_counter} cycles (${eggStepCounter(
@@ -187,28 +191,15 @@ export const PokemonDetailOverView = () => {
             items={[
               {
                 label: "Gender Distribution",
-                value: genderRate(pokemonSpecies.gender_rate),
+                value: genderRate(pokemonSpecies?.gender_rate) ?? "—",
               },
               {
                 label: "Growth rate",
-                value: pokemonSpecies.growth_rate?.name ?? "—",
+                value: pokemonSpecies?.growth_rate?.name ?? "—",
               },
-              {
-                label: "Egg Cycles",
-                value: pokemonSpecies.hatch_counter
-                  ? `${pokemonSpecies.hatch_counter} cycles (${eggStepCounter(
-                      pokemonSpecies.hatch_counter
-                    )} steps)`
-                  : "—",
-              },
-              {
-                label: "Egg Groups",
-                value: displayEggGroups?.length ? displayEggGroups : "—",
-              },
-              {
-                label: "Habitat",
-                value: pokemonSpecies.habitat?.name ?? "—",
-              },
+              { label: "Egg Cycles", value: eggCyclesText },
+              { label: "Egg Groups", value: eggGroupsText },
+              { label: "Habitat", value: pokemonSpecies?.habitat?.name ?? "—" },
             ]}
           />
         </div>
@@ -225,16 +216,8 @@ export const PokemonDetailOverView = () => {
                 label: "Base Happiness",
                 value: pokemonSpecies?.base_happiness ?? "—",
               },
-              {
-                label: "Base XP",
-                value: pokemon?.base_experience ?? "—",
-              },
-              {
-                label: "Held Items",
-                value: pokemon?.held_items?.length
-                  ? pokemon.held_items.map((item) => item.item.name).join(", ")
-                  : "—",
-              },
+              { label: "Base XP", value: pokemon?.base_experience ?? "—" },
+              { label: "Held Items", value: heldItemsText },
             ]}
           />
         </div>
