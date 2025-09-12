@@ -192,7 +192,7 @@ export const PokemonDetailOverView = () => {
             className="single-column"
             items={[
               {
-                label: "Gender Distribution",
+                label: "Gender",
                 value: genderRate(pokemonSpecies?.gender_rate),
               },
               ,
