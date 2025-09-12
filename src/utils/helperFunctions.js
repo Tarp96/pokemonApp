@@ -7,3 +7,8 @@ export const heightAndWeightConverter = (statToConvert) => {
   const convertedStat = statToConvert / 10;
   return convertedStat;
 };
+
+export const getEggStepCount = (hatchCounter) => {
+  if (hatchCounter == null) return null;
+  return 256 * (hatchCounter + 1);
+};

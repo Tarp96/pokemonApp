@@ -2,13 +2,13 @@ import { useOutletContext } from "react-router-dom";
 import {
   firstLetterUpperCase,
   heightAndWeightConverter,
+  getEggStepCount,
 } from "../../utils/helperFunctions";
 import { TypeBadge } from "../../components/TypeBadge";
 import AudioPlayer from "../../components/AudioPlayer";
 import "../../styles/DetailPageStyle.css";
 import { useState, useEffect } from "react";
 import { fetchAbilityDetails } from "../../utils/pokeApi";
-import { BsGenderFemale, BsGenderMale } from "react-icons/bs";
 import TypeRelations from "../../components/TypeRelations";
 import { SwitchButton } from "../../components/SwitchButton";
 import { InformationList } from "../../components/InformationList";
@@ -91,13 +91,9 @@ export const PokemonDetailOverView = () => {
       .filter(Boolean)
       .join(", ") || "—";
 
-  const eggStepCounter = (hatchCounter) => {
-    return 256 * (hatchCounter + 1);
-  };
-
   const eggCyclesText =
     pokemonSpecies?.hatch_counter != null
-      ? `${pokemonSpecies.hatch_counter} cycles (${eggStepCounter(
+      ? `${pokemonSpecies.hatch_counter} cycles (${getEggStepCount(
           pokemonSpecies.hatch_counter
         )} steps)`
       : "—";
