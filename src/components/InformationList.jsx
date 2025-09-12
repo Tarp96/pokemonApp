@@ -1,15 +1,12 @@
-export const InformationList = ({ items = [] }) => {
-  if (!Array.isArray(items) || items.length === 0) return null;
-
-  return (
-    <div className="infoList">
-      <ul>
-        {items.map(({ label, value }, idx) => (
-          <li key={label ?? idx}>
-            <span className="listItemTopic">{label}:</span> {value ?? "—"}
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-};
+export const InformationList = ({ items = [], className = "" }) => (
+  <div className={`infoList ${className}`}>
+    <ul>
+      {items.map(({ label, value, wrap }, idx) => (
+        <li key={label ?? idx} className={wrap ? "allow-wrap" : ""}>
+          <span className="listItemTopic">{label}:</span>
+          <span className="listItemValue">{value ?? "—"}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+);

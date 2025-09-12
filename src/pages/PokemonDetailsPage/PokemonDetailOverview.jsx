@@ -134,6 +134,7 @@ export const PokemonDetailOverView = () => {
 
           <div className="flavorTextDiv">{displayEnglishFavorText}</div>
           <InformationList
+            className="two-columns"
             items={[
               { label: "Pokedex number", value: pokemon?.order ?? "—" },
               {
@@ -188,11 +189,13 @@ export const PokemonDetailOverView = () => {
         <div className="middleSectionInfo">
           <h3 className="middleSectionTitleUnderline">Breeding</h3>
           <InformationList
+            className="single-column"
             items={[
               {
                 label: "Gender Distribution",
-                value: genderRate(pokemonSpecies?.gender_rate) ?? "—",
+                value: genderRate(pokemonSpecies?.gender_rate),
               },
+              ,
               {
                 label: "Growth rate",
                 value: pokemonSpecies?.growth_rate?.name ?? "—",
@@ -204,9 +207,9 @@ export const PokemonDetailOverView = () => {
           />
         </div>
         <div>
-          <InformationList />
           <h3 className="middleSectionTitleUnderline">Training</h3>
           <InformationList
+            className="single-column"
             items={[
               {
                 label: "Catch Rate",

@@ -255,38 +255,37 @@
   max-width: 70ch;
 }
 
-.infoList {
-  margin-top: 14px;
-  text-transform: capitalize;
-}
-
-.listItemTopic {
-  font-weight: 600;
-  color: #2a75bb;
-  margin-right: 4px;
+.infoList,
+.infoList ul {
+  box-sizing: border-box; /* padding included in width */
+  max-width: 100%;
+  width: 100%;
 }
 
 .infoList ul {
   list-style: none;
-  padding: 5px;
   margin: 0;
+  padding: 5px;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 1fr; /* default: 1 column */
   gap: 8px 16px;
   border-top: 1px solid var(--hairline);
   padding-top: 12px;
 }
 
+/* two-column variant for wide screens ONLY where you want it */
 @media (min-width: 700px) {
-  .infoList ul {
-    grid-template-columns: 1fr 1fr;
+  .infoList.two-columns ul {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   }
 }
 
+/* each row spans full width; inside a row, label and value make two columns */
 .infoList li {
-  display: flex;
+  display: grid;
+  grid-template-columns: max-content 1fr; /* label auto width, value fills rest */
   align-items: baseline;
-  gap: 6px;
+  column-gap: 10px;
   padding: 6px 0;
   border-bottom: 1px dashed var(--hairline);
 }
@@ -296,8 +295,22 @@
   border-bottom: none;
 }
 
-.infoList li::first-line {
-  font-weight: 500;
+.listItemTopic {
+  font-weight: 600;
+  color: #2a75bb;
+  margin-top: 10px;
+}
+
+.listItemValue {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* remove/override this if you added it earlier */
+  overflow-wrap: normal; /* was: anywhere */
+}
+
+.listItemTopic,
+.listItemValue {
+  white-space: nowrap;
 }
 
 .abilityInfoContainer {
@@ -332,18 +345,18 @@
 
 .overViewMiddleSection {
   display: flex;
-  gap: 20px; /* spacing between the columns */
+  gap: 20px;
   background: #fff5e6;
   padding: 20px;
   border-radius: 12px;
   justify-content: space-between;
-  flex-wrap: wrap; /* makes it responsive on smaller screens */
+  flex-wrap: wrap;
 }
 
 .middleSectionInfo,
 .overViewMiddleSection > div {
   flex: 1;
-  min-width: 220px; /* keeps it readable on smaller widths */
+  min-width: 220px;
   background: #ffffff;
   border-radius: 10px;
   padding: 16px;
@@ -356,6 +369,14 @@
   margin-bottom: 12px;
   color: #2a75bb;
   padding-bottom: 4px;
+}
+
+.middleSectionInfo {
+  display: flex;
+  flex-direction: column;
+}
+.middleSectionInfo .infoList {
+  flex: 1; /* stretches to fill available height */
 }
 
 .middleSectionTitleUnderline {
