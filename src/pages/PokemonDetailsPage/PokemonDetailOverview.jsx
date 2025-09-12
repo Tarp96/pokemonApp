@@ -4,11 +4,12 @@ import {
   formatHeight,
   formatWeight,
   formatEggCycles,
+  pickEnglishFlavorText,
 } from "../../utils/helperFunctions";
 import { TypeBadge } from "../../components/TypeBadge";
 import AudioPlayer from "../../components/AudioPlayer";
 import "../../styles/DetailPageStyle.css";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import { fetchAbilityDetails } from "../../utils/pokeApi";
 import TypeRelations from "../../components/TypeRelations";
 import { SwitchButton } from "../../components/SwitchButton";
@@ -78,13 +79,10 @@ export const PokemonDetailOverView = () => {
     />
   ));
 
-  const englishFlavorText =
-    pokemonSpecies?.flavor_text_entries?.filter(
-      (item) => item.language.name === "en"
-    ) || [];
-
-  const displayEnglishFavorText =
-    englishFlavorText[0]?.flavor_text || "No description available.";
+  const flavorText = useMemo(
+    () => pickEnglishFlavorText(pokemonSpecies?.flavor_text_entries),
+    [pokemonSpecies?.flavor_text_entries]
+  );
 
   const eggGroupsText =
     (pokemonSpecies?.egg_groups ?? [])
@@ -107,7 +105,7 @@ export const PokemonDetailOverView = () => {
             <div className="topInfoSectionTypeBadges">{types}</div>
           </h2>
 
-          <div className="flavorTextDiv">{displayEnglishFavorText}</div>
+          <div className="flavorTextDiv">{flavorText}</div>
           <InformationList
             className="two-columns"
             items={[

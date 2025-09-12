@@ -23,3 +23,18 @@ export const formatEggCycles = (hatchCounter) => {
   const steps = getEggStepCount(hatchCounter);
   return `${hatchCounter} cycles (${steps} steps)`;
 };
+
+export const pickEnglishFlavorText = (
+  entries,
+  fallback = "No description available."
+) => {
+  if (!Array.isArray(entries)) return fallback;
+  const english = entries.filter((e) => e?.language?.name === "en");
+  const text = english[0]?.flavor_text || "";
+  return (
+    text
+      .replace(/[\n\f\r]+/g, " ")
+      .replace(/\s{2,}/g, " ")
+      .trim() || fallback
+  );
+};
