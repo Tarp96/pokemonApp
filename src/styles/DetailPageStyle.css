@@ -260,6 +260,7 @@
   box-sizing: border-box; /* padding included in width */
   max-width: 100%;
   width: 100%;
+  text-transform: capitalize;
 }
 
 .infoList ul {
