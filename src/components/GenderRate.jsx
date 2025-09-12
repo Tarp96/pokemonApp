@@ -1,6 +1,6 @@
 import { BsGenderFemale, BsGenderMale } from "react-icons/bs";
 
-export const GenderRate = () => {
+export const GenderRate = ({ rate }) => {
   if (rate === -1) {
     return <>Genderless</>;
   }

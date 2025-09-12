@@ -12,6 +12,7 @@ import { BsGenderFemale, BsGenderMale } from "react-icons/bs";
 import TypeRelations from "../../components/TypeRelations";
 import { SwitchButton } from "../../components/SwitchButton";
 import { InformationList } from "../../components/InformationList";
+import { GenderRate } from "../../components/GenderRate";
 
 export const PokemonDetailOverView = () => {
   const [abilityDetails, setAbilityDetails] = useState([]);
@@ -177,7 +178,7 @@ export const PokemonDetailOverView = () => {
             items={[
               {
                 label: "Gender",
-                value: genderRate(pokemonSpecies?.gender_rate),
+                value: <GenderRate rate={pokemonSpecies?.gender_rate} />,
               },
               ,
               {
