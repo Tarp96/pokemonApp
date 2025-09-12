@@ -100,14 +100,24 @@ export const PokemonDetailOverView = () => {
       </>
     );
   };
+  const eggGroupsText =
+    (pokemonSpecies?.egg_groups ?? [])
+      .map((g) => g?.name)
+      .filter(Boolean)
+      .join(", ") || "—";
 
-  const displayEggGroups =
-    pokemonSpecies?.egg_groups?.map((e) => e.name).join(", ") ?? "—";
+  const eggCyclesText =
+    pokemonSpecies?.hatch_counter != null
+      ? `${pokemonSpecies.hatch_counter} cycles (${eggStepCounter(
+          pokemonSpecies.hatch_counter
+        )} steps)`
+      : "—";
 
-  const eggStepCounter = (hatchCounter) => {
-    const steps = 256 * (hatchCounter + 1);
-    return steps;
-  };
+  const heldItemsText =
+    (pokemon?.held_items ?? [])
+      .map((h) => h?.item?.name)
+      .filter(Boolean)
+      .join(", ") || "—";
 
   return (
     <>
