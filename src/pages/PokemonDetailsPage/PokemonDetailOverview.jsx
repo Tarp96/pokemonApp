@@ -84,20 +84,6 @@ export const PokemonDetailOverView = () => {
   const displayEnglishFavorText =
     englishFlavorText[0]?.flavor_text || "No description available.";
 
-  const genderRate = (genderRate) => {
-    if (genderRate === -1) {
-      return <>Genderless</>;
-    }
-
-    const femaleRate = (genderRate / 8) * 100;
-    const maleRate = ((8 - genderRate) / 8) * 100;
-    return (
-      <>
-        {<BsGenderFemale />} {femaleRate}% {<BsGenderMale />}
-        {maleRate}%
-      </>
-    );
-  };
   const eggGroupsText =
     (pokemonSpecies?.egg_groups ?? [])
       .map((g) => g?.name)
