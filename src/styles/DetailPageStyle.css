@@ -336,7 +336,8 @@
 .abilityName {
   font-weight: bold;
   font-size: 1.2rem;
-  border-bottom: 0.5px solid grey;
+  border-bottom: 2px solid #ffcb05;
+  color: #2a75bb;
 }
 
 .hiddenTag {
