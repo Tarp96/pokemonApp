@@ -1,5 +1,8 @@
 import { useOutletContext } from "react-router-dom";
-import { firstLetterUpperCase } from "../../utils/helperFunctions";
+import {
+  firstLetterUpperCase,
+  heightAndWeightConverter,
+} from "../../utils/helperFunctions";
 import { TypeBadge } from "../../components/TypeBadge";
 import AudioPlayer from "../../components/AudioPlayer";
 import "../../styles/DetailPageStyle.css";
@@ -80,11 +83,6 @@ export const PokemonDetailOverView = () => {
 
   const displayEnglishFavorText =
     englishFlavorText[0]?.flavor_text || "No description available.";
-
-  const heightAndWeightConverter = (statToConvert) => {
-    const convertedStat = statToConvert / 10;
-    return convertedStat;
-  };
 
   const genderRate = (genderRate) => {
     if (genderRate === -1) {
