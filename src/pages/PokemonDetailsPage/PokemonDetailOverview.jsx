@@ -1,7 +1,8 @@
 import { useOutletContext } from "react-router-dom";
 import {
   firstLetterUpperCase,
-  heightAndWeightConverter,
+  formatHeight,
+  formatWeight,
   formatEggCycles,
 } from "../../utils/helperFunctions";
 import { TypeBadge } from "../../components/TypeBadge";
@@ -117,17 +118,11 @@ export const PokemonDetailOverView = () => {
               },
               {
                 label: "Height",
-                value:
-                  pokemon?.height != null
-                    ? `${heightAndWeightConverter(pokemon.height)} metres`
-                    : "—",
+                value: formatHeight(pokemon?.height),
               },
               {
                 label: "Weight",
-                value:
-                  pokemon?.weight != null
-                    ? `${heightAndWeightConverter(pokemon.weight)} kg`
-                    : "—",
+                value: formatWeight(pokemon?.weight),
               },
               { label: "Shape", value: pokemonSpecies?.shape?.name ?? "—" },
               { label: "Color", value: pokemonSpecies?.color?.name ?? "—" },
