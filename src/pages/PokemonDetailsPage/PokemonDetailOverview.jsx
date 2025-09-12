@@ -8,6 +8,7 @@ import { fetchAbilityDetails } from "../../utils/pokeApi";
 import { BsGenderFemale, BsGenderMale } from "react-icons/bs";
 import TypeRelations from "../../components/TypeRelations";
 import { SwitchButton } from "../../components/SwitchButton";
+import { InformationList } from "../../components/InformationList";
 
 export const PokemonDetailOverView = () => {
   const [abilityDetails, setAbilityDetails] = useState([]);
@@ -118,39 +119,28 @@ export const PokemonDetailOverView = () => {
           </h2>
 
           <div className="flavorTextDiv">{displayEnglishFavorText}</div>
-          <div className="infoList">
-            <ul>
-              <li>
-                <span className="listItemTopic">Pokedex number: </span>
-                {pokemon?.order ?? "—"}
-              </li>
-              <li>
-                <span className="listItemTopic">Introduced:</span>{" "}
-                {pokemonSpecies?.generation?.name ?? "—"}
-              </li>
-              <li>
-                <span className="listItemTopic">Height: </span>
-                {pokemon?.height != null
-                  ? `${heightAndWeightConverter(pokemon.height)} metres`
-                  : "—"}
-              </li>
-              <li>
-                <span className="listItemTopic">Weight: </span>
-
-                {pokemon?.weight != null
-                  ? `${heightAndWeightConverter(pokemon.weight)} kg`
-                  : "—"}
-              </li>
-              <li>
-                <span className="listItemTopic">Shape:</span>{" "}
-                {pokemonSpecies?.shape?.name ?? "—"}
-              </li>
-              <li>
-                <span className="listItemTopic">Color:</span>{" "}
-                {pokemonSpecies?.color?.name ?? "—"}
-              </li>
-            </ul>
-          </div>
+          <InformationList
+            labelOne="Pokedex number"
+            labelTwo="Introduced"
+            labelThree="Height"
+            labelFour="Weight"
+            labelFive="Shape"
+            labelSix="Color"
+            listItemOne={pokemon?.order ?? "—"}
+            listItemTwo={pokemonSpecies?.generation?.name ?? "—"}
+            listItemThree={
+              pokemon?.height != null
+                ? `${heightAndWeightConverter(pokemon.height)} metres`
+                : "—"
+            }
+            listItemFour={
+              pokemon?.weight != null
+                ? `${heightAndWeightConverter(pokemon.weight)} kg`
+                : "—"
+            }
+            listItemFive={pokemonSpecies?.shape?.name ?? "—"}
+            listItemSix={pokemonSpecies?.color?.name ?? "—"}
+          />
 
           <div className="abilityInfoContainer">
             <h3>Abilities</h3>
