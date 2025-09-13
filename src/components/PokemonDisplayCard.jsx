@@ -72,7 +72,7 @@ function PokemonDisplayCard({
 
       <div className="audioButtonCardWrapper">
         {cries?.legacy && (
-          <AudioPlayer src={cries.legacy}>
+          <AudioPlayer src={cries.legacy} className={"audioButton"}>
             <AiTwotoneSound />
           </AudioPlayer>
         )}

@@ -413,20 +413,6 @@ body {
   justify-content: center;
 }
 
-.audioButtonExpanded {
-  background-color: #abcbf0;
-  color: white;
-  font-size: 18px;
-  padding: 10px 20px;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-}
-
 .audioButton:hover {
   background-color: #357ab7;
   transform: scale(1.1);

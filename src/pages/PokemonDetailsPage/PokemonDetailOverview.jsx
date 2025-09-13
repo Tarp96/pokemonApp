@@ -16,6 +16,7 @@ import { SwitchButton } from "../../components/SwitchButton";
 import { InformationList } from "../../components/InformationList";
 import { GenderRate } from "../../components/GenderRate";
 import { AbilitiesList } from "../../components/AbilitiesList";
+import { BsVolumeUp } from "react-icons/bs";
 
 export const PokemonDetailOverView = () => {
   const [abilityDetails, setAbilityDetails] = useState([]);
@@ -124,6 +125,20 @@ export const PokemonDetailOverView = () => {
           </div>
         </div>
         <div className="overviewPageMainImageContainer">
+          <div className="audioButtonContainer ">
+            <AudioPlayer
+              src={pokemon?.cries?.legacy}
+              className="audioButtonExpanded"
+            >
+              <BsVolumeUp aria-hidden="true" /> Legacy Cry
+            </AudioPlayer>
+            <AudioPlayer
+              src={pokemon?.cries?.latest}
+              className="audioButtonExpanded"
+            >
+              <BsVolumeUp aria-hidden="true" /> Latest Cry
+            </AudioPlayer>
+          </div>
           {sprite && (
             <img
               src={sprite}
