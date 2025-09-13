@@ -389,8 +389,16 @@
 .relationsList .multiplierHeader {
   display: flex;
   align-items: baseline;
+}
+
+.relationsList {
   gap: 8px;
   margin-bottom: 10px;
+}
+
+.subtitle {
+  gap: 1.5rem;
+  flex-wrap: wrap;
 }
 
 .relationsTitleContainer {

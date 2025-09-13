@@ -194,7 +194,7 @@ export default function TypeRelations({ pokemon, view = "offense" }) {
       {status === "ready" && (
         <div className="relationsSingle">
           <div className="multiplierHeader">
-            <span className="multiplierTag">{view.toUpperCase()}</span>
+            <span className="multiplierTag">{view.toUpperCase()}</span>{" "}
             {view === "offense" ? (
               <span className="subtitle">
                 Best effectiveness of{" "}
