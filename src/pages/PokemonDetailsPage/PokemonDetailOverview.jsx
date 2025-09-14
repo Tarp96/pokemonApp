@@ -220,7 +220,9 @@ export const PokemonDetailOverView = () => {
           )}
         </div>
       </div>
-      <div className="overviewBottomSection"></div>
+      <div className="overviewBottomSection">
+        <h3>Eveloution Chain</h3>
+      </div>
     </>
   );
 };
