@@ -3,13 +3,14 @@ import {
   fetchPokemonDetails,
   fetchPokemonSpeciesDetails,
 } from "../../utils/pokeApi";
-import { useParams, Outlet, NavLink } from "react-router-dom";
+import { useParams, Outlet, NavLink, useNavigate } from "react-router-dom";
 import { firstLetterUpperCase } from "../../utils/helperFunctions";
 import { FaArrowLeft } from "react-icons/fa6";
 import { PageNavigationBar } from "../../components/PageNavigationbar";
 
 export const PokemonDetailsPage = () => {
   const { name } = useParams();
+  const navigate = useNavigate();
 
   const [pokemon, setPokemon] = useState({});
   const [pokemonSpecies, setPokemonSpecies] = useState({});
@@ -103,7 +104,8 @@ export const PokemonDetailsPage = () => {
           <button
             disabled={!prevAndNextMon[0]}
             onClick={() =>
-              prevAndNextMon[0] && onGoToPokemon(prevAndNextMon[0].name)
+              prevAndNextMon[0] &&
+              navigate(`/pokemon/${prevAndNextMon[0].name}`)
             }
           >
             ← Previous
@@ -114,7 +116,8 @@ export const PokemonDetailsPage = () => {
           <button
             disabled={!prevAndNextMon[1]}
             onClick={() =>
-              prevAndNextMon[1] && onGoToPokemon(prevAndNextMon[1].name)
+              prevAndNextMon[1] &&
+              navigate(`/pokemon/${prevAndNextMon[1].name}`)
             }
           >
             Next →
