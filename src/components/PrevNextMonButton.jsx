@@ -16,7 +16,7 @@ export default function PrevNextMonButton({ mon, direction }) {
           <>
             <div className="secondInnerDiv">
               <img
-                src={mon?.sprites?.other["official-artwork"]?.front_shiny}
+                src={mon?.sprites?.other["official-artwork"]?.front_default}
                 alt={mon.name}
               />
             </div>
@@ -33,7 +33,7 @@ export default function PrevNextMonButton({ mon, direction }) {
             </div>
             <div className="secondInnerDiv">
               <img
-                src={mon?.sprites?.other["official-artwork"]?.front_shiny}
+                src={mon?.sprites?.other["official-artwork"]?.front_default}
                 alt={mon.name}
               />
             </div>
