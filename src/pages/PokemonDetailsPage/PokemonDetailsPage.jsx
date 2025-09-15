@@ -7,6 +7,7 @@ import { useParams, Outlet, NavLink, useNavigate } from "react-router-dom";
 import { firstLetterUpperCase } from "../../utils/helperFunctions";
 import { FaArrowLeft } from "react-icons/fa6";
 import { PageNavigationBar } from "../../components/PageNavigationbar";
+import PrevNextMonButton from "../../components/PrevNextMonButton";
 
 export const PokemonDetailsPage = () => {
   const { name } = useParams();
@@ -101,29 +102,11 @@ export const PokemonDetailsPage = () => {
           <span className="backText">Back</span>
         </NavLink>
         <div className="detailPageMainTitleContainer">
-          <button
-            disabled={!prevAndNextMon[0]}
-            onClick={() =>
-              prevAndNextMon[0] &&
-              navigate(`/pokemon/${prevAndNextMon[0].name}`)
-            }
-            className="prevAndNextMonButton"
-          >
-            ← Previous
-          </button>
+          <PrevNextMonButton mon={prevAndNextMon[0]} direction="prev" />
           <h1 className="detailsPageTitle">
             {pokemon.name && firstLetterUpperCase(pokemon.name)} #{pokemon.id}
           </h1>
-          <button
-            disabled={!prevAndNextMon[1]}
-            onClick={() =>
-              prevAndNextMon[1] &&
-              navigate(`/pokemon/${prevAndNextMon[1].name}`)
-            }
-            className="prevAndNextMonButton"
-          >
-            {firstLetterUpperCase(prevAndNextMon[1].name)}
-          </button>
+          <PrevNextMonButton mon={prevAndNextMon[1]} direction="next" />
         </div>
         <div></div>
       </div>

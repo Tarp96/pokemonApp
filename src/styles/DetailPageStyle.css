@@ -32,13 +32,58 @@
 }
 
 .prevAndNextMonButton {
-  width: 120px;
-  height: 40px;
-  padding: 0.25rem 0.5rem;
-  font-size: 14px;
+  width: 160px;
+  height: 60px;
+  padding: 0;
+  border: 2px solid #4a90e2;
+  border-radius: 8px;
+  overflow: hidden;
   cursor: pointer;
+  display: flex;
+  background: transparent;
 }
 
+.prevAndNextInnerContainer {
+  display: flex;
+  width: 100%;
+  height: 100%;
+}
+
+.firstInnerDiv,
+.secondInnerDiv {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.firstInnerDiv {
+  background-color: #4a90e2;
+  color: white;
+  flex-direction: column;
+  font-weight: bold;
+  text-align: center;
+  padding: 4px;
+}
+
+.monId {
+  font-size: 12px;
+  opacity: 0.85;
+}
+
+.monName {
+  font-size: 14px;
+}
+
+.secondInnerDiv {
+  background-color: white;
+}
+
+.secondInnerDiv img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}
 .navigateBackButton {
   display: flex;
   align-items: center;
