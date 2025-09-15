@@ -9,6 +9,7 @@ const pageKey = (pageNumber, pageSize) =>
 
 const detailKey = (nameOrId) => `cache:v1:pokemon:${normalizeKey(nameOrId)}`;
 const speciesKey = (nameOrId) => `cache:v1:species:${normalizeKey(nameOrId)}`;
+const evoChainKey = (chainId) => `cache:v1:evochain:${chainId}`;
 
 const metaKey = `cache:v1:meta:count`;
 
@@ -92,6 +93,27 @@ export const fetchAbilityDetails = async (ability) => {
     return data;
   } catch (error) {
     console.error("Error fetching ability details:", error);
+    throw error;
+  }
+};
+
+export const fetchEvolutionChainById = async (chainId) => {
+  const key = evoChainKey(chainId);
+  const cached = cacheGet(key, ONE_DAY);
+  if (cached) return cached;
+
+  try {
+    const res = await fetch(
+      `https://pokeapi.co/api/v2/evolution-chain/${chainId}`
+    );
+    if (!res.ok) throw new Error(`Error fetching evolution chain ${chainId}`);
+    const data = await res.json();
+    cacheSet(key, data);
+    return data;
+  } catch (error) {
+    console.error("Error fetching evolution chain:", error);
+    const stale = cacheGetStale(key);
+    if (stale) return stale;
     throw error;
   }
 };
