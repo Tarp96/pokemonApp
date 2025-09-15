@@ -99,9 +99,27 @@ export const PokemonDetailsPage = () => {
           <FaArrowLeft className="backIcon" />
           <span className="backText">Back</span>
         </NavLink>
-        <h1 className="detailsPageTitle">
-          {pokemon.name && firstLetterUpperCase(pokemon.name)} #{pokemon.id}
-        </h1>
+        <div className="detailPageMainTitleContainer">
+          <button
+            disabled={!prevAndNextMon[0]}
+            onClick={() =>
+              prevAndNextMon[0] && onGoToPokemon(prevAndNextMon[0].name)
+            }
+          >
+            ← Previous
+          </button>
+          <h1 className="detailsPageTitle">
+            {pokemon.name && firstLetterUpperCase(pokemon.name)} #{pokemon.id}
+          </h1>
+          <button
+            disabled={!prevAndNextMon[1]}
+            onClick={() =>
+              prevAndNextMon[1] && onGoToPokemon(prevAndNextMon[1].name)
+            }
+          >
+            Next →
+          </button>
+        </div>
         <div></div>
       </div>
 

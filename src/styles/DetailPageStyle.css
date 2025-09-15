@@ -17,8 +17,14 @@
   align-items: flex-start;
 }
 
+.detailPageMainTitleContainer {
+  width: 80%;
+  display: flex;
+  justify-content: space-evenly;
+}
+
 .detailsPageTitle {
-  font-size: 64px;
+  font-size: 52px;
 }
 
 .navigateBackButton {
