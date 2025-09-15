@@ -588,38 +588,48 @@
 }
 
 /*EVELOUTION SECTION*/
+
 .evoSection {
-  display: grid;
-  gap: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
   margin-top: 16px;
 }
 
 .evoPath {
   display: flex;
-  align-items: center;
+  align-items: stretch;
+  justify-content: center;
+  gap: 24px;
   flex-wrap: wrap;
-  gap: 12px;
 }
 
 .evoNode {
+  flex: 1 1 200px;
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 6px 10px;
+  gap: 12px;
+  padding: 16px 20px;
   border: 1px solid #e5e7eb;
-  border-radius: 10px;
+  border-radius: 12px;
   background: #fff;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.evoNode:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .evoNode.current {
   border-color: #4a90e2;
-  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.15);
+  box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.25);
 }
 
 .evoImgWrap {
-  width: 48px;
-  height: 48px;
-  border-radius: 8px;
+  width: 80px;
+  height: 80px;
+  border-radius: 10px;
   background: #f3f4f6;
   display: flex;
   align-items: center;
@@ -633,20 +643,17 @@
   object-fit: contain;
 }
 
-.evoImgFallback {
-  font-weight: 700;
-  color: #9ca3af;
-}
-
 .evoLabel {
   font-weight: 600;
+  font-size: 18px;
   text-transform: capitalize;
 }
 
 .evoArrow {
-  margin: 0 8px;
-  font-size: 20px;
+  margin: 0 12px;
+  font-size: 28px;
   color: #9ca3af;
+  align-self: center;
 }
 /*EVELOUTION SECTION END*/
 
