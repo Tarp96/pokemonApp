@@ -1,4 +1,10 @@
 import { useEffect, useState } from "react";
+import {
+  fetchPokemonSpeciesDetails,
+  fetchEvolutionChainById,
+  fetchPokemonDetails,
+} from "./../utils/pokeApi";
+import { buildEvolutionPaths } from "../utils/helperFunctions";
 
 export const EvolutionSection = ({ pokemon }) => {
   const [paths, setPaths] = useState([]);
@@ -7,7 +13,10 @@ export const EvolutionSection = ({ pokemon }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    if (!pokemon?.id) return;
+    // Accept name or id from either details or species object
+    const idOrName = pokemon?.id ?? pokemon?.name;
+    if (!idOrName) return;
+
     let cancelled = false;
 
     const loadEvolution = async () => {
@@ -15,29 +24,51 @@ export const EvolutionSection = ({ pokemon }) => {
         setLoading(true);
         setError(null);
 
-        const species = await fetchPokemonSpecies(pokemon.id);
+        const species = await fetchPokemonSpeciesDetails(idOrName);
 
         const chainUrl = species?.evolution_chain?.url;
-        if (!chainUrl) throw new Error("No evolution chain for this species");
-        const chainId = chainUrl.split("/").filter(Boolean).pop();
+        if (!chainUrl) {
+          if (!cancelled) {
+            setPaths([]);
+            setMonMap({});
+          }
+          return;
+        }
+
+        const segments = chainUrl.split("/").filter(Boolean);
+        const chainId = segments[segments.length - 1];
+        if (!chainId) {
+          throw new Error(`Could not parse chain id from URL: ${chainUrl}`);
+        }
 
         const chainData = await fetchEvolutionChainById(chainId);
 
         const evoPaths = buildEvolutionPaths(chainData);
 
+        if (!evoPaths || evoPaths.length === 0) {
+          if (!cancelled) {
+            setPaths([]);
+            setMonMap({});
+          }
+          return;
+        }
+
         const uniqueNames = Array.from(
           new Set(evoPaths.flatMap((p) => p.map((n) => n.name)))
         );
+
         const detailEntries = await Promise.all(
           uniqueNames.map(async (name) => {
             try {
               const d = await fetchPokemonDetails(name);
               return [name, d];
-            } catch {
+            } catch (e) {
+              console.warn("[EvolutionSection] failed details for:", name, e);
               return [name, null];
             }
           })
         );
+
         const detailsMap = Object.fromEntries(detailEntries);
 
         if (!cancelled) {
@@ -45,6 +76,7 @@ export const EvolutionSection = ({ pokemon }) => {
           setMonMap(detailsMap);
         }
       } catch (err) {
+        console.error("[EvolutionSection] loadEvolution failed:", err);
         if (!cancelled)
           setError(err.message || "Failed to load evolution chain");
       } finally {
@@ -56,10 +88,10 @@ export const EvolutionSection = ({ pokemon }) => {
     return () => {
       cancelled = true;
     };
-  }, [pokemon?.id]);
+  }, [pokemon?.id, pokemon?.name]);
 
   if (loading) return <div>Loading evolution…</div>;
-  if (error) return <div>Could not load evolution chain.</div>;
+  if (error) return <div style={{ color: "#b91c1c" }}>{error}</div>;
   if (!paths.length) return <div>No evolution data.</div>;
 
   return (
@@ -67,7 +99,8 @@ export const EvolutionSection = ({ pokemon }) => {
       {paths.map((path, i) => (
         <div className="evoPath" key={i}>
           {path.map((node, idx) => {
-            const isCurrent = node.name === pokemon.name?.toLowerCase();
+            const isCurrent =
+              node.name === (pokemon?.name?.toLowerCase?.() ?? "");
             const mon = monMap[node.name];
 
             return (

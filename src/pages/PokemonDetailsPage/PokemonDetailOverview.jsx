@@ -223,7 +223,7 @@ export const PokemonDetailOverView = () => {
       </div>
       <div className="overviewBottomSection">
         <h3>Eveloution Chain</h3>
-        <EvolutionSection pokemon={pokemon} />
+        <EvolutionSection pokemon={pokemonSpecies} />
       </div>
     </>
   );
