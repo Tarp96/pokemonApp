@@ -20,11 +20,23 @@
 .detailPageMainTitleContainer {
   width: 80%;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
 }
 
 .detailsPageTitle {
   font-size: 52px;
+  text-align: center;
+  margin: 0;
+}
+
+.prevAndNextMonButton {
+  width: 120px;
+  height: 40px;
+  padding: 0.25rem 0.5rem;
+  font-size: 14px;
+  cursor: pointer;
 }
 
 .navigateBackButton {

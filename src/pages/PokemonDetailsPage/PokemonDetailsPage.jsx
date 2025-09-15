@@ -107,6 +107,7 @@ export const PokemonDetailsPage = () => {
               prevAndNextMon[0] &&
               navigate(`/pokemon/${prevAndNextMon[0].name}`)
             }
+            className="prevAndNextMonButton"
           >
             ← Previous
           </button>
@@ -119,8 +120,9 @@ export const PokemonDetailsPage = () => {
               prevAndNextMon[1] &&
               navigate(`/pokemon/${prevAndNextMon[1].name}`)
             }
+            className="prevAndNextMonButton"
           >
-            Next →
+            {firstLetterUpperCase(prevAndNextMon[1].name)}
           </button>
         </div>
         <div></div>
