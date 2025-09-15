@@ -2,10 +2,14 @@ import { cacheGet, cacheSet, cacheGetStale } from "./cache";
 
 const ONE_DAY = 24 * 60 * 60 * 1000;
 
+const normalizeKey = (nameOrId) => String(nameOrId).toLowerCase();
+
 const pageKey = (pageNumber, pageSize) =>
   `cache:v1:page:${pageNumber}:${pageSize}`;
-const detailKey = (name) => `cache:v1:pokemon:${name.toLowerCase()}`;
-const speciesKey = (name) => `cache:v1:species:${name.toLowerCase()}`;
+
+const detailKey = (nameOrId) => `cache:v1:pokemon:${normalizeKey(nameOrId)}`;
+const speciesKey = (nameOrId) => `cache:v1:species:${normalizeKey(nameOrId)}`;
+
 const metaKey = `cache:v1:meta:count`;
 
 export const fetchData = async (pageNumber, pokemonPerPage) => {
@@ -31,16 +35,18 @@ export const fetchData = async (pageNumber, pokemonPerPage) => {
   }
 };
 
-export const fetchPokemonDetails = async (pokemonName) => {
-  const key = detailKey(pokemonName);
+export const fetchPokemonDetails = async (pokemonNameOrId) => {
+  const key = detailKey(pokemonNameOrId);
   const cached = cacheGet(key, ONE_DAY);
   if (cached) return cached;
 
   try {
     const response = await fetch(
-      `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
+      `https://pokeapi.co/api/v2/pokemon/${pokemonNameOrId}`
     );
-    if (!response.ok) throw new Error(`Error fetching data for ${pokemonName}`);
+    if (!response.ok) {
+      throw new Error(`Error fetching data for ${pokemonNameOrId}`);
+    }
     const data = await response.json();
     cacheSet(key, data);
     return data;
