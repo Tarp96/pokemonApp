@@ -11,13 +11,64 @@ import PrevNextMonButton from "../../components/PrevNextMonButton";
 
 export const PokemonDetailsPage = () => {
   const { name } = useParams();
-  const navigate = useNavigate();
 
   const [pokemon, setPokemon] = useState({});
   const [pokemonSpecies, setPokemonSpecies] = useState({});
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [prevAndNextMon, setPrevAndNextMon] = useState([]);
+
+  useEffect(() => {
+    if (!pokemon?.id) return;
+    let cancelled = false;
+
+    const loadEvolution = async () => {
+      try {
+        setLoading(true);
+        setError(null);
+
+        const species = await fetchPokemonSpecies(pokemon.id);
+
+        const chainUrl = species?.evolution_chain?.url;
+        if (!chainUrl) throw new Error("No evolution chain for this species");
+        const chainId = chainUrl.split("/").filter(Boolean).pop();
+
+        const chainData = await fetchEvolutionChainById(chainId);
+
+        const evoPaths = buildEvolutionPaths(chainData);
+
+        const uniqueNames = Array.from(
+          new Set(evoPaths.flatMap((p) => p.map((n) => n.name)))
+        );
+        const detailEntries = await Promise.all(
+          uniqueNames.map(async (name) => {
+            try {
+              const d = await fetchPokemonDetails(name);
+              return [name, d];
+            } catch {
+              return [name, null];
+            }
+          })
+        );
+        const detailsMap = Object.fromEntries(detailEntries);
+
+        if (!cancelled) {
+          setPaths(evoPaths);
+          setMonMap(detailsMap);
+        }
+      } catch (err) {
+        if (!cancelled)
+          setError(err.message || "Failed to load evolution chain");
+      } finally {
+        if (!cancelled) setLoading(false);
+      }
+    };
+
+    loadEvolution();
+    return () => {
+      cancelled = true;
+    };
+  }, [pokemon?.id]);
 
   useEffect(() => {
     if (!pokemon?.id) return;

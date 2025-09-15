@@ -587,6 +587,69 @@
   color: #8a97a6;
 }
 
+/*EVELOUTION SECTION*/
+.evoSection {
+  display: grid;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.evoPath {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.evoNode {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 10px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.evoNode.current {
+  border-color: #4a90e2;
+  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.15);
+}
+
+.evoImgWrap {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.evoImgWrap img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.evoImgFallback {
+  font-weight: 700;
+  color: #9ca3af;
+}
+
+.evoLabel {
+  font-weight: 600;
+  text-transform: capitalize;
+}
+
+.evoArrow {
+  margin: 0 8px;
+  font-size: 20px;
+  color: #9ca3af;
+}
+/*EVELOUTION SECTION END*/
+
 /*DETAIL OVERVIEW PAGE END*/
 
 /*STATS PAGE*/
