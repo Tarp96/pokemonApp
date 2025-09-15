@@ -13,7 +13,6 @@ export const EvolutionSection = ({ pokemon }) => {
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    // Accept name or id from either details or species object
     const idOrName = pokemon?.id ?? pokemon?.name;
     if (!idOrName) return;
 
@@ -92,41 +91,52 @@ export const EvolutionSection = ({ pokemon }) => {
 
   if (loading) return <div>Loading evolution…</div>;
   if (error) return <div style={{ color: "#b91c1c" }}>{error}</div>;
-  if (!paths.length) return <div>No evolution data.</div>;
+  if (!paths.length) {
+    return (
+      <div className="evoSection">
+        <p className="evoNoData">This Pokémon does not have any evolutions.</p>
+      </div>
+    );
+  }
 
   return (
-    <div className="evoSection">
-      {paths.map((path, i) => (
-        <div className="evoPath" key={i}>
-          {path.map((node, idx) => {
-            const isCurrent =
-              node.name === (pokemon?.name?.toLowerCase?.() ?? "");
-            const mon = monMap[node.name];
+    <section className="evoSectionWrapper">
+      <div className="evoSection">
+        {paths.map((path, i) => (
+          <div className="evoPath" key={i}>
+            {path.map((node, idx) => {
+              const isCurrent =
+                node.name === (pokemon?.name?.toLowerCase?.() ?? "");
+              const mon = monMap[node.name];
 
-            return (
-              <div
-                className={`evoNode ${isCurrent ? "current" : ""}`}
-                key={node.name + idx}
-              >
-                <div className="evoImgWrap">
-                  {mon?.sprites?.other?.["official-artwork"]?.front_default ? (
-                    <img
-                      src={mon.sprites.other["official-artwork"].front_default}
-                      alt={node.name}
-                    />
-                  ) : (
-                    <div className="evoImgFallback">?</div>
-                  )}
+              return (
+                <div
+                  className={`evoNode ${isCurrent ? "current" : ""}`}
+                  key={node.name + idx}
+                >
+                  <div className="evoImgWrap">
+                    {mon?.sprites?.other?.["official-artwork"]
+                      ?.front_default ? (
+                      <img
+                        src={
+                          mon.sprites.other["official-artwork"].front_default
+                        }
+                        alt={node.name}
+                      />
+                    ) : (
+                      <div className="evoImgFallback">?</div>
+                    )}
+                  </div>
+                  <div className="evoLabel">
+                    #{mon?.id ?? "—"} {node.name}
+                  </div>
+                  {idx < path.length - 1 && <div className="evoArrow">→</div>}
                 </div>
-                <div className="evoLabel">
-                  #{mon?.id ?? "—"} {node.name}
-                </div>
-                {idx < path.length - 1 && <div className="evoArrow">→</div>}
-              </div>
-            );
-          })}
-        </div>
-      ))}
-    </div>
+              );
+            })}
+          </div>
+        ))}
+      </div>
+    </section>
   );
 };

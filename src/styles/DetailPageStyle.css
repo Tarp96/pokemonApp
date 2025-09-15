@@ -655,6 +655,11 @@
   color: #9ca3af;
   align-self: center;
 }
+
+.evoNoData {
+  font-style: italic;
+  color: #555;
+}
 /*EVELOUTION SECTION END*/
 
 /*DETAIL OVERVIEW PAGE END*/

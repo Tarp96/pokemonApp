@@ -222,7 +222,7 @@ export const PokemonDetailOverView = () => {
         </div>
       </div>
       <div className="overviewBottomSection">
-        <h3>Evolution Chain</h3>
+        <h3 className="evoTitle">Evolution Chain</h3>
         <EvolutionSection pokemon={pokemonSpecies} />
       </div>
     </>
