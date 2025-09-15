@@ -38,3 +38,24 @@ export const pickEnglishFlavorText = (
       .trim() || fallback
   );
 };
+
+export const buildEvolutionPaths = (chainRoot) => {
+  const paths = [];
+
+  const dfs = (node, acc) => {
+    const current = { name: node.species?.name, url: node.species?.url };
+    const nextAcc = [...acc, current];
+
+    if (!node.evolves_to || node.evolves_to.length === 0) {
+      paths.push(nextAcc);
+      return;
+    }
+
+    node.evolves_to.forEach((child) => dfs(child, nextAcc));
+  };
+
+  if (chainRoot?.chain) {
+    dfs(chainRoot.chain, []);
+  }
+  return paths;
+};
