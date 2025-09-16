@@ -11,6 +11,8 @@ const detailKey = (nameOrId) => `cache:v1:pokemon:${normalizeKey(nameOrId)}`;
 const speciesKey = (nameOrId) => `cache:v1:species:${normalizeKey(nameOrId)}`;
 const evoChainKey = (chainId) => `cache:v1:evochain:${chainId}`;
 
+const API_BASE = "https://pokeapi.co/api/v2";
+
 const metaKey = `cache:v1:meta:count`;
 
 export const fetchData = async (pageNumber, pokemonPerPage) => {
@@ -124,3 +126,12 @@ export const fetchEvolutionChainById = async (chainId) => {
     throw error;
   }
 };
+
+export async function fetchPokemonNamesByType(typeName) {
+  const res = await fetch(`${API_BASE}/type/${encodeURIComponent(typeName)}`);
+  if (!res.ok) throw new Error(`Failed to fetch type list: ${typeName}`);
+  const json = await res.json();
+  return (json.pokemon || [])
+    .map((p) => p && p.pokemon && p.pokemon.name)
+    .filter(Boolean);
+}
