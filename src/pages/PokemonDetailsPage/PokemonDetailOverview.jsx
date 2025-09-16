@@ -18,6 +18,7 @@ import { GenderRate } from "../../components/GenderRate";
 import { AbilitiesList } from "../../components/AbilitiesList";
 import { BsVolumeUp } from "react-icons/bs";
 import { EvolutionSection } from "../../components/EveloutionSection";
+import { AlternativeFormsSection } from "../../components/AlternativeFormsSection";
 
 export const PokemonDetailOverView = () => {
   const [abilityDetails, setAbilityDetails] = useState([]);
@@ -221,9 +222,13 @@ export const PokemonDetailOverView = () => {
           )}
         </div>
       </div>
-      <div className="overviewBottomSection">
+      <div className="overViewEvolutionSection">
         <h3 className="evoTitle">Evolution Chain</h3>
         <EvolutionSection pokemon={pokemonSpecies} />
+      </div>
+      <div className="overViewAlternativeFormSection">
+        <h3>Alternative Forms</h3>
+        <AlternativeFormsSection species={pokemonSpecies} />
       </div>
     </>
   );

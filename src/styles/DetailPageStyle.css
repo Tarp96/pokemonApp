@@ -261,9 +261,9 @@
 .audioButtonExpanded {
   display: inline-flex;
   align-items: center;
-  gap: 0.45rem; /* nice spacing if you add an icon */
+  gap: 0.45rem;
   padding: 0.5rem 0.9rem;
-  border-radius: 9999px; /* pill */
+  border-radius: 9999px;
   border: 1px solid rgba(0, 0, 0, 0.12);
   background: linear-gradient(180deg, #ffffff, #f6f7fb);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
@@ -287,9 +287,9 @@
 }
 
 :root {
-  --accent: #ffcb05; /* Poké yellow */
-  --ink: #0f172a; /* slate-900-ish */
-  --muted: #475569; /* slate-600-ish */
+  --accent: #ffcb05;
+  --ink: #0f172a;
+  --muted: #475569;
   --hairline: rgba(0, 0, 0, 0.1);
 }
 
@@ -358,7 +358,7 @@
 
 .infoList,
 .infoList ul {
-  box-sizing: border-box; /* padding included in width */
+  box-sizing: border-box
   max-width: 100%;
   width: 100%;
   text-transform: capitalize;
@@ -369,23 +369,23 @@
   margin: 0;
   padding: 5px;
   display: grid;
-  grid-template-columns: 1fr; /* default: 1 column */
+  grid-template-columns: 1fr; 
   gap: 8px 16px;
   border-top: 1px solid var(--hairline);
   padding-top: 12px;
 }
 
-/* two-column variant for wide screens ONLY where you want it */
+
 @media (min-width: 700px) {
   .infoList.two-columns ul {
     grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   }
 }
 
-/* each row spans full width; inside a row, label and value make two columns */
+
 .infoList li {
   display: grid;
-  grid-template-columns: max-content 1fr; /* label auto width, value fills rest */
+  grid-template-columns: max-content 1fr; 
   align-items: baseline;
   column-gap: 10px;
   padding: 6px 0;
@@ -406,8 +406,8 @@
 .listItemValue {
   overflow: hidden;
   text-overflow: ellipsis;
-  /* remove/override this if you added it earlier */
-  overflow-wrap: normal; /* was: anywhere */
+  
+  overflow-wrap: normal; 
 }
 
 .listItemTopic,
@@ -479,7 +479,7 @@
   flex-direction: column;
 }
 .middleSectionInfo .infoList {
-  flex: 1; /* stretches to fill available height */
+  flex: 1; 
 }
 
 .middleSectionTitleUnderline {
@@ -553,7 +553,7 @@
 
 .relationRow {
   display: grid;
-  grid-template-columns: 180px 1fr; /* label | icons */
+  grid-template-columns: 180px 1fr; 
   align-items: center;
   gap: 12px;
   padding: 10px 0;
@@ -661,6 +661,86 @@
   color: #555;
 }
 /*EVELOUTION SECTION END*/
+
+/*ALTERNATIVE FORMS*/
+.altFormsSection {
+  margin-top: 16px;
+}
+
+.altFormsNoData {
+  font-style: italic;
+  color: #555;
+  margin: 8px 0;
+}
+
+.altFormsGrid {
+  display: grid;
+
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 24px;
+  margin-top: 16px;
+}
+
+.altFormCard {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+  background: #fff;
+  cursor: pointer;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.altFormCard:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+}
+
+.altFormImageWrap {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 10px;
+  background: #f3f4f6;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.altFormImageWrap img {
+  max-width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+}
+
+.altFormLabel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.altFormId {
+  font-weight: 600;
+  font-size: 14px;
+  color: #4b5563;
+}
+
+.altFormName {
+  font-weight: 700;
+  font-size: 16px;
+  text-transform: capitalize;
+  color: #111827;
+}
+
+.altFormImageFallback {
+  font-weight: 700;
+  color: #9ca3af;
+}
+/*ALTERNATIVE FORMS END*/
 
 /*DETAIL OVERVIEW PAGE END*/
 
