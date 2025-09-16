@@ -358,7 +358,7 @@
 
 .infoList,
 .infoList ul {
-  box-sizing: border-box
+  box-sizing: border-box;
   max-width: 100%;
   width: 100%;
   text-transform: capitalize;
@@ -369,12 +369,11 @@
   margin: 0;
   padding: 5px;
   display: grid;
-  grid-template-columns: 1fr; 
+  grid-template-columns: 1fr;
   gap: 8px 16px;
   border-top: 1px solid var(--hairline);
   padding-top: 12px;
 }
-
 
 @media (min-width: 700px) {
   .infoList.two-columns ul {
@@ -382,10 +381,9 @@
   }
 }
 
-
 .infoList li {
   display: grid;
-  grid-template-columns: max-content 1fr; 
+  grid-template-columns: max-content 1fr;
   align-items: baseline;
   column-gap: 10px;
   padding: 6px 0;
@@ -406,8 +404,8 @@
 .listItemValue {
   overflow: hidden;
   text-overflow: ellipsis;
-  
-  overflow-wrap: normal; 
+
+  overflow-wrap: normal;
 }
 
 .listItemTopic,
@@ -479,7 +477,7 @@
   flex-direction: column;
 }
 .middleSectionInfo .infoList {
-  flex: 1; 
+  flex: 1;
 }
 
 .middleSectionTitleUnderline {
@@ -553,7 +551,7 @@
 
 .relationRow {
   display: grid;
-  grid-template-columns: 180px 1fr; 
+  grid-template-columns: 180px 1fr;
   align-items: center;
   gap: 12px;
   padding: 10px 0;
