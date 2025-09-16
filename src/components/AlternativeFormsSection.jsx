@@ -59,38 +59,46 @@ export const AlternativeFormsSection = ({ species }) => {
       {loading && <p>Loading forms…</p>}
       {error && <p style={{ color: "#b91c1c" }}>{error}</p>}
 
-      <div className="altFormsGrid">
-        {forms.map((p) => {
-          const d = formsMap[p.name];
-          const official =
-            d?.sprites?.other?.["official-artwork"]?.front_default;
-          const frontDefault = d?.sprites?.front_default;
-          const dream = d?.sprites?.other?.dream_world?.front_default;
-          const home = d?.sprites?.other?.home?.front_default;
-          const show = official || home || frontDefault || dream || null;
+      {forms.length === 0 ? (
+        <p className="altFormsNoData">
+          This Pokémon does not have any alternative forms.
+        </p>
+      ) : (
+        <div className="altFormsGrid">
+          {forms.map((p) => {
+            const d = formsMap[p.name];
+            const official =
+              d?.sprites?.other?.["official-artwork"]?.front_default;
+            const frontDefault = d?.sprites?.front_default;
+            const dream = d?.sprites?.other?.dream_world?.front_default;
+            const home = d?.sprites?.other?.home?.front_default;
+            const img = official || frontDefault || dream || home || null;
 
-          return (
-            <button
-              key={p.name}
-              className="altFormCard"
-              onClick={() => navigate(`/pokemon/${p.name}`)}
-              title={`Go to ${p.name}`}
-            >
-              <div className="altFormImageWrap">
-                {show ? (
-                  <img src={show} alt={p.name} />
-                ) : (
-                  <div className="altFormImageFallback">?</div>
-                )}
-              </div>
-              <div className="altFormLabel">
-                <div className="altFormId">{d?.id ? `#${d.id}` : ""}</div>
-                <div className="altFormName">{p.name?.replace(/-/g, " ")}</div>
-              </div>
-            </button>
-          );
-        })}
-      </div>
+            return (
+              <button
+                key={p.name}
+                className="altFormCard"
+                onClick={() => navigate(`/pokemon/${p.name}`)}
+                title={`Go to ${p.name}`}
+              >
+                <div className="altFormImageWrap">
+                  {img ? (
+                    <img src={img} alt={p.name} />
+                  ) : (
+                    <div className="altFormImageFallback">?</div>
+                  )}
+                </div>
+                <div className="altFormLabel">
+                  <div className="altFormId">{d?.id ? `#${d.id}` : ""}</div>
+                  <div className="altFormName">
+                    {p.name?.replace(/-/g, " ")}
+                  </div>
+                </div>
+              </button>
+            );
+          })}
+        </div>
+      )}
     </div>
   );
 };
