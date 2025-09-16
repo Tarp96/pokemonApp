@@ -315,7 +315,6 @@ export const HomePage = () => {
         activeFilter={activeFilter}
       />
 
-      {/* Show pagination only in normal (non-type) mode */}
       {!activeFilter && (
         <Pagination
           currentPage={pageNumber}
@@ -324,7 +323,6 @@ export const HomePage = () => {
         />
       )}
 
-      {/* Type mode header */}
       {activeFilter && typeLoadedCount > 0 && (
         <div
           className="typeHeader"
@@ -343,7 +341,6 @@ export const HomePage = () => {
         <>
           <PokemonGrid>{renderPokemonCards()}</PokemonGrid>
 
-          {/* Infinite scroll sentinel (only when more remain in type mode) */}
           {activeFilter && typeLoadedCount < typeTotal && (
             <div
               ref={sentinelRef}
