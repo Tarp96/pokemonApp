@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import {
   fetchPokemonDetails,
   fetchPokemonSpeciesDetails,
+  fetchPokemonSpeciesByUrl,
 } from "../../utils/pokeApi";
 import { useParams, Outlet, NavLink, useNavigate } from "react-router-dom";
 import { firstLetterUpperCase } from "../../utils/helperFunctions";
@@ -12,8 +13,8 @@ import PrevNextMonButton from "../../components/PrevNextMonButton";
 export const PokemonDetailsPage = () => {
   const { name } = useParams();
 
-  const [pokemon, setPokemon] = useState({});
-  const [pokemonSpecies, setPokemonSpecies] = useState({});
+  const [pokemon, setPokemon] = useState(null);
+  const [pokemonSpecies, setPokemonSpecies] = useState(null);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [prevAndNextMon, setPrevAndNextMon] = useState([]);
@@ -117,14 +118,20 @@ export const PokemonDetailsPage = () => {
         setError(null);
         setLoading(true);
 
-        const [data, speciesData] = await Promise.all([
-          fetchPokemonDetails(name),
-          fetchPokemonSpeciesDetails(name),
-        ]);
-
+        const details = await fetchPokemonDetails(name);
         if (cancelled) return;
-        setPokemon(data);
-        setPokemonSpecies(speciesData);
+        setPokemon(details);
+
+        let speciesData = null;
+        if (details?.species?.url) {
+          speciesData = await fetchPokemonSpeciesByUrl(details.species.url);
+        } else if (details?.species?.name) {
+          speciesData = await fetchPokemonSpeciesDetails(details.species.name);
+        }
+
+        if (!cancelled) {
+          setPokemonSpecies(speciesData);
+        }
       } catch (err) {
         console.error("Failed to fetch Pokémon details:", err);
         if (!cancelled) setError("Could not load Pokémon data.");

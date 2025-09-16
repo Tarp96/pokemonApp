@@ -80,6 +80,13 @@ export const fetchPokemonSpeciesDetails = async (pokemonName) => {
   }
 };
 
+export const fetchPokemonSpeciesByUrl = async (url) => {
+  if (!url) throw new Error("No species URL provided");
+
+  const id = url.split("/").filter(Boolean).pop();
+  return fetchPokemonSpeciesDetails(id);
+};
+
 export const fetchAbilityDetails = async (ability) => {
   try {
     const response = await fetch(
