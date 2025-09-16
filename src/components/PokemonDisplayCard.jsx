@@ -22,6 +22,7 @@ function PokemonDisplayCard({
   onClick,
   pokemon,
   generation,
+  className,
 }) {
   const { userLoggedIn } = useAuth();
 

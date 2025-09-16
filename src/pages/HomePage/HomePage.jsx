@@ -40,7 +40,67 @@ export const HomePage = () => {
   const DETAIL_CONCURRENCY = 6;
   const requestIdRef = useRef(0);
 
+  const sentinelRef = useRef(null);
+  const observerRef = useRef(null);
+
   const navigate = useNavigate();
+
+  useEffect(() => {
+    const shouldWatch =
+      !!activeFilter &&
+      Array.isArray(typeNames) &&
+      typeLoadedCount < typeTotal &&
+      !loading;
+
+    if (!shouldWatch) {
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+        observerRef.current = null;
+      }
+      return;
+    }
+
+    observerRef.current = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0];
+
+        if (entry.isIntersecting && !typeLoading) {
+          setTimeout(() => {
+            if (
+              Array.isArray(typeNames) &&
+              typeLoadedCount < typeTotal &&
+              !typeLoading
+            ) {
+              loadTypeBatch(typeNames, typeLoadedCount);
+            }
+          }, 0);
+        }
+      },
+      {
+        root: null,
+        rootMargin: "300px",
+        threshold: 0.01,
+      }
+    );
+
+    if (sentinelRef.current) {
+      observerRef.current.observe(sentinelRef.current);
+    }
+
+    return () => {
+      if (observerRef.current) {
+        observerRef.current.disconnect();
+        observerRef.current = null;
+      }
+    };
+  }, [
+    activeFilter,
+    typeNames,
+    typeLoadedCount,
+    typeTotal,
+    typeLoading,
+    loading,
+  ]);
 
   useEffect(() => {
     loadPokemonData(pageNumber);
@@ -107,13 +167,22 @@ export const HomePage = () => {
 
     if (Array.isArray(arg1)) {
       namesSource = arg1;
-      startFrom = arg2 || 0;
+      startFrom = Number(arg2) || 0;
     } else if (typeof arg1 === "number") {
       namesSource = typeNames;
       startFrom = arg1;
     } else {
       namesSource = typeNames;
-      startFrom = 0;
+      startFrom = Number(arg2) || 0;
+    }
+
+    if (!Array.isArray(namesSource)) {
+      console.error("loadTypeBatch: namesSource is not an array", {
+        arg1,
+        arg2,
+        namesSource,
+      });
+      return;
     }
 
     const end = Math.min(startFrom + TYPE_BATCH_SIZE, namesSource.length);
@@ -225,6 +294,7 @@ export const HomePage = () => {
         cries={pokemonItem.cries}
         onClick={() => navigate(`/pokemon/${pokemonItem.name}`)}
         pokemon={pokemonItem}
+        className={`pokemon-card-${pokemonItem.name}`}
       />
     ));
   };
@@ -245,6 +315,7 @@ export const HomePage = () => {
         activeFilter={activeFilter}
       />
 
+      {/* Show pagination only in normal (non-type) mode */}
       {!activeFilter && (
         <Pagination
           currentPage={pageNumber}
@@ -253,14 +324,15 @@ export const HomePage = () => {
         />
       )}
 
-      {activeFilter && (
+      {/* Type mode header */}
+      {activeFilter && typeLoadedCount > 0 && (
         <div
           className="typeHeader"
           style={{ textAlign: "center", margin: "10px 0" }}
         >
           <strong>
             {firstLetterUpperCase(activeFilter)} Pokémon • Showing{" "}
-            {Math.min(typeLoadedCount, typeTotal)} / {typeTotal}
+            {typeLoadedCount} / {typeTotal}
           </strong>
         </div>
       )}
@@ -271,21 +343,13 @@ export const HomePage = () => {
         <>
           <PokemonGrid>{renderPokemonCards()}</PokemonGrid>
 
+          {/* Infinite scroll sentinel (only when more remain in type mode) */}
           {activeFilter && typeLoadedCount < typeTotal && (
             <div
-              style={{
-                display: "flex",
-                justifyContent: "center",
-                margin: "16px 0",
-              }}
-            >
-              <button
-                className="loadMoreBtn"
-                onClick={() => loadTypeBatch(typeLoadedCount)}
-              >
-                Load more
-              </button>
-            </div>
+              ref={sentinelRef}
+              style={{ height: 1, margin: 0, padding: 0 }}
+              aria-hidden="true"
+            />
           )}
         </>
       ) : (
