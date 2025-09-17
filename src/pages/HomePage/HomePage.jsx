@@ -32,6 +32,7 @@ export const HomePage = () => {
   });
   const [showSearches, setShowSearches] = useState(false);
   const [typeLoading, setTypeLoading] = useState(false);
+  const pageLoading = loading && !activeFilter;
 
   const navigate = useNavigate();
 
@@ -165,7 +166,7 @@ export const HomePage = () => {
         />
       )}
 
-      {typeLoading ? (
+      {pageLoading ? (
         <CenterSpinner />
       ) : filteredPokemon.length > 0 ? (
         <PokemonGrid>{renderPokemonCards()}</PokemonGrid>
