@@ -13,8 +13,9 @@ import { PokemonGrid } from "../../components/PokemonGrid";
 import { useNavigate } from "react-router-dom";
 import Pagination from "../../components/Pagination";
 import { getItem, setItem } from "../../utils/localStorage";
-import { fetchPokemonCardData } from "../../utils/pokeApiCard";
+
 import { setCachedPageFull } from "../../utils/cache";
+import CenterSpinner from "../../components/CenterSpinner";
 
 export const HomePage = () => {
   const [pokemon, setPokemon] = useState([]);
@@ -30,6 +31,7 @@ export const HomePage = () => {
     return item || [];
   });
   const [showSearches, setShowSearches] = useState(false);
+  const [typeLoading, setTypeLoading] = useState(false);
 
   const navigate = useNavigate();
 
@@ -71,13 +73,13 @@ export const HomePage = () => {
     }
 
     try {
+      setTypeLoading(true);
       const result = await fetchTypeData(key);
       const pokemonNames = (result?.pokemon || [])
         .map((p) => p?.pokemon?.name)
         .filter(Boolean);
 
       const allPokemonDetails = await safeFetchBatch(pokemonNames);
-
       setFilteredPokemon(allPokemonDetails);
 
       setActiveFilter(key);
@@ -86,6 +88,7 @@ export const HomePage = () => {
       console.error("Error fetching type data:", error);
       setFilteredPokemon([]);
     } finally {
+      setTypeLoading(false);
     }
   };
 
@@ -162,19 +165,15 @@ export const HomePage = () => {
         />
       )}
 
-      {loading ? (
-        <p>Loading Pokémon...</p>
+      {typeLoading ? (
+        <CenterSpinner />
+      ) : filteredPokemon.length > 0 ? (
+        <PokemonGrid>{renderPokemonCards()}</PokemonGrid>
       ) : (
-        <>
-          {filteredPokemon.length > 0 ? (
-            <PokemonGrid>{renderPokemonCards()}</PokemonGrid>
-          ) : (
-            <NoPokemonMatchFilter
-              onClick={removeFilter}
-              type={activeFilter ? "type" : query ? "search" : null}
-            />
-          )}
-        </>
+        <NoPokemonMatchFilter
+          onClick={removeFilter}
+          type={activeFilter ? "type" : query ? "search" : null}
+        />
       )}
     </div>
   );
