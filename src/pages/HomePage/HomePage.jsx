@@ -166,7 +166,7 @@ export const HomePage = () => {
         />
       )}
 
-      {pageLoading ? (
+      {pageLoading || typeLoading ? (
         <CenterSpinner />
       ) : filteredPokemon.length > 0 ? (
         <PokemonGrid>{renderPokemonCards()}</PokemonGrid>
