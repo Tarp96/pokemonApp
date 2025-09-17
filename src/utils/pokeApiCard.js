@@ -1,17 +1,22 @@
 import { toCardData } from "./pokemonSlim";
+import {
+  fetchPokemonSpeciesByUrl,
+  fetchPokemonSpeciesDetails,
+} from "./pokeApi";
 
 export async function fetchPokemonCardData(pokemonName) {
-  const [detailsRes, speciesRes] = await Promise.all([
-    fetch(`https://pokeapi.co/api/v2/pokemon/${pokemonName}`),
-    fetch(`https://pokeapi.co/api/v2/pokemon-species/${pokemonName}`),
-  ]);
+  const detailsRes = await fetch(
+    `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
+  );
   if (!detailsRes.ok) throw new Error(`Error fetching data for ${pokemonName}`);
-  if (!speciesRes.ok)
-    throw new Error(`Error fetching species for ${pokemonName}`);
+  const details = await detailsRes.json();
 
-  const [details, species] = await Promise.all([
-    detailsRes.json(),
-    speciesRes.json(),
-  ]);
+  let species;
+  try {
+    species = await fetchPokemonSpeciesByUrl(details?.species?.url);
+  } catch (e) {
+    species = await fetchPokemonSpeciesDetails(pokemonName);
+  }
+
   return toCardData(details, species);
 }

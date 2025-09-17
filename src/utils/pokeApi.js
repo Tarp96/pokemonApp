@@ -1,4 +1,5 @@
 import { cacheGet, cacheSet, cacheGetStale } from "./cache";
+import { fetchPokemonCardData } from "./pokeApiCard";
 
 const ONE_DAY = 24 * 60 * 60 * 1000;
 
@@ -34,6 +35,12 @@ export const fetchData = async (pageNumber, pokemonPerPage) => {
     if (stale) return stale;
     throw error;
   }
+};
+
+export const fetchTypeData = async (type) => {
+  const res = await fetch(`https://pokeapi.co/api/v2/type/${type}`);
+  if (!res.ok) throw new Error(`Error fetching data for type: ${type}`);
+  return res.json();
 };
 
 export const fetchPokemonDetails = async (pokemonNameOrId) => {
@@ -124,3 +131,20 @@ export const fetchEvolutionChainById = async (chainId) => {
     throw error;
   }
 };
+
+export async function safeFetchBatch(names) {
+  const results = await Promise.allSettled(
+    names.map(async (name) => {
+      try {
+        return await fetchPokemonCardData(name);
+      } catch (e) {
+        console.error(`Failed to fetch ${name}:`, e);
+        return null;
+      }
+    })
+  );
+
+  return results
+    .filter((r) => r.status === "fulfilled" && r.value !== null)
+    .map((r) => r.value);
+}

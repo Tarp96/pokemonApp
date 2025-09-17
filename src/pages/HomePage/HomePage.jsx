@@ -1,6 +1,11 @@
 import { useEffect, useState } from "react";
 import PokemonDisplayCard from "../../components/PokemonDisplayCard";
-import { fetchData, fetchPokemonDetails } from "../../utils/pokeApi";
+import {
+  fetchData,
+  fetchPokemonDetails,
+  fetchTypeData,
+  safeFetchBatch,
+} from "../../utils/pokeApi";
 import { FilterByTypeButtons } from "../../components/FilterByTypeButtons";
 import { SearchBar } from "../../components/SearchBar";
 import { NoPokemonMatchFilter } from "../../components/NoPokemonMatchFilter";
@@ -9,7 +14,7 @@ import { useNavigate } from "react-router-dom";
 import Pagination from "../../components/Pagination";
 import { getItem, setItem } from "../../utils/localStorage";
 import { fetchPokemonCardData } from "../../utils/pokeApiCard";
-import { getCachedPageFull, setCachedPageFull } from "../../utils/cache";
+import { setCachedPageFull } from "../../utils/cache";
 
 export const HomePage = () => {
   const [pokemon, setPokemon] = useState([]);
@@ -39,9 +44,7 @@ export const HomePage = () => {
       const result = await fetchData(pageNumber, 20);
       const pokemonNames = result.results.map((p) => p.name);
 
-      const allPokemonDetails = await Promise.all(
-        pokemonNames.map((pokemonName) => fetchPokemonCardData(pokemonName))
-      );
+      const allPokemonDetails = await safeFetchBatch(pokemonNames);
 
       const pages = Math.ceil((result.count ?? 0) / 20);
       setPokemon(allPokemonDetails);
@@ -59,19 +62,31 @@ export const HomePage = () => {
     }
   };
 
-  const filterPokemonByType = (key) => {
+  const filterByType = async (key) => {
     if (isFiltered && activeFilter === key) {
       setFilteredPokemon(pokemon);
       setActiveFilter(null);
-    } else {
-      const filtered = pokemon.filter((item) =>
-        item.types.some((type) => type.type.name === key)
-      );
-      setFilteredPokemon(filtered);
-      setActiveFilter(key);
+      setIsFiltered(false);
+      return;
     }
 
-    setIsFiltered((prev) => !prev);
+    try {
+      const result = await fetchTypeData(key);
+      const pokemonNames = (result?.pokemon || [])
+        .map((p) => p?.pokemon?.name)
+        .filter(Boolean);
+
+      const allPokemonDetails = await safeFetchBatch(pokemonNames);
+
+      setFilteredPokemon(allPokemonDetails);
+
+      setActiveFilter(key);
+      setIsFiltered(true);
+    } catch (error) {
+      console.error("Error fetching type data:", error);
+      setFilteredPokemon([]);
+    } finally {
+    }
   };
 
   const removeFilter = () => {
@@ -135,15 +150,17 @@ export const HomePage = () => {
       />
 
       <FilterByTypeButtons
-        filterByTypeFunc={filterPokemonByType}
+        filterByTypeFunc={filterByType}
         activeFilter={activeFilter}
       />
 
-      <Pagination
-        currentPage={pageNumber}
-        totalPages={totalPages}
-        onPageChange={(newPage) => setPageNumber(newPage)}
-      />
+      {!activeFilter && (
+        <Pagination
+          currentPage={pageNumber}
+          totalPages={totalPages}
+          onPageChange={(newPage) => setPageNumber(newPage)}
+        />
+      )}
 
       {loading ? (
         <p>Loading Pokémon...</p>
