@@ -142,6 +142,18 @@ export const HomePage = () => {
     ));
   };
 
+  const getRandomPokemon = async () => {
+    const number = Math.floor(Math.random() * 1025);
+
+    try {
+      const data = await fetchPokemonDetails(number);
+      setFilteredPokemon([data]);
+    } catch (error) {
+      console.log("Something went wrong");
+      setFilteredPokemon([]);
+    }
+  };
+
   return (
     <div className="mainContainer">
       <SearchBar
@@ -151,6 +163,7 @@ export const HomePage = () => {
         list={searchHistory}
         showSearches={showSearches}
         setShowSearches={setShowSearches}
+        secondOnClick={getRandomPokemon}
       />
 
       <FilterByTypeButtons
