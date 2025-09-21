@@ -5,8 +5,8 @@ export const SearchBar = ({
   query,
   setQuery,
   onClick,
+  secondOnClick,
   list,
-  displayPrevSearches,
   showSearches,
   setShowSearches,
 }) => {
@@ -42,6 +42,7 @@ export const SearchBar = ({
         <button onClick={() => onClick(query)} className="searchBarButton">
           Search 🔎
         </button>
+        <button onClick={secondOnClick}>Random Pokemon</button>
       </div>
 
       {showSearches && list.length > 0 && (
