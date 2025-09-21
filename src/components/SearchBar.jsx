@@ -39,10 +39,21 @@ export const SearchBar = ({
             </button>
           )}
         </div>
+
         <button onClick={() => onClick(query)} className="searchBarButton">
           Search 🔎
         </button>
-        <button onClick={secondOnClick}>Random Pokemon</button>
+      </div>
+
+      <div className="randomBtnWrapper">
+        <button onClick={secondOnClick} className="randomPokemonButton">
+          <img
+            src="/assets/pokeb.png"
+            alt="Pokeball"
+            className="randomPokeballIcon"
+          />
+          Random Pokémon
+        </button>
       </div>
 
       {showSearches && list.length > 0 && (

@@ -206,6 +206,47 @@ body {
   box-shadow: none;
 }
 
+.randomBtnWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.randomPokemonButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 10px 16px;
+  font-size: 16px;
+  font-weight: 600;
+  background: linear-gradient(to bottom right, #ff4d4d, #ff9999);
+  color: #fff;
+  border: 2px solid #000;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  max-width: 300px;
+}
+
+.randomPokemonButton:hover {
+  background: linear-gradient(to bottom right, #e63946, #ff7b7b);
+  transform: translateY(-1px);
+}
+
+.randomPokemonButton:active {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+.randomPokeballIcon {
+  width: 20px;
+  height: 20px;
+}
+
 .searchHistoryList {
   list-style: none;
   padding: 0;
