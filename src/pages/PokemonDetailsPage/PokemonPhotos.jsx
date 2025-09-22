@@ -20,10 +20,17 @@ export const PokemonPhotos = () => {
       for (const [key, value] of Object.entries(obj)) {
         if (typeof value === "string" && value.startsWith("https://")) {
           const isShiny = path.includes("shiny") || key.includes("shiny");
+
+          let section = path.split(".")[0] || "General";
+          if (section === "other") {
+            section = path.split(".")[1] || "Other";
+          }
+
           images.push({
             key,
             url: value,
             type: isShiny ? "shiny" : "normal",
+            section,
           });
         } else if (typeof value === "object" && value !== null) {
           recurse(value, path + key + ".");
@@ -34,6 +41,13 @@ export const PokemonPhotos = () => {
     recurse(spriteObj);
     return images;
   }
+
+  const groupedImages = pokemonImages.reduce((acc, img) => {
+    if (img.type !== mode) return acc;
+    if (!acc[img.section]) acc[img.section] = [];
+    acc[img.section].push(img);
+    return acc;
+  }, {});
 
   return (
     <div className="photosPageContainer">
@@ -51,20 +65,28 @@ export const PokemonPhotos = () => {
           Shiny
         </button>
       </div>
-      <div className="imageGrid">
-        {pokemonImages
-          .filter((img) => img.type === mode)
-          .map((img) => (
-            <div key={img.key + img.url} className="imageCard">
-              <img src={img.url} alt={img.key} />
-              <p>
-                {img.key
-                  .replace(/_/g, " ")
-                  .replace(/\b\w/g, (c) => c.toUpperCase())}
-              </p>
-            </div>
-          ))}
-      </div>
+
+      {Object.entries(groupedImages).map(([section, images]) => (
+        <div key={section} className="imageSection">
+          <h2 className="sectionTitle">
+            {section
+              .replace(/_/g, " ")
+              .replace(/\b\w/g, (c) => c.toUpperCase())}
+          </h2>
+          <div className="imageGrid">
+            {images.map((img) => (
+              <div key={img.key + img.url} className="imageCard">
+                <img src={img.url} alt={img.key} />
+                <p>
+                  {img.key
+                    .replace(/_/g, " ")
+                    .replace(/\b\w/g, (c) => c.toUpperCase())}
+                </p>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
     </div>
   );
 };
