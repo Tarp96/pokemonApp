@@ -16,6 +16,7 @@ import "react-toastify/dist/ReactToastify.css";
 import LoginPage from "./pages/Auth/LoginPage";
 import { AuthLayout } from "./pages/Auth/AuthLayout";
 import RegisterUserPage from "./pages/Auth/RegisterUserPage";
+import { GamePage } from "./pages/CatchGame/GamePage";
 
 function App() {
   return (
@@ -31,6 +32,7 @@ function App() {
             <Route index element={<LoginPage />} />
             <Route path="register" element={<RegisterUserPage />} />
           </Route>
+          <Route path="game" element={<GamePage />} />
         </Route>
 
         <Route path="/pokemon/:name" element={<PokemonDetailsPage />}>

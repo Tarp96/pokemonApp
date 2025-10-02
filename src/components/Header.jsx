@@ -27,6 +27,11 @@ export const Header = () => {
           <NavLink to="/" className="headerNavBtn">
             Home
           </NavLink>
+
+          <NavLink to="/game" className="headerNavBtn">
+            Game
+          </NavLink>
+
           {userLoggedIn ? (
             <NavLink to="/profilepage" className="headerNavBtn">
               Profile
