@@ -263,7 +263,3 @@ src/
 - [Firebase](https://firebase.google.com/) for auth and storage.
 
 ---
-
-## 📝 License
-
-Choose a license (e.g., MIT) and add it here.
