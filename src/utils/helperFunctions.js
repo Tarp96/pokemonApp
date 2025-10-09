@@ -47,7 +47,6 @@ export const buildEvolutionPaths = (chainRoot) => {
     const nextAcc = [...acc, current];
 
     if (!node.evolves_to || node.evolves_to.length === 0) {
-      // Only push paths that have at least one evolution step
       if (nextAcc.length > 1) paths.push(nextAcc);
       return;
     }
