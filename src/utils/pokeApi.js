@@ -43,6 +43,12 @@ export const fetchTypeData = async (type) => {
   return res.json();
 };
 
+export const fetchMoveData = async (move) => {
+  const res = await fetch(`https://pokeapi.co/api/v2/move/${move}`);
+  if (!res.ok) throw new Error(`Error fetching data for type: ${type}`);
+  return res.json();
+};
+
 export const fetchPokemonDetails = async (pokemonNameOrId) => {
   const key = detailKey(pokemonNameOrId);
   const cached = cacheGet(key, ONE_DAY);
