@@ -888,35 +888,28 @@
   flex-shrink: 0;
 }
 
-.movesPage {
-  padding: 24px;
-  max-width: 1000px;
-  margin: 0 auto;
+.movesTable {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
 }
 
-.movesGrid {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 16px;
-  justify-content: center;
+.movesTable th,
+.movesTable td {
+  border: 1px solid #ddd;
+  padding: 8px 12px;
+  text-align: left;
 }
 
-.moveCard {
-  background-color: #f4f4f4;
-  border: 1px solid #e0e0e0;
-  border-radius: 8px;
-  padding: 12px 16px;
-  font-size: 1rem;
-  font-weight: 500;
-  text-transform: capitalize;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
-  transition: transform 0.2s ease;
-  min-width: 120px;
-  text-align: center;
+.movesTable th {
+  background-color: #f2f2f2;
+  font-weight: bold;
 }
 
-.moveCard:hover {
-  transform: translateY(-2px);
-  background-color: #fef08a;
-  cursor: pointer;
+.movesTable tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+.movesTable tr:hover {
+  background-color: #f9f9f9;
 }

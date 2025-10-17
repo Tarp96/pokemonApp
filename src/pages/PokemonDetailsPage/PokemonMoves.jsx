@@ -55,5 +55,50 @@ export const PokemonMoves = () => {
     </>
   ));
 
-  return <div className="movesPage">{moveDetailsDisplay}</div>;
+  return (
+    <div className="movesPage">
+      <div className="movesHeader">
+        <img
+          className="pokemonImage"
+          src={pokemon.sprites?.other["official-artwork"]?.front_default}
+          alt={pokemon.name}
+        />
+        <h1 className="movesTitle">{`${firstLetterUpperCase(
+          pokemon.name
+        )} Moves`}</h1>
+      </div>
+
+      <table className="movesTable">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Type</th>
+            <th>Category</th>
+            <th>Power</th>
+            <th>PP</th>
+            <th>Accuracy</th>
+            <th>Effect</th>
+          </tr>
+        </thead>
+        <tbody>
+          {moveDetails.map((move) => (
+            <tr key={move.id}>
+              <td>{firstLetterUpperCase(move.name)}</td>
+              <td>{firstLetterUpperCase(move.type.name)}</td>
+              <td>{firstLetterUpperCase(move.damage_class.name)}</td>
+              <td>{move.power ?? "-"}</td>
+              <td>{move.pp ?? "-"}</td>
+              <td>{move.accuracy ?? "-"}</td>
+              <td>
+                {move.effect_entries?.[0]?.short_effect?.replace(
+                  /\$effect_chance/g,
+                  move.effect_chance ?? ""
+                ) ?? "—"}
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
 };
