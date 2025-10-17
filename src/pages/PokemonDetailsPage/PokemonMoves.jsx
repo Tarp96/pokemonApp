@@ -7,6 +7,7 @@ export const PokemonMoves = () => {
   const { pokemon } = useOutletContext();
   const [moves, setMoves] = useState([]);
   const [moveDetails, setMoveDetails] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const moveNames = pokemon.moves?.map((m) => m.move.name) || [];
@@ -18,6 +19,7 @@ export const PokemonMoves = () => {
     async function getMoveDetails() {
       if (moves.length === 0) return;
 
+      setLoading(true);
       try {
         const results = await Promise.all(
           moves.map(async (move) => {
@@ -28,32 +30,30 @@ export const PokemonMoves = () => {
         setMoveDetails(results);
       } catch (error) {
         console.error("Error fetching move details:", error);
+      } finally {
+        setLoading(false);
       }
     }
 
     getMoveDetails();
   }, [moves]);
 
-  return (
-    <div className="movesPage">
-      <div className="movesHeader">
-        <img
-          className="pokemonImage"
-          src={pokemon.sprites?.other["official-artwork"]?.front_default}
-          alt={pokemon.name}
-        />
-        <h1 className="movesTitle">{`${firstLetterUpperCase(
-          pokemon.name
-        )} moves`}</h1>
+  if (loading) {
+    return (
+      <div className="movesPage">
+        <p>Loading data....</p>
       </div>
+    );
+  }
 
-      <div className="movesGrid">
-        {moveDetails.map((m) => (
-          <div className="moveCard" key={m.id}>
-            {m.name}
-          </div>
-        ))}
+  const moveDetailsDisplay = moveDetails.map((m) => (
+    <>
+      <div>
+        <p>{m.name}</p>
+        <p>{m.type.name}</p>
       </div>
-    </div>
-  );
+    </>
+  ));
+
+  return <div className="movesPage">{moveDetailsDisplay}</div>;
 };
