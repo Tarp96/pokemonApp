@@ -2,6 +2,7 @@ import { useOutletContext } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { firstLetterUpperCase } from "../../utils/helperFunctions";
 import { fetchMoveData } from "../../utils/pokeApi";
+import { getTypeIcon } from "../../utils/typeIcons";
 
 export const PokemonMoves = () => {
   const { pokemon } = useOutletContext();
@@ -46,15 +47,6 @@ export const PokemonMoves = () => {
     );
   }
 
-  const moveDetailsDisplay = moveDetails.map((m) => (
-    <>
-      <div>
-        <p>{m.name}</p>
-        <p>{m.type.name}</p>
-      </div>
-    </>
-  ));
-
   return (
     <div className="movesPage">
       <div className="movesHeader">
@@ -84,7 +76,9 @@ export const PokemonMoves = () => {
           {moveDetails.map((move) => (
             <tr key={move.id}>
               <td>{firstLetterUpperCase(move.name)}</td>
-              <td>{firstLetterUpperCase(move.type.name)}</td>
+              <td>
+                {firstLetterUpperCase(move.type.name)} <img src={``} />
+              </td>
               <td>{firstLetterUpperCase(move.damage_class.name)}</td>
               <td>{move.power ?? "-"}</td>
               <td>{move.pp ?? "-"}</td>
