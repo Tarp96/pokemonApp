@@ -2,7 +2,7 @@ import { useOutletContext } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { firstLetterUpperCase } from "../../utils/helperFunctions";
 import { fetchMoveData } from "../../utils/pokeApi";
-import { getTypeIcon } from "../../utils/typeIcons";
+import { TypeBadge } from "../../components/TypeBadge";
 
 export const PokemonMoves = () => {
   const { pokemon } = useOutletContext();
@@ -77,7 +77,12 @@ export const PokemonMoves = () => {
             <tr key={move.id}>
               <td>{firstLetterUpperCase(move.name)}</td>
               <td>
-                {firstLetterUpperCase(move.type.name)} <img src={``} />
+                <TypeBadge
+                  key={move.type.name}
+                  type={move.type.name}
+                  withIcon
+                  variant="detail"
+                />
               </td>
               <td>{firstLetterUpperCase(move.damage_class.name)}</td>
               <td>{move.power ?? "-"}</td>
