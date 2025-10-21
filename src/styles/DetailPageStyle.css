@@ -892,24 +892,40 @@
   width: 100%;
   border-collapse: collapse;
   margin-top: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  overflow: hidden;
 }
 
 .movesTable th,
 .movesTable td {
-  border: 1px solid #ddd;
-  padding: 8px 12px;
+  padding: 10px 14px;
   text-align: left;
 }
 
 .movesTable th {
-  background-color: #f2f2f2;
-  font-weight: bold;
+  background: linear-gradient(90deg, #a0c4ff 0%, #bdb2ff 100%);
+  color: #2b2b2b;
+  text-shadow: 0 1px 2px rgba(255, 255, 255, 0.4);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.95rem;
 }
 
 .movesTable tr:nth-child(even) {
   background-color: #fafafa;
 }
 
+.movesTable tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
 .movesTable tr:hover {
-  background-color: #f9f9f9;
+  background-color: #f1f5ff;
+  transition: background-color 0.3s ease;
+}
+
+.movesTable td {
+  border-bottom: 1px solid #e0e0e0;
 }
