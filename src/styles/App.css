@@ -1049,9 +1049,11 @@ body {
   text-align: center;
   padding: 15px;
   height: fit-content;
+  margin-bottom: 5px;
 }
 
 .gameStartButton {
+  border-radius: 25px;
 }
 
 /*GAME PAGE END*/
