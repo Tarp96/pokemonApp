@@ -12,9 +12,9 @@ export const GamePage = () => {
         <div className="difficultyButtonContainer">
           <h2>Choose difficulty</h2>
           <p>Higher dificulty gives more coins</p>
-          <button>Easy</button>
-          <button>Medium</button>
-          <button>Hard</button>
+          <button className="difficultyBtn easy">Easy</button>
+          <button className="difficultyBtn medium">Medium</button>
+          <button className="difficultyBtn hard">Hard</button>
         </div>
         <div>
           <button className="gameStartButton">Start</button>

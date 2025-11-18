@@ -1052,8 +1052,64 @@ body {
   margin-bottom: 5px;
 }
 
-.gameStartButton {
-  border-radius: 25px;
+/* Difficulty Section */
+.difficultyButtonContainer {
+  text-align: center;
+  margin-top: 20px;
+  border: solid 1px grey;
+}
+
+.difficultyButtonContainer h2 {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 8px;
+  color: #3b4cca;
+}
+
+.difficultyButtonContainer p {
+  margin-bottom: 16px;
+  color: #555;
+  font-size: 0.95rem;
+}
+
+.difficultyBtn {
+  padding: 12px 24px;
+  margin: 15px;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  border: 2px solid #3b4cca;
+  transition: all 0.25s ease;
+  color: #1f1f1f;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.difficultyBtn.easy {
+  background: linear-gradient(135deg, #9ae6b4, #68d391);
+}
+
+.difficultyBtn.easy:hover {
+  background: linear-gradient(135deg, #b2f2cf, #7ee7a7);
+  transform: translateY(-3px) scale(1.04);
+}
+
+.difficultyBtn.medium {
+  background: linear-gradient(135deg, #ffcb05, #ffdf70);
+}
+
+.difficultyBtn.medium:hover {
+  background: linear-gradient(135deg, #fde68a, #fff3b0);
+  transform: translateY(-3px) scale(1.04);
+}
+
+.difficultyBtn.hard {
+  background: linear-gradient(135deg, #ff6b6b, #ff8787);
+}
+
+.difficultyBtn.hard:hover {
+  background: linear-gradient(135deg, #ff8c8c, #ffadad);
+  transform: translateY(-3px) scale(1.04);
 }
 
 /*GAME PAGE END*/
