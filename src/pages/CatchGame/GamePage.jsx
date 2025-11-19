@@ -1,7 +1,16 @@
-import { useState } from "react";
-import pokeballLogo from "/assets/pokeb.png";
+import { useState, useEffect } from "react";
 
 export const GamePage = () => {
+  const [difficulty, setDifficulty] = useState("Easy");
+
+  useEffect(() => {
+    decideDifficulty("Easy");
+  }, []);
+
+  function decideDifficulty(difficulty) {
+    setDifficulty(difficulty);
+  }
+
   return (
     <>
       <div className="gameStartPageContainer">
@@ -12,12 +21,31 @@ export const GamePage = () => {
         <div className="difficultyButtonContainer">
           <h2>Choose difficulty</h2>
           <p>Higher dificulty gives more coins</p>
-          <button className="difficultyBtn easy">Easy</button>
-          <button className="difficultyBtn medium">Medium</button>
-          <button className="difficultyBtn hard">Hard</button>
+          <p>Selected Difficulty: {difficulty}</p>
+          <button
+            onClick={() => decideDifficulty("Easy")}
+            className="difficultyBtn easy"
+          >
+            Easy
+          </button>
+          <button
+            onClick={() => decideDifficulty("Medium")}
+            className="difficultyBtn medium"
+          >
+            Medium
+          </button>
+          <button
+            onClick={() => decideDifficulty("Hard")}
+            className="difficultyBtn hard"
+          >
+            Hard
+          </button>
         </div>
-        <div>
-          <button className="gameStartButton">Start</button>
+        <div className="gameStartButtonContainer">
+          <button className="gameStartButton">
+            Start
+            <img src="assets/pokeb.png" alt="" />
+          </button>
         </div>
       </div>
     </>

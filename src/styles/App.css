@@ -1112,4 +1112,41 @@ body {
   transform: translateY(-3px) scale(1.04);
 }
 
+.gameStartButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+
+  padding: 14px 30px;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: #2a2a2a;
+  cursor: pointer;
+
+  border-radius: 999px;
+  border: 3px solid #3b4cca;
+  background: linear-gradient(135deg, #ffcb05, #ffdf70);
+
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
+  transition: all 0.25s ease-in-out;
+}
+
+.gameStartButton img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  display: block;
+}
+
+.gameStartButton:hover {
+  background: linear-gradient(135deg, #fde68a, #fff3b0);
+  transform: translateY(-3px) scale(1.04);
+}
+
+.gameStartButton:active {
+  transform: translateY(1px) scale(0.97);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
 /*GAME PAGE END*/
