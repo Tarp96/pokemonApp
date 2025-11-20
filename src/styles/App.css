@@ -1032,16 +1032,18 @@ body {
 }
 /*AUTH LAYOUT PAGE END*/
 
-/*LOGIN PAGE*/
 .gameStartPageContainer {
   background-color: #fff;
-  display: block;
-  justify-content: center;
-  text-align: center;
-  padding: 20px;
-  margin: 0 auto;
   max-width: 75%;
+  margin: 0 auto;
+  padding: 20px;
+
   height: 800px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
 }
 
 .gamePageContent {
@@ -1112,22 +1114,23 @@ body {
   transform: translateY(-3px) scale(1.04);
 }
 
+.gameStartButtonContainer {
+  margin-top: 50px;
+}
+
 .gameStartButton {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-
   padding: 14px 30px;
   font-size: 1.2rem;
   font-weight: 800;
   color: #2a2a2a;
   cursor: pointer;
-
   border-radius: 999px;
   border: 3px solid #3b4cca;
   background: linear-gradient(135deg, #ffcb05, #ffdf70);
-
   box-shadow: 0 6px 14px rgba(0, 0, 0, 0.2);
   transition: all 0.25s ease-in-out;
 }
