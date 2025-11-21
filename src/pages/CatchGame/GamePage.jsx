@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 export const GamePage = () => {
   const [difficulty, setDifficulty] = useState("Easy");
+  const [gameStareted, setGameStarted] = useState(false);
 
   useEffect(() => {
     decideDifficulty("Easy");
@@ -9,6 +10,10 @@ export const GamePage = () => {
 
   function decideDifficulty(difficulty) {
     setDifficulty(difficulty);
+  }
+
+  function startGame() {
+    setGameStarted(true);
   }
 
   return (
@@ -42,7 +47,7 @@ export const GamePage = () => {
           </button>
         </div>
         <div className="gameStartButtonContainer">
-          <button className="gameStartButton">
+          <button className="gameStartButton" onClick={startGame}>
             Start
             <img src="assets/pokeb.png" alt="" />
           </button>
