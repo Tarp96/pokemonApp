@@ -20,21 +20,21 @@ export const GameStartScreen = ({
         </p>
 
         <button
-          onClick={() => onDifficultyChange("easy")}
+          onClick={() => onDifficultyChange("Easy")}
           className="difficultyBtn easy"
         >
           Easy
         </button>
 
         <button
-          onClick={() => onDifficultyChange("medium")}
+          onClick={() => onDifficultyChange("Medium")}
           className="difficultyBtn medium"
         >
           Medium
         </button>
 
         <button
-          onClick={() => onDifficultyChange("hard")}
+          onClick={() => onDifficultyChange("Hard")}
           className="difficultyBtn hard"
         >
           Hard
