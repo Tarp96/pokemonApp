@@ -42,11 +42,7 @@ export const GameStartScreen = ({
       </div>
 
       <div className="gameStartButtonContainer">
-        <button
-          className="gameStartButton"
-          onClick={onStart}
-          disabled={!selectedDifficulty}
-        >
+        <button className="gameStartButton" onClick={onStart}>
           Start
           <img src="assets/pokeb.png" alt="pokeball icon" />
         </button>
