@@ -1044,6 +1044,7 @@ body {
   justify-content: space-evenly;
   align-items: center;
   text-align: center;
+  position: relative;
 }
 
 .gamePageContent {
@@ -1150,6 +1151,16 @@ body {
 .gameStartButton:active {
   transform: translateY(1px) scale(0.97);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
+
+.targetItem {
+  position: absolute;
+  font-size: 40px;
+  cursor: pointer;
+}
+
+.gamePokemon {
+  width: 50px;
 }
 
 /*GAME PAGE END*/
