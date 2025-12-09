@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 export const GamePlayScreen = () => {
   const [position, setPosition] = useState({ top: 100, left: 100 });
-  const [count, setCount] = useState(5);
+  const [movesLeft, setMovesLeft] = useState(5);
 
   const generateRandomPosition = () => {
     const maxWidth = 700;
@@ -18,7 +18,7 @@ export const GamePlayScreen = () => {
     setPosition(generateRandomPosition());
 
     const interval = setInterval(() => {
-      setCount((prev) => {
+      setMovesLeft((prev) => {
         if (prev > 1) {
           setPosition(generateRandomPosition());
           return prev - 1;
@@ -35,7 +35,7 @@ export const GamePlayScreen = () => {
   return (
     <div>
       <div className="gameStartPageContainer">
-        <div className="gamePageContent">{count}</div>
+        <div className="gameStatContainer">{movesLeft}</div>
         <div
           className="targetItem"
           style={{
