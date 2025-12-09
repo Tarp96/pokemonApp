@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 export const GamePlayScreen = () => {
   const [position, setPosition] = useState({ top: 100, left: 100 });
   const [movesLeft, setMovesLeft] = useState(5);
+  const [timeLeft, setTimeLeft] = useState(10);
+  const [score, setScore] = useState(0);
 
   const generateRandomPosition = () => {
     const maxWidth = 700;
