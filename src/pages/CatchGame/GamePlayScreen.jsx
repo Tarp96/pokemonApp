@@ -61,6 +61,13 @@ export const GamePlayScreen = ({ difficulty }) => {
     return () => clearInterval(moveInterval);
   }, [difficulty, gameOver]);
 
+  const handlePokemonClick = () => {
+    if (gameOver) return;
+
+    setScore((prev) => prev + 1);
+    setPosition(generateRandomPosition());
+  };
+
   return (
     <div>
       <div className="gameStartPageContainer">
