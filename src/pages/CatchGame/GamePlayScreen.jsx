@@ -20,7 +20,7 @@ export const GamePlayScreen = ({ difficulty }) => {
     };
   };
 
-  const getDifficulty = () => {
+  const getDifficultyDelay = () => {
     switch (difficulty) {
       case "Easy":
         return 2500;
@@ -46,6 +46,20 @@ export const GamePlayScreen = ({ difficulty }) => {
 
     return () => clearInterval(timer);
   }, []);
+
+  useEffect(() => {
+    if (gameOver) return;
+
+    setPosition(generateRandomPosition());
+
+    const intervalDelay = getDifficultyDelay();
+
+    const moveInterval = setInterval(() => {
+      setPosition(generateRandomPosition());
+    }, intervalDelay);
+
+    return () => clearInterval(moveInterval);
+  }, [difficulty, gameOver]);
 
   return (
     <div>
