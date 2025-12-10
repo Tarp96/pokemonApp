@@ -5,7 +5,7 @@ export const GamePlayScreen = ({ difficulty }) => {
 
   const [position, setPosition] = useState({ top: 100, left: 100 });
   const [movesLeft, setMovesLeft] = useState(5);
-  const [timeLeft, setTimeLeft] = useState(10);
+  const [timeLeft, setTimeLeft] = useState(GAME_DURATION);
   const [score, setScore] = useState(0);
 
   const gameOver = timeLeft <= 0;
@@ -20,22 +20,31 @@ export const GamePlayScreen = ({ difficulty }) => {
     };
   };
 
-  useEffect(() => {
-    setPosition(generateRandomPosition());
+  const getDifficulty = () => {
+    switch (difficulty) {
+      case "Easy":
+        return 2500;
+      case "Medium":
+        return 1500;
+      case "Hard":
+        return 800;
+      default:
+        return 2000;
+    }
+  };
 
-    const interval = setInterval(() => {
-      setMovesLeft((prev) => {
-        if (prev > 1) {
-          setPosition(generateRandomPosition());
-          return prev - 1;
-        } else {
-          clearInterval(interval);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeLeft((prev) => {
+        if (prev <= 1) {
+          clearInterval(timer);
           return 0;
         }
+        return prev - 1;
       });
     }, 1000);
 
-    return () => clearInterval(interval);
+    return () => clearInterval(timer);
   }, []);
 
   return (
