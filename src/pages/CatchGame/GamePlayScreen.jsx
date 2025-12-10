@@ -6,6 +6,8 @@ export const GamePlayScreen = () => {
   const [timeLeft, setTimeLeft] = useState(10);
   const [score, setScore] = useState(0);
 
+  const gameOver = timeLeft <= 0;
+
   const generateRandomPosition = () => {
     const maxWidth = 700;
     const maxHeight = 800;
