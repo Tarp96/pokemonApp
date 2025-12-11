@@ -67,20 +67,32 @@ export const GamePlayScreen = ({ difficulty }) => {
     setScore((prev) => prev + 1);
     setPosition(generateRandomPosition());
   };
-
   return (
     <div>
       <div className="gameStartPageContainer">
-        <div className="gameStatContainer">{movesLeft}</div>
+        <div className="gameStatContainer">
+          <div className="statItem">⏱ Time left: {timeLeft}s</div>
+          <div className="statItem">🎯 Score: {score}</div>
+          <div className="statItem">⭐ Difficulty: {difficulty}</div>
+        </div>
+
         <div
           className="targetItem"
           style={{
             top: position.top,
             left: position.left,
           }}
+          onClick={handlePokemonClick}
         >
           <img src="/assets/gengar.png" alt="Gengar" className="gamePokemon" />
         </div>
+
+        {gameOver && (
+          <div className="gameOverBanner">
+            <h2>Game Over!</h2>
+            <p>Your score: {score}</p>
+          </div>
+        )}
       </div>
     </div>
   );
