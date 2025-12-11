@@ -1,7 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
+
+const GAME_DURATION = 15;
+const POKEMON_SIZE = 120;
 
 export const GamePlayScreen = ({ difficulty }) => {
-  const GAME_DURATION = 15;
+  const containerRef = useRef(null);
 
   const [position, setPosition] = useState({ top: 100, left: 100 });
   const [movesLeft, setMovesLeft] = useState(5);
@@ -11,13 +14,7 @@ export const GamePlayScreen = ({ difficulty }) => {
   const gameOver = timeLeft <= 0;
 
   const generateRandomPosition = () => {
-    const maxWidth = 700;
-    const maxHeight = 800;
-
-    return {
-      top: Math.floor(Math.random() * maxHeight),
-      left: Math.floor(Math.random() * maxWidth),
-    };
+    const container = containerRef.current;
   };
 
   const getDifficultyDelay = () => {
