@@ -15,6 +15,20 @@ export const GamePlayScreen = ({ difficulty }) => {
 
   const generateRandomPosition = () => {
     const container = containerRef.current;
+
+    if (!container) {
+      return { top: 100, left: 100 };
+    }
+
+    const { clientWidth, clientHeight } = container;
+
+    const maxLeft = Math.max(clientWidth - POKEMON_SIZE, 0);
+    const maxTop = Math.max(clientHeight - POKEMON_SIZE, 0);
+
+    return {
+      top: Math.floor(Math.random() * maxTop),
+      left: Math.floor(Math.random() * maxLeft),
+    };
   };
 
   const getDifficultyDelay = () => {
@@ -64,9 +78,21 @@ export const GamePlayScreen = ({ difficulty }) => {
     setScore((prev) => prev + 1);
     setPosition(generateRandomPosition());
   };
+
+  if (gameOver) {
+    return (
+      <>
+        <div className="gameOverPageContainer">
+          <h2>Game Over!</h2>
+          <p>Your score: {score}</p>
+        </div>
+      </>
+    );
+  }
+
   return (
     <div>
-      <div className="gameStartPageContainer">
+      <div className="gameStartPageContainer" ref={containerRef}>
         <div className="gameStatContainer">
           <div className="statItem">⏱ Time left: {timeLeft}s</div>
           <div className="statItem">🎯 Score: {score}</div>
@@ -83,13 +109,6 @@ export const GamePlayScreen = ({ difficulty }) => {
         >
           <img src="/assets/gengar.png" alt="Gengar" className="gamePokemon" />
         </div>
-
-        {gameOver && (
-          <div className="gameOverBanner">
-            <h2>Game Over!</h2>
-            <p>Your score: {score}</p>
-          </div>
-        )}
       </div>
     </div>
   );
