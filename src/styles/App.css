@@ -1033,7 +1033,6 @@ body {
 /*AUTH LAYOUT PAGE END*/
 
 .gameStartPageContainer {
-  border: solid red 1px;
   background-color: #fff;
   max-width: 75%;
   margin: 0 auto;
@@ -1047,7 +1046,6 @@ body {
 }
 
 .gamePageContent {
-  border: solid 1px blue;
   text-align: center;
   padding: 15px;
   height: fit-content;
