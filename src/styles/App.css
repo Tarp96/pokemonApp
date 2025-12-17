@@ -1199,7 +1199,6 @@ body {
 .gamePokemon {
   width: 120px;
   height: auto;
-  cursor: pointer;
 }
 
 .gameOverPageContainer {
