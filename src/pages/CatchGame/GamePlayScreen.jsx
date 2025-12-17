@@ -92,7 +92,10 @@ export const GamePlayScreen = ({ difficulty }) => {
 
   return (
     <div>
-      <div className="gameStartPageContainer" ref={containerRef}>
+      <div
+        className="gameScreenContainer gamePlayScreenContainer"
+        ref={containerRef}
+      >
         <div className="gameStatContainer">
           <div className="statItem">⏱ Time left: {timeLeft}s</div>
           <div className="statItem">🎯 Score: {score}</div>

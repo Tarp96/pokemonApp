@@ -4,7 +4,7 @@ export const GameStartScreen = ({
   onStart,
 }) => {
   return (
-    <div className="gameStartPageContainer">
+    <div className="gameScreenContainer gameStartPageContainer">
       <div className="gamePageContent">
         <h1>Ready to play?</h1>
         <p>Catch the pokemon that appears to earn coins</p>
