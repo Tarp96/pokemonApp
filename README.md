@@ -4,7 +4,7 @@ A lightweight React app for exploring Pokémon using the public [PokeAPI](https:
 
 ---
 
-## ✨ Shipped Features
+## Shipped Features
 
 - **Full Pokédex browsing** powered by PokeAPI.
 - **Detail pages for every Pokémon** with:
@@ -22,7 +22,7 @@ A lightweight React app for exploring Pokémon using the public [PokeAPI](https:
 
 ---
 
-## 🧰 Tech Stack
+## Tech Stack
 
 - **React 19** + **Vite 6**
 - **React Router 7**
@@ -33,14 +33,14 @@ A lightweight React app for exploring Pokémon using the public [PokeAPI](https:
 
 ---
 
-## ✅ Requirements
+## Requirements
 
 - **Node.js ≥ 18** (LTS recommended)
 - **npm** (or yarn/pnpm)
 
 ---
 
-## 🚀 Getting Started
+## Getting Started
 
 ### 1) Clone & Install
 
@@ -79,9 +79,9 @@ VITE_FIREBASE_MEASUREMENT_ID=your_measurement_id  # if Analytics is enabled
 5. (Optional) **Storage** → create a bucket if you store any files (e.g., profile images).
 6. (Optional) **Analytics** → enable to get a **measurement ID**.
 
-> ⚠️ Security rules should be configured for production. For development, test-mode rules are convenient but not secure — don’t deploy them as-is.
+> Security rules should be configured for production. For development, test-mode rules are convenient but not secure — don’t deploy them as-is.
 
-## 🔐 Firebase Usage & Data Model
+## Firebase Usage & Data Model
 
 - **Auth**: Email/Password and Google (Popup).
 - **Firestore**:
@@ -127,7 +127,7 @@ export const auth = getAuth(app);
 
 ---
 
-## 🧩 Auth Providers (Email/Password + Google)
+## Auth Providers (Email/Password + Google)
 
 1. Firebase Console → **Authentication → Sign‑in method**:
    - Enable **Email/Password**
@@ -138,7 +138,7 @@ export const auth = getAuth(app);
 
 ---
 
-## 🔒 Firestore Security Rules (Dev → Prod)
+## Firestore Security Rules (Dev → Prod)
 
 > Development example that restricts each user to their own data. Tighten before production as needed.
 
@@ -153,7 +153,7 @@ service cloud.firestore {
 }
 ```
 
-## ☁️ Storage Rules (optional)
+## Storage Rules (optional)
 
 If you later upload user files (e.g., avatars):
 
@@ -170,7 +170,7 @@ service firebase.storage {
 
 ---
 
-## 🧰 Troubleshooting
+## Troubleshooting
 
 - **auth/operation-not-allowed** → Enable the provider in Firebase Auth.
 - **auth/unauthorized-domain** → Add your domain under Auth → Settings → Authorized domains.
@@ -196,7 +196,7 @@ npm run preview   # optional local preview
 
 ---
 
-## 📁 Project Scripts
+## Project Scripts
 
 From `package.json`:
 
@@ -211,7 +211,7 @@ From `package.json`:
 }
 ```
 
-## 🗂️ File Layout (Firebase & services)
+## File Layout (Firebase & services)
 
 ```
 src/
@@ -223,7 +223,7 @@ src/
 
 ---
 
-## 🧭 App Overview
+## App Overview
 
 - **Home / Pokédex**: browse and filter by type.
 - **Pokémon Details**: full information including types, abilities, stats (where used), sounds, sprites, games, evolution/alternate forms.
@@ -234,7 +234,7 @@ src/
 
 ---
 
-## 🔧 Configuration Notes
+## Configuration Notes
 
 - If you refresh on a nested route during local dev, Vite handles SPA fallback automatically. For static hosting (e.g., GitHub Pages), ensure SPA fallback is configured.
 - If auth screens fail to load, double‑check that your **.env** keys are present and that **Authentication** → **Sign-in providers** include the method you’re using.
@@ -242,7 +242,7 @@ src/
 
 ---
 
-## 🧪 Dev Tips
+## Dev Tips
 
 - Use the browser DevTools Network tab to watch PokeAPI requests and spot rate‑limit or CORS errors.
 - Log Firebase initialization only once (hot reload can re-run modules; guard against duplicate `initializeApp`).
@@ -250,14 +250,14 @@ src/
 
 ---
 
-## 🗺️ Roadmap (Planned)
+## Roadmap (Planned)
 
 - **Mini‑game**: catch Pokémon to earn coins; spend coins to build your ultimate team.
 - **User profile polish**: more relevant data and a richer profile experience.
 
 ---
 
-## 🙏 Acknowledgements
+## Acknowledgements
 
 - [PokeAPI](https://pokeapi.co/) for the amazing dataset.
 - [Firebase](https://firebase.google.com/) for auth and storage.

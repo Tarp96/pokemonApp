@@ -36,6 +36,7 @@ const RegisterUserPage = () => {
       await setDoc(doc(db, "users", user.uid), {
         username: username,
         email: user.email,
+        coins: 600,
         createdAt: new Date(),
       });
 
