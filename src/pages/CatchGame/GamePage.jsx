@@ -2,10 +2,13 @@ import { useState, useEffect } from "react";
 import { GameStartScreen } from "./GameStartScreen";
 import { GamePlayScreen } from "./GamePlayScreen";
 import { toast } from "react-toastify";
+import { useAuth } from "./../../contexts/authContext/AuthContext";
 
 export const GamePage = () => {
   const [difficulty, setDifficulty] = useState(null);
   const [gameStarted, setGameStarted] = useState(false);
+
+  const { userLoggedIn, logout } = useAuth();
 
   function startGame() {
     if (difficulty) {
@@ -18,11 +21,16 @@ export const GamePage = () => {
     }
   }
 
+  if (!userLoggedIn) {
+    return <p>Seems you havent logged in or created an account yet!</p>;
+  }
+
   return !gameStarted ? (
     <GameStartScreen
       selectedDifficulty={difficulty}
       onDifficultyChange={setDifficulty}
       onStart={startGame}
+      isLoggedIn={userLoggedIn}
     />
   ) : (
     <GamePlayScreen difficulty={difficulty} />

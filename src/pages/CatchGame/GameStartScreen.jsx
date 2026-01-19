@@ -2,6 +2,7 @@ export const GameStartScreen = ({
   selectedDifficulty,
   onDifficultyChange,
   onStart,
+  isLoggedIn,
 }) => {
   return (
     <div className="gameScreenContainer gameStartPageContainer">
