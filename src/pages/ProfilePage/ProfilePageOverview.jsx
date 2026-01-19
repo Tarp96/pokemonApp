@@ -7,6 +7,7 @@ import { firstLetterUpperCase } from "../../utils/helperFunctions";
 
 export const ProfilePageOverview = () => {
   const [username, setUsername] = useState("");
+  const [coinBalance, setCoinBalance] = useState();
 
   useEffect(() => {
     const fetchUsername = async () => {
@@ -20,6 +21,7 @@ export const ProfilePageOverview = () => {
         if (docSnap.exists()) {
           const data = docSnap.data();
           setUsername(data.username);
+          setCoinBalance(data.coins);
         } else {
           console.warn("No profile found for this user.");
         }
@@ -49,7 +51,7 @@ export const ProfilePageOverview = () => {
         />
       </div>
 
-      <Outlet context={{ username }} />
+      <Outlet context={{ username, coinBalance }} />
     </div>
   );
 };

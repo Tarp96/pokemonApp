@@ -2,7 +2,7 @@ import { firstLetterUpperCase } from "../../utils/helperFunctions";
 import { useOutletContext } from "react-router-dom";
 
 export const ProfilePage = () => {
-  const { username } = useOutletContext();
+  const { username, coinBalance } = useOutletContext();
 
   return (
     <div className="trainerInfoContainer">
@@ -32,8 +32,8 @@ export const ProfilePage = () => {
           <p>6</p>
         </div>
         <div className="trainerStatCard">
-          <h4>Coin Balance</h4>
-          <p>230</p>
+          <h4>Coins</h4>
+          <p>{coinBalance || "unavailable"}</p>
         </div>
         <div className="trainerStatCard">
           <h4>Coins Spent</h4>
