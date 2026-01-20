@@ -1,3 +1,5 @@
+import { NavLink } from "react-router-dom";
+
 export const GameStartScreen = ({
   selectedDifficulty,
   onDifficultyChange,
@@ -9,9 +11,9 @@ export const GameStartScreen = ({
       {!isLoggedIn ? (
         <div className="loginReminderContainer">
           <p className="loginReminderText">
-            Log in or create an account to play the game!
+            Looks like you are not logged in. Please{" "}
+            <NavLink to="/login">log in</NavLink> or create an account to play!
           </p>
-          <button></button>
         </div>
       ) : (
         <>
