@@ -1101,6 +1101,21 @@ body {
   text-decoration: underline;
 }
 
+.loginReminderImage {
+  width: 160px;
+  max-width: 100%;
+  margin: 0 auto 20px auto;
+  display: block;
+  border-radius: 12px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.loginReminderImage:hover {
+  transform: scale(1.05);
+}
+
 .gamePageContent {
   text-align: center;
   padding: 18px 20px;

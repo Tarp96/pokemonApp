@@ -10,15 +10,15 @@ export const GameStartScreen = ({
     <div className="gameScreenContainer gameStartPageContainer">
       {!isLoggedIn ? (
         <div className="loginReminderContainer">
-          <p className="loginReminderText">
-            Looks like you are not logged in. Please{" "}
-            <NavLink to="/login">log in</NavLink> or create an account to play!
-          </p>
           <img
             src="assets/psyduckSign.jpg"
             alt="yellow duck holding a sign"
             className="loginReminderImage"
           />
+          <p className="loginReminderText">
+            Looks like you are not logged in. Please{" "}
+            <NavLink to="/login">log in</NavLink> or create an account to play!
+          </p>
         </div>
       ) : (
         <>
