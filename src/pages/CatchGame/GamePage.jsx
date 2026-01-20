@@ -21,10 +21,6 @@ export const GamePage = () => {
     }
   }
 
-  if (!userLoggedIn) {
-    return <p>Seems you havent logged in or created an account yet!</p>;
-  }
-
   return !gameStarted ? (
     <GameStartScreen
       selectedDifficulty={difficulty}
