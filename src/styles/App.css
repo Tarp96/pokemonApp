@@ -336,7 +336,10 @@ body {
   background-color: white;
   color: black;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s, box-shadow 0.2s;
+  transition:
+    background-color 0.3s,
+    transform 0.2s,
+    box-shadow 0.2s;
 }
 
 .filterButtonContainer button img {
@@ -416,7 +419,9 @@ body {
   padding: 15px;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
   width: 200px;
   margin: 10px;
   display: flex;
@@ -464,7 +469,9 @@ body {
   justify-content: center;
   margin-top: 10px;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
@@ -494,7 +501,9 @@ body {
   border: none;
   border-radius: 50%;
   cursor: pointer;
-  transition: background-color 0.3s ease, transform 0.2s ease;
+  transition:
+    background-color 0.3s ease,
+    transform 0.2s ease;
   width: 40px;
   height: 40px;
   display: flex;
@@ -590,7 +599,9 @@ body {
   font-size: 20px;
   border-radius: 15px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
 
 .ifNoPokemonMatchFilter:hover {
@@ -608,7 +619,9 @@ body {
   border: none;
   border-radius: 8px;
   cursor: pointer;
-  transition: background-color 0.3s, transform 0.2s;
+  transition:
+    background-color 0.3s,
+    transform 0.2s;
   font-size: 20px;
   font-weight: bold;
 }
@@ -638,7 +651,9 @@ body {
   font-weight: 600;
   text-transform: capitalize;
   white-space: nowrap;
-  transition: transform 0.2s ease, opacity 0.2s ease;
+  transition:
+    transform 0.2s ease,
+    opacity 0.2s ease;
   gap: 5px;
   border-radius: 999px;
   margin: 8px;
@@ -1060,6 +1075,30 @@ body {
   padding: 20px;
   overflow: hidden;
   cursor: crosshair;
+}
+
+.loginReminderText {
+  font-size: 18px;
+  color: #333;
+  background-color: rgba(255, 255, 255, 0.6);
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+.loginReminderText a {
+  color: #3b82f6;
+  font-weight: bold;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.loginReminderText a:hover {
+  color: #1d4ed8;
+  text-decoration: underline;
 }
 
 .gamePageContent {
