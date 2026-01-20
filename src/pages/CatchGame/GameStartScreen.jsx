@@ -19,6 +19,10 @@ export const GameStartScreen = ({
             Looks like you are not logged in. Please{" "}
             <NavLink to="/login">log in</NavLink> or create an account to play!
           </p>
+
+          <NavLink to="/login" className="loginReminderButton">
+            Log In to Play
+          </NavLink>
         </div>
       ) : (
         <>
