@@ -7,9 +7,12 @@ export const GameStartScreen = ({
   return (
     <div className="gameScreenContainer gameStartPageContainer">
       {!isLoggedIn ? (
-        <p className="loginReminderText">
-          Log in or create an account to play the game!
-        </p>
+        <div className="loginReminderContainer">
+          <p className="loginReminderText">
+            Log in or create an account to play the game!
+          </p>
+          <button></button>
+        </div>
       ) : (
         <>
           <div className="gamePageContent">
