@@ -14,6 +14,11 @@ export const GameStartScreen = ({
             Looks like you are not logged in. Please{" "}
             <NavLink to="/login">log in</NavLink> or create an account to play!
           </p>
+          <img
+            src="assets/psyduckSign.jpg"
+            alt="yellow duck holding a sign"
+            className="loginReminderImage"
+          />
         </div>
       ) : (
         <>
