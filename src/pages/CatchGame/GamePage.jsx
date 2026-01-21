@@ -14,7 +14,9 @@ export const GamePage = () => {
   function startGame() {
     if (difficulty) {
       setGameStarted(true);
+      setShakeButtons(false);
     } else {
+      setShakeButtons(true);
       toast.error("Please select a difficulty before starting the game", {
         position: "top-center",
         autoClose: 2000,
