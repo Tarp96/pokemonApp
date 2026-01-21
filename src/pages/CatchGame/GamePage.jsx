@@ -17,6 +17,7 @@ export const GamePage = () => {
       setShakeButtons(false);
     } else {
       setShakeButtons(true);
+      setTimeout(() => setShakeButtons(false), 500);
       toast.error("Please select a difficulty before starting the game", {
         position: "top-center",
         autoClose: 2000,
@@ -29,6 +30,7 @@ export const GamePage = () => {
       selectedDifficulty={difficulty}
       onDifficultyChange={setDifficulty}
       onStart={startGame}
+      shakeButtons={shakeButtons}
       isLoggedIn={userLoggedIn}
     />
   ) : (

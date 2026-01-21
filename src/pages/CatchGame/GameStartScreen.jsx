@@ -4,6 +4,7 @@ export const GameStartScreen = ({
   selectedDifficulty,
   onDifficultyChange,
   onStart,
+  shakeButtons,
   isLoggedIn,
 }) => {
   return (
@@ -42,21 +43,21 @@ export const GameStartScreen = ({
 
             <button
               onClick={() => onDifficultyChange("Easy")}
-              className="difficultyBtn easy"
+              className={`difficultyBtn easy ${shakeButtons ? "shake" : ""}`}
             >
               Easy
             </button>
 
             <button
               onClick={() => onDifficultyChange("Medium")}
-              className="difficultyBtn medium"
+              className={`difficultyBtn medium ${shakeButtons ? "shake" : ""}`}
             >
               Medium
             </button>
 
             <button
               onClick={() => onDifficultyChange("Hard")}
-              className="difficultyBtn hard"
+              className={`difficultyBtn hard ${shakeButtons ? "shake" : ""}`}
             >
               Hard
             </button>
