@@ -9,7 +9,7 @@ export const GamePage = () => {
   const [gameStarted, setGameStarted] = useState(false);
   const [shakeButtons, setShakeButtons] = useState(false);
 
-  const { userLoggedIn, logout } = useAuth();
+  const { userLoggedIn } = useAuth();
 
   function startGame() {
     if (difficulty) {

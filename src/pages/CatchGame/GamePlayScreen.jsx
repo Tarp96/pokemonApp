@@ -10,6 +10,7 @@ export const GamePlayScreen = ({ difficulty }) => {
   const [movesLeft, setMovesLeft] = useState(5);
   const [timeLeft, setTimeLeft] = useState(GAME_DURATION);
   const [score, setScore] = useState(0);
+  const [coinsEarned, setCoinsEarned] = useState(0);
 
   const gameOver = timeLeft <= 0;
 
