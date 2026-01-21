@@ -7,6 +7,7 @@ import { useAuth } from "./../../contexts/authContext/AuthContext";
 export const GamePage = () => {
   const [difficulty, setDifficulty] = useState(null);
   const [gameStarted, setGameStarted] = useState(false);
+  const [shakeButtons, setShakeButtons] = useState(false);
 
   const { userLoggedIn, logout } = useAuth();
 
