@@ -45,6 +45,19 @@ export const GamePlayScreen = ({ difficulty }) => {
     }
   };
 
+  const getCoinMultiplier = () => {
+    switch (difficulty) {
+      case "Easy":
+        return 1;
+      case "Medium":
+        return 1.5;
+      case "Hard":
+        return 2;
+      default:
+        return 1;
+    }
+  };
+
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft((prev) => {
@@ -79,6 +92,22 @@ export const GamePlayScreen = ({ difficulty }) => {
     setScore((prev) => prev + 1);
     setPosition(generateRandomPosition());
   };
+
+  useEffect(() => {
+    if (!gameOver) return;
+
+    let coins = 0;
+
+    if (difficulty === "Easy") {
+      coins = score * 1;
+    } else if (difficulty === "Medium") {
+      coins = score * 1.5;
+    } else {
+      coins = score * 2;
+    }
+
+    setCoinsEarned(coins);
+  }, [gameOver, difficulty, score]);
 
   if (gameOver) {
     return (
