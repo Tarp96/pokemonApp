@@ -10,7 +10,7 @@ export const GamePlayScreen = ({ difficulty }) => {
   const [movesLeft, setMovesLeft] = useState(5);
   const [timeLeft, setTimeLeft] = useState(GAME_DURATION);
   const [score, setScore] = useState(0);
-  const [coinsEarned, setCoinsEarned] = useState(0);
+  const [coinsEarned, setCoinsEarned] = useState(1);
 
   const gameOver = timeLeft <= 0;
 
@@ -108,7 +108,8 @@ export const GamePlayScreen = ({ difficulty }) => {
         <div className="gameOverPageContainer">
           <h2>Game Over!</h2>
           <p>Your score: {score}</p>
-          <p>Difficulty multiplier: {difficulty}</p>
+          <p>Difficulty: {difficulty}</p>
+          <p>Difficulty multplier: {getCoinMultiplier()}</p>
           <p>Coins earned: {coinsEarned}</p>
         </div>
       </>
