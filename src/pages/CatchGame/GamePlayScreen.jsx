@@ -109,6 +109,10 @@ export const GamePlayScreen = ({ difficulty }) => {
     setCoinsEarned(score * getCoinMultiplier());
   }, [gameOver, difficulty, score]);
 
+  useEffect(() => {
+    console.log("Coins earned:", coinsEarned);
+  }, [coinsEarned]);
+
   if (gameOver) {
     return (
       <>
