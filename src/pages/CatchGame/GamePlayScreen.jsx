@@ -121,7 +121,7 @@ export const GamePlayScreen = ({ difficulty }) => {
           <h2>Game Over!</h2>
           <p>Your score: {score}</p>
           <p>Difficulty: {difficulty}</p>
-          <p>Difficulty multplier: {getCoinMultiplier()}</p>
+          <p>Difficulty multplier: {coinMultiplier}</p>
           <p>Coins earned: {coinsEarned}</p>
         </div>
       </>
