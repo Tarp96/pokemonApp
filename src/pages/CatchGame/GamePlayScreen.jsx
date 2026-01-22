@@ -95,17 +95,6 @@ export const GamePlayScreen = ({ difficulty }) => {
 
   useEffect(() => {
     if (!gameOver) return;
-
-    let coins = 0;
-
-    if (difficulty === "Easy") {
-      coins = score * 1;
-    } else if (difficulty === "Medium") {
-      coins = score * 1.5;
-    } else {
-      coins = score * 2;
-    }
-
     setCoinsEarned(score * getCoinMultiplier());
   }, [gameOver, difficulty, score]);
 
@@ -119,6 +108,7 @@ export const GamePlayScreen = ({ difficulty }) => {
         <div className="gameOverPageContainer">
           <h2>Game Over!</h2>
           <p>Your score: {score}</p>
+          <p>Difficulty multiplier: {difficulty}</p>
           <p>Coins earned: {coinsEarned}</p>
         </div>
       </>
