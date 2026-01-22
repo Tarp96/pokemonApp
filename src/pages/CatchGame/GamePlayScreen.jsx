@@ -10,7 +10,8 @@ export const GamePlayScreen = ({ difficulty }) => {
   const [movesLeft, setMovesLeft] = useState(5);
   const [timeLeft, setTimeLeft] = useState(GAME_DURATION);
   const [score, setScore] = useState(0);
-  const [coinsEarned, setCoinsEarned] = useState(1);
+  const [coinsEarned, setCoinsEarned] = useState(0);
+  const [coinMultiplier, setCoinMultiplier] = useState(1);
 
   const gameOver = timeLeft <= 0;
 
@@ -78,13 +79,21 @@ export const GamePlayScreen = ({ difficulty }) => {
     setPosition(generateRandomPosition());
 
     const intervalDelay = getDifficultyDelay();
-
     const moveInterval = setInterval(() => {
       setPosition(generateRandomPosition());
     }, intervalDelay);
 
     return () => clearInterval(moveInterval);
   }, [difficulty, gameOver]);
+
+  useEffect(() => {
+    if (!gameOver) return;
+
+    const multiplier = getCoinMultiplier();
+
+    setCoinMultiplier(multiplier);
+    setCoinsEarned(score * multiplier);
+  }, [gameOver]);
 
   const handlePokemonClick = () => {
     if (gameOver) return;
@@ -96,6 +105,9 @@ export const GamePlayScreen = ({ difficulty }) => {
   useEffect(() => {
     if (!gameOver) return;
     setCoinsEarned(score * getCoinMultiplier());
+    const multiplier = getCoinMultiplier();
+    setCoinMultiplier(multiplier);
+    setCoinsEarned(score * multiplier);
   }, [gameOver, difficulty, score]);
 
   useEffect(() => {
