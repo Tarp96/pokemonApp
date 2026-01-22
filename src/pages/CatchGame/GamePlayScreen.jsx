@@ -106,7 +106,7 @@ export const GamePlayScreen = ({ difficulty }) => {
       coins = score * 2;
     }
 
-    setCoinsEarned(coins);
+    setCoinsEarned(score * getCoinMultiplier());
   }, [gameOver, difficulty, score]);
 
   if (gameOver) {
