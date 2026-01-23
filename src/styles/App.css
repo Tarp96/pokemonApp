@@ -1324,6 +1324,15 @@ body {
   animation: popIn 0.4s ease-out;
 }
 
+.gameOverPicture {
+  width: 90%;
+  height: auto;
+  margin: 0 auto 12px;
+  display: block;
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.4));
+  animation: trophyPop 0.6s ease-out;
+}
+
 .gameOverTitle {
   font-size: 2rem;
   margin-bottom: 20px;

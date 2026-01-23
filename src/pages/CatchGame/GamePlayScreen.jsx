@@ -119,6 +119,12 @@ export const GamePlayScreen = ({ difficulty }) => {
       <>
         <div className="gameOverPageContainer">
           <div className="gameOverCard">
+            <img
+              src="assets/pokemonTrophy.png"
+              alt="Person holding a big trophy"
+              className="gameOverPicture"
+            />
+
             <h2 className="gameOverTitle">🎮 Game Over</h2>
 
             <div className="gameOverStats">
