@@ -1312,4 +1312,79 @@ body {
   text-align: center;
 }
 
+.gameOverCard {
+  max-width: 420px;
+  margin: 40px auto;
+  padding: 24px 28px;
+  background: linear-gradient(135deg, #1e1e2f, #2b2b44);
+  border-radius: 16px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+  color: #fff;
+  text-align: center;
+  animation: popIn 0.4s ease-out;
+}
+
+.gameOverTitle {
+  font-size: 2rem;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+}
+
+.gameOverStats {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.statRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 14px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 10px;
+  font-size: 1rem;
+}
+
+.statRow.highlight {
+  background: linear-gradient(135deg, #facc15, #f59e0b);
+  color: #1f2933;
+  font-weight: bold;
+}
+
+.label {
+  opacity: 0.85;
+}
+
+.value {
+  font-weight: 600;
+}
+
+.value.coins {
+  font-size: 1.2rem;
+}
+
+.value.difficulty.easy {
+  color: #4ade80;
+}
+
+.value.difficulty.medium {
+  color: #facc15;
+}
+
+.value.difficulty.hard {
+  color: #f87171;
+}
+
+@keyframes popIn {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
 /*GAME PAGE END*/
