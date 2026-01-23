@@ -29,7 +29,7 @@ export const GameOverScreen = ({
 
         <div className="statRow">
           <span className="label">Multiplier</span>
-          <span className="value">x{coinMultiplier}</span>
+          <span className="value">x{multiplier}</span>
         </div>
 
         <div className="statRow highlight">

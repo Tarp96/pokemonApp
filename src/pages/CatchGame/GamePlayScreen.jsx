@@ -1,3 +1,4 @@
+import { GameOverScreen } from "./GameOverScreen";
 import { useEffect, useState, useRef } from "react";
 
 const GAME_DURATION = 15;
@@ -116,7 +117,14 @@ export const GamePlayScreen = ({ difficulty }) => {
   if (gameOver) {
     return (
       <>
-        <div className="gameOverPageContainer"></div>
+        <div className="gameOverPageContainer">
+          <GameOverScreen
+            score={score}
+            difficulty={difficulty}
+            coinsEarned={coinsEarned}
+            multiplier={coinMultiplier}
+          />
+        </div>
       </>
     );
   }
