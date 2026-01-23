@@ -15,50 +15,6 @@ export const GamePlayScreen = ({ difficulty }) => {
 
   const gameOver = timeLeft <= 0;
 
-  const generateRandomPosition = () => {
-    const container = containerRef.current;
-
-    if (!container) {
-      return { top: 100, left: 100 };
-    }
-
-    const { clientWidth, clientHeight } = container;
-
-    const maxLeft = Math.max(clientWidth - POKEMON_SIZE, 0);
-    const maxTop = Math.max(clientHeight - POKEMON_SIZE, 0);
-
-    return {
-      top: Math.floor(Math.random() * maxTop),
-      left: Math.floor(Math.random() * maxLeft),
-    };
-  };
-
-  const getDifficultyDelay = () => {
-    switch (difficulty) {
-      case "Easy":
-        return 2500;
-      case "Medium":
-        return 1500;
-      case "Hard":
-        return 800;
-      default:
-        return 2000;
-    }
-  };
-
-  const getCoinMultiplier = () => {
-    switch (difficulty) {
-      case "Easy":
-        return 1;
-      case "Medium":
-        return 1.5;
-      case "Hard":
-        return 2;
-      default:
-        return 1;
-    }
-  };
-
   useEffect(() => {
     const timer = setInterval(() => {
       setTimeLeft((prev) => {
@@ -113,6 +69,50 @@ export const GamePlayScreen = ({ difficulty }) => {
   useEffect(() => {
     console.log("Coins earned:", coinsEarned);
   }, [coinsEarned]);
+
+  const generateRandomPosition = () => {
+    const container = containerRef.current;
+
+    if (!container) {
+      return { top: 100, left: 100 };
+    }
+
+    const { clientWidth, clientHeight } = container;
+
+    const maxLeft = Math.max(clientWidth - POKEMON_SIZE, 0);
+    const maxTop = Math.max(clientHeight - POKEMON_SIZE, 0);
+
+    return {
+      top: Math.floor(Math.random() * maxTop),
+      left: Math.floor(Math.random() * maxLeft),
+    };
+  };
+
+  const getDifficultyDelay = () => {
+    switch (difficulty) {
+      case "Easy":
+        return 2500;
+      case "Medium":
+        return 1500;
+      case "Hard":
+        return 800;
+      default:
+        return 2000;
+    }
+  };
+
+  const getCoinMultiplier = () => {
+    switch (difficulty) {
+      case "Easy":
+        return 1;
+      case "Medium":
+        return 1.5;
+      case "Hard":
+        return 2;
+      default:
+        return 1;
+    }
+  };
 
   if (gameOver) {
     return (
