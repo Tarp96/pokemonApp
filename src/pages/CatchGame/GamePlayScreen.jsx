@@ -7,7 +7,6 @@ export const GamePlayScreen = ({ difficulty }) => {
   const containerRef = useRef(null);
 
   const [position, setPosition] = useState({ top: 100, left: 100 });
-  const [movesLeft, setMovesLeft] = useState(5);
   const [timeLeft, setTimeLeft] = useState(GAME_DURATION);
   const [score, setScore] = useState(0);
   const [coinsEarned, setCoinsEarned] = useState(0);
