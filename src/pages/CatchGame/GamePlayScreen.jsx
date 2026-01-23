@@ -118,11 +118,13 @@ export const GamePlayScreen = ({ difficulty }) => {
     return (
       <>
         <div className="gameOverPageContainer">
-          <h2>Game Over!</h2>
-          <p>Your score: {score}</p>
-          <p>Difficulty: {difficulty}</p>
-          <p>Difficulty multplier: {coinMultiplier}</p>
-          <p>Coins earned: {coinsEarned}</p>
+          <h2 className="gameOverTitle">Game Over!</h2>
+          <p className="gameOverInfoText">Your score: {score}</p>
+          <p className="gameOverInfoText">Difficulty: {difficulty}</p>
+          <p className="gameOverInfoText">
+            Difficulty multplier: {coinMultiplier}
+          </p>
+          <p className="gameOverInfoText">Coins earned: {coinsEarned}</p>
         </div>
       </>
     );
