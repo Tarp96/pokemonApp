@@ -40,8 +40,10 @@ export const GameOverScreen = ({
       </div>
 
       <div className="gameOverBtnContainer">
-        <button onClick={onPlayAgain}>Play Again</button>
-        <button>Leaderboard</button>
+        <button onClick={onPlayAgain} className="primary gameOverBtn">
+          🔁 Play Again
+        </button>
+        <button className="secondary gameOverBtn">🏆 Leaderboard</button>
       </div>
     </div>
   );

@@ -1389,4 +1389,62 @@ body {
   }
 }
 
+.gameOverBtnContainer {
+  display: flex;
+  gap: 14px;
+  margin-top: 22px;
+}
+
+.gameOverBtn {
+  flex: 1;
+  padding: 12px 0;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease,
+    opacity 0.15s;
+}
+
+.gameOverBtn.primary {
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  color: white;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
+}
+
+.gameOverBtn.secondary {
+  background: linear-gradient(135deg, #facc15, #f59e0b);
+  color: #1f2933;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
+}
+
+.gameOverBtn:hover {
+  transform: translateY(-2px);
+  opacity: 0.95;
+}
+
+.gameOverBtn:active {
+  transform: translateY(1px);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+}
+
+.gameOverBtn.primary {
+  animation: pulse 1.8s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
+  }
+  70% {
+    box-shadow: 0 0 0 12px rgba(34, 197, 94, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+  }
+}
+
 /*GAME PAGE END*/
