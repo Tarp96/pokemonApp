@@ -1397,8 +1397,8 @@ body {
 
 .gameOverBtn {
   flex: 1;
-  padding: 12px 0;
-  border-radius: 12px;
+  padding: 12px 18px;
+  border-radius: 999px;
   font-size: 1rem;
   font-weight: 600;
   border: none;
@@ -1407,6 +1407,10 @@ body {
     transform 0.15s ease,
     box-shadow 0.15s ease,
     opacity 0.15s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
 }
 
 .gameOverBtn.primary {
