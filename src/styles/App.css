@@ -1304,14 +1304,6 @@ body {
   height: auto;
 }
 
-.gameOverPageContainer {
-  border: solid 1px red;
-  background-color: white;
-  max-width: 50%;
-  margin: 0 auto;
-  text-align: center;
-}
-
 .gameOverCard {
   max-width: 420px;
   margin: 40px auto;
@@ -1322,6 +1314,7 @@ body {
   color: #fff;
   text-align: center;
   animation: popIn 0.4s ease-out;
+  border: solid 3px white;
 }
 
 .gameOverPicture {

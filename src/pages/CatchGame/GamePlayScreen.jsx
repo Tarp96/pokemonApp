@@ -117,7 +117,7 @@ export const GamePlayScreen = ({ difficulty }) => {
   if (gameOver) {
     return (
       <>
-        <div className="gameOverPageContainer">
+        <div>
           <GameOverScreen
             score={score}
             difficulty={difficulty}
