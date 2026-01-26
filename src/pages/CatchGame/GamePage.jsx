@@ -39,6 +39,6 @@ export const GamePage = () => {
       isLoggedIn={userLoggedIn}
     />
   ) : (
-    <GamePlayScreen difficulty={difficulty} />
+    <GamePlayScreen difficulty={difficulty} onReset={resetGame} />
   );
 };

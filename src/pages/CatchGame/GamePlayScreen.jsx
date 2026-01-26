@@ -123,6 +123,7 @@ export const GamePlayScreen = ({ difficulty, onReset }) => {
             difficulty={difficulty}
             coinsEarned={coinsEarned}
             multiplier={coinMultiplier}
+            onPlayAgain={onReset}
           />
         </div>
       </>

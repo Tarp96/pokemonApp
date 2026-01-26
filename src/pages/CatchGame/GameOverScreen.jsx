@@ -3,6 +3,7 @@ export const GameOverScreen = ({
   difficulty,
   multiplier,
   coinsEarned,
+  onPlayAgain,
 }) => {
   return (
     <div className="gameOverCard">
@@ -39,7 +40,7 @@ export const GameOverScreen = ({
       </div>
 
       <div className="gameOverBtnContainer">
-        <button>Play Again</button>
+        <button onClick={onPlayAgain}>Play Again</button>
         <button>Leaderboard</button>
       </div>
     </div>
