@@ -4,7 +4,7 @@ import { useEffect, useState, useRef } from "react";
 const GAME_DURATION = 15;
 const POKEMON_SIZE = 120;
 
-export const GamePlayScreen = ({ difficulty }) => {
+export const GamePlayScreen = ({ difficulty, onReset }) => {
   const containerRef = useRef(null);
 
   const [position, setPosition] = useState({ top: 100, left: 100 });

@@ -25,6 +25,11 @@ export const GamePage = () => {
     }
   }
 
+  function resetGame() {
+    setGameStarted(false);
+    setDifficulty(null);
+  }
+
   return !gameStarted ? (
     <GameStartScreen
       selectedDifficulty={difficulty}
