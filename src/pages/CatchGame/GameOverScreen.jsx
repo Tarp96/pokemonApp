@@ -41,7 +41,12 @@ export const GameOverScreen = ({
 
       <div className="gameOverBtnContainer">
         <button onClick={onPlayAgain} className="primary gameOverBtn">
-          🔁 Play Again
+          <img
+            src="/assets/pokeb.png"
+            alt="Pokeball"
+            className="gameOverBtnIcon"
+          />
+          Play Again
         </button>
         <button className="secondary gameOverBtn">🏆 Leaderboard</button>
       </div>

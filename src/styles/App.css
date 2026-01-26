@@ -1413,6 +1413,12 @@ body {
   gap: 10px;
 }
 
+.gameOverBtnIcon {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
 .gameOverBtn.primary {
   background: linear-gradient(135deg, #22c55e, #16a34a);
   color: white;
@@ -1437,6 +1443,19 @@ body {
 
 .gameOverBtn.primary {
   animation: pulse 1.8s infinite;
+}
+
+.gameOverBtn.primary:hover .gameOverBtnIcon {
+  animation: spin 0.6s linear;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 @keyframes pulse {
