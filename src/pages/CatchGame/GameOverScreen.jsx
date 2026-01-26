@@ -37,6 +37,11 @@ export const GameOverScreen = ({
           <span className="value coins">💰 {coinsEarned}</span>
         </div>
       </div>
+
+      <div className="gameOverBtnContainer">
+        <button>Play Again</button>
+        <button>Leaderboard</button>
+      </div>
     </div>
   );
 };
