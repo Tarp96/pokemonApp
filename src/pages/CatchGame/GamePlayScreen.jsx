@@ -1,7 +1,7 @@
 import { GameOverScreen } from "./GameOverScreen";
 import { useEffect, useState, useRef } from "react";
 
-const GAME_DURATION = 15;
+const GAME_DURATION = 5;
 const POKEMON_SIZE = 120;
 
 export const GamePlayScreen = ({ difficulty, onReset }) => {
