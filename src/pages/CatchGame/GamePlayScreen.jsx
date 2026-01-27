@@ -1,6 +1,7 @@
 import { GameOverScreen } from "./GameOverScreen";
 import { useEffect, useState, useRef } from "react";
 import { getDoc, doc } from "firebase/firestore";
+import { auth, db } from "../../firebaseConfig";
 
 const GAME_DURATION = 5;
 const POKEMON_SIZE = 120;
@@ -13,6 +14,7 @@ export const GamePlayScreen = ({ difficulty, onReset }) => {
   const [score, setScore] = useState(0);
   const [coinsEarned, setCoinsEarned] = useState(0);
   const [coinMultiplier, setCoinMultiplier] = useState(1);
+  const [coinBalance, setCoinBalance] = useState();
 
   const gameOver = timeLeft <= 0;
 
