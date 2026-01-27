@@ -1,3 +1,6 @@
+import { getDoc, doc } from "firebase/firestore";
+import { auth, db } from "../../firebaseConfig";
+
 export const GameOverScreen = ({
   score,
   difficulty,

@@ -1,7 +1,5 @@
 import { GameOverScreen } from "./GameOverScreen";
 import { useEffect, useState, useRef } from "react";
-import { getDoc, doc } from "firebase/firestore";
-import { auth, db } from "../../firebaseConfig";
 
 const GAME_DURATION = 5;
 const POKEMON_SIZE = 120;
