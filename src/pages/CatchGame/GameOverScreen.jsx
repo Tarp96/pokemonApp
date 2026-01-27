@@ -1,5 +1,7 @@
 import { getDoc, doc } from "firebase/firestore";
 import { auth, db } from "../../firebaseConfig";
+import { useState } from "react";
+import { useEffect } from "react";
 
 export const GameOverScreen = ({
   score,
@@ -8,6 +10,31 @@ export const GameOverScreen = ({
   coinsEarned,
   onPlayAgain,
 }) => {
+  const [userCoins, setUserCoins] = useState(null);
+  const [newCoinBalance, setNewCoinBalance] = useState(null);
+
+  useEffect(() => {
+    const fetchUserCoins = async () => {
+      const user = auth.currentUser;
+      if (!user) return;
+
+      const userDocRef = doc(db, "users", user.uid);
+      const userDoc = await getDoc(userDocRef);
+
+      if (userDoc.exists()) {
+        const data = userDoc.data();
+        setUserCoins(data.coins);
+      }
+    };
+    fetchUserCoins();
+  }, []);
+
+  useEffect(() => {
+    if (userCoins !== null) {
+      console.log("Current coin total: " + userCoins);
+    }
+  }, [userCoins]);
+
   return (
     <div className="gameOverCard">
       <img
