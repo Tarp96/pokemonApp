@@ -14,7 +14,6 @@ export const GamePlayScreen = ({ difficulty, onReset }) => {
   const [score, setScore] = useState(0);
   const [coinsEarned, setCoinsEarned] = useState(0);
   const [coinMultiplier, setCoinMultiplier] = useState(1);
-  const [coinBalance, setCoinBalance] = useState();
 
   const gameOver = timeLeft <= 0;
 
