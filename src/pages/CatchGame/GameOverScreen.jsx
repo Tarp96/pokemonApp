@@ -10,7 +10,6 @@ export const GameOverScreen = ({
   onPlayAgain,
 }) => {
   const [userCoins, setUserCoins] = useState(null);
-
   const [newCoinBalance, setNewCoinBalance] = useState(0);
 
   useEffect(() => {
