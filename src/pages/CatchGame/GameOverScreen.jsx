@@ -1,7 +1,6 @@
 import { getDoc, doc } from "firebase/firestore";
 import { auth, db } from "../../firebaseConfig";
-import { useState } from "react";
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 
 export const GameOverScreen = ({
   score,
@@ -11,7 +10,8 @@ export const GameOverScreen = ({
   onPlayAgain,
 }) => {
   const [userCoins, setUserCoins] = useState(null);
-  const [newCoinBalance, setNewCoinBalance] = useState(null);
+  const [coinsToAdd, setCoinsToAdd] = useState(score);
+  const [newCoinBalance, setNewCoinBalance] = useState(0);
 
   useEffect(() => {
     const fetchUserCoins = async () => {
@@ -29,9 +29,15 @@ export const GameOverScreen = ({
     fetchUserCoins();
   }, []);
 
+  function updateCoinBalance() {
+    const newBalance = score + userCoins;
+    setNewCoinBalance(newBalance);
+    console.log("New coin balance: " + newBalance);
+  }
+
   useEffect(() => {
     if (userCoins !== null) {
-      console.log("Current coin total: " + userCoins);
+      updateCoinBalance();
     }
   }, [userCoins]);
 

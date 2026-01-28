@@ -106,9 +106,9 @@ export const GamePlayScreen = ({ difficulty, onReset }) => {
       case "Easy":
         return 1;
       case "Medium":
-        return 1.5;
-      case "Hard":
         return 2;
+      case "Hard":
+        return 3;
       default:
         return 1;
     }
