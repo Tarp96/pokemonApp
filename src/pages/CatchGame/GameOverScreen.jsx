@@ -1,6 +1,7 @@
 import { getDoc, doc } from "firebase/firestore";
 import { auth, db } from "../../firebaseConfig";
 import { useState, useEffect } from "react";
+import { getUserCoins, addCoins } from "../../services/coinService";
 
 export const GameOverScreen = ({
   score,
