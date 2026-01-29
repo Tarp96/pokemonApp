@@ -15,3 +15,36 @@ export const getUserCoins = async (uid) => {
 
   return snapshot.data().coins ?? 0;
 };
+
+export const addCoins = async (uid, amount) => {
+  const userRef = doc(db, "users", uid);
+
+  await updateDoc(userRef, {
+    coins: increment(amount),
+  });
+};
+
+export const spendCoins = async (uid, amount) => {
+  const userRef = doc(db, "users", uid);
+
+  const snapshot = await getDoc(userRef);
+  const currentCoins = snapshot.data()?.coins ?? 0;
+
+  if (currentCoins < amount) {
+    throw new Error("Not enough coins");
+  }
+
+  await updateDoc(userRef, {
+    coins: increment(-amount),
+  });
+};
+
+export const listenToCoins = (uid, callback) => {
+  const userRef = doc(db, "users", uid);
+
+  return onSnapshot(userRef, (docSnap) => {
+    if (docSnap.exists()) {
+      callback(docSnap.data().coins ?? 0);
+    }
+  });
+};
