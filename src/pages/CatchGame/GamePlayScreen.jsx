@@ -42,15 +42,6 @@ export const GamePlayScreen = ({ difficulty, onReset }) => {
     return () => clearInterval(moveInterval);
   }, [difficulty, gameOver]);
 
-  useEffect(() => {
-    if (!gameOver) return;
-
-    const multiplier = getCoinMultiplier();
-
-    setCoinMultiplier(multiplier);
-    setCoinsEarned(score * multiplier);
-  }, [gameOver]);
-
   const handlePokemonClick = () => {
     if (gameOver) return;
 
@@ -60,7 +51,7 @@ export const GamePlayScreen = ({ difficulty, onReset }) => {
 
   useEffect(() => {
     if (!gameOver) return;
-    setCoinsEarned(score * getCoinMultiplier());
+
     const multiplier = getCoinMultiplier();
     setCoinMultiplier(multiplier);
     setCoinsEarned(score * multiplier);

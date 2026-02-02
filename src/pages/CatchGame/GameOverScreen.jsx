@@ -1,7 +1,10 @@
-import { getDoc, doc } from "firebase/firestore";
 import { auth, db } from "../../firebaseConfig";
-import { useState, useEffect } from "react";
-import { getUserCoins, addCoins } from "../../services/coinService";
+import { useState, useEffect, useRef } from "react";
+import {
+  getUserCoins,
+  addCoins,
+  listenToCoins,
+} from "../../services/coinService";
 
 export const GameOverScreen = ({
   score,
@@ -11,35 +14,34 @@ export const GameOverScreen = ({
   onPlayAgain,
 }) => {
   const [userCoins, setUserCoins] = useState(null);
-  const [newCoinBalance, setNewCoinBalance] = useState(0);
+
+  const rewardedRef = useRef(false);
 
   useEffect(() => {
-    const fetchUserCoins = async () => {
-      const user = auth.currentUser;
-      if (!user) return;
+    const user = auth.currentUser;
+    if (!user) return;
 
-      const userDocRef = doc(db, "users", user.uid);
-      const userDoc = await getDoc(userDocRef);
-
-      if (userDoc.exists()) {
-        const data = userDoc.data();
-        setUserCoins(data.coins);
-      }
-    };
-    fetchUserCoins();
+    const unsubscribe = listenToCoins(user.uid, setUserCoins);
+    return () => unsubscribe();
   }, []);
 
-  function updateCoinBalance() {
-    const newBalance = score + userCoins;
-    setNewCoinBalance(newBalance);
-    console.log("New coin balance: " + newBalance);
-  }
-
   useEffect(() => {
-    if (userCoins !== null) {
-      updateCoinBalance();
-    }
-  }, [userCoins]);
+    const rewardCoins = async () => {
+      if (rewardedRef.current || coinsEarned <= 0) return;
+      rewardedRef.current = true;
+
+      try {
+        const user = auth.currentUser;
+        if (!user) return;
+
+        await addCoins(user.uid, coinsEarned);
+      } catch (err) {
+        console.error("Failed to add coins:", err);
+      }
+    };
+
+    rewardCoins();
+  }, [coinsEarned]);
 
   return (
     <div className="gameOverCard">
