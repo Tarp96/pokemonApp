@@ -71,6 +71,11 @@ export const GameOverScreen = ({
           <span className="label">Coins Earned</span>
           <span className="value coins">💰 {coinsEarned}</span>
         </div>
+
+        <div className="statRow highlight">
+          <span className="label">Coins Total</span>
+          <span className="value coins">💰 {userCoins}</span>
+        </div>
       </div>
 
       <div className="gameOverBtnContainer">
