@@ -4,26 +4,23 @@ import { useEffect, useState } from "react";
 import { doc, getDoc } from "firebase/firestore";
 import { db, auth } from "../../firebaseConfig";
 import { firstLetterUpperCase } from "../../utils/helperFunctions";
+import { listenToCoins } from "../../services/coinService";
 
 export const ProfilePageOverview = () => {
   const [username, setUsername] = useState("");
   const [coinBalance, setCoinBalance] = useState();
 
   useEffect(() => {
-    const fetchUsername = async () => {
-      const user = auth.currentUser;
-      if (!user) return;
+    const user = auth.currentUser;
+    if (!user) return;
 
+    const fetchUsername = async () => {
       try {
         const docRef = doc(db, "users", user.uid);
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
-          const data = docSnap.data();
-          setUsername(data.username);
-          setCoinBalance(data.coins);
-        } else {
-          console.warn("No profile found for this user.");
+          setUsername(docSnap.data().username);
         }
       } catch (err) {
         console.error("Error fetching username:", err);
@@ -31,6 +28,10 @@ export const ProfilePageOverview = () => {
     };
 
     fetchUsername();
+
+    const unsubscribe = listenToCoins(user.uid, setCoinBalance);
+
+    return () => unsubscribe();
   }, []);
 
   return (
