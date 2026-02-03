@@ -1,10 +1,6 @@
-import { auth, db } from "../../firebaseConfig";
+import { auth } from "../../firebaseConfig";
 import { useState, useEffect, useRef } from "react";
-import {
-  getUserCoins,
-  addCoins,
-  listenToCoins,
-} from "../../services/coinService";
+import { addCoins, listenToCoins } from "../../services/coinService";
 
 export const GameOverScreen = ({
   score,
