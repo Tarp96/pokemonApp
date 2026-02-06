@@ -136,3 +136,8 @@ export const pokemonTierMap = {
 
 export const getPokemonTier = (name) =>
   pokemonTierMap[name.toLowerCase().replace(/\s+/g, "-")] || "COMMON";
+
+export const getPokemonPrice = (name) => {
+  const tier = getPokemonTier(name);
+  return PRICE_TIERS[tier] || PRICE_TIERS.COMMON;
+};
