@@ -1,0 +1,135 @@
+export const PRICE_TIERS = {
+  COMMON: 60,
+  STARTER_FINAL: 120,
+  PSEUDO: 240,
+  LEGENDARY: 480,
+  APEX: 980,
+};
+
+export const pokemonTierMap = {
+  // GEN 1
+  charizard: "STARTER_FINAL",
+  venusaur: "STARTER_FINAL",
+  blastoise: "STARTER_FINAL",
+  dragonite: "PSEUDO",
+  articuno: "LEGENDARY",
+  zapdos: "LEGENDARY",
+  moltres: "LEGENDARY",
+  mew: "LEGENDARY",
+  pikachu: "STARTER_FINAL",
+  eevee: "STARTER_FINAL",
+  mewtwo: "APEX",
+
+  // GEN 2
+  typhlosion: "STARTER_FINAL",
+  feraligatr: "STARTER_FINAL",
+  meganium: "STARTER_FINAL",
+  tyranitar: "PSEUDO",
+  raikou: "LEGENDARY",
+  suicune: "LEGENDARY",
+  entei: "LEGENDARY",
+  lugia: "LEGENDARY",
+  "ho-oh": "LEGENDARY",
+
+  // GEN 3
+  blaziken: "STARTER_FINAL",
+  swampert: "STARTER_FINAL",
+  sceptile: "STARTER_FINAL",
+  salamence: "PSEUDO",
+  flygon: "PSEUDO",
+  groudon: "APEX",
+  kyogre: "APEX",
+  rayquaza: "APEX",
+
+  // GEN 4
+  infernape: "STARTER_FINAL",
+  empoleon: "STARTER_FINAL",
+  torterra: "STARTER_FINAL",
+  lucario: "STARTER_FINAL",
+  garchomp: "PSEUDO",
+  dialga: "LEGENDARY",
+  palkia: "LEGENDARY",
+  giratina: "LEGENDARY",
+
+  // GEN 5
+  serperior: "STARTER_FINAL",
+  emboar: "STARTER_FINAL",
+  samurott: "STARTER_FINAL",
+  hydreigon: "PSEUDO",
+  haxorus: "PSEUDO",
+  krookodile: "PSEUDO",
+  chandelure: "STARTER_FINAL",
+  zoroark: "STARTER_FINAL",
+  reshiram: "LEGENDARY",
+  zekrom: "LEGENDARY",
+  kyurem: "LEGENDARY",
+
+  // GEN 6
+  greninja: "STARTER_FINAL",
+  delphox: "STARTER_FINAL",
+  chesnaught: "STARTER_FINAL",
+  goodra: "PSEUDO",
+  noivern: "PSEUDO",
+  diancie: "LEGENDARY",
+  zygarde: "LEGENDARY",
+
+  // GEN 7
+  decidueye: "STARTER_FINAL",
+  incineroar: "STARTER_FINAL",
+  primarina: "STARTER_FINAL",
+  golisopod: "STARTER_FINAL",
+  mimikyu: "STARTER_FINAL",
+  "kommo-o": "PSEUDO",
+  "tapu-lele": "LEGENDARY",
+  "tapu-fini": "LEGENDARY",
+  "tapu-bulu": "LEGENDARY",
+  solgaleo: "LEGENDARY",
+  lunala: "LEGENDARY",
+
+  nihilego: "LEGENDARY",
+  buzzwole: "LEGENDARY",
+  pheromosa: "LEGENDARY",
+  xurkitree: "LEGENDARY",
+  celesteela: "LEGENDARY",
+  kartana: "LEGENDARY",
+  guzzlord: "LEGENDARY",
+
+  necrozma: "APEX",
+  zeraora: "LEGENDARY",
+
+  // GEN 8
+  rillaboom: "STARTER_FINAL",
+  cinderace: "STARTER_FINAL",
+  inteleon: "STARTER_FINAL",
+  corviknight: "STARTER_FINAL",
+  wooloo: "STARTER_FINAL",
+  dracozolt: "PSEUDO",
+  dragapult: "PSEUDO",
+  zacian: "APEX",
+  zamazenta: "APEX",
+  eternatus: "APEX",
+  zarude: "LEGENDARY",
+  regieleki: "LEGENDARY",
+  regidrago: "LEGENDARY",
+  glastrier: "LEGENDARY",
+  spectrier: "LEGENDARY",
+  enamorus: "LEGENDARY",
+
+  // GEN 9
+  meowscarada: "STARTER_FINAL",
+  skeledirge: "STARTER_FINAL",
+  quaquaval: "STARTER_FINAL",
+  armarouge: "STARTER_FINAL",
+  ceruledge: "STARTER_FINAL",
+
+  roaringmoon: "PSEUDO",
+  "walking-wake": "PSEUDO",
+  "raging-bolt": "PSEUDO",
+  "gouging-fire": "PSEUDO",
+  "iron-boulder": "PSEUDO",
+  "iron-crown": "PSEUDO",
+
+  koraidon: "APEX",
+  miraidon: "APEX",
+  terapagos: "APEX",
+};
