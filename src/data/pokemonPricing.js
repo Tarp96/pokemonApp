@@ -133,3 +133,6 @@ export const pokemonTierMap = {
   miraidon: "APEX",
   terapagos: "APEX",
 };
+
+export const getPokemonTier = (name) =>
+  pokemonTierMap[name.toLowerCase().replace(/\s+/g, "-")] || "COMMON";
