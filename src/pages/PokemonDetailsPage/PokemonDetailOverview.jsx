@@ -19,6 +19,7 @@ import { AbilitiesList } from "../../components/AbilitiesList";
 import { BsVolumeUp } from "react-icons/bs";
 import { EvolutionSection } from "../../components/EveloutionSection";
 import { AlternativeFormsSection } from "../../components/AlternativeFormsSection";
+import { getPokemonPrice } from "../../data/pokemonPricing";
 
 export const PokemonDetailOverView = () => {
   const [abilityDetails, setAbilityDetails] = useState([]);
@@ -26,6 +27,8 @@ export const PokemonDetailOverView = () => {
   const [showDefense, setShowDefense] = useState(true);
 
   const { pokemon, pokemonSpecies } = useOutletContext();
+
+  const price = pokemon?.name ? getPokemonPrice(pokemon.name) : 0;
 
   useEffect(() => {
     const controller = new AbortController();
@@ -38,7 +41,7 @@ export const PokemonDetailOverView = () => {
           pokemon.abilities.map(async (a) => {
             const detail = await fetchAbilityDetails(a.ability.name);
             const englishEntry = detail.effect_entries.find(
-              (entry) => entry.language.name === "en"
+              (entry) => entry.language.name === "en",
             );
 
             return {
@@ -46,7 +49,7 @@ export const PokemonDetailOverView = () => {
               isHidden: a.is_hidden,
               effect: englishEntry?.short_effect || "No description available.",
             };
-          })
+          }),
         );
 
         setAbilityDetails(fetchedDetails);
@@ -75,7 +78,7 @@ export const PokemonDetailOverView = () => {
 
   const flavorText = useMemo(
     () => pickEnglishFlavorText(pokemonSpecies?.flavor_text_entries),
-    [pokemonSpecies?.flavor_text_entries]
+    [pokemonSpecies?.flavor_text_entries],
   );
 
   const eggGroupsText =
@@ -96,6 +99,7 @@ export const PokemonDetailOverView = () => {
         <div className="overviewPageTopInfoSection">
           <h2 className="pageTopInfoTitle">
             {firstLetterUpperCase(pokemon.name)}
+
             <div className="topInfoSectionTypeBadges">{types}</div>
           </h2>
 
