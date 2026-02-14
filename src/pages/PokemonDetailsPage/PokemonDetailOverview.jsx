@@ -20,6 +20,7 @@ import { BsVolumeUp } from "react-icons/bs";
 import { EvolutionSection } from "../../components/EveloutionSection";
 import { AlternativeFormsSection } from "../../components/AlternativeFormsSection";
 import { getPokemonPrice } from "../../data/pokemonPricing";
+import { PriceTag } from "../../components/PriceTag";
 
 export const PokemonDetailOverView = () => {
   const [abilityDetails, setAbilityDetails] = useState([]);
@@ -99,7 +100,7 @@ export const PokemonDetailOverView = () => {
         <div className="overviewPageTopInfoSection">
           <h2 className="pageTopInfoTitle">
             {firstLetterUpperCase(pokemon.name)}
-            <span className="pokemonPrice">💰 {price}</span>
+            <PriceTag pokemonName={pokemon.name} />
             <div className="topInfoSectionTypeBadges">{types}</div>
           </h2>
 
