@@ -1,12 +1,18 @@
 import { getPokemonPrice } from "../data/pokemonPricing";
 import "../styles/DetailPageStyle.css";
 
-export const PriceTag = ({ pokemonName }) => {
+export const PriceTag = ({ pokemonName, displayedOnCard }) => {
   const price = pokemonName ? getPokemonPrice(pokemonName) : 0;
 
   return (
     <>
-      <span className="pokemonPrice">💰 {price}</span>
+      <span
+        className={
+          displayedOnCard ? "smallPokemonPriceTag" : "bigPokemonPriceTag"
+        }
+      >
+        💰 {price}
+      </span>
     </>
   );
 };

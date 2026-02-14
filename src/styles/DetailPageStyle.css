@@ -212,7 +212,7 @@
   flex-direction: column;
 }
 
-.pokemonPrice {
+.bigPokemonPriceTag {
   display: inline-flex;
   align-items: center;
   gap: 6px;
