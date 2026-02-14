@@ -449,6 +449,7 @@ body {
   font-weight: bold;
   color: #333;
   margin: 5px 0;
+  margin-bottom: 2px;
 }
 
 .pokemon-card p {

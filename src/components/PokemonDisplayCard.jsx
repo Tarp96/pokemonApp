@@ -13,6 +13,7 @@ import {
 import { toast } from "react-toastify";
 import { useAuth } from "../contexts/authContext/AuthContext";
 import { useNavigate } from "react-router-dom";
+import { PriceTag } from "./PriceTag";
 
 function PokemonDisplayCard({
   name,
@@ -48,7 +49,7 @@ function PokemonDisplayCard({
     if (isFavorite) {
       await removeFavorite(pokemon.name);
       toast.info(
-        `${firstLetterUpperCase(pokemon.name)} removed from favorites`
+        `${firstLetterUpperCase(pokemon.name)} removed from favorites`,
       );
     } else {
       await addFavorite(pokemon);
@@ -80,6 +81,7 @@ function PokemonDisplayCard({
 
       <img src={sprite} alt={name} />
       <h3>{firstLetterUpperCase(name)}</h3>
+      <PriceTag pokemonName={name} displayedOnCard={true} />
 
       <p>{firstLetterUpperCase(generation)}</p>
 
