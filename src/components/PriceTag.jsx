@@ -5,7 +5,7 @@ export const PriceTag = ({ pokemonName, displayedOnCard }) => {
   const price = pokemonName ? getPokemonPrice(pokemonName) : 0;
 
   return (
-    <>
+    <div>
       <span
         className={
           displayedOnCard ? "smallPokemonPriceTag" : "bigPokemonPriceTag"
@@ -13,6 +13,6 @@ export const PriceTag = ({ pokemonName, displayedOnCard }) => {
       >
         💰 {price}
       </span>
-    </>
+    </div>
   );
 };
