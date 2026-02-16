@@ -19,3 +19,39 @@ export const getUserTeam = async () => {
     ...doc.data(),
   }));
 };
+
+export const getTeamSize = async () => {
+  const team = await getUserTeam();
+  return team.length;
+};
+
+export const addPokemonToTeam = async (pokemon) => {
+  const user = auth.currentUser;
+  if (!user) throw new Error("User not authenticated");
+
+  const teamRef = collection(db, "users", user.uid, "team");
+
+  const snapshot = await getDocs(teamRef);
+
+  if (snapshot.size >= 6) {
+    throw new Error("Team is full");
+  }
+
+  const pokemonRef = doc(db, "users", user.uid, "team", pokemon.id.toString());
+
+  await setDoc(pokemonRef, {
+    name: pokemon.name,
+    id: pokemon.id,
+    sprite: pokemon.sprites?.front_default || null,
+    types: pokemon.types?.map((t) => t.type.name) || [],
+    generation: pokemon.generation ?? "unknown",
+    purchasedAt: new Date(),
+  });
+};
+
+export const removePokemonFromTeam = async (pokemonId) => {
+  const user = auth.currentUser;
+  if (!user) throw new Error("User not authenticated");
+
+  await deleteDoc(doc(db, "users", user.uid, "team", pokemonId.toString()));
+};
