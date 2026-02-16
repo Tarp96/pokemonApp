@@ -1,5 +1,6 @@
 import { getPokemonPrice } from "../data/pokemonPricing";
 import "../styles/DetailPageStyle.css";
+import { spendCoins } from "../services/coinService";
 
 export const PriceTag = ({ pokemonName, displayedOnCard }) => {
   const price = pokemonName ? getPokemonPrice(pokemonName) : 0;
