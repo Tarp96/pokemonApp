@@ -212,6 +212,11 @@
   flex-direction: column;
 }
 
+.bigPokemonPriceTag,
+.smallPokemonPriceTag {
+  cursor: pointer;
+}
+
 .bigPokemonPriceTag {
   display: inline-flex;
   align-items: center;
