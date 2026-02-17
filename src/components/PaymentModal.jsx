@@ -3,6 +3,8 @@ export const PaymentModal = ({
   price,
   coinBalance,
   coinAmountAfterPurchase,
+  purchaseOnClick,
+  closeModalOnClick,
 }) => {
   return (
     <div className="paymentModalOverlay">
@@ -12,8 +14,8 @@ export const PaymentModal = ({
         <p>{coinBalance}</p>
         <p>{coinAmountAfterPurchase}</p>
 
-        <button>Buy</button>
-        <button>Cancel</button>
+        <button onClick={purchaseOnClick}>Buy</button>
+        <button onClick={closeModalOnClick}>Cancel</button>
       </div>
     </div>
   );
