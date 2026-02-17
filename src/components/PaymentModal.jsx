@@ -1,5 +1,5 @@
 export const PaymentModal = ({
-  name,
+  pokemon,
   price,
   coinBalance,
   coinAmountAfterPurchase,
@@ -7,7 +7,7 @@ export const PaymentModal = ({
   return (
     <div className="paymentModalOverlay">
       <div className="paymentModalContainer modalPop">
-        <h2>Buy {name}?</h2>
+        <h2>Buy {pokemon?.name}?</h2>
         <p>{price}</p>
         <p>{coinBalance}</p>
         <p>{coinAmountAfterPurchase}</p>

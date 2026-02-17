@@ -35,6 +35,7 @@ export const HomePage = () => {
   const [typeLoading, setTypeLoading] = useState(false);
   const pageLoading = loading && !activeFilter;
   const [priceTagClicked, setPriceTagClicked] = useState(false);
+  const [selectedPokemon, setSelectedPokemon] = useState(null);
 
   const navigate = useNavigate();
 
@@ -157,13 +158,14 @@ export const HomePage = () => {
         cries={pokemonItem.cries}
         onClick={() => navigate(`/pokemon/${pokemonItem.name}`)}
         pokemon={pokemonItem}
-        priceTagOnClick={flipPriceTagClicked}
+        priceTagOnClick={() => flipPriceTagClicked(pokemonItem)}
       />
     ));
   };
 
-  const flipPriceTagClicked = () => {
-    setPriceTagClicked((prev) => !prev);
+  const flipPriceTagClicked = (pokemonItem) => {
+    setSelectedPokemon(pokemonItem);
+    setPriceTagClicked(true);
   };
 
   return (
@@ -202,7 +204,9 @@ export const HomePage = () => {
         />
       )}
 
-      {priceTagClicked && <PaymentModal />}
+      {priceTagClicked && selectedPokemon && (
+        <PaymentModal pokemon={selectedPokemon} />
+      )}
     </div>
   );
 };
