@@ -2,11 +2,11 @@ import { getPokemonPrice } from "../data/pokemonPricing";
 
 export const PaymentModal = ({
   pokemon,
-  coinBalance,
-  coinAmountAfterPurchase,
   purchaseOnClick,
   closeModalOnClick,
 }) => {
+  const price = pokemon?.name ? getPokemonPrice(pokemon?.name) : 0;
+
   return (
     <div className="paymentModalOverlay">
       <div className="paymentModalContainer modalPop">
