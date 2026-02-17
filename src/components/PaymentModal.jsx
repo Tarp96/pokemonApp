@@ -1,4 +1,5 @@
 import { getPokemonPrice } from "../data/pokemonPricing";
+import { useState, useEffect } from "react";
 
 export const PaymentModal = ({
   pokemon,
