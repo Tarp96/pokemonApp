@@ -5,14 +5,16 @@ export const PaymentModal = ({
   coinAmountAfterPurchase,
 }) => {
   return (
-    <div className="paymentModalContainer">
-      <h2>Buy {name}?</h2>
-      <p>{price}</p>
-      <p>{coinBalance}</p>
-      <p>{coinAmountAfterPurchase}</p>
+    <div className="paymentModalOverlayOverlay">
+      <div className="paymentModalContainer">
+        <h2>Buy {name}?</h2>
+        <p>{price}</p>
+        <p>{coinBalance}</p>
+        <p>{coinAmountAfterPurchase}</p>
 
-      <button>Buy</button>
-      <button>Cancel</button>
+        <button>Buy</button>
+        <button>Cancel</button>
+      </div>
     </div>
   );
 };
