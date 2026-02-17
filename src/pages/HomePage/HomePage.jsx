@@ -13,7 +13,6 @@ import { PokemonGrid } from "../../components/PokemonGrid";
 import { useNavigate } from "react-router-dom";
 import Pagination from "../../components/Pagination";
 import { getItem, setItem } from "../../utils/localStorage";
-
 import { setCachedPageFull } from "../../utils/cache";
 import CenterSpinner from "../../components/CenterSpinner";
 import { PaymentModal } from "../../components/PaymentModal";
@@ -168,6 +167,10 @@ export const HomePage = () => {
     setPriceTagClicked(true);
   };
 
+  const closeModal = () => {
+    setPriceTagClicked(false);
+  };
+
   return (
     <div className="mainContainer">
       <SearchBar
@@ -205,7 +208,10 @@ export const HomePage = () => {
       )}
 
       {priceTagClicked && selectedPokemon && (
-        <PaymentModal pokemon={selectedPokemon} />
+        <PaymentModal
+          pokemon={selectedPokemon}
+          closeModalOnClick={closeModal}
+        />
       )}
     </div>
   );

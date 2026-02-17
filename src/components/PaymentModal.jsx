@@ -1,6 +1,7 @@
+import { getPokemonPrice } from "../data/pokemonPricing";
+
 export const PaymentModal = ({
   pokemon,
-  price,
   coinBalance,
   coinAmountAfterPurchase,
   purchaseOnClick,
