@@ -5,7 +5,7 @@ export const PaymentModal = ({
   coinAmountAfterPurchase,
 }) => {
   return (
-    <>
+    <div className="paymentModalContainer">
       <h2>Buy {name}?</h2>
       <p>{price}</p>
       <p>{coinBalance}</p>
@@ -13,6 +13,6 @@ export const PaymentModal = ({
 
       <button>Buy</button>
       <button>Cancel</button>
-    </>
+    </div>
   );
 };
