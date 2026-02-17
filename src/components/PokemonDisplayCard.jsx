@@ -23,6 +23,7 @@ function PokemonDisplayCard({
   onClick,
   pokemon,
   generation,
+  priceTagOnClick,
 }) {
   const { userLoggedIn } = useAuth();
 
@@ -81,7 +82,11 @@ function PokemonDisplayCard({
 
       <img src={sprite} alt={name} />
       <h3>{firstLetterUpperCase(name)}</h3>
-      <PriceTag pokemonName={name} displayedOnCard={true} />
+      <PriceTag
+        pokemonName={name}
+        displayedOnCard={true}
+        onClick={priceTagOnClick}
+      />
 
       <p>{firstLetterUpperCase(generation)}</p>
 

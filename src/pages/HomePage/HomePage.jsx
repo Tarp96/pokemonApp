@@ -16,6 +16,7 @@ import { getItem, setItem } from "../../utils/localStorage";
 
 import { setCachedPageFull } from "../../utils/cache";
 import CenterSpinner from "../../components/CenterSpinner";
+import { PaymentModal } from "../../components/PaymentModal";
 
 export const HomePage = () => {
   const [pokemon, setPokemon] = useState([]);
@@ -33,6 +34,7 @@ export const HomePage = () => {
   const [showSearches, setShowSearches] = useState(false);
   const [typeLoading, setTypeLoading] = useState(false);
   const pageLoading = loading && !activeFilter;
+  const [priceTagClicked, setPriceTagClicked] = useState(false);
 
   const navigate = useNavigate();
 
@@ -112,7 +114,7 @@ export const HomePage = () => {
         setFilteredPokemon([details]);
 
         const updatedHistory = Array.from(
-          new Set([searchTerm, ...searchHistory])
+          new Set([searchTerm, ...searchHistory]),
         ).slice(0, 10);
         setSearchHistory(updatedHistory);
         setItem("searchHistory", updatedHistory);
@@ -155,8 +157,13 @@ export const HomePage = () => {
         cries={pokemonItem.cries}
         onClick={() => navigate(`/pokemon/${pokemonItem.name}`)}
         pokemon={pokemonItem}
+        priceTagOnClick={flipPriceTagClicked}
       />
     ));
+  };
+
+  const flipPriceTagClicked = () => {
+    setPriceTagClicked((prev) => !prev);
   };
 
   return (
@@ -194,6 +201,8 @@ export const HomePage = () => {
           type={activeFilter ? "type" : query ? "search" : null}
         />
       )}
+
+      {priceTagClicked && <PaymentModal />}
     </div>
   );
 };

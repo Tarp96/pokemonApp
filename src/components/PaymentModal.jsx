@@ -5,7 +5,7 @@ export const PaymentModal = ({
   coinAmountAfterPurchase,
 }) => {
   return (
-    <div className="paymentModalOverlayOverlay">
+    <div className="paymentModalOverlay">
       <div className="paymentModalContainer modalPop">
         <h2>Buy {name}?</h2>
         <p>{price}</p>
