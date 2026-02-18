@@ -29,9 +29,20 @@ export const PaymentModal = ({
   return (
     <div className="paymentModalOverlay">
       <div className="paymentModalContainer modalPop">
-        <h2 className="paymentModalNameTitle">Buy {pokemon?.name}?</h2>
+        <div className="paymentModalHeaderRow">
+          <img
+            src={pokemon?.sprites?.front_default}
+            alt={pokemon?.name}
+            className="paymentModalSprite"
+          />
+
+          <div className="paymentModalHeaderInfo">
+            <h2 className="paymentModalNameTitle">{pokemon?.name}</h2>
+            <p className="paymentModalPriceTag">Price: {price} coins</p>
+          </div>
+        </div>
+
         <p className="paymentModalInfo">Your coin balance: {coinBalance}</p>
-        <p className="paymentModalInfo">Price: {price}</p>
         <p className="paymentModalInfo">
           Remaining coins: {returnCoinTotalAfterPurchase(coinBalance, price)}
         </p>

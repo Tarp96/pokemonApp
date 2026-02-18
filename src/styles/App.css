@@ -620,6 +620,44 @@ body {
   }
 }
 
+.paymentModalHeaderRow {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.paymentModalSprite {
+  width: 96px;
+  height: 96px;
+  object-fit: contain;
+  image-rendering: pixelated;
+}
+
+.paymentModalSprite:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
+}
+
+.paymentModalHeaderInfo {
+  text-align: left;
+}
+
+.paymentModalNameTitle {
+  font-size: 22px;
+  font-weight: 700;
+  margin: 0;
+  text-transform: capitalize;
+  color: #222;
+}
+
+.paymentModalPriceTag {
+  margin-top: 4px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #f59e0b;
+}
+
 .paymentModalNameTitle {
   font-size: 24px;
   font-weight: 700;
