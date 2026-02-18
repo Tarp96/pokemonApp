@@ -26,6 +26,15 @@ export const PaymentModal = ({
     return a - b;
   }
 
+  const handlePurchase = async () => {
+    try {
+      await spendCoins(user, price);
+      closeModalOnClick();
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   return (
     <div className="paymentModalOverlay">
       <div className="paymentModalContainer modalPop">
@@ -48,10 +57,7 @@ export const PaymentModal = ({
         </p>
 
         <div className="paymentModalBtnRow">
-          <button
-            onClick={() => spendCoins(user, price)}
-            className="paymentModalPayBtn"
-          >
+          <button onClick={handlePurchase} className="paymentModalPayBtn">
             Buy
           </button>
           <button onClick={closeModalOnClick} className="paymentModalCancelBtn">
