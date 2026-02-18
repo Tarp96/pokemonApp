@@ -35,8 +35,14 @@ export const PaymentModal = ({
           Remaining coins: {returnCoinTotalAfterPurchase(coinBalance, price)}
         </p>
 
-        <button onClick={purchaseOnClick}>Buy</button>
-        <button onClick={closeModalOnClick}>Cancel</button>
+        <div className="paymentModalBtnRow">
+          <button onClick={purchaseOnClick} className="paymentModalPayBtn">
+            Buy
+          </button>
+          <button onClick={closeModalOnClick} className="paymentModalCancelBtn">
+            Cancel
+          </button>
+        </div>
       </div>
     </div>
   );
