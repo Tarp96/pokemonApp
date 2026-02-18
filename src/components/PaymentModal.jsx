@@ -1,21 +1,22 @@
 import { getPokemonPrice } from "../data/pokemonPricing";
 import { useState, useEffect } from "react";
-import { db, auth } from "../firebaseConfig";
-import { listenToCoins } from "../services/coinService";
+import { auth } from "../firebaseConfig";
+import { listenToCoins, spendCoins } from "../services/coinService";
 
 export const PaymentModal = ({
   pokemon,
-  purchaseOnClick,
+
   closeModalOnClick,
 }) => {
   const [coinBalance, setCoinBalance] = useState();
+  const [user, setUser] = useState();
 
   useEffect(() => {
     const user = auth.currentUser;
     if (!user) return;
 
     const unsubscribe = listenToCoins(user.uid, setCoinBalance);
-
+    setUser(user.uid);
     return () => unsubscribe();
   }, []);
 
@@ -36,7 +37,10 @@ export const PaymentModal = ({
         </p>
 
         <div className="paymentModalBtnRow">
-          <button onClick={purchaseOnClick} className="paymentModalPayBtn">
+          <button
+            onClick={() => spendCoins(user, price)}
+            className="paymentModalPayBtn"
+          >
             Buy
           </button>
           <button onClick={closeModalOnClick} className="paymentModalCancelBtn">
