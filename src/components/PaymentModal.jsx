@@ -66,15 +66,27 @@ export const PaymentModal = ({
           Remaining coins: {returnCoinTotalAfterPurchase(coinBalance, price)}
         </p>
 
+        {paymentStatus === "processing" && (
+          <p className="paymentModalStatus processing">Payment processing...</p>
+        )}
+
+        {paymentStatus === "success" && (
+          <p className="paymentModalStatus success">Purchase successful! 🎉</p>
+        )}
+
         <div className="paymentModalBtnRow">
           <button
             onClick={handlePurchase}
             className="paymentModalPayBtn"
-            disabled={buying}
+            disabled={paymentStatus !== "idle"}
           >
-            Buy
+            {paymentStatus === "processing" ? "Processing..." : "Buy"}
           </button>
-          <button onClick={closeModalOnClick} className="paymentModalCancelBtn">
+          <button
+            onClick={closeModalOnClick}
+            className="paymentModalCancelBtn"
+            disabled={paymentStatus === "processing"}
+          >
             Cancel
           </button>
         </div>
