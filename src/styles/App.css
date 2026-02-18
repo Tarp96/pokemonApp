@@ -672,6 +672,21 @@ body {
   color: #444;
 }
 
+.paymentModalStatus {
+  margin-top: 12px;
+  font-size: 15px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.paymentModalStatus.processing {
+  color: #f59e0b;
+}
+
+.paymentModalStatus.success {
+  color: #22c55e;
+}
+
 .paymentModalBtnRow {
   display: flex;
   gap: 12px;
