@@ -28,6 +28,7 @@ export const PaymentModal = ({
   }
 
   const handlePurchase = async () => {
+    if (!user) return;
     try {
       setPaymentStatus("processing");
 
@@ -62,7 +63,10 @@ export const PaymentModal = ({
 
         <p className="paymentModalInfo">Your coin balance: {coinBalance}</p>
         <p className="paymentModalInfo">
-          Remaining coins: {returnCoinTotalAfterPurchase(coinBalance, price)}
+          Remaining coins:{" "}
+          {coinBalance != null
+            ? returnCoinTotalAfterPurchase(coinBalance, price)
+            : "..."}
         </p>
 
         {paymentStatus === "processing" && (
