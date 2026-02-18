@@ -10,6 +10,7 @@ export const PaymentModal = ({
 }) => {
   const [coinBalance, setCoinBalance] = useState();
   const [user, setUser] = useState();
+  const [buying, setBuying] = useState(false);
 
   useEffect(() => {
     const user = auth.currentUser;
@@ -27,11 +28,14 @@ export const PaymentModal = ({
   }
 
   const handlePurchase = async () => {
+    if (buying) return;
+    setBuying(true);
+
     try {
       await spendCoins(user, price);
       closeModalOnClick();
-    } catch (err) {
-      console.error(err);
+    } finally {
+      setBuying(false);
     }
   };
 
@@ -57,7 +61,11 @@ export const PaymentModal = ({
         </p>
 
         <div className="paymentModalBtnRow">
-          <button onClick={handlePurchase} className="paymentModalPayBtn">
+          <button
+            onClick={handlePurchase}
+            className="paymentModalPayBtn"
+            disabled={buying}
+          >
             Buy
           </button>
           <button onClick={closeModalOnClick} className="paymentModalCancelBtn">
