@@ -10,8 +10,7 @@ export const PaymentModal = ({
 }) => {
   const [coinBalance, setCoinBalance] = useState();
   const [user, setUser] = useState();
-  const [buying, setBuying] = useState(false);
-  const [paymentStatus, setPaymentStatus] = useState();
+  const [paymentStatus, setPaymentStatus] = useState("idle");
 
   useEffect(() => {
     const user = auth.currentUser;
