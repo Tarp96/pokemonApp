@@ -11,6 +11,7 @@ export const PaymentModal = ({
   const [coinBalance, setCoinBalance] = useState();
   const [user, setUser] = useState();
   const [buying, setBuying] = useState(false);
+  const [paymentStatus, setPaymentStatus] = useState();
 
   useEffect(() => {
     const user = auth.currentUser;
@@ -28,14 +29,19 @@ export const PaymentModal = ({
   }
 
   const handlePurchase = async () => {
-    if (buying) return;
-    setBuying(true);
-
     try {
+      setPaymentStatus("processing");
+
       await spendCoins(user, price);
-      closeModalOnClick();
-    } finally {
-      setBuying(false);
+
+      setPaymentStatus("success");
+
+      setTimeout(() => {
+        closeModalOnClick();
+      }, 1400);
+    } catch (err) {
+      console.error(err);
+      setPaymentStatus("idle");
     }
   };
 
