@@ -4,11 +4,7 @@ import { auth } from "../firebaseConfig";
 import { listenToCoins, spendCoins } from "../services/coinService";
 import { addPokemonToTeam } from "../services/teamService";
 
-export const PaymentModal = ({
-  pokemon,
-
-  closeModalOnClick,
-}) => {
+export const PaymentModal = ({ pokemon, closeModalOnClick }) => {
   const [coinBalance, setCoinBalance] = useState();
   const [user, setUser] = useState();
   const [paymentStatus, setPaymentStatus] = useState("idle");
@@ -33,6 +29,7 @@ export const PaymentModal = ({
     try {
       setPaymentStatus("processing");
 
+      await addPokemonToTeam(pokemon);
       await spendCoins(user, price);
 
       setPaymentStatus("success");
