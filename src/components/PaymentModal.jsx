@@ -2,6 +2,7 @@ import { getPokemonPrice } from "../data/pokemonPricing";
 import { useState, useEffect } from "react";
 import { auth } from "../firebaseConfig";
 import { listenToCoins, spendCoins } from "../services/coinService";
+import { addPokemonToTeam } from "../services/teamService";
 
 export const PaymentModal = ({
   pokemon,
