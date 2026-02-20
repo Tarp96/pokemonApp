@@ -55,3 +55,13 @@ export const removePokemonFromTeam = async (pokemonId) => {
 
   await deleteDoc(doc(db, "users", user.uid, "team", pokemonId.toString()));
 };
+
+export const getUserTeamIds = async () => {
+  const user = auth.currentUser;
+  if (!user) return [];
+
+  const teamRef = collection(db, "users", user.uid, "team");
+  const snapshot = await getDocs(teamRef);
+
+  return snapshot.docs.map((doc) => doc.id);
+};
