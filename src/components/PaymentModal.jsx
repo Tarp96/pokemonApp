@@ -8,6 +8,7 @@ export const PaymentModal = ({ pokemon, closeModalOnClick }) => {
   const [coinBalance, setCoinBalance] = useState();
   const [user, setUser] = useState();
   const [paymentStatus, setPaymentStatus] = useState("idle");
+  const [displayCoins, setDisplayCoins] = useState(coinBalance ?? 0);
 
   useEffect(() => {
     const user = auth.currentUser;
