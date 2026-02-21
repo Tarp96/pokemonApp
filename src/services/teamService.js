@@ -4,7 +4,9 @@ import {
   getDocs,
   setDoc,
   deleteDoc,
+  onSnapshot,
 } from "firebase/firestore";
+
 import { db, auth } from "../firebaseConfig";
 
 export const getUserTeam = async () => {
@@ -64,4 +66,13 @@ export const getUserTeamIds = async () => {
   const snapshot = await getDocs(teamRef);
 
   return snapshot.docs.map((doc) => doc.id);
+};
+
+export const listenToTeam = (uid, callback) => {
+  const teamRef = collection(db, "users", uid, "team");
+
+  return onSnapshot(teamRef, (snapshot) => {
+    const ids = snapshot.docs.map((doc) => doc.id);
+    callback(ids);
+  });
 };

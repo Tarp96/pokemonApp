@@ -16,7 +16,8 @@ import { getItem, setItem } from "../../utils/localStorage";
 import { setCachedPageFull } from "../../utils/cache";
 import CenterSpinner from "../../components/CenterSpinner";
 import { PaymentModal } from "../../components/PaymentModal";
-import { getUserTeamIds } from "../../services/teamService";
+import { auth } from "../../firebaseConfig";
+import { listenToTeam } from "../../services/teamService";
 
 export const HomePage = () => {
   const [pokemon, setPokemon] = useState([]);
@@ -70,12 +71,12 @@ export const HomePage = () => {
   };
 
   useEffect(() => {
-    const loadTeam = async () => {
-      const ids = await getUserTeamIds();
-      setOwnedPokemonIds(ids);
-    };
+    const user = auth.currentUser;
+    if (!user) return;
 
-    loadTeam();
+    const unsubscribe = listenToTeam(user.uid, setOwnedPokemonIds);
+
+    return () => unsubscribe();
   }, []);
 
   const filterByType = async (key) => {
