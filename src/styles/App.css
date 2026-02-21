@@ -437,7 +437,7 @@ body {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-.pokemon-card img {
+.displayCardPokemonSprite {
   width: 100px;
   height: 100px;
   object-fit: contain;

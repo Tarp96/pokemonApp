@@ -81,15 +81,15 @@ function PokemonDisplayCard({
         )}
       </div>
 
-      <img src={sprite} alt={name} />
+      <img src={sprite} alt={name} className="displayCardPokemonSprite" />
       <h3>{firstLetterUpperCase(name)}</h3>
-      {!isOwned && (
-        <PriceTag
-          pokemonName={name}
-          displayedOnCard={true}
-          onClick={priceTagOnClick}
-        />
-      )}
+
+      <PriceTag
+        pokemonName={name}
+        displayedOnCard={true}
+        onClick={priceTagOnClick}
+        isOwned={isOwned}
+      />
 
       <p>{firstLetterUpperCase(generation)}</p>
 
