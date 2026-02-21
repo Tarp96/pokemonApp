@@ -29,7 +29,7 @@ export const PriceTag = ({
           isOwned ? "ownedVisible" : ""
         }`}
       >
-        <p className="ownedLabel">Already Owned</p>
+        <p className="ownedLabel">Owned</p>
         <img
           className="pokemonOwnedImage"
           src="/assets/pokeb.png"
