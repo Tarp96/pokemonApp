@@ -19,6 +19,30 @@ export const PaymentModal = ({ pokemon, closeModalOnClick }) => {
     return () => unsubscribe();
   }, []);
 
+  useEffect(() => {
+    if (coinBalance == null) return;
+
+    let frame;
+
+    const animate = () => {
+      setDisplayCoins((prev) => {
+        const diff = coinBalance - prev;
+
+        if (Math.abs(diff) < 1) {
+          return coinBalance;
+        }
+
+        return prev + diff * 0.2;
+      });
+
+      frame = requestAnimationFrame(animate);
+    };
+
+    animate();
+
+    return () => cancelAnimationFrame(frame);
+  }, [coinBalance]);
+
   const price = pokemon?.name ? getPokemonPrice(pokemon?.name) : 0;
 
   function returnCoinTotalAfterPurchase(a, b) {
