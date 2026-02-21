@@ -16,6 +16,7 @@ import { getItem, setItem } from "../../utils/localStorage";
 import { setCachedPageFull } from "../../utils/cache";
 import CenterSpinner from "../../components/CenterSpinner";
 import { PaymentModal } from "../../components/PaymentModal";
+import { getUserTeamIds } from "../../services/teamService";
 
 export const HomePage = () => {
   const [pokemon, setPokemon] = useState([]);
@@ -35,6 +36,7 @@ export const HomePage = () => {
   const pageLoading = loading && !activeFilter;
   const [priceTagClicked, setPriceTagClicked] = useState(false);
   const [selectedPokemon, setSelectedPokemon] = useState(null);
+  const [ownedPokemonIds, setOwnedPokemonIds] = useState([]);
 
   const navigate = useNavigate();
 
@@ -66,6 +68,15 @@ export const HomePage = () => {
       setLoading(false);
     }
   };
+
+  useEffect(() => {
+    const loadTeam = async () => {
+      const ids = await getUserTeamIds();
+      setOwnedPokemonIds(ids);
+    };
+
+    loadTeam();
+  }, []);
 
   const filterByType = async (key) => {
     if (isFiltered && activeFilter === key) {
@@ -158,6 +169,7 @@ export const HomePage = () => {
         onClick={() => navigate(`/pokemon/${pokemonItem.name}`)}
         pokemon={pokemonItem}
         priceTagOnClick={() => flipPriceTagClicked(pokemonItem)}
+        isOwned={ownedPokemonIds.includes(pokemonItem.id.toString())}
       />
     ));
   };
