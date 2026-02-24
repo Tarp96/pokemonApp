@@ -29,7 +29,7 @@ const RegisterUserPage = () => {
       const userCredential = await createUserWithEmailAndPassword(
         auth,
         email,
-        password
+        password,
       );
       const user = userCredential.user;
 
@@ -37,6 +37,7 @@ const RegisterUserPage = () => {
         username: username,
         email: user.email,
         coins: 600,
+        coinsSpent: 0,
         createdAt: new Date(),
       });
 
