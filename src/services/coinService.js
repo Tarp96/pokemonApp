@@ -36,6 +36,7 @@ export const spendCoins = async (uid, amount) => {
 
   await updateDoc(userRef, {
     coins: increment(-amount),
+    coinsSpent: increment(amount),
   });
   console.log("Current:", currentCoins, "Price:", amount);
 };
