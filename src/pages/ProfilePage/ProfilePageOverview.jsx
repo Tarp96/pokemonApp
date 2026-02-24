@@ -1,50 +1,10 @@
 import { Outlet } from "react-router-dom";
 import { PageNavigationBar } from "../../components/PageNavigationbar";
-import { useEffect, useState } from "react";
-import { doc, getDoc } from "firebase/firestore";
-import { db, auth } from "../../firebaseConfig";
 import { firstLetterUpperCase } from "../../utils/helperFunctions";
-import { listenToCoins } from "../../services/coinService";
-import { getTeamSize } from "../../services/teamService";
+import { useProfileData } from "../../hooks/useProfileData";
 
 export const ProfilePageOverview = () => {
-  const [username, setUsername] = useState("");
-  const [coinBalance, setCoinBalance] = useState(null);
-  const [teamSize, setTeamSize] = useState(null);
-
-  useEffect(() => {
-    const user = auth.currentUser;
-    if (!user) return;
-
-    const fetchUsername = async () => {
-      try {
-        const docRef = doc(db, "users", user.uid);
-        const docSnap = await getDoc(docRef);
-
-        if (docSnap.exists()) {
-          setUsername(docSnap.data().username);
-        }
-      } catch (err) {
-        console.error("Error fetching username:", err);
-      }
-    };
-
-    const fetchTeamSize = async () => {
-      try {
-        const size = await getTeamSize();
-        setTeamSize(size);
-      } catch (err) {
-        console.error("Error fetching team size:", err);
-      }
-    };
-
-    fetchUsername();
-    fetchTeamSize();
-
-    const unsubscribe = listenToCoins(user.uid, setCoinBalance);
-
-    return () => unsubscribe();
-  }, []);
+  const { username, coinBalance, teamSize } = useProfileData();
 
   return (
     <div className="profilePageContainer">
