@@ -740,6 +740,11 @@ body {
   transform: translateY(0);
 }
 
+.coinAnimating {
+  color: #facc15;
+  transition: color 0.2s ease;
+}
+
 /*DISPLAY IF ARRAY EMPTY*/
 .ifNoPokemonMatchFilter {
   display: flex;

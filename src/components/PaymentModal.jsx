@@ -86,7 +86,13 @@ export const PaymentModal = ({ pokemon, closeModalOnClick }) => {
           </div>
         </div>
 
-        <p className="paymentModalInfo">Your coin balance: {coinBalance}</p>
+        <p
+          className={`paymentModalInfo ${
+            displayCoins !== coinBalance ? "coinAnimating" : ""
+          }`}
+        >
+          Your coin balance: {Math.floor(displayCoins)}
+        </p>
         <p className="paymentModalInfo">
           Remaining coins:{" "}
           {coinBalance != null
