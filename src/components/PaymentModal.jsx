@@ -49,21 +49,18 @@ export const PaymentModal = ({ pokemon, closeModalOnClick }) => {
     return a - b;
   }
 
+  const delay = (ms) => new Promise((res) => setTimeout(res, ms));
+
   const handlePurchase = async () => {
     if (!user) return;
 
     try {
       setPaymentStatus("processing");
-
       await spendCoins(user, price);
-
+      await addPokemonToTeam(pokemon);
       setPaymentStatus("success");
-
-      setTimeout(async () => {
-        closeModalOnClick();
-
-        await addPokemonToTeam(pokemon);
-      }, 600);
+      await delay(600);
+      closeModalOnClick();
     } catch (err) {
       console.error(err);
       setPaymentStatus("idle");
