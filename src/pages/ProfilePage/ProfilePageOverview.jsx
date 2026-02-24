@@ -8,7 +8,7 @@ import { listenToCoins } from "../../services/coinService";
 
 export const ProfilePageOverview = () => {
   const [username, setUsername] = useState("");
-  const [coinBalance, setCoinBalance] = useState();
+  const [coinBalance, setCoinBalance] = useState(null);
 
   useEffect(() => {
     const user = auth.currentUser;

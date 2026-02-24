@@ -33,7 +33,7 @@ export const ProfilePage = () => {
         </div>
         <div className="trainerStatCard">
           <h4>Coins</h4>
-          <p>{coinBalance || "unavailable"}</p>
+          <p>{coinBalance ?? "unavailable"}</p>
         </div>
         <div className="trainerStatCard">
           <h4>Coins Spent</h4>
