@@ -7,6 +7,7 @@ import { getTeamSize } from "../services/teamService";
 export const useProfileData = () => {
   const [username, setUsername] = useState("");
   const [coinBalance, setCoinBalance] = useState(null);
+  const [coinsSpent, setCoinsSpent] = useState(null);
   const [teamSize, setTeamSize] = useState(null);
 
   useEffect(() => {
@@ -18,7 +19,10 @@ export const useProfileData = () => {
       const docSnap = await getDoc(docRef);
 
       if (docSnap.exists()) {
-        setUsername(docSnap.data().username);
+        const data = docSnap.data();
+
+        setUsername(data.username ?? "");
+        setCoinsSpent(data.coinsSpent ?? 0);
       }
 
       const size = await getTeamSize();
@@ -31,5 +35,5 @@ export const useProfileData = () => {
     return () => unsubscribe();
   }, []);
 
-  return { username, coinBalance, teamSize };
+  return { username, coinBalance, teamSize, coinsSpent };
 };
