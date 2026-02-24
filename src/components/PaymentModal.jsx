@@ -9,6 +9,7 @@ export const PaymentModal = ({ pokemon, closeModalOnClick }) => {
   const [user, setUser] = useState();
   const [paymentStatus, setPaymentStatus] = useState("idle");
   const [displayCoins, setDisplayCoins] = useState(coinBalance ?? 0);
+  const [errorMessage, setErrorMessage] = useState("");
 
   useEffect(() => {
     const user = auth.currentUser;
@@ -56,14 +57,19 @@ export const PaymentModal = ({ pokemon, closeModalOnClick }) => {
 
     try {
       setPaymentStatus("processing");
-      await spendCoins(user, price);
+
       await addPokemonToTeam(pokemon);
+
+      await spendCoins(user, price);
+
       setPaymentStatus("success");
+
       await delay(600);
       closeModalOnClick();
     } catch (err) {
       console.error(err);
-      setPaymentStatus("idle");
+      setPaymentStatus("error");
+      setErrorMessage(err.message);
     }
   };
 
@@ -103,6 +109,10 @@ export const PaymentModal = ({ pokemon, closeModalOnClick }) => {
 
         {paymentStatus === "success" && (
           <p className="paymentModalStatus success">Purchase successful! 🎉</p>
+        )}
+
+        {paymentStatus === "error" && (
+          <p className="paymentModalStatus error">{errorMessage}!</p>
         )}
 
         <div className="paymentModalBtnRow">

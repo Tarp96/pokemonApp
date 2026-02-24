@@ -745,6 +745,35 @@ body {
   transition: color 0.2s ease;
 }
 
+@keyframes errorShake {
+  0% {
+    transform: translateX(0);
+  }
+  20% {
+    transform: translateX(-4px);
+  }
+  40% {
+    transform: translateX(4px);
+  }
+  60% {
+    transform: translateX(-3px);
+  }
+  80% {
+    transform: translateX(3px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+.paymentModalStatus.error {
+  color: #ef4444;
+  font-weight: 600;
+  font-size: 17px;
+  animation: errorShake 0.4s ease;
+  text-shadow: 0 0 6px rgba(239, 68, 68, 0.3);
+}
+
 /*DISPLAY IF ARRAY EMPTY*/
 .ifNoPokemonMatchFilter {
   display: flex;
