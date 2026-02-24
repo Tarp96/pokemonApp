@@ -5,10 +5,12 @@ import { doc, getDoc } from "firebase/firestore";
 import { db, auth } from "../../firebaseConfig";
 import { firstLetterUpperCase } from "../../utils/helperFunctions";
 import { listenToCoins } from "../../services/coinService";
+import { getTeamSize } from "../../services/teamService";
 
 export const ProfilePageOverview = () => {
   const [username, setUsername] = useState("");
   const [coinBalance, setCoinBalance] = useState(null);
+  const [teamSize, setTeamSize] = useState(null);
 
   useEffect(() => {
     const user = auth.currentUser;
@@ -27,7 +29,17 @@ export const ProfilePageOverview = () => {
       }
     };
 
+    const fetchTeamSize = async () => {
+      try {
+        const size = await getTeamSize();
+        setTeamSize(size);
+      } catch (err) {
+        console.error("Error fetching team size:", err);
+      }
+    };
+
     fetchUsername();
+    fetchTeamSize();
 
     const unsubscribe = listenToCoins(user.uid, setCoinBalance);
 
@@ -52,7 +64,7 @@ export const ProfilePageOverview = () => {
         />
       </div>
 
-      <Outlet context={{ username, coinBalance }} />
+      <Outlet context={{ username, coinBalance, teamSize }} />
     </div>
   );
 };
