@@ -1,1 +1,7 @@
-export const PokemonTeamCard = ({ pokemon }) => {};
+export const PokemonTeamCard = ({ pokemon }) => {
+  return (
+    <>
+      <p>{pokemon.name}</p>
+    </>
+  );
+};
