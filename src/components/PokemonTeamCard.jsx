@@ -3,39 +3,30 @@ import { TypeBadge } from "./TypeBadge";
 
 const getPrimaryType = (types) => (types?.length ? types[0] : "normal");
 
-const formatGeneration = (gen) => {
-  if (!gen) return "";
+export const PokemonTeamCard = ({ pokemon, slot, isLocked }) => {
+  if (isLocked) {
+    return (
+      <div className="teamCardElite lockedCard">
+        <div className="teamCardTopRow">
+          <div className="teamSlotBadge">#{slot}</div>
+        </div>
 
-  const roman = gen.split("-").pop()?.toUpperCase();
-  return `Generation ${roman}`;
-};
-
-const formatPurchasedAt = (purchasedAt) => {
-  if (!purchasedAt) return "";
-
-  if (typeof purchasedAt?.toDate === "function") {
-    return purchasedAt.toDate().toLocaleDateString();
+        <div className="lockedCardContent">
+          <div className="lockedSpritePlaceholder" />
+          <p className="lockedTitle">Locked</p>
+          <p className="lockedSubtitle">Buy Pokémon to unlock this slot</p>
+        </div>
+      </div>
+    );
   }
 
-  if (typeof purchasedAt?.seconds === "number") {
-    return new Date(purchasedAt.seconds * 1000).toLocaleDateString();
-  }
-
-  return "";
-};
-
-export const PokemonTeamCard = ({ pokemon, slot }) => {
   const primaryType = getPrimaryType(pokemon.types);
-  const purchased = formatPurchasedAt(pokemon.purchasedAt);
-  const genLabel = formatGeneration(pokemon.generation);
 
   return (
     <div className={`teamCardElite type-${primaryType}`}>
       <div className="teamCardTopRow">
         <div className="teamSlotBadge">#{slot}</div>
-        <div className="teamMetaRight">
-          <span className="teamIdPill">ID {pokemon.id}</span>
-        </div>
+        <span className="teamIdPill">ID {pokemon.id}</span>
       </div>
 
       <div className="teamCardBody">
@@ -44,7 +35,6 @@ export const PokemonTeamCard = ({ pokemon, slot }) => {
             src={pokemon.sprite}
             alt={pokemon.name}
             className="teamEliteSprite"
-            loading="lazy"
           />
         </div>
 
@@ -57,13 +47,6 @@ export const PokemonTeamCard = ({ pokemon, slot }) => {
             {pokemon.types?.map((type, index) => (
               <TypeBadge key={`${type}-${index}`} type={type} />
             ))}
-          </div>
-
-          <div className="teamSubMetaRow">
-            {genLabel && <span className="teamMetaChip">{genLabel}</span>}
-            {purchased && (
-              <span className="teamMetaChip">Bought {purchased}</span>
-            )}
           </div>
         </div>
       </div>
