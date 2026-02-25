@@ -20,8 +20,8 @@ export const ProfilePageOverview = () => {
         <PageNavigationBar
           links={[
             { path: "", label: "Trainer Info" },
-            { path: "favorites", label: "Favorites" },
             { path: "team", label: "Your Team" },
+            { path: "favorites", label: "Favorites" },
           ]}
         />
       </div>
