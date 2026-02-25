@@ -4,7 +4,8 @@ import { firstLetterUpperCase } from "../../utils/helperFunctions";
 import { useProfileData } from "../../hooks/useProfileData";
 
 export const ProfilePageOverview = () => {
-  const { username, coinBalance, teamSize, coinsSpent } = useProfileData();
+  const { username, coinBalance, teamSize, coinsSpent, team } =
+    useProfileData();
 
   return (
     <div className="profilePageContainer">
@@ -25,7 +26,7 @@ export const ProfilePageOverview = () => {
         />
       </div>
 
-      <Outlet context={{ username, coinBalance, teamSize, coinsSpent }} />
+      <Outlet context={{ username, coinBalance, teamSize, coinsSpent, team }} />
     </div>
   );
 };
