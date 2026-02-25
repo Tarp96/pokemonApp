@@ -5,9 +5,13 @@ export const ProfileTeamPage = () => {
   const { team } = useOutletContext();
 
   return (
-    <div className="teamGrid">
+    <div className="teamGridElite">
       {team.map((pokemonItem, index) => (
-        <PokemonTeamCard key={pokemonItem.id || index} pokemon={pokemonItem} />
+        <PokemonTeamCard
+          key={`${pokemonItem.id}-${pokemonItem.name}-${index}`}
+          pokemon={pokemonItem}
+          slot={index + 1}
+        />
       ))}
     </div>
   );
