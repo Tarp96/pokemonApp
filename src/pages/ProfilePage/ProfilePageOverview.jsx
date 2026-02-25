@@ -20,6 +20,7 @@ export const ProfilePageOverview = () => {
           links={[
             { path: "", label: "Trainer Info" },
             { path: "favorites", label: "Favorites" },
+            { path: "team", label: "Your Team" },
           ]}
         />
       </div>

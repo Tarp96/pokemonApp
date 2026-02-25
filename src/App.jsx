@@ -18,6 +18,7 @@ import { AuthLayout } from "./pages/Auth/AuthLayout";
 import RegisterUserPage from "./pages/Auth/RegisterUserPage";
 import { GamePageLayout } from "./pages/CatchGame/GamePageLayout";
 import { GamePage } from "./pages/CatchGame/GamePage";
+import { ProfileTeamPage } from "./pages/ProfilePage/ProfileTeamPage";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
           <Route path="profilepage" element={<ProfilePageOverview />}>
             <Route index element={<ProfilePage />} />
             <Route path="favorites" element={<FavoritePokemonsPage />} />
+            <Route path="team" element={<ProfileTeamPage />} />
           </Route>
           <Route path="login" element={<AuthLayout />}>
             <Route index element={<LoginPage />} />
