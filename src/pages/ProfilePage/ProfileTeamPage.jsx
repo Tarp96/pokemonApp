@@ -4,9 +4,11 @@ import { PokemonTeamCard } from "./../../components/PokemonTeamCard";
 export const ProfileTeamPage = () => {
   const { team } = useOutletContext();
 
-  const teamItems = team.map((pokemonItem, index) => (
-    <PokemonTeamCard pokemon={pokemonItem} />
-  ));
-
-  return <>{teamItems}</>;
+  return (
+    <div className="teamGrid">
+      {team.map((pokemonItem, index) => (
+        <PokemonTeamCard key={pokemonItem.id || index} pokemon={pokemonItem} />
+      ))}
+    </div>
+  );
 };
