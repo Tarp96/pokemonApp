@@ -35,6 +35,7 @@ export const HomePage = () => {
   const [ownedPokemonIds, setOwnedPokemonIds] = useState([]);
 
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     loadPokemonData(pageNumber);
@@ -168,7 +169,11 @@ export const HomePage = () => {
         height={pokemonItem.height}
         weight={pokemonItem.weight}
         cries={pokemonItem.cries}
-        onClick={() => navigate(`/pokemon/${pokemonItem.name}`)}
+        onClick={() =>
+          navigate(`/pokemon/${pokemonItem.name}`, {
+            state: { from: location },
+          })
+        }
         pokemon={pokemonItem}
         priceTagOnClick={() => flipPriceTagClicked(pokemonItem)}
         isOwned={ownedPokemonIds.includes(pokemonItem.id.toString())}

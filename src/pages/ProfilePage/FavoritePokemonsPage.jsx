@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { getAllFavorites } from "../../services/favoritesService";
 import PokemonDisplayCard from "../../components/PokemonDisplayCard";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 export const FavoritePokemonsPage = () => {
   const [favoritesList, setFavoritesList] = useState([]);
   const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
     const load = async () => {
@@ -18,7 +19,7 @@ export const FavoritePokemonsPage = () => {
 
   const displayFavorites = favoritesList.map((pokemon) => {
     const normalizedTypes = pokemon.types?.map((t) =>
-      typeof t === "string" ? { type: { name: t } } : t
+      typeof t === "string" ? { type: { name: t } } : t,
     );
 
     const normalizedCries =
@@ -33,7 +34,11 @@ export const FavoritePokemonsPage = () => {
         sprite={pokemon.sprite}
         types={normalizedTypes}
         cries={normalizedCries}
-        onClick={() => navigate(`/pokemon/${pokemon.name}`)}
+        onClick={() =>
+          navigate(`/pokemon/${pokemon.name}`, {
+            state: { from: location },
+          })
+        }
         pokemon={pokemon}
         fromFavorites
         generation={pokemon.generation}

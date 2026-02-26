@@ -4,7 +4,7 @@ import {
   fetchPokemonSpeciesDetails,
   fetchPokemonSpeciesByUrl,
 } from "../../utils/pokeApi";
-import { useParams, Outlet, NavLink, useNavigate } from "react-router-dom";
+import { useParams, Outlet, NavLink, useLocation } from "react-router-dom";
 import { firstLetterUpperCase } from "../../utils/helperFunctions";
 import { FaArrowLeft } from "react-icons/fa6";
 import { PageNavigationBar } from "../../components/PageNavigationbar";
@@ -18,6 +18,9 @@ export const PokemonDetailsPage = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [prevAndNextMon, setPrevAndNextMon] = useState([]);
+
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   useEffect(() => {
     if (!pokemon?.id) return;
@@ -39,7 +42,7 @@ export const PokemonDetailsPage = () => {
         const evoPaths = buildEvolutionPaths(chainData);
 
         const uniqueNames = Array.from(
-          new Set(evoPaths.flatMap((p) => p.map((n) => n.name)))
+          new Set(evoPaths.flatMap((p) => p.map((n) => n.name))),
         );
         const detailEntries = await Promise.all(
           uniqueNames.map(async (name) => {
@@ -49,7 +52,7 @@ export const PokemonDetailsPage = () => {
             } catch {
               return [name, null];
             }
-          })
+          }),
         );
         const detailsMap = Object.fromEntries(detailEntries);
 
@@ -155,7 +158,7 @@ export const PokemonDetailsPage = () => {
   ) : (
     <div className="detailsPageContainer">
       <div className="detailsPageHeader">
-        <NavLink to="/" className="navigateBackButton">
+        <NavLink to={from} className="navigateBackButton">
           <FaArrowLeft className="backIcon" />
           <span className="backText">Back</span>
         </NavLink>
