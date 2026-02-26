@@ -136,19 +136,25 @@ export const HomePage = () => {
   };
 
   const getRandomPokemon = async () => {
-    const id = Math.floor(Math.random() * 1025) + 1;
+    const arrayToDisplay = [];
 
-    try {
-      const [details] = await safeFetchBatch([String(id)]);
-      if (details) {
-        setFilteredPokemon([details]);
-      } else {
+    for (let i = 0; i < 4; i++) {
+      const id = Math.floor(Math.random() * 1025) + 1;
+      try {
+        const [details] = await safeFetchBatch([String(id)]);
+        if (details) {
+          arrayToDisplay.push(details);
+          console.log(details);
+        } else {
+          setFilteredPokemon([]);
+        }
+      } catch (error) {
+        console.log("Something went wrong");
         setFilteredPokemon([]);
       }
-    } catch (error) {
-      console.log("Something went wrong");
-      setFilteredPokemon([]);
     }
+
+    setFilteredPokemon(arrayToDisplay);
   };
 
   const renderPokemonCards = () => {
