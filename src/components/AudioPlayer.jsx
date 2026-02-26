@@ -1,6 +1,8 @@
 import { useEffect, useRef } from "react";
 import { Howl } from "howler";
 
+let currentlyPlayingSound = null;
+
 const AudioPlayer = ({ src, children, className = "", ...buttonProps }) => {
   const soundRef = useRef(null);
 
@@ -18,7 +20,16 @@ const AudioPlayer = ({ src, children, className = "", ...buttonProps }) => {
   }, [src]);
 
   const playAudio = () => {
-    if (soundRef.current) {
+    if (!soundRef.current) return;
+
+    if (currentlyPlayingSound && currentlyPlayingSound !== soundRef.current) {
+      currentlyPlayingSound.stop();
+    }
+
+    currentlyPlayingSound = soundRef.current;
+    if (soundRef.current.playing()) {
+      soundRef.current.stop();
+    } else {
       soundRef.current.play();
     }
   };
