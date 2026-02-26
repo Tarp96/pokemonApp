@@ -32,6 +32,8 @@ function PokemonDisplayCard({
 
   const [isFavorite, setIsFavorite] = useState(false);
 
+  const crySrc = cries?.legacy || cries?.latest;
+
   useEffect(() => {
     const checkFavorite = async () => {
       const exists = await isAlreadyFavorited(pokemon.name);
@@ -74,8 +76,8 @@ function PokemonDisplayCard({
       </div>
 
       <div className="audioButtonCardWrapper">
-        {cries?.legacy && (
-          <AudioPlayer src={cries.legacy} className={"audioButton"}>
+        {crySrc && (
+          <AudioPlayer src={crySrc} className={"audioButton"}>
             <AiTwotoneSound />
           </AudioPlayer>
         )}
