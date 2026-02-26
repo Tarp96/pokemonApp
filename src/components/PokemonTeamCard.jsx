@@ -1,5 +1,6 @@
 import { firstLetterUpperCase } from "../utils/helperFunctions";
 import { TypeBadge } from "./TypeBadge";
+import { getTypeIcon } from "../utils/typeIcons";
 
 const getPrimaryType = (types) => (types?.length ? types[0] : "normal");
 
@@ -42,6 +43,21 @@ export const PokemonTeamCard = ({ pokemon, slot, isLocked }) => {
           <h3 className="teamPokemonName">
             {firstLetterUpperCase(pokemon.name)}
           </h3>
+
+          <div className="teamTypeIconsRow">
+            {pokemon.types?.map((type, index) => {
+              const icon = getTypeIcon(type);
+
+              return icon ? (
+                <img
+                  key={`icon-${type}-${index}`}
+                  src={icon}
+                  alt={`${type} type icon`}
+                  className="teamTypeIcon"
+                />
+              ) : null;
+            })}
+          </div>
 
           <div className="teamTypesRow">
             {pokemon.types?.map((type, index) => (

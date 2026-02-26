@@ -1135,6 +1135,26 @@ body {
   flex-wrap: wrap;
 }
 
+.teamTypeIconsRow {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 0.35rem;
+}
+
+.teamTypeIcon {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.2));
+  transition: transform 0.2s ease;
+}
+
+.teamCardElite:hover .teamTypeIcon {
+  transform: scale(1.12);
+}
+
 .teamMetaChip {
   font-size: 0.8rem;
   font-weight: 700;
