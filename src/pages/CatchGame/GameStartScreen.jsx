@@ -22,7 +22,7 @@ export const GameStartScreen = ({
           </p>
 
           <NavLink to="/login" className="loginReminderButton">
-            Log In to Play
+            Log In to Play <span aria-hidden="true">🎮</span>
           </NavLink>
         </div>
       ) : (
