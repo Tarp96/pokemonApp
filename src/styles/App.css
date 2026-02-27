@@ -1656,13 +1656,18 @@ body {
   cursor: crosshair;
 }
 
+.loginReminderContainer {
+  padding: 32px 24px 36px;
+  text-align: center;
+}
+
 .loginReminderText {
-  font-size: 24px;
+  font-size: 18px;
   color: #333;
-  background-color: rgba(255, 255, 255, 0.6);
-  padding: 20px;
+  background-color: none;
+  padding: 0px;
   border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  box-shadow: none;
   text-align: center;
   line-height: 1.6;
   font-weight: 500;
@@ -1681,14 +1686,9 @@ body {
 }
 
 .loginReminderImage {
-  width: 250px;
-  max-width: 100%;
-  margin: 0 auto 20px auto;
-  display: block;
-  border-radius: 12px;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-  object-fit: cover;
-  transition: transform 0.3s ease;
+  width: 70%;
+  max-width: 260px;
+  margin: 0 auto 24px auto;
 }
 
 .loginReminderImage:hover {
@@ -1697,15 +1697,15 @@ body {
 
 .loginReminderButton {
   display: block;
-  margin: 52px auto 0 auto;
-  padding: 12px 24px;
+  margin: 28px auto 0;
+  padding: 12px 28px;
   background-color: #facc15;
   color: #1f2937;
-  font-size: 24px;
-  font-weight: 600;
-  max-width: 50%;
+  font-size: 18px;
+  font-weight: 700;
+  max-width: none;
   border: none;
-  border-radius: 8px;
+  border-radius: 999px;
   text-decoration: none;
   text-align: center;
   transition:
