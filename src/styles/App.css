@@ -430,6 +430,16 @@ body {
   max-height: 300px;
   position: relative;
   overflow: visible;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .pokemon-card:hover {
@@ -584,6 +594,89 @@ body {
 .audioButtonCardWrapper button:hover {
   transform: scale(1.2);
 }
+
+/*DISPLAY CARD SKELETON LOADING*/
+.skeletonCard {
+  pointer-events: none;
+}
+
+.skeletonCard:hover {
+  transform: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.sk {
+  background: #e2e8f0;
+  border-radius: 10px;
+  position: relative;
+  overflow: hidden;
+}
+
+.sk::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  transform: translateX(-100%);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  animation: shimmer 1.2s infinite;
+}
+
+@keyframes shimmer {
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.skIcon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.skSprite {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 15px;
+  border-radius: 12px;
+}
+
+.skTitle {
+  width: 70%;
+  height: 18px;
+  margin: 5px 0 2px 0;
+}
+
+.skSmallText {
+  width: 50%;
+  height: 14px;
+  margin: 5px 0;
+}
+
+.skTypes {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin: 8px 0;
+}
+
+.skPill {
+  width: 60px;
+  height: 22px;
+  border-radius: 999px;
+}
+
+.skButton {
+  width: 80%;
+  height: 34px;
+  border-radius: 20px;
+  margin-top: 10px;
+}
+/*DISPLAY CARD SKELETON LOADING END*/
 
 /*PAYMENT MODAL*/
 .paymentModalOverlay {

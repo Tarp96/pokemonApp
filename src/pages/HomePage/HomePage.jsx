@@ -13,6 +13,7 @@ import CenterSpinner from "../../components/CenterSpinner";
 import { PaymentModal } from "../../components/PaymentModal";
 import { auth } from "../../firebaseConfig";
 import { listenToTeam } from "../../services/teamService";
+import PokemonDisplayCardSkeleton from "../../components/PokemonDisplayCardSkeleton";
 
 export const HomePage = () => {
   const [pokemon, setPokemon] = useState([]);
@@ -102,6 +103,11 @@ export const HomePage = () => {
       setTypeLoading(false);
     }
   };
+
+  const renderSkeletonCards = (count = 20) =>
+    Array.from({ length: count }, (_, i) => (
+      <PokemonDisplayCardSkeleton key={i} />
+    ));
 
   const removeFilter = () => {
     setActiveFilter((prev) => (prev = null));
@@ -216,7 +222,7 @@ export const HomePage = () => {
       )}
 
       {pageLoading || typeLoading ? (
-        <CenterSpinner />
+        <PokemonGrid>{renderSkeletonCards(20)}</PokemonGrid>
       ) : filteredPokemon.length > 0 ? (
         <PokemonGrid>{renderPokemonCards()}</PokemonGrid>
       ) : (
