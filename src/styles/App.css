@@ -1571,35 +1571,38 @@ body {
 
 /*REGISTER ACCOUNT PAGE*/
 .registerContainer {
-  background-color: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
-  margin: 0 auto;
-}
-
-.registerPagePicture {
-  width: 80%;
 }
 
 .registerCard {
   background-color: #fff;
   border: 2px solid #facc15;
   border-radius: 16px;
-  padding: 32px;
+  padding: 0;
+  overflow: hidden;
   max-width: 400px;
   width: 100%;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
   text-align: center;
 }
 
+.registerContent {
+  padding: 32px;
+}
+
+.registerPagePicture {
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  display: block;
+}
+
 .registerForm {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 6px;
   text-align: left;
 }
 
@@ -1618,7 +1621,7 @@ body {
 .registerButton {
   padding: 12px;
   font-size: 16px;
-  background-color: #4a90e2; /* same blue as login button */
+  background-color: #4a90e2;
   border: none;
   border-radius: 8px;
   color: white;
@@ -1648,6 +1651,7 @@ body {
 .successMessage {
   background-color: green;
 }
+
 /*REGISTER ACCOUNT PAGE END*/
 
 /*TYPE GRADIENT BORDER*/
@@ -1724,11 +1728,6 @@ body {
 }
 
 /*GAME PAGE*/
-.authLayoutContainer {
-  max-width: 50%;
-  margin: 0 auto;
-}
-/*AUTH LAYOUT PAGE END*/
 
 .gameScreenContainer {
   background: #ffffff;

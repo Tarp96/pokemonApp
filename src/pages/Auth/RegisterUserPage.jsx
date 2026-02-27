@@ -60,60 +60,63 @@ const RegisterUserPage = () => {
             alt="Pokémon Logo"
             className="registerPagePicture"
           />
-          <h2 className="registerTitle">Join the Adventure!</h2>
 
-          <form onSubmit={handleRegister} className="registerForm">
-            <label htmlFor="username">Username</label>
-            <input
-              id="username"
-              type="text"
-              required
-              value={username}
-              onChange={(e) => setUsername(e.target.value)}
-            />
+          <div className="registerContent">
+            <h2 className="registerTitle">Join the Adventure!</h2>
 
-            <label htmlFor="email">Email</label>
-            <input
-              id="email"
-              type="email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-            />
+            <form onSubmit={handleRegister} className="registerForm">
+              <label htmlFor="username">Username</label>
+              <input
+                id="username"
+                type="text"
+                required
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+              />
 
-            <label htmlFor="password">Password</label>
-            <input
-              id="password"
-              type="password"
-              required
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-            />
+              <label htmlFor="email">Email</label>
+              <input
+                id="email"
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
 
-            <label htmlFor="confirmPassword">Confirm Password</label>
-            <input
-              id="confirmPassword"
-              type="password"
-              required
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-            />
+              <label htmlFor="password">Password</label>
+              <input
+                id="password"
+                type="password"
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+              />
 
-            {error && (
-              <div className="errorMessage loginRegisterFeedbackMessage">
-                {error}
-              </div>
-            )}
-            {success && (
-              <div className="successMessage loginRegisterFeedbackMessage">
-                {success}
-              </div>
-            )}
+              <label htmlFor="confirmPassword">Confirm Password</label>
+              <input
+                id="confirmPassword"
+                type="password"
+                required
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+              />
 
-            <button type="submit" className="registerButton">
-              Register
-            </button>
-          </form>
+              {error && (
+                <div className="errorMessage loginRegisterFeedbackMessage">
+                  {error}
+                </div>
+              )}
+              {success && (
+                <div className="successMessage loginRegisterFeedbackMessage">
+                  {success}
+                </div>
+              )}
+
+              <button type="submit" className="registerButton">
+                Register
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </>
