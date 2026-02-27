@@ -27,47 +27,53 @@ export const GameStartScreen = ({
         </div>
       ) : (
         <>
-          <div className="gamePageContent">
-            <h1>Ready to play?</h1>
-            <p>Catch the pokemon that appears to earn coins</p>
+          <div className="gameStartImageContainer">
+            <img className="gameStartImage" src="assets/pokeArt.png" alt="" />
           </div>
+          <div className="gameStartContent">
+            <div className="gameStartPanel">
+              <h1>Ready to play?</h1>
 
-          <div className="difficultyButtonContainer">
-            <h2>Choose difficulty</h2>
-            <p>Higher difficulty gives more coins</p>
+              <p className="gameStartPageP">
+                Catch the pokemon that appears to earn coins
+              </p>
+              <h2>Choose difficulty</h2>
+              <p className="gameStartPageP">
+                Higher difficulty gives more coins
+              </p>
 
-            <p>
-              Selected Difficulty:{" "}
-              <strong>{selectedDifficulty || "None selected"}</strong>
-            </p>
+              <p className="gameStartPageP">
+                Selected Difficulty:{" "}
+                <strong>{selectedDifficulty || "None selected"}</strong>
+              </p>
 
-            <button
-              onClick={() => onDifficultyChange("Easy")}
-              className={`difficultyBtn easy ${shakeButtons ? "shake" : ""}`}
-            >
-              Easy
-            </button>
+              <button
+                onClick={() => onDifficultyChange("Easy")}
+                className={`difficultyBtn easy ${shakeButtons ? "shake" : ""}`}
+              >
+                Easy
+              </button>
 
-            <button
-              onClick={() => onDifficultyChange("Medium")}
-              className={`difficultyBtn medium ${shakeButtons ? "shake" : ""}`}
-            >
-              Medium
-            </button>
+              <button
+                onClick={() => onDifficultyChange("Medium")}
+                className={`difficultyBtn medium ${shakeButtons ? "shake" : ""}`}
+              >
+                Medium
+              </button>
 
-            <button
-              onClick={() => onDifficultyChange("Hard")}
-              className={`difficultyBtn hard ${shakeButtons ? "shake" : ""}`}
-            >
-              Hard
-            </button>
-          </div>
-
-          <div className="gameStartButtonContainer">
-            <button className="gameStartButton" onClick={onStart}>
-              Start
-              <img src="assets/pokeb.png" alt="pokeball icon" />
-            </button>
+              <button
+                onClick={() => onDifficultyChange("Hard")}
+                className={`difficultyBtn hard ${shakeButtons ? "shake" : ""}`}
+              >
+                Hard
+              </button>
+              <div className="gameStartButtonContainer">
+                <button className="gameStartButton" onClick={onStart}>
+                  Start
+                  <img src="assets/pokeb.png" alt="pokeball icon" />
+                </button>
+              </div>
+            </div>
           </div>
         </>
       )}
