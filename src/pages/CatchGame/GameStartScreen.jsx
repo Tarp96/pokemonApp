@@ -37,7 +37,7 @@ export const GameStartScreen = ({
               <p className="gameStartPageP">
                 Catch the pokemon that appears to earn coins
               </p>
-              <h2>Choose difficulty</h2>
+              <h2>Select difficulty</h2>
               <p className="gameStartPageP">
                 Higher difficulty gives more coins
               </p>
