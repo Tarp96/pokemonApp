@@ -1614,22 +1614,6 @@ body {
   border-radius: 8px;
 }
 
-.loginButton {
-  padding: 12px;
-  font-size: 16px;
-  background-color: #4a90e2;
-  border: none;
-  border-radius: 8px;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.loginButton:hover {
-  transform: scale(1.05);
-}
-
 .errorMessage {
   color: red;
   text-align: center;

@@ -112,7 +112,7 @@ const RegisterUserPage = () => {
                 </div>
               )}
 
-              <button className="uiButtonPrimary">Register</button>
+              <button className="uiAuthButton">Register</button>
             </form>
           </div>
         </div>
