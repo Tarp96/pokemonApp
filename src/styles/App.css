@@ -1537,6 +1537,44 @@ body {
   transform: scale(0.98);
 }
 
+.uiAuthButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 100%;
+  padding: 14px 20px;
+
+  font-size: 1.05rem;
+  font-weight: 700;
+
+  background: linear-gradient(135deg, #4a90e2, #357abd);
+  color: #ffffff;
+
+  border: none;
+  border-radius: 12px;
+
+  cursor: pointer;
+
+  box-shadow: 0 8px 18px rgba(74, 144, 226, 0.25);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
+}
+
+.uiAuthButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 24px rgba(74, 144, 226, 0.35);
+  filter: brightness(1.05);
+}
+
+.uiAuthButton:active {
+  transform: translateY(0);
+  box-shadow: 0 6px 12px rgba(74, 144, 226, 0.25);
+}
+
 /*LOGIN, CREATE ACCOUNT, GAME START/END SHARED UI STYLE END*/
 
 /*LOGIN PAGE*/
@@ -1549,21 +1587,6 @@ body {
   align-items: center;
   padding: 20px;
   margin: 0 auto;
-}
-
-.loginCard {
-  background-color: #fff;
-  border: 2px solid #facc15;
-  border-radius: 16px;
-  padding: 32px;
-  max-width: 400px;
-  width: 100%;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
-
-.loginPagePicture {
-  width: 100%;
 }
 
 .loginTitle {

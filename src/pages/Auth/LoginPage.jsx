@@ -33,12 +33,12 @@ const LoginPage = () => {
         err.code === "auth/user-not-found"
           ? "No account found for this email."
           : err.code === "auth/wrong-password"
-          ? "Incorrect password."
-          : err.code === "auth/invalid-email"
-          ? "Please enter a valid email address."
-          : err.code === "auth/too-many-requests"
-          ? "Too many attempts. Please try again later."
-          : "Failed to log in. Please try again.";
+            ? "Incorrect password."
+            : err.code === "auth/invalid-email"
+              ? "Please enter a valid email address."
+              : err.code === "auth/too-many-requests"
+                ? "Too many attempts. Please try again later."
+                : "Failed to log in. Please try again.";
       setError(msg);
     } finally {
       setSubmitting(false);
@@ -59,46 +59,52 @@ const LoginPage = () => {
 
   return (
     <div className="loginContainer">
-      <div className="loginCard">
+      <div className="uiCard">
         <img
           src="https://www.redbrick.me/wp-content/uploads/2020/03/ESb0DWWXkAMxSzI.jpg"
           alt="Pokémon Logo"
-          className="loginPagePicture"
+          className="uiCardHero rect"
         />
-        <h2 className="loginTitle">Welcome Trainer!</h2>
+        <div className="uiCardBody">
+          <h2 className="loginTitle">Welcome Trainer!</h2>
 
-        <form onSubmit={handleLogin} className="loginForm">
-          <label htmlFor="email">Email</label>
-          <input
-            id="email"
-            type="email"
-            required
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            disabled={submitting}
-          />
+          <form onSubmit={handleLogin} className="loginForm">
+            <label htmlFor="email">Email</label>
+            <input
+              id="email"
+              type="email"
+              required
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              disabled={submitting}
+            />
 
-          <label htmlFor="password">Password</label>
-          <input
-            id="password"
-            type="password"
-            required
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            disabled={submitting}
-          />
+            <label htmlFor="password">Password</label>
+            <input
+              id="password"
+              type="password"
+              required
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              disabled={submitting}
+            />
 
-          {error && <div className="errorMessage">{error}</div>}
-          {success && <div className="successMessage">{success}</div>}
+            {error && <div className="errorMessage">{error}</div>}
+            {success && <div className="successMessage">{success}</div>}
 
-          <button type="submit" className="loginButton" disabled={submitting}>
-            {submitting ? "Logging in…" : "Log In"}
-          </button>
-        </form>
+            <button
+              type="submit"
+              className="uiAuthButton"
+              disabled={submitting}
+            >
+              {submitting ? "Logging in…" : "Log In"}
+            </button>
+          </form>
 
-        <NavLink to="register" className="navigateToRegisterPageButton">
-          Dont have an account? Create one here
-        </NavLink>
+          <NavLink to="register" className="navigateToRegisterPageButton">
+            Dont have an account? Create one here
+          </NavLink>
+        </div>
       </div>
     </div>
   );
