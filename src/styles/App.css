@@ -1575,6 +1575,13 @@ body {
   box-shadow: 0 6px 12px rgba(74, 144, 226, 0.25);
 }
 
+.uiAuthButton:focus-visible {
+  outline: none;
+  box-shadow:
+    0 0 0 3px rgba(74, 144, 226, 0.4),
+    0 8px 18px rgba(74, 144, 226, 0.25);
+}
+
 /*LOGIN, CREATE ACCOUNT, GAME START/END SHARED UI STYLE END*/
 
 /*LOGIN PAGE*/
