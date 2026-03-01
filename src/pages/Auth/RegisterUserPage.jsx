@@ -54,14 +54,14 @@ const RegisterUserPage = () => {
   return (
     <>
       <div className="registerContainer">
-        <div className="registerCard">
+        <div className="uiCard">
           <img
             src="https://64.media.tumblr.com/f3cf3c3c5083acf7ab7444abc7698737/50fc556398e85aa7-a2/s1280x1920/59b1238ca19f82b5e7b1b24061911267a3e9abbc.jpg"
             alt="Pokémon Logo"
-            className="registerPagePicture"
+            className="uiCardHero square"
           />
 
-          <div className="registerContent">
+          <div className="uiCardBody">
             <h2 className="registerTitle">Join the Adventure!</h2>
 
             <form onSubmit={handleRegister} className="registerForm">
@@ -112,9 +112,7 @@ const RegisterUserPage = () => {
                 </div>
               )}
 
-              <button type="submit" className="registerButton">
-                Register
-              </button>
+              <button className="uiButtonPrimary">Register</button>
             </form>
           </div>
         </div>

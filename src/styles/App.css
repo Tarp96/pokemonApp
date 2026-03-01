@@ -1636,27 +1636,8 @@ body {
   align-items: center;
 }
 
-.registerCard {
-  background-color: #fff;
-  border: 2px solid #facc15;
-  border-radius: 16px;
-  padding: 0;
-  overflow: hidden;
-  max-width: 400px;
-  width: 100%;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-  text-align: center;
-}
-
 .registerContent {
   padding: 32px;
-}
-
-.registerPagePicture {
-  width: 100%;
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-  display: block;
 }
 
 .registerForm {
@@ -1676,22 +1657,6 @@ body {
   font-size: 16px;
   border: 1px solid #ddd;
   border-radius: 8px;
-}
-
-.registerButton {
-  padding: 12px;
-  font-size: 16px;
-  background-color: #4a90e2;
-  border: none;
-  border-radius: 8px;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-  transition: background-color 0.3s;
-}
-
-.registerButton:hover {
-  transform: scale(1.05);
 }
 
 .loginRegisterFeedbackMessage {
