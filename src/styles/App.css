@@ -1492,7 +1492,6 @@ body {
 .uiCardHero {
   width: 100%;
   display: block;
-  object-fit: cover;
 }
 
 .uiCardHero.square {
@@ -1500,7 +1499,7 @@ body {
 }
 
 .uiCardHero.rect {
-  max-height: 260px;
+  max-height: 280px;
 }
 
 .uiCardBody {
@@ -2048,6 +2047,7 @@ body {
 
 .gameOverTitle {
   font-size: 2rem;
+  margin-top: 0;
   margin-bottom: 20px;
   letter-spacing: 1px;
 }
