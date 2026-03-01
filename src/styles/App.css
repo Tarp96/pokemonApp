@@ -2046,28 +2046,6 @@ body {
   height: auto;
 }
 
-.gameOverCard {
-  max-width: 420px;
-  margin: 40px auto;
-  padding: 24px 28px;
-  background: linear-gradient(135deg, #1e1e2f, #2b2b44);
-  border-radius: 16px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
-  color: #fff;
-  text-align: center;
-  animation: popIn 0.4s ease-out;
-  border: solid 3px white;
-}
-
-.gameOverPicture {
-  width: 90%;
-  height: auto;
-  margin: 0 auto 12px;
-  display: block;
-  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.4));
-  animation: trophyPop 0.6s ease-out;
-}
-
 .gameOverTitle {
   font-size: 2rem;
   margin-bottom: 20px;
@@ -2085,26 +2063,41 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 14px;
-  background: #f8fafc;
-  border-radius: 10px;
+
+  padding: 14px 18px;
+
+  background: #f3f6fb;
+  border-radius: 14px;
+
+  border: 1px solid rgba(59, 76, 202, 0.08);
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.04);
+
   font-size: 1rem;
-  border: 0.5px solid grey;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.statRow:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.06);
 }
 
 .statRow.highlight {
-  background: linear-gradient(135deg, #facc15, #f59e0b);
-  color: #1f2933;
+  background: rgba(59, 76, 202, 0.06);
+  border: 1px solid rgba(59, 76, 202, 0.12);
   font-weight: bold;
 }
 
 .label {
-  font-weight: 500;
+  font-weight: 600;
   color: #555;
 }
 
 .value {
-  font-weight: 700;
+  font-weight: 800;
+  color: #111;
 }
 
 .value.coins {
@@ -2123,75 +2116,16 @@ body {
   color: #f87171;
 }
 
-@keyframes popIn {
-  from {
-    transform: scale(0.9);
-    opacity: 0;
-  }
-  to {
-    transform: scale(1);
-    opacity: 1;
-  }
-}
-
 .gameOverBtnContainer {
   display: flex;
   gap: 14px;
   margin-top: 22px;
 }
 
-.gameOverBtn {
-  flex: 1;
-  padding: 12px 18px;
-  border-radius: 999px;
-  font-size: 1rem;
-  font-weight: 600;
-  border: none;
-  cursor: pointer;
-  transition:
-    transform 0.15s ease,
-    box-shadow 0.15s ease,
-    opacity 0.15s;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-}
-
 .gameOverBtnIcon {
   width: 22px;
   height: 22px;
   object-fit: contain;
-}
-
-.gameOverBtn.primary {
-  background: linear-gradient(135deg, #22c55e, #16a34a);
-  color: white;
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
-}
-
-.gameOverBtn.secondary {
-  background: linear-gradient(135deg, #facc15, #f59e0b);
-  color: #1f2933;
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.35);
-}
-
-.gameOverBtn:hover {
-  transform: translateY(-2px);
-  opacity: 0.95;
-}
-
-.gameOverBtn:active {
-  transform: translateY(1px);
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
-}
-
-.gameOverBtn.primary {
-  animation: pulse 1.8s infinite;
-}
-
-.gameOverBtn.primary:hover .gameOverBtnIcon {
-  animation: spin 0.6s linear;
 }
 
 @keyframes spin {

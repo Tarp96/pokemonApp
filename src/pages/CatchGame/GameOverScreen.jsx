@@ -88,7 +88,7 @@ export const GameOverScreen = ({
             />
             Play Again
           </button>
-          <button className="secondary gameOverBtn">🏆 Leaderboard</button>
+          <button className="uiButtonPrimary">🏆 Leaderboard</button>
         </div>
       </div>
     </div>
