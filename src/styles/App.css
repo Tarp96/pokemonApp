@@ -1582,13 +1582,31 @@ body {
     0 8px 18px rgba(74, 144, 226, 0.25);
 }
 
+.uiAuthLink {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 8px 14px;
+
+  border-radius: 8px;
+
+  color: #357abd;
+  text-decoration: none;
+  font-weight: 600;
+
+  transition:
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.uiAuthLink:hover {
+  background: rgba(74, 144, 226, 0.1);
+  color: #1d4ed8;
+}
+
 /*LOGIN, CREATE ACCOUNT, GAME START/END SHARED UI STYLE END*/
 
 /*LOGIN PAGE*/
 .loginContainer {
-  background-color: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1625,21 +1643,6 @@ body {
   color: red;
   text-align: center;
   font-size: 14px;
-}
-
-.navigateToRegisterPageButton {
-  display: block;
-  margin-top: 20px;
-  text-align: center;
-  color: #4a90e2;
-  font-weight: 700;
-  text-decoration: none;
-  transition: color 0.3s ease;
-}
-
-.navigateToRegisterPageButton:hover {
-  color: #1d4ed8;
-  text-decoration: underline;
 }
 
 /*LOGIN PAGE END*/

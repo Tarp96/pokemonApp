@@ -101,7 +101,7 @@ const LoginPage = () => {
             </button>
           </form>
 
-          <NavLink to="register" className="navigateToRegisterPageButton">
+          <NavLink to="register" className="uiAuthLink">
             Dont have an account? Create one here
           </NavLink>
         </div>
