@@ -1499,11 +1499,13 @@ body {
 }
 
 .uiCardHero.rect {
-  max-height: 280px;
+  width: 100%;
+  height: 300px;
+  object-fit: cover;
 }
 
 .uiCardBody {
-  padding: 28px 32px 36px;
+  padding: 28px 24px 36px;
   text-align: center;
 }
 
