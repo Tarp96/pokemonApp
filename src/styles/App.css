@@ -2077,7 +2077,8 @@ body {
 .gameOverStats {
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
+  margin-top: 20px;
 }
 
 .statRow {
@@ -2085,9 +2086,10 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 10px 14px;
-  background: rgba(255, 255, 255, 0.08);
+  background: #f8fafc;
   border-radius: 10px;
   font-size: 1rem;
+  border: 0.5px solid grey;
 }
 
 .statRow.highlight {
@@ -2097,11 +2099,12 @@ body {
 }
 
 .label {
-  opacity: 0.85;
+  font-weight: 500;
+  color: #555;
 }
 
 .value {
-  font-weight: 600;
+  font-weight: 700;
 }
 
 .value.coins {
