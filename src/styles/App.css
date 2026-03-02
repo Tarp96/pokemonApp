@@ -1630,8 +1630,9 @@ body {
 }
 
 /*DESKTOP LAYOUT*/
-@media (min-width: 900px) {
+@media (min-width: 980px) {
   .uiAuthSplit {
+    min-width: 999px;
     max-width: 1000px;
     display: flex;
     flex-direction: column;
