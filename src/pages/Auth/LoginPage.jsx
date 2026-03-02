@@ -59,51 +59,61 @@ const LoginPage = () => {
 
   return (
     <div className="loginContainer">
-      <div className="uiCard">
-        <img
-          src="https://www.redbrick.me/wp-content/uploads/2020/03/ESb0DWWXkAMxSzI.jpg"
-          alt="Pokémon Logo"
-          className="uiCardHero rect"
-        />
-        <div className="uiCardBody">
-          <h2 className="loginTitle">Welcome Trainer!</h2>
-
-          <form onSubmit={handleLogin} className="loginForm">
-            <label htmlFor="email">Email</label>
-            <input
-              id="email"
-              type="email"
-              required
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              disabled={submitting}
+      <div className="uiCard uiAuthSplit">
+        <div className="uiAuthContent">
+          <div className="uiAuthHero">
+            <img
+              src="assets/loginPic.jpg"
+              alt="Pokémon Logo"
+              className="uiCardHero square"
             />
+          </div>
+          <div className="uiCardBody">
+            <h2 className="loginTitle">Welcome Trainer!</h2>
 
-            <label htmlFor="password">Password</label>
-            <input
-              id="password"
-              type="password"
-              required
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              disabled={submitting}
-            />
+            <form onSubmit={handleLogin} className="loginForm formSpaceControl">
+              <label htmlFor="email">Email</label>
+              <input
+                id="email"
+                type="email"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                disabled={submitting}
+              />
 
-            {error && <div className="errorMessage">{error}</div>}
-            {success && <div className="successMessage">{success}</div>}
+              <label htmlFor="password">Password</label>
+              <input
+                id="password"
+                type="password"
+                required
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                disabled={submitting}
+              />
 
-            <button
-              type="submit"
-              className="uiAuthButton"
-              disabled={submitting}
-            >
-              {submitting ? "Logging in…" : "Log In"}
-            </button>
-          </form>
+              {error && <div className="errorMessage">{error}</div>}
+              {success && <div className="successMessage">{success}</div>}
+            </form>
+            <div className="authButtonContainer">
+              <div className="uiAuthLinkContainer">
+                <p className="uiAuthLinkText">
+                  Don’t have an account? Create one here
+                </p>
+                <NavLink to="register" className="uiAuthLink">
+                  Register
+                </NavLink>
+              </div>
 
-          <NavLink to="register" className="uiAuthLink">
-            Dont have an account? Create one here
-          </NavLink>
+              <button
+                type="submit"
+                className="uiAuthButton"
+                disabled={submitting}
+              >
+                {submitting ? "Logging in…" : "Log In"}
+              </button>
+            </div>
+          </div>
         </div>
       </div>
     </div>
