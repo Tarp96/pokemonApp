@@ -96,16 +96,18 @@ const LoginPage = () => {
                 disabled={submitting}
               />
 
+              <NavLink to="/forgot-password" className="uiAuthForgotLink">
+                Forgot Password?
+              </NavLink>
+
               {error && <div className="errorMessage">{error}</div>}
               {success && <div className="successMessage">{success}</div>}
             </form>
             <div className="authButtonContainer">
               <div className="uiAuthLinkContainer">
-                <p className="uiAuthLinkText">
-                  Don’t have an account? Create one here
-                </p>
+                <p className="uiAuthLinkText">Dont have an account?</p>
                 <NavLink to="register" className="uiAuthLink">
-                  Register
+                  Register Now
                 </NavLink>
               </div>
 

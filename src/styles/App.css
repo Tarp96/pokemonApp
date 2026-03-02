@@ -1615,6 +1615,20 @@ body {
   color: #1d4ed8;
 }
 
+.uiAuthForgotLink {
+  font-size: 0.9rem;
+  color: #6b7280;
+  text-decoration: none;
+  margin-top: 6px;
+  align-self: flex-end;
+  transition: color 0.2s ease;
+}
+
+.uiAuthForgotLink:hover {
+  color: #357abd;
+  text-decoration: underline;
+}
+
 /*DESKTOP LAYOUT*/
 @media (min-width: 900px) {
   .uiAuthSplit {
@@ -1699,7 +1713,25 @@ body {
   }
 
   .uiAuthLinkText {
-    font-size: 0.5rem;
+    font-size: 0.9rem;
+    color: #6b7280;
+    margin: 0;
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  .uiAuthLink {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #357abd;
+    text-decoration: none;
+    margin-top: 4px;
+    transition: color 0.2s ease;
+  }
+
+  .uiAuthLink:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
   }
 }
 .loginTitle {
