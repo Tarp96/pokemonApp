@@ -1780,12 +1780,23 @@ body {
     font-size: 12px;
   }
 
+  .uiAuthButton {
+    order: -1;
+  }
+
   .uiAuthInfoText {
     font-size: 0.9rem;
   }
 
   .uiAuthLinkText {
     margin: 0;
+    padding: 0;
+  }
+
+  .uiAuthLink {
+    margin: 0;
+    padding: 0;
+    padding-bottom: 8px;
   }
 }
 /*LOGIN PAGE MOBILE LAYOUT END*/
