@@ -71,6 +71,10 @@ const LoginPage = () => {
           <div className="uiCardBody">
             <h2 className="loginTitle">Welcome Trainer!</h2>
 
+            <p className="uiAuthInfoText">
+              Log in to use this platform to its full potential
+            </p>
+
             <form onSubmit={handleLogin} className="loginForm formSpaceControl">
               <label htmlFor="email">Email</label>
               <input

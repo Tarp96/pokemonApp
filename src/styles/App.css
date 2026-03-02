@@ -1512,6 +1512,15 @@ body {
   display: none;
 }
 
+.uiAuthInfoText {
+  font-size: 0.95rem;
+  color: #6b7280;
+  margin-top: -10px;
+  margin-bottom: 28px;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
 .uiButtonPrimary {
   display: inline-flex;
   align-items: center;
