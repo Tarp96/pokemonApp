@@ -1663,10 +1663,6 @@ body {
     padding: 40px 0 0 0;
   }
 
-  .formSpaceControl {
-    padding: 30px 50px 0 50px;
-  }
-
   .loginForm {
     display: flex;
     flex-direction: column;
@@ -1763,12 +1759,16 @@ body {
   }
 
   .uiAuthLinkContainer {
+    flex-direction: row;
+    justify-content: center;
     align-items: center;
-    text-align: center;
+    gap: 6px;
   }
 
-  .formSpaceControl {
-    gap: 2px;
+  .formField {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
   }
 
   .loginForm input {
@@ -1782,6 +1782,10 @@ body {
 
   .uiAuthInfoText {
     font-size: 0.9rem;
+  }
+
+  .uiAuthLinkText {
+    margin: 0;
   }
 }
 /*LOGIN PAGE MOBILE LAYOUT END*/

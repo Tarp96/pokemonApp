@@ -76,25 +76,29 @@ const LoginPage = () => {
             </p>
 
             <form onSubmit={handleLogin} className="loginForm formSpaceControl">
-              <label htmlFor="email">Email</label>
-              <input
-                id="email"
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                disabled={submitting}
-              />
+              <div className="formField">
+                <label htmlFor="email">Email</label>
+                <input
+                  id="email"
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  disabled={submitting}
+                />
+              </div>
 
-              <label htmlFor="password">Password</label>
-              <input
-                id="password"
-                type="password"
-                required
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-                disabled={submitting}
-              />
+              <div className="formField">
+                <label htmlFor="password">Password</label>
+                <input
+                  id="password"
+                  type="password"
+                  required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  disabled={submitting}
+                />
+              </div>
 
               <NavLink to="/forgot-password" className="uiAuthForgotLink">
                 Forgot Password?
