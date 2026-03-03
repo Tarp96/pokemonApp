@@ -1618,15 +1618,19 @@ body {
 .uiAuthForgotLink {
   font-size: 0.9rem;
   color: #6b7280;
-  text-decoration: none;
+  text-decoration: underline;
   margin-top: 6px;
   align-self: flex-end;
-  transition: color 0.2s ease;
+
+  display: inline-block;
+  transition:
+    color 0.2s ease,
+    transform 0.15s ease;
 }
 
 .uiAuthForgotLink:hover {
   color: #357abd;
-  text-decoration: underline;
+  transform: scale(1.08) translateY(-1px);
 }
 
 /*LOGIN PAGE DESKTOP LAYOUT*/
