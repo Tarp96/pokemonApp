@@ -56,6 +56,12 @@ export const GameStartScreen = ({
                   <strong>{selectedDifficulty || "None selected"}</strong>
                 </p>
 
+                {shakeButtons && !selectedDifficulty && (
+                  <p className="gameStartErrorMessage">
+                    Please select a difficulty before starting the game.
+                  </p>
+                )}
+
                 <div className="difficultyContainer">
                   <button
                     onClick={() => onDifficultyChange("Easy")}

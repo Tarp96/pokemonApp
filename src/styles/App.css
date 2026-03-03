@@ -2156,6 +2156,29 @@ body {
 }
 
 /* Difficulty Section */
+
+.gameStartErrorMessage {
+  margin: 8px auto 16px;
+  padding: 10px 14px;
+  max-width: 280px;
+  border-radius: 12px;
+  background: rgba(255, 86, 86, 0.12);
+  border: 1px solid rgba(255, 86, 86, 0.35);
+  color: #b91c1c;
+  font-weight: 700;
+}
+
+@keyframes fadeInError {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .gameStartPanel {
   text-align: center;
   padding: 22px 22px 28px;
