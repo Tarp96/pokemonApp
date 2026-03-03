@@ -4,6 +4,7 @@ import { auth } from "../../firebaseConfig";
 import { useNavigate } from "react-router-dom";
 import { setDoc, doc } from "firebase/firestore";
 import { db } from "../../firebaseConfig";
+import { NavLink } from "react-router-dom";
 
 const RegisterUserPage = () => {
   const [email, setEmail] = useState("");
@@ -52,72 +53,107 @@ const RegisterUserPage = () => {
   };
 
   return (
-    <>
-      <div className="registerContainer">
-        <div className="uiCard">
-          <img
-            src="https://64.media.tumblr.com/f3cf3c3c5083acf7ab7444abc7698737/50fc556398e85aa7-a2/s1280x1920/59b1238ca19f82b5e7b1b24061911267a3e9abbc.jpg"
-            alt="Pokémon Logo"
-            className="uiCardHero square"
-          />
+    <div className="registerContainer">
+      <div className="uiCard uiAuthSplit">
+        <div className="uiAuthContent">
+          <div className="uiAuthHero">
+            <img
+              src="https://64.media.tumblr.com/f3cf3c3c5083acf7ab7444abc7698737/50fc556398e85aa7-a2/s1280x1920/59b1238ca19f82b5e7b1b24061911267a3e9abbc.jpg"
+              alt="Pokémon Trainers"
+              className="uiCardHero square"
+            />
+          </div>
 
           <div className="uiCardBody">
             <h2 className="registerTitle">Join the Adventure!</h2>
 
-            <form onSubmit={handleRegister} className="registerForm">
-              <label htmlFor="username">Username</label>
-              <input
-                id="username"
-                type="text"
-                required
-                value={username}
-                onChange={(e) => setUsername(e.target.value)}
-              />
+            <p className="uiAuthInfoText">
+              Create your account and start your journey as a Pokémon Trainer.
+            </p>
 
-              <label htmlFor="email">Email</label>
-              <input
-                id="email"
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-              />
+            <form
+              onSubmit={handleRegister}
+              className="loginForm registerForm formSpaceControl"
+            >
+              <div className="formField">
+                <label htmlFor="username">Username</label>
+                <input
+                  id="username"
+                  type="text"
+                  required
+                  value={username}
+                  onChange={(e) => setUsername(e.target.value)}
+                />
+              </div>
 
-              <label htmlFor="password">Password</label>
-              <input
-                id="password"
-                type="password"
-                required
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-              />
+              <div className="formField">
+                <label htmlFor="email">Email</label>
+                <input
+                  id="email"
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                />
+              </div>
 
-              <label htmlFor="confirmPassword">Confirm Password</label>
-              <input
-                id="confirmPassword"
-                type="password"
-                required
-                value={confirmPassword}
-                onChange={(e) => setConfirmPassword(e.target.value)}
-              />
+              <div className="formField">
+                <label htmlFor="password">Password</label>
+                <input
+                  id="password"
+                  type="password"
+                  required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                />
+              </div>
+
+              <div className="formField">
+                <label htmlFor="confirmPassword">Confirm Password</label>
+                <input
+                  id="confirmPassword"
+                  type="password"
+                  required
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                />
+              </div>
 
               {error && (
                 <div className="errorMessage loginRegisterFeedbackMessage">
                   {error}
                 </div>
               )}
+
               {success && (
                 <div className="successMessage loginRegisterFeedbackMessage">
                   {success}
                 </div>
               )}
-
-              <button className="uiAuthButton">Register</button>
             </form>
+
+            <div className="authButtonContainer">
+              <div className="uiAuthLinkContainer">
+                <p className="uiAuthLinkText">Already have an account?</p>
+                <NavLink to="/login" className="uiAuthLink">
+                  Log In <span>&gt;</span>
+                  <span>&gt;</span>
+                  <span>&gt;</span>
+                </NavLink>
+              </div>
+
+              <button
+                type="submit"
+                className="uiAuthButton"
+                onClick={handleRegister}
+              >
+                Register
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
