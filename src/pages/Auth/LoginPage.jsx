@@ -75,7 +75,11 @@ const LoginPage = () => {
               Log in to use this platform to its full potential
             </p>
 
-            <form onSubmit={handleLogin} className="loginForm formSpaceControl">
+            <form
+              onSubmit={handleLogin}
+              className="loginForm formSpaceControl"
+              id="loginForm"
+            >
               <div className="formField">
                 <label htmlFor="email">Email</label>
                 <input
@@ -122,6 +126,7 @@ const LoginPage = () => {
                 type="submit"
                 className="uiAuthButton"
                 disabled={submitting}
+                form="loginForm"
               >
                 {submitting ? "Logging in…" : "Log In"}
               </button>
