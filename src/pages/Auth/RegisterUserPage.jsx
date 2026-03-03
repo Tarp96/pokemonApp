@@ -74,6 +74,7 @@ const RegisterUserPage = () => {
             <form
               onSubmit={handleRegister}
               className="loginForm registerForm formSpaceControl"
+              id="registerForm"
             >
               <div className="formField">
                 <label htmlFor="username">Username</label>
@@ -146,6 +147,7 @@ const RegisterUserPage = () => {
                 type="submit"
                 className="uiAuthButton"
                 onClick={handleRegister}
+                form="registerForm"
               >
                 Register
               </button>
