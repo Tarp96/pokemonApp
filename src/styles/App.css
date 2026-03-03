@@ -1630,6 +1630,7 @@ body {
 }
 
 /*LOGIN PAGE DESKTOP LAYOUT*/
+
 @media (min-width: 980px) {
   .uiAuthSplit {
     min-width: 999px;
@@ -1663,7 +1664,15 @@ body {
     padding: 40px 0 0 0;
   }
 
+  .formField {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
   .loginForm {
+    width: 80%;
+    margin: 0 auto;
     display: flex;
     flex-direction: column;
     gap: 16px;
@@ -1731,9 +1740,11 @@ body {
     text-decoration: underline;
   }
 }
+
 .loginTitle {
   display: block;
 }
+
 /*LOGIN PAGE DESKTOP LAYOUT END*/
 
 /*LOGIN PAGE MOBILE LAYOUT*/
@@ -1782,6 +1793,10 @@ body {
 
   .uiAuthButton {
     order: -1;
+    padding: 10px 2px;
+    max-width: 45%;
+    margin: 0 auto;
+    margin-bottom: 10px;
   }
 
   .uiAuthInfoText {
