@@ -18,10 +18,6 @@ export const GamePage = () => {
     } else {
       setShakeButtons(true);
       setTimeout(() => setShakeButtons(false), 500);
-      toast.error("Please select a difficulty before starting the game", {
-        position: "top-center",
-        autoClose: 2000,
-      });
     }
   }
 
