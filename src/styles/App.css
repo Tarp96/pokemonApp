@@ -1861,6 +1861,23 @@ body {
   font-size: 14px;
 }
 
+.arrowGroup span {
+  display: inline-block;
+  transition: transform 0.25s ease;
+}
+
+.uiAuthButton:hover .arrowGroup span:nth-child(1) {
+  transform: translateX(4px);
+}
+
+.uiAuthButton:hover .arrowGroup span:nth-child(2) {
+  transform: translateX(8px);
+}
+
+.uiAuthButton:hover .arrowGroup span:nth-child(3) {
+  transform: translateX(12px);
+}
+
 /*LOGIN PAGE END*/
 
 /*REGISTER ACCOUNT PAGE*/

@@ -111,7 +111,10 @@ const LoginPage = () => {
               <div className="uiAuthLinkContainer">
                 <p className="uiAuthLinkText">Dont have an account?</p>
                 <NavLink to="register" className="uiAuthLink">
-                  Register Now
+                  Register
+                  <span>&gt;</span>
+                  <span>&gt;</span>
+                  <span>&gt;</span>
                 </NavLink>
               </div>
 
