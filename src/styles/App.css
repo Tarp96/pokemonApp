@@ -1661,6 +1661,36 @@ body {
     display: block;
   }
 
+  .gameStartImage {
+    aspect-ratio: auto !important;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .gameStartPrimaryBtn {
+    width: auto;
+    padding: 16px 40px;
+    border-radius: 999px;
+    margin: 0 auto;
+    gap: 12px;
+  }
+
+  .gameStartBtnIcon {
+    width: 26px;
+    height: 26px;
+    object-fit: contain;
+    display: block;
+  }
+
+  .gameStartPrimaryBtn:hover .gameStartBtnIcon {
+    transform: rotate(360deg);
+    transition: transform 0.4s ease;
+  }
+
+  .gameStartPageContainer .authButtonContainer {
+    margin-top: 16px;
+  }
+
   .uiAuthContent .uiCardBody {
     flex: 1;
     display: flex;
@@ -2107,21 +2137,22 @@ body {
   transform: translateY(0) scale(0.99);
 }
 
+.gameStartPageContainer {
+  max-width: none;
+  width: 100%;
+  background: transparent;
+  box-shadow: none;
+  margin: 0 auto;
+}
+
 .gameStartContent {
   width: 100%;
   padding: 28px 24px 15px;
   text-align: center;
   box-sizing: border-box;
 }
-
 .gameStartImageContainer {
   margin-bottom: 0px;
-}
-
-.gameStartImage {
-  width: 100%;
-  display: block;
-  object-fit: cover;
 }
 
 /* Difficulty Section */

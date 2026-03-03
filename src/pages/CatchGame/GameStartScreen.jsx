@@ -26,56 +26,76 @@ export const GameStartScreen = ({
           </NavLink>
         </div>
       ) : (
-        <>
-          <div className="gameStartImageContainer">
-            <img className="gameStartImage" src="assets/pokeArt.png" alt="" />
-          </div>
-          <div className="gameStartContent">
-            <div className="gameStartPanel">
-              <h1>Ready to play?</h1>
+        <div className="gameStartContainer">
+          <div className="uiCard uiAuthSplit">
+            <div className="uiAuthContent">
+              <div className="uiAuthHero">
+                <img
+                  className="uiCardHero square gameStartImage"
+                  src="assets/gameStartImg.png
+                  "
+                  alt="Pokémon artwork"
+                />
+              </div>
 
-              <p className="gameStartPageP">
-                Catch the pokemon that appears to earn coins
-              </p>
-              <h2>Select difficulty</h2>
-              <p className="gameStartPageP">
-                Higher difficulty gives more coins
-              </p>
+              <div className="uiCardBody">
+                <h1 className="gameStartTitle">Ready to play?</h1>
 
-              <p className="gameStartPageP">
-                Selected Difficulty:{" "}
-                <strong>{selectedDifficulty || "None selected"}</strong>
-              </p>
+                <p className="uiAuthInfoText">
+                  Catch the Pokémon that appears to earn coins.
+                </p>
 
-              <button
-                onClick={() => onDifficultyChange("Easy")}
-                className={`difficultyBtn easy ${shakeButtons ? "shake" : ""}`}
-              >
-                Easy
-              </button>
+                <h2>Select difficulty</h2>
 
-              <button
-                onClick={() => onDifficultyChange("Medium")}
-                className={`difficultyBtn medium ${shakeButtons ? "shake" : ""}`}
-              >
-                Medium
-              </button>
+                <p className="uiAuthInfoText">
+                  Higher difficulty gives more coins.
+                </p>
 
-              <button
-                onClick={() => onDifficultyChange("Hard")}
-                className={`difficultyBtn hard ${shakeButtons ? "shake" : ""}`}
-              >
-                Hard
-              </button>
-              <div className="gameStartButtonContainer">
-                <button className="gameStartButton" onClick={onStart}>
-                  Start
-                  <img src="assets/pokeb.png" alt="pokeball icon" />
-                </button>
+                <p className="uiAuthInfoText">
+                  Selected Difficulty:{" "}
+                  <strong>{selectedDifficulty || "None selected"}</strong>
+                </p>
+
+                <div className="difficultyContainer">
+                  <button
+                    onClick={() => onDifficultyChange("Easy")}
+                    className={`difficultyBtn easy ${shakeButtons ? "shake" : ""}`}
+                  >
+                    Easy
+                  </button>
+
+                  <button
+                    onClick={() => onDifficultyChange("Medium")}
+                    className={`difficultyBtn medium ${shakeButtons ? "shake" : ""}`}
+                  >
+                    Medium
+                  </button>
+
+                  <button
+                    onClick={() => onDifficultyChange("Hard")}
+                    className={`difficultyBtn hard ${shakeButtons ? "shake" : ""}`}
+                  >
+                    Hard
+                  </button>
+                </div>
+
+                <div className="authButtonContainer">
+                  <button
+                    className="uiButtonPrimary gameStartPrimaryBtn"
+                    onClick={onStart}
+                  >
+                    Start
+                    <img
+                      src="assets/pokeb.png"
+                      alt="pokeball icon"
+                      className="gameStartBtnIcon"
+                    />
+                  </button>
+                </div>
               </div>
             </div>
           </div>
-        </>
+        </div>
       )}
     </div>
   );
