@@ -8,6 +8,20 @@ export const GameStartScreen = ({
   shakeButtons,
   isLoggedIn,
 }) => {
+  const [showDifficultyError, setShowDifficultyError] = useState(false);
+
+  useEffect(() => {
+    if (shakeButtons && !selectedDifficulty) {
+      setShowDifficultyError(true);
+    }
+  }, [shakeButtons, selectedDifficulty]);
+
+  useEffect(() => {
+    if (selectedDifficulty) {
+      setShowDifficultyError(false);
+    }
+  }, [selectedDifficulty]);
+
   return (
     <div className="gameScreenContainer gameStartPageContainer">
       {!isLoggedIn ? (
@@ -57,7 +71,7 @@ export const GameStartScreen = ({
                   <strong>{selectedDifficulty || "None selected"}</strong>
                 </p>
 
-                {shakeButtons && !selectedDifficulty && (
+                {showDifficultyError && (
                   <p className="gameStartErrorMessage">
                     Please select a difficulty before starting the game.
                   </p>
