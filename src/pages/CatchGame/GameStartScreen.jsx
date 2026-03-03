@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 export const GameStartScreen = ({
   selectedDifficulty,
