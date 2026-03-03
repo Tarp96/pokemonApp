@@ -1661,6 +1661,44 @@ body {
     display: block;
   }
 
+  .gameStartPageContainer .uiCardBody {
+    padding: 50px 50px 40px 50px;
+  }
+
+  .gameStartPageContainer .uiAuthHero {
+    position: relative;
+  }
+
+  .gameStartPageContainer .uiAuthHero::after {
+    content: "";
+    position: absolute;
+    top: 10%;
+    right: 0;
+    height: 80%;
+    width: 1px;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      rgba(59, 76, 202, 0.2),
+      transparent
+    );
+  }
+
+  .gameStartIntro {
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  .difficultySection {
+    margin-top: 10px;
+    padding: 24px;
+    border-radius: 16px;
+    background: rgba(59, 76, 202, 0.04);
+    border: 1px solid rgba(59, 76, 202, 0.08);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.04);
+  }
+
   .gameStartImage {
     aspect-ratio: auto !important;
     height: 100%;
@@ -2236,6 +2274,47 @@ body {
   100% {
     transform: translateX(0);
   }
+}
+
+.activeDifficulty {
+  transform: translateY(-3px) scale(1.05);
+  box-shadow:
+    0 0 0 3px rgba(59, 76, 202, 0.5),
+    0 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+.difficultyBtn.easy.activeDifficulty {
+  box-shadow:
+    0 0 0 3px rgba(34, 197, 94, 0.6),
+    0 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+.difficultyBtn.medium.activeDifficulty {
+  box-shadow:
+    0 0 0 3px rgba(250, 204, 21, 0.6),
+    0 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+.difficultyBtn.hard.activeDifficulty {
+  box-shadow:
+    0 0 0 3px rgba(239, 68, 68, 0.6),
+    0 10px 20px rgba(0, 0, 0, 0.25);
+}
+
+@keyframes difficultySelectPulse {
+  0% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.6);
+  }
+  70% {
+    box-shadow: 0 0 0 10px rgba(34, 197, 94, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
+  }
+}
+
+.activeDifficulty {
+  animation: difficultySelectPulse 0.4s ease;
 }
 
 .shake {

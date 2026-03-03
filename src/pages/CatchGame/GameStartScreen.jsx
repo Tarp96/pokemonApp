@@ -54,52 +54,64 @@ export const GameStartScreen = ({
               </div>
 
               <div className="uiCardBody">
-                <h1 className="gameStartTitle">Ready to play?</h1>
+                <div className="gameStartIntro">
+                  <h1 className="gameStartTitle">Ready to play?</h1>
 
-                <p className="uiAuthInfoText">
-                  Catch the Pokémon that appears to earn coins.
-                </p>
-
-                <h2>Select difficulty</h2>
-
-                <p className="uiAuthInfoText">
-                  Higher difficulty gives more coins.
-                </p>
-
-                <p className="uiAuthInfoText">
-                  Selected Difficulty:{" "}
-                  <strong>{selectedDifficulty || "None selected"}</strong>
-                </p>
-
-                {showDifficultyError && (
-                  <p className="gameStartErrorMessage">
-                    Please select a difficulty before starting the game.
+                  <p className="uiAuthInfoText">
+                    Catch the Pokémon that appears to earn coins.
                   </p>
-                )}
-
-                <div className="difficultyContainer">
-                  <button
-                    onClick={() => onDifficultyChange("Easy")}
-                    className={`difficultyBtn easy ${shakeButtons ? "shake" : ""}`}
-                  >
-                    Easy
-                  </button>
-
-                  <button
-                    onClick={() => onDifficultyChange("Medium")}
-                    className={`difficultyBtn medium ${shakeButtons ? "shake" : ""}`}
-                  >
-                    Medium
-                  </button>
-
-                  <button
-                    onClick={() => onDifficultyChange("Hard")}
-                    className={`difficultyBtn hard ${shakeButtons ? "shake" : ""}`}
-                  >
-                    Hard
-                  </button>
                 </div>
 
+                <div className="difficultySection">
+                  <h2>Select difficulty</h2>
+
+                  <p className="uiAuthInfoText">
+                    Higher difficulty gives more coins.
+                  </p>
+
+                  <p className="uiAuthInfoText">
+                    Selected Difficulty:{" "}
+                    <strong>{selectedDifficulty || "None selected"}</strong>
+                  </p>
+
+                  {showDifficultyError && (
+                    <p className="gameStartErrorMessage">
+                      Please select a difficulty before starting the game.
+                    </p>
+                  )}
+
+                  <div className="difficultyContainer">
+                    <button
+                      onClick={() => onDifficultyChange("Easy")}
+                      className={`difficultyBtn easy 
+                    ${selectedDifficulty === "Easy" ? "activeDifficulty" : ""}
+                    ${shakeButtons ? "shake" : ""}
+                  `}
+                    >
+                      Easy
+                    </button>
+
+                    <button
+                      onClick={() => onDifficultyChange("Medium")}
+                      className={`difficultyBtn medium 
+                    ${selectedDifficulty === "Medium" ? "activeDifficulty" : ""}
+                    ${shakeButtons ? "shake" : ""}
+                   `}
+                    >
+                      Medium
+                    </button>
+
+                    <button
+                      onClick={() => onDifficultyChange("Hard")}
+                      className={`difficultyBtn hard 
+                    ${selectedDifficulty === "Hard" ? "activeDifficulty" : ""}
+                    ${shakeButtons ? "shake" : ""}
+                   `}
+                    >
+                      Hard
+                    </button>
+                  </div>
+                </div>
                 <div className="authButtonContainer">
                   <button
                     className="uiButtonPrimary gameStartPrimaryBtn"
