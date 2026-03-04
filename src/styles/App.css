@@ -1591,12 +1591,6 @@ body {
     filter 0.2s ease;
 }
 
-@media (max-width: 899px) {
-  .uiAuthButton:hover {
-    transform: translateY(-3px);
-  }
-}
-
 .uiAuthButton:active {
   transform: translateY(0);
   box-shadow: 0 6px 12px rgba(74, 144, 226, 0.25);
@@ -1649,191 +1643,6 @@ body {
 }
 
 /*LOGIN PAGE DESKTOP LAYOUT*/
-@media (min-width: 980px) {
-  /*Shared UI layout*/
-
-  .uiAuthSplit {
-    min-width: 999px;
-    max-width: 1000px;
-    display: flex;
-    flex-direction: column;
-  }
-
-  .uiAuthContent {
-    display: flex;
-    align-items: stretch;
-  }
-
-  .uiAuthHero {
-    flex: 0 0 55%;
-    display: flex;
-  }
-
-  .uiAuthHero img {
-    width: 100%;
-    height: auto;
-    object-fit: cover;
-    display: block;
-  }
-
-  /*AUTH FORMS (LOGIN / REGISTER)*/
-  .formField {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .loginForm {
-    width: 80%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
-
-  .registerForm {
-    margin-bottom: 8px;
-  }
-
-  .loginTitle {
-    display: none;
-  }
-
-  .authButtonContainer {
-    margin-top: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    width: 100%;
-
-    padding: 0;
-  }
-
-  .gameStartPageContainer .authButtonContainer {
-    margin-top: 16px;
-  }
-
-  .uiAuthLinkContainer {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-  }
-
-  .uiAuthButton {
-    border-radius: 12px 0 12px 0;
-    width: auto;
-    min-width: 150px;
-    padding: 30px 60px;
-    transition:
-      transform 0.2s ease,
-      background 0.2s ease,
-      color 0.2s ease,
-      border 0.2s ease;
-  }
-
-  .uiAuthButton:hover {
-    transform: scale(1.05);
-    background: #ffffff;
-    color: #357abd;
-    border: 2px solid #d1d5db;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-  }
-
-  .uiAuthLinkText {
-    font-size: 0.9rem;
-    color: #6b7280;
-    margin: 0;
-    font-weight: 400;
-    line-height: 1.4;
-  }
-
-  .uiAuthLink {
-    font-size: 1rem;
-    font-weight: 600;
-    color: #357abd;
-    text-decoration: none;
-    margin-top: 4px;
-    transition: color 0.2s ease;
-  }
-
-  .uiAuthLink:hover {
-    color: #1d4ed8;
-    text-decoration: underline;
-  }
-
-  /*GAME START*/
-
-  .gameStartPageContainer .uiCardBody {
-    padding: 50px 50px 40px 50px;
-  }
-
-  .gameStartPageContainer .uiAuthHero {
-    position: relative;
-  }
-
-  .gameStartPageContainer .uiAuthHero::after {
-    content: "";
-    position: absolute;
-    top: 10%;
-    right: 0;
-    height: 80%;
-    width: 1px;
-    background: linear-gradient(
-      to bottom,
-      transparent,
-      rgba(59, 76, 202, 0.2),
-      transparent
-    );
-  }
-
-  .gameStartIntro {
-    padding-bottom: 24px;
-    margin-bottom: 24px;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
-  }
-
-  .difficultySection {
-    margin-top: 10px;
-    padding: 24px;
-    border-radius: 16px;
-    background: rgba(59, 76, 202, 0.04);
-    border: 1px solid rgba(59, 76, 202, 0.08);
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.04);
-  }
-
-  .gameStartImage {
-    aspect-ratio: auto !important;
-    height: 100%;
-    object-fit: contain;
-  }
-
-  .gameStartPrimaryBtn {
-    width: auto;
-    padding: 16px 40px;
-    border-radius: 999px;
-    margin: 0 auto;
-    gap: 12px;
-  }
-
-  .gameStartBtnIcon {
-    width: 26px;
-    height: 26px;
-    object-fit: contain;
-    display: block;
-  }
-
-  .gameStartPrimaryBtn:hover .gameStartBtnIcon {
-    transform: rotate(360deg);
-    transition: transform 0.4s ease;
-  }
-
-  .uiAuthContent .uiCardBody {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    padding: 40px 0 0 0;
-  }
-}
 
 .pokeTrophyImg {
   object-fit: fill !important;
@@ -1846,173 +1655,7 @@ body {
 /*LOGIN PAGE DESKTOP LAYOUT END*/
 
 /*LOGIN PAGE MOBILE LAYOUT*/
-@media (max-width: 480px) {
-  .uiCard {
-    min-width: 340px;
-    margin: 6px 6px;
-    border-radius: 20px;
-  }
 
-  .uiCardBody {
-    padding: 24px 20px 28px 20px;
-  }
-
-  .uiCardHero.square {
-    aspect-ratio: 4 / 3;
-  }
-
-  .authButtonContainer {
-    display: flex;
-    flex-direction: column;
-    margin-top: 12px;
-  }
-
-  .uiAuthLinkContainer {
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    gap: 6px;
-  }
-
-  .formField {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .loginForm input {
-    padding: 14px;
-  }
-
-  .loginTitle {
-    margin-top: 2px;
-    font-size: 12px;
-  }
-
-  .uiAuthButton {
-    order: -1;
-    padding: 10px 2px;
-    max-width: 45%;
-    margin: 0 auto;
-    margin-bottom: 10px;
-  }
-
-  .uiAuthInfoText {
-    font-size: 0.9rem;
-  }
-
-  .uiAuthLinkText {
-    margin: 0;
-    padding: 0;
-  }
-
-  .uiAuthLink {
-    margin: 0;
-    padding: 0;
-    padding-bottom: 8px;
-  }
-
-  .gameStartPageContainer .uiCard,
-  .gameOverContainer .uiCard {
-    min-width: 0;
-    width: calc(100% - 12px);
-    margin: 6px auto;
-  }
-
-  .gameStartPageContainer .uiAuthHero {
-    display: flex;
-    justify-content: center;
-  }
-
-  .gameStartPageContainer .gameStartImage {
-    width: 85%;
-    margin: 10px auto 0 auto;
-    object-fit: contain;
-  }
-
-  .gameStartPageContainer .difficultyContainer {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 8px;
-    margin-top: 10px;
-  }
-
-  .gameStartPageContainer .difficultyBtn {
-    width: 100%;
-    padding: 8px 6px;
-    font-size: 0.9rem;
-    margin: 0;
-  }
-
-  .gameStartPageContainer .activeDifficulty {
-    transform: scale(1.05);
-  }
-
-  .gameStartPageContainer .authButtonContainer {
-    justify-content: center;
-    align-items: center;
-  }
-
-  .gameStartPageContainer .gameStartPrimaryBtn {
-    width: 50%;
-  }
-
-  .gameStartPageContainer .gameStartBtnIcon {
-    width: 20px;
-    height: 20px;
-  }
-
-  .gameStartPageContainer .gameStartTitle {
-    font-size: 1.5rem;
-  }
-
-  .gameStartPageContainer h2 {
-    font-size: 1.3rem;
-  }
-
-  .gameStartPageContainer .uiAuthInfoText {
-    font-size: 0.85rem;
-  }
-
-  .gameStartPageContainer .difficultyBtn {
-    font-size: 0.95rem;
-    padding: 8px 16px;
-  }
-
-  /*GAMEPLAY SCREEN*/
-
-  .gamePlayScreenContainer {
-    width: 92%;
-    height: calc(100vh - 260px);
-  }
-
-  .gameStatContainer {
-    font-size: 0.9rem;
-    padding: 10px;
-    gap: 10px;
-  }
-
-  .statItem {
-    font-size: 0.85rem;
-  }
-
-  .gamePlayScreenContainer .targetItem {
-    width: 35px;
-    height: 35px;
-  }
-
-  .gameOverBtnContainer {
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-  }
-
-  .gameOverBtnContainer .uiButtonPrimary {
-    width: 80%;
-    padding: 10px 18px;
-    font-size: 1rem;
-  }
-}
 /*LOGIN PAGE MOBILE LAYOUT END*/
 
 /*LOGIN, CREATE ACCOUNT, GAME START/END SHARED UI STYLE END*/
@@ -2742,3 +2385,359 @@ body {
 }
 
 /*GAME PAGE END*/
+
+@media (max-width: 480px) {
+  .uiCard {
+    min-width: 340px;
+    margin: 6px 6px;
+    border-radius: 20px;
+  }
+
+  .uiCardBody {
+    padding: 24px 20px 28px 20px;
+  }
+
+  .uiCardHero.square {
+    aspect-ratio: 4 / 3;
+  }
+
+  .authButtonContainer {
+    display: flex;
+    flex-direction: column;
+    margin-top: 12px;
+  }
+
+  .uiAuthLinkContainer {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+  }
+
+  .formField {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .loginForm input {
+    padding: 14px;
+  }
+
+  .loginTitle {
+    margin-top: 2px;
+    font-size: 12px;
+  }
+
+  .uiAuthButton {
+    order: -1;
+    padding: 10px 2px;
+    max-width: 45%;
+    margin: 0 auto;
+    margin-bottom: 10px;
+  }
+
+  .uiAuthInfoText {
+    font-size: 0.9rem;
+  }
+
+  .uiAuthLinkText {
+    margin: 0;
+    padding: 0;
+  }
+
+  .uiAuthLink {
+    margin: 0;
+    padding: 0;
+    padding-bottom: 8px;
+  }
+
+  .gameStartPageContainer .uiCard,
+  .gameOverContainer .uiCard {
+    min-width: 0;
+    width: calc(100% - 12px);
+    margin: 6px auto;
+  }
+
+  .gameStartPageContainer .uiAuthHero {
+    display: flex;
+    justify-content: center;
+  }
+
+  .gameStartPageContainer .gameStartImage {
+    width: 85%;
+    margin: 10px auto 0 auto;
+    object-fit: contain;
+  }
+
+  .gameStartPageContainer .difficultyContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .gameStartPageContainer .difficultyBtn {
+    width: 100%;
+    padding: 8px 6px;
+    font-size: 0.9rem;
+    margin: 0;
+  }
+
+  .gameStartPageContainer .activeDifficulty {
+    transform: scale(1.05);
+  }
+
+  .gameStartPageContainer .authButtonContainer {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .gameStartPageContainer .gameStartPrimaryBtn {
+    width: 50%;
+  }
+
+  .gameStartPageContainer .gameStartBtnIcon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .gameStartPageContainer .gameStartTitle {
+    font-size: 1.5rem;
+  }
+
+  .gameStartPageContainer h2 {
+    font-size: 1.3rem;
+  }
+
+  .gameStartPageContainer .uiAuthInfoText {
+    font-size: 0.85rem;
+  }
+
+  .gameStartPageContainer .difficultyBtn {
+    font-size: 0.95rem;
+    padding: 8px 16px;
+  }
+
+  /*GAMEPLAY SCREEN*/
+
+  .gamePlayScreenContainer {
+    width: 92%;
+    height: calc(100vh - 260px);
+  }
+
+  .gameStatContainer {
+    font-size: 0.9rem;
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .statItem {
+    font-size: 0.85rem;
+  }
+
+  .gamePlayScreenContainer .targetItem {
+    width: 35px;
+    height: 35px;
+  }
+
+  .gameOverBtnContainer {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .gameOverBtnContainer .uiButtonPrimary {
+    width: 80%;
+    padding: 10px 18px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 899px) {
+  .uiAuthButton:hover {
+    transform: translateY(-3px);
+  }
+}
+
+@media (min-width: 980px) {
+  /*Shared UI layout*/
+
+  .uiAuthSplit {
+    min-width: 999px;
+    max-width: 1000px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .uiAuthContent {
+    display: flex;
+    align-items: stretch;
+  }
+
+  .uiAuthHero {
+    flex: 0 0 55%;
+    display: flex;
+  }
+
+  .uiAuthHero img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+  }
+
+  /*AUTH FORMS (LOGIN / REGISTER)*/
+  .formField {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .loginForm {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .registerForm {
+    margin-bottom: 8px;
+  }
+
+  .authButtonContainer {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+
+    padding: 0;
+  }
+
+  .gameStartPageContainer .authButtonContainer {
+    margin-top: 16px;
+  }
+
+  .uiAuthLinkContainer {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .uiAuthButton {
+    border-radius: 12px 0 12px 0;
+    width: auto;
+    min-width: 150px;
+    padding: 30px 60px;
+    transition:
+      transform 0.2s ease,
+      background 0.2s ease,
+      color 0.2s ease,
+      border 0.2s ease;
+  }
+
+  .uiAuthButton:hover {
+    transform: scale(1.05);
+    background: #ffffff;
+    color: #357abd;
+    border: 2px solid #d1d5db;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  }
+
+  .uiAuthLinkText {
+    font-size: 0.9rem;
+    color: #6b7280;
+    margin: 0;
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  .uiAuthLink {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #357abd;
+    text-decoration: none;
+    margin-top: 4px;
+    transition: color 0.2s ease;
+  }
+
+  .uiAuthLink:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
+  }
+
+  /*GAME START*/
+
+  .gameStartPageContainer .uiCardBody {
+    padding: 50px 50px 40px 50px;
+  }
+
+  .gameStartPageContainer .uiAuthHero {
+    position: relative;
+  }
+
+  .gameStartPageContainer .uiAuthHero::after {
+    content: "";
+    position: absolute;
+    top: 10%;
+    right: 0;
+    height: 80%;
+    width: 1px;
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      rgba(59, 76, 202, 0.2),
+      transparent
+    );
+  }
+
+  .gameStartIntro {
+    padding-bottom: 24px;
+    margin-bottom: 24px;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+  }
+
+  .difficultySection {
+    margin-top: 10px;
+    padding: 24px;
+    border-radius: 16px;
+    background: rgba(59, 76, 202, 0.04);
+    border: 1px solid rgba(59, 76, 202, 0.08);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.04);
+  }
+
+  .gameStartImage {
+    aspect-ratio: auto !important;
+    height: 100%;
+    object-fit: contain;
+  }
+
+  .gameStartPrimaryBtn {
+    width: auto;
+    padding: 16px 40px;
+    border-radius: 999px;
+    margin: 0 auto;
+    gap: 12px;
+  }
+
+  .gameStartBtnIcon {
+    width: 26px;
+    height: 26px;
+    object-fit: contain;
+    display: block;
+  }
+
+  .gameStartPrimaryBtn:hover .gameStartBtnIcon {
+    transform: rotate(360deg);
+    transition: transform 0.4s ease;
+  }
+
+  .uiAuthContent .uiCardBody {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 40px 0 0 0;
+  }
+}
