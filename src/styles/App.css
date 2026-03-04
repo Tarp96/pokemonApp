@@ -2138,12 +2138,14 @@ body {
 }
 
 .gamePlayScreenContainer {
-  max-width: 68%;
-  height: 800px;
+  max-width: 900px;
+  margin: 0 auto;
+  height: calc(100vh - 300px);
   justify-content: flex-start;
   padding: 20px;
   overflow: hidden;
   cursor: crosshair;
+  position: relative;
 }
 
 .loginReminderContainer {
@@ -2480,7 +2482,7 @@ body {
 }
 
 .gamePokemon {
-  width: 120px;
+  width: 60px;
   height: auto;
 }
 
