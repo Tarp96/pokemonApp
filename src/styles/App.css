@@ -2771,4 +2771,16 @@ body {
     font-size: 0.9rem;
   }
   /*HEADER*/
+
+  /*FILTER BUTTONS*/
+  .filterButtonContainer {
+    width: 75%;
+  }
+  /*FILTER BUTTONS END*/
+
+  /*GRID*/
+  .pokemonGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  /*GRID END*/
 }
