@@ -2,7 +2,7 @@ import { GameOverScreen } from "./GameOverScreen";
 import { useEffect, useState, useRef } from "react";
 
 const GAME_DURATION = 30;
-const POKEMON_SIZE = 120;
+const pokemonSize = window.innerWidth <= 480 ? 35 : 60;
 
 export const GamePlayScreen = ({ difficulty, onReset }) => {
   const containerRef = useRef(null);
@@ -74,8 +74,8 @@ export const GamePlayScreen = ({ difficulty, onReset }) => {
 
     const { clientWidth, clientHeight } = container;
 
-    const maxLeft = Math.max(clientWidth - POKEMON_SIZE, 0);
-    const maxTop = Math.max(clientHeight - POKEMON_SIZE, 0);
+    const maxLeft = Math.max(clientWidth - pokemonSize, 0);
+    const maxTop = Math.max(clientHeight - pokemonSize, 0);
 
     return {
       top: Math.floor(Math.random() * maxTop),
@@ -127,10 +127,7 @@ export const GamePlayScreen = ({ difficulty, onReset }) => {
 
   return (
     <div>
-      <div
-        className="gameScreenContainer gamePlayScreenContainer"
-        ref={containerRef}
-      >
+      <div className=" gamePlayScreenContainer" ref={containerRef}>
         <div className="gameStatContainer">
           <div className="statItem">⏱ Time left: {timeLeft}s</div>
           <div className="statItem">🎯 Score: {score}</div>
