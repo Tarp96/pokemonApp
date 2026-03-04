@@ -2484,6 +2484,11 @@ body {
 .gamePokemon {
   width: 60px;
   height: auto;
+  transition: transform 0.12s ease;
+}
+
+.gamePokemon.hit {
+  transform: scale(0.8);
 }
 
 .gameOverTitle {

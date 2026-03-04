@@ -1,7 +1,7 @@
 import { GameOverScreen } from "./GameOverScreen";
 import { useEffect, useState, useRef } from "react";
 
-const GAME_DURATION = 5;
+const GAME_DURATION = 30;
 const POKEMON_SIZE = 120;
 
 export const GamePlayScreen = ({ difficulty, onReset }) => {
@@ -12,6 +12,7 @@ export const GamePlayScreen = ({ difficulty, onReset }) => {
   const [score, setScore] = useState(0);
   const [coinsEarned, setCoinsEarned] = useState(0);
   const [coinMultiplier, setCoinMultiplier] = useState(1);
+  const [hit, setHit] = useState(false);
 
   const gameOver = timeLeft <= 0;
 
@@ -45,8 +46,11 @@ export const GamePlayScreen = ({ difficulty, onReset }) => {
   const handlePokemonClick = () => {
     if (gameOver) return;
 
+    setHit(true);
     setScore((prev) => prev + 1);
     setPosition(generateRandomPosition());
+
+    setTimeout(() => setHit(false), 150);
   };
 
   useEffect(() => {
@@ -141,7 +145,11 @@ export const GamePlayScreen = ({ difficulty, onReset }) => {
           }}
           onClick={handlePokemonClick}
         >
-          <img src="/assets/gengar.png" alt="Gengar" className="gamePokemon" />
+          <img
+            src="/assets/gengar.png"
+            alt="Gengar"
+            className={`gamePokemon ${hit ? "hit" : ""}`}
+          />
         </div>
       </div>
     </div>
