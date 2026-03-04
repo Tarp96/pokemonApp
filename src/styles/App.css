@@ -2741,3 +2741,34 @@ body {
     padding: 40px 0 0 0;
   }
 }
+
+@media (min-width: 980px) and (max-width: 1250px) {
+  /*HEADER*/
+  .headerContainer {
+    max-width: 85%;
+    grid-template-columns: auto 1fr;
+  }
+
+  .headerLeft {
+    display: none;
+  }
+
+  .headerCenter {
+    justify-content: flex-start;
+  }
+
+  .headerRight {
+    justify-content: flex-end;
+    gap: 1rem;
+  }
+
+  .headerImage {
+    max-width: 200px;
+  }
+
+  .headerNavBtn {
+    padding: 0.4rem 0.9rem;
+    font-size: 0.9rem;
+  }
+  /*HEADER*/
+}
