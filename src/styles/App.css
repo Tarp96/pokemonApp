@@ -1634,8 +1634,9 @@ body {
 }
 
 /*LOGIN PAGE DESKTOP LAYOUT*/
-
 @media (min-width: 980px) {
+  /*Shared UI layout*/
+
   .uiAuthSplit {
     min-width: 999px;
     max-width: 1000px;
@@ -1645,7 +1646,6 @@ body {
 
   .uiAuthContent {
     display: flex;
-
     align-items: stretch;
   }
 
@@ -1660,6 +1660,93 @@ body {
     object-fit: cover;
     display: block;
   }
+
+  /*AUTH FORMS (LOGIN / REGISTER)*/
+  .formField {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .loginForm {
+    width: 80%;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .registerForm {
+    margin-bottom: 8px;
+  }
+
+  .loginTitle {
+    display: none;
+  }
+
+  .authButtonContainer {
+    margin-top: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    width: 100%;
+
+    padding: 0;
+  }
+
+  .gameStartPageContainer .authButtonContainer {
+    margin-top: 16px;
+  }
+
+  .uiAuthLinkContainer {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+  }
+
+  .uiAuthButton {
+    border-radius: 12px 0 12px 0;
+    width: auto;
+    min-width: 150px;
+    padding: 30px 60px;
+    transition:
+      transform 0.2s ease,
+      background 0.2s ease,
+      color 0.2s ease,
+      border 0.2s ease;
+  }
+
+  .uiAuthButton:hover {
+    transform: scale(1.05);
+    background: #ffffff;
+    color: #357abd;
+    border: 2px solid #d1d5db;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  }
+
+  .uiAuthLinkText {
+    font-size: 0.9rem;
+    color: #6b7280;
+    margin: 0;
+    font-weight: 400;
+    line-height: 1.4;
+  }
+
+  .uiAuthLink {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #357abd;
+    text-decoration: none;
+    margin-top: 4px;
+    transition: color 0.2s ease;
+  }
+
+  .uiAuthLink:hover {
+    color: #1d4ed8;
+    text-decoration: underline;
+  }
+
+  /*GAME START*/
 
   .gameStartPageContainer .uiCardBody {
     padding: 50px 50px 40px 50px;
@@ -1725,95 +1812,11 @@ body {
     transition: transform 0.4s ease;
   }
 
-  .gameStartPageContainer .authButtonContainer {
-    margin-top: 16px;
-  }
-
   .uiAuthContent .uiCardBody {
     flex: 1;
     display: flex;
     flex-direction: column;
     padding: 40px 0 0 0;
-  }
-
-  .formField {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-  }
-
-  .loginForm {
-    width: 80%;
-    margin: 0 auto;
-    display: flex;
-    flex-direction: column;
-    gap: 14px;
-  }
-
-  .registerForm {
-    margin-bottom: 8px;
-  }
-
-  .loginTitle {
-    display: none;
-  }
-
-  .authButtonContainer {
-    margin-top: auto;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    width: 100%;
-
-    padding: 0;
-  }
-
-  .uiAuthLinkContainer {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-  }
-
-  .uiAuthButton {
-    border-radius: 12px 0 12px 0;
-    width: auto;
-    min-width: 150px;
-    padding: 30px 60px;
-    transition:
-      transform 0.2s ease,
-      background 0.2s ease,
-      color 0.2s ease,
-      border 0.2s ease;
-  }
-
-  .uiAuthButton:hover {
-    transform: scale(1.05);
-    background: #ffffff;
-    color: #357abd;
-    border: 2px solid #d1d5db;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
-  }
-
-  .uiAuthLinkText {
-    font-size: 0.9rem;
-    color: #6b7280;
-    margin: 0;
-    font-weight: 400;
-    line-height: 1.4;
-  }
-
-  .uiAuthLink {
-    font-size: 1rem;
-    font-weight: 600;
-    color: #357abd;
-    text-decoration: none;
-    margin-top: 4px;
-    transition: color 0.2s ease;
-  }
-
-  .uiAuthLink:hover {
-    color: #1d4ed8;
-    text-decoration: underline;
   }
 }
 
