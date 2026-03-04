@@ -1820,6 +1820,10 @@ body {
   }
 }
 
+.pokeTrophyImg {
+  object-fit: fill !important;
+}
+
 .loginTitle {
   display: block;
 }
@@ -2532,6 +2536,10 @@ body {
 
 .gamePokemon.hit {
   transform: scale(0.8);
+}
+
+.gameOverContainer .uiAuthSplit {
+  max-width: 1100px;
 }
 
 .gameOverTitle {
