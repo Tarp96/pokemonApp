@@ -1889,6 +1889,72 @@ body {
     padding: 0;
     padding-bottom: 8px;
   }
+
+  .gameStartPageContainer .uiCard {
+    min-width: 0;
+    width: calc(100% - 12px);
+    margin: 6px auto;
+  }
+
+  .gameStartPageContainer .uiAuthHero {
+    display: flex;
+    justify-content: center;
+  }
+
+  .gameStartPageContainer .gameStartImage {
+    width: 85%;
+    margin: 10px auto 0 auto;
+    object-fit: contain;
+  }
+
+  .gameStartPageContainer .difficultyContainer {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+    margin-top: 10px;
+  }
+
+  .gameStartPageContainer .difficultyBtn {
+    width: 100%;
+    padding: 8px 6px;
+    font-size: 0.9rem;
+    margin: 0;
+  }
+
+  .gameStartPageContainer .activeDifficulty {
+    transform: scale(1.05);
+  }
+
+  .gameStartPageContainer .authButtonContainer {
+    justify-content: center;
+    align-items: center;
+  }
+
+  .gameStartPageContainer .gameStartPrimaryBtn {
+    width: 50%;
+  }
+
+  .gameStartPageContainer .gameStartBtnIcon {
+    width: 20px;
+    height: 20px;
+  }
+
+  .gameStartPageContainer .gameStartTitle {
+    font-size: 1.5rem;
+  }
+
+  .gameStartPageContainer h2 {
+    font-size: 1.3rem;
+  }
+
+  .gameStartPageContainer .uiAuthInfoText {
+    font-size: 0.85rem;
+  }
+
+  .gameStartPageContainer .difficultyBtn {
+    font-size: 0.95rem;
+    padding: 8px 16px;
+  }
 }
 /*LOGIN PAGE MOBILE LAYOUT END*/
 
