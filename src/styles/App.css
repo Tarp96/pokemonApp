@@ -30,8 +30,7 @@ body {
 }
 
 .headerLeft {
-  display: flex;
-  justify-content: flex-start;
+  display: none;
 }
 
 .headerCenter {
@@ -2387,6 +2386,27 @@ body {
 /*GAME PAGE END*/
 
 @media (max-width: 480px) {
+  /*HOME PAGE HEADER*/
+  .headerContainer {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    text-align: center;
+    gap: 10px;
+    padding: 1rem;
+  }
+
+  .headerRight {
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+
+  .headerNavBtn {
+    font-size: 0.85rem;
+    padding: 0.35rem 0.8rem;
+  }
+  /*HOME PAGE HEADER END*/
+
   .uiCard {
     min-width: 340px;
     margin: 6px 6px;
@@ -2749,10 +2769,6 @@ body {
     grid-template-columns: auto 1fr;
   }
 
-  .headerLeft {
-    display: none;
-  }
-
   .headerCenter {
     justify-content: flex-start;
   }
@@ -2783,4 +2799,11 @@ body {
     grid-template-columns: repeat(3, 1fr);
   }
   /*GRID END*/
+}
+
+@media (min-width: 1250px) {
+  .headerLeft {
+    display: flex;
+    justify-content: flex-start;
+  }
 }
