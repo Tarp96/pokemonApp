@@ -74,22 +74,24 @@ export const GameOverScreen = ({
                 <span className="value">x{multiplier}</span>
               </div>
 
-              <div
-                className="statRow highlight"
-                role="group"
-                aria-label="Coins Earned"
-              >
-                <span className="label">Coins Earned</span>
-                <span className="value coins">💰 {coinsEarned}</span>
-              </div>
+              <div className="rewardSection">
+                <div
+                  className="statRow highlight"
+                  role="group"
+                  aria-label="Coins Earned"
+                >
+                  <span className="label">Coins Earned</span>
+                  <span className="value coins">💰 {coinsEarned}</span>
+                </div>
 
-              <div
-                className="statRow highlight"
-                role="group"
-                aria-label="Coins Total"
-              >
-                <span className="label">Coins Total</span>
-                <span className="value coins">💰 {userCoins}</span>
+                <div
+                  className="statRow highlight"
+                  role="group"
+                  aria-label="Coins Total"
+                >
+                  <span className="label">Coins Total</span>
+                  <span className="value coins">💰 {userCoins}</span>
+                </div>
               </div>
             </div>
 
