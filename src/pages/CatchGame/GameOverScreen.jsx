@@ -10,8 +10,17 @@ export const GameOverScreen = ({
   onPlayAgain,
 }) => {
   const [userCoins, setUserCoins] = useState(null);
+  const [animateStats, setAnimateStats] = useState(false);
 
   const rewardedRef = useRef(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setAnimateStats(true);
+    }, 50);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     const user = auth.currentUser;
@@ -54,7 +63,9 @@ export const GameOverScreen = ({
           <div className="uiCardBody">
             <h2 className="gameOverTitle">🎮 Game Over</h2>
 
-            <div className="gameOverStats">
+            <div
+              className={`gameOverStats ${animateStats ? "animateStats" : ""}`}
+            >
               <div className="statRow" role="group" aria-label="Score">
                 <span className="label">Score</span>
                 <span className="value">{score}</span>
