@@ -1,7 +1,7 @@
 import { GameOverScreen } from "./GameOverScreen";
 import { useEffect, useState, useRef } from "react";
 
-const GAME_DURATION = 5;
+const GAME_DURATION = 15;
 const pokemonSize = window.innerWidth <= 480 ? 35 : 60;
 
 export const GamePlayScreen = ({ difficulty, onReset }) => {
@@ -126,27 +126,29 @@ export const GamePlayScreen = ({ difficulty, onReset }) => {
   }
 
   return (
-    <div>
-      <div className=" gamePlayScreenContainer" ref={containerRef}>
+    <div className="gameWrapper">
+      <div className="gamePlayScreenContainer">
         <div className="gameStatContainer">
           <div className="statItem">⏱ Time left: {timeLeft}s</div>
           <div className="statItem">🎯 Score: {score}</div>
           <div className="statItem">⭐ Difficulty: {difficulty}</div>
         </div>
 
-        <div
-          className="targetItem"
-          style={{
-            top: position.top,
-            left: position.left,
-          }}
-          onClick={handlePokemonClick}
-        >
-          <img
-            src="/assets/gengar.png"
-            alt="Gengar"
-            className={`gamePokemon ${hit ? "hit" : ""}`}
-          />
+        <div className="gameArea" ref={containerRef}>
+          <div
+            className="targetItem"
+            style={{
+              top: position.top,
+              left: position.left,
+            }}
+            onClick={handlePokemonClick}
+          >
+            <img
+              src="/assets/gengar.png"
+              alt="Gengar"
+              className={`gamePokemon ${hit ? "hit" : ""}`}
+            />
+          </div>
         </div>
       </div>
     </div>
