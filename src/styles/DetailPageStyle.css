@@ -110,49 +110,6 @@
   font-size: 20px;
 }
 
-.pagination-container {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
-  margin-top: 20px;
-}
-
-.pagination-container button {
-  font-family: "Press Start 2P", cursive;
-  padding: 8px 16px;
-  font-size: 16px;
-  font-weight: 500;
-  border: 2px solid #3b4cca;
-  background: linear-gradient(to bottom right, #e0e0e0, #ffffff);
-  color: #3b4cca;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-}
-
-.paginationButtonImage {
-  width: 20px;
-  height: auto;
-  margin-right: 8px;
-  vertical-align: middle;
-}
-
-.pagination-container button:hover {
-  background: linear-gradient(to bottom right, #ffcb05, #ffdf70);
-  color: #1a1a1a;
-  transform: translateY(-2px);
-}
-
-.pagination-container button.active-page {
-  background: linear-gradient(to bottom right, #ffcb05, #ffa500);
-  border-color: #dba600;
-  color: #1a1a1a;
-  font-weight: bold;
-  transform: scale(1.05);
-}
-
 /*DETAIL PAGE NAVBAR*/
 
 .detailsNavigationBar {
