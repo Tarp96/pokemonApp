@@ -1009,6 +1009,13 @@
 /*MEDIA QUERIES*/
 
 @media (max-width: 480px) {
+  .detailsPageContainer {
+    width: auto;
+    max-width: none;
+    margin: 0;
+    padding: 1rem;
+    border-radius: 0;
+  }
   /*DETAIL PAGE HEADER*/
 
   .detailsPageHeader {
@@ -1063,6 +1070,82 @@
     scrollbar-width: none;
   }
   /*DETAIL PAGE NAV BAR END*/
+
+  /*DETAIL PAGE OVERVIEW PAGE*/
+  .detailsTopSection {
+    flex-direction: column-reverse;
+    gap: 1rem;
+  }
+
+  .overviewPageMainImageContainer {
+    width: 100%;
+    align-items: center;
+  }
+
+  .pageTopInfoTitle {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    font-size: 1.8rem;
+  }
+
+  .topInfoSectionTypeBadges {
+    margin-left: 0;
+    width: 100%;
+  }
+
+  .mainDetailImage {
+    width: 100%;
+    max-width: 320px;
+    height: auto;
+  }
+
+  .overViewPageImageSwitchButtonContainer {
+    width: 70%;
+  }
+
+  .audioButtonContainer {
+    justify-content: center;
+    gap: 0.6rem;
+  }
+
+  /*DETAIL PAGE OVERVIEW MIDDLE SECTION*/
+  .overViewMiddleSection {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .overViewMiddleSection {
+    padding: 14px;
+  }
+
+  .relationRow {
+    grid-template-columns: 110px 1fr;
+    min-width: 0;
+  }
+
+  .relationLabel {
+    font-size: 0.9rem;
+    line-height: 1.2;
+  }
+
+  .relationsTitleContainer {
+    justify-content: space-between;
+  }
+
+  .listItemTopic,
+  .listItemValue {
+    white-space: normal;
+  }
+
+  .infoList {
+    font-size: 0.95rem;
+  }
+  .infoList li {
+    grid-template-columns: 120px 1fr;
+  }
+  /*DETAIL PAGE OVERVIEW MIDDLE SECTION END*/
+
+  /*DETAIL PAGE OVERVIEW PAGE END*/
 }
 
 /*MEDIA QUERIES END*/
