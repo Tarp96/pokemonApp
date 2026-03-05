@@ -1,6 +1,7 @@
 import typeColors from "./../utils/typecolors";
 import { firstLetterUpperCase } from "../utils/helperFunctions";
 import { getTypeIcon } from "../utils/typeIcons";
+import { useState } from "react";
 
 export const FilterByTypeButtons = ({ filterByTypeFunc, activeFilter }) => {
   const myObj = typeColors;
