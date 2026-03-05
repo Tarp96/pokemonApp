@@ -331,6 +331,7 @@ body {
 }
 
 /* Filter Buttons Bar */
+
 .filterButtonContainer {
   display: flex;
   justify-content: center;
@@ -338,6 +339,18 @@ body {
   margin: 0 auto;
   flex-wrap: wrap;
   width: 50%;
+}
+
+.filterToggleBtn {
+  display: none;
+  margin: 0 auto 12px;
+  padding: 8px 14px;
+  font-size: 14px;
+  border-radius: 8px;
+  border: 2px solid #3b4cca;
+  background: linear-gradient(to bottom right, #ffcb05, #ffdf70);
+  cursor: pointer;
+  font-weight: 600;
 }
 
 .filterButtonContainer button {
@@ -2457,6 +2470,11 @@ body {
   /*SEARCH SECTION END*/
 
   /*FILTER BY TYPE BUTTONS*/
+
+  .filterToggleBtn {
+    display: block;
+  }
+
   .filterButtonContainer {
     width: 100%;
     max-width: 320px;
