@@ -1143,6 +1143,11 @@
   .infoList li {
     grid-template-columns: 120px 1fr;
   }
+
+  .evoArrow {
+    display: inline-block;
+    transform: rotate(90deg);
+  }
   /*DETAIL PAGE OVERVIEW MIDDLE SECTION END*/
 
   /*DETAIL PAGE OVERVIEW PAGE END*/
