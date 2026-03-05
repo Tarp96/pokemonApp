@@ -1010,12 +1010,13 @@
 
 @media (max-width: 480px) {
   .detailsPageContainer {
-    width: auto;
+    width: 100%;
     max-width: none;
     margin: 0;
     padding: 1rem;
     border-radius: 0;
   }
+
   /*DETAIL PAGE HEADER*/
 
   .detailsPageHeader {
@@ -1054,7 +1055,7 @@
     justify-content: flex-start;
     overflow-x: auto;
     gap: 1.5rem;
-    padding-bottom: 0.75rem;
+    padding: 0.75rem;
   }
 
   .detailsNavigationBar a {
@@ -1072,6 +1073,7 @@
   /*DETAIL PAGE NAV BAR END*/
 
   /*DETAIL PAGE OVERVIEW PAGE*/
+
   .detailsTopSection {
     flex-direction: column-reverse;
     gap: 1rem;
@@ -1106,6 +1108,11 @@
   .audioButtonContainer {
     justify-content: center;
     gap: 0.6rem;
+  }
+
+  .flavorTextDiv {
+    font-size: 1rem;
+    padding: 25px;
   }
 
   /*DETAIL PAGE OVERVIEW MIDDLE SECTION*/
