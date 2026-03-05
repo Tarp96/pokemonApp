@@ -997,6 +997,14 @@
   overflow: hidden;
 }
 
+.movesTable thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  background: linear-gradient(90deg, #a0c4ff 0%, #bdb2ff 100%);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
 .movesTable th,
 .movesTable td {
   padding: 10px 14px;
