@@ -18,6 +18,13 @@ export const PokemonStats = () => {
     "#E91E63", // Speed
   ];
 
+  const getTotalColor = (total) => {
+    if (total >= 600) return "#9C27B0";
+    if (total >= 500) return "#2a75bb";
+    if (total >= 400) return "#4CAF50";
+    return "#777";
+  };
+
   useEffect(() => {
     populateArrays();
   }, []);
@@ -115,7 +122,12 @@ export const PokemonStats = () => {
       )}
       <div className="totalStatsCard">
         <span className="totalStatsLabel">Total Base Stats</span>
-        <span className="totalStatsValue">{totalBaseStats}</span>
+        <span
+          className="totalStatsValue"
+          style={{ color: getTotalColor(totalBaseStats) }}
+        >
+          {totalBaseStats}
+        </span>
       </div>
     </div>
   );
