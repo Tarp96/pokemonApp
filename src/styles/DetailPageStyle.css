@@ -141,7 +141,7 @@
   font-weight: 600;
 }
 
-.detailsNavigationBar a.active::after {
+.detailsNavigationBar a::after {
   content: "";
   position: absolute;
   bottom: -6px;
@@ -150,6 +150,22 @@
   height: 4px;
   background-color: #ffcb05;
   border-radius: 2px;
+
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s ease;
+}
+
+.detailsNavigationBar a:hover::after {
+  transform: scaleX(0.6);
+}
+
+.detailsNavigationBar a.active {
+  transform: scale(1.05);
+}
+
+.detailsNavigationBar a.active::after {
+  transform: scaleX(1);
 }
 
 /*DETAIL PAGE NAVBAR END*/
@@ -993,6 +1009,8 @@
 /*MEDIA QUERIES*/
 
 @media (max-width: 480px) {
+  /*DETAIL PAGE HEADER*/
+
   .detailsPageHeader {
     flex-direction: column;
     align-items: center;
@@ -1021,6 +1039,30 @@
   .backText {
     display: none;
   }
+
+  /*DETAIL PAGE HEADEREND*/
+
+  /*DETAIL PAGE NAV BAR*/
+  .detailsNavigationBar {
+    justify-content: flex-start;
+    overflow-x: auto;
+    gap: 1.5rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .detailsNavigationBar a {
+    flex-shrink: 0;
+    font-size: 17px;
+  }
+
+  .detailsNavigationBar::-webkit-scrollbar {
+    display: none;
+  }
+
+  .detailsNavigationBar {
+    scrollbar-width: none;
+  }
+  /*DETAIL PAGE NAV BAR END*/
 }
 
 /*MEDIA QUERIES END*/
