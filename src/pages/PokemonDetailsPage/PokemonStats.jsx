@@ -9,6 +9,15 @@ export const PokemonStats = () => {
   const [statNames, setStatNames] = useState([]);
   const [statNums, setStatNums] = useState([]);
 
+  const statColors = [
+    "#4CAF50", // HP
+    "#F44336", // Attack
+    "#2196F3", // Defense
+    "#9C27B0", // Special Attack
+    "#FF9800", // Special Defense
+    "#E91E63", // Speed
+  ];
+
   useEffect(() => {
     populateArrays();
   }, []);
