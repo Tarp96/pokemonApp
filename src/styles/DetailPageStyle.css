@@ -856,6 +856,29 @@
   transform: translateY(-4px);
 }
 
+.totalStatsCard {
+  margin-top: 20px;
+  padding: 14px 22px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  max-width: 300px;
+  font-weight: 600;
+}
+
+.totalStatsLabel {
+  color: #555;
+}
+
+.totalStatsValue {
+  font-size: 1.4rem;
+  color: #2a75bb;
+}
+
 /*PHOTOS PAGE*/
 .modeToggle {
   margin-bottom: 16px;

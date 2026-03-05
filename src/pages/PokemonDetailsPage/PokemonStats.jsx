@@ -41,6 +41,8 @@ export const PokemonStats = () => {
     setStatNums(statNumArrToPopulate);
   }
 
+  const totalBaseStats = statNums.reduce((sum, stat) => sum + stat, 0);
+
   return (
     <div className="statsPageContainer">
       <h1 className="statsTitle">{firstLetterUpperCase(pokemon.name)} Stats</h1>
@@ -111,6 +113,10 @@ export const PokemonStats = () => {
           />
         </div>
       )}
+      <div className="totalStatsCard">
+        <span className="totalStatsLabel">Total Base Stats</span>
+        <span className="totalStatsValue">{totalBaseStats}</span>
+      </div>
     </div>
   );
 };
