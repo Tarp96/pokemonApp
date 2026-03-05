@@ -1171,6 +1171,10 @@
   .chartCard {
     padding: 16px;
   }
+
+  .statsTitle {
+    display: none;
+  }
   /*STAT PAGE END*/
 }
 
