@@ -31,16 +31,15 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
 
   if (currentPage > 1) {
     pageButtons.push(
-      <button key="prev" onClick={() => onPageChange(currentPage - 1)}>
+      <button
+        key="prev"
+        onClick={() => onPageChange(currentPage - 1)}
+        className="paginationButton"
+      >
         <img
           src="/assets/pokeb.png"
           alt="Pokeball"
-          style={{
-            width: "20px",
-            height: "auto",
-            marginRight: "8px",
-            verticalAlign: "middle",
-          }}
+          className="paginationButtonImage"
         />
         Prev
       </button>,
@@ -61,7 +60,11 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
 
   if (currentPage < totalPages) {
     pageButtons.push(
-      <button key="next" onClick={() => onPageChange(currentPage + 1)}>
+      <button
+        key="next"
+        onClick={() => onPageChange(currentPage + 1)}
+        className="paginationButton"
+      >
         Next
         <img
           src="/assets/pokeb.png"
