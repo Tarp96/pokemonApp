@@ -175,10 +175,13 @@ body {
   width: 100%;
   max-width: 300px;
   margin: 0 auto;
+  display: flex;
+  gap: 10px;
+  align-items: center;
 }
 
 .searchBarAndClearBtn input {
-  width: 100%;
+  flex: 1;
   padding: 10px 40px 10px 12px;
   font-size: 16px;
   border: 1px solid #ccc;
@@ -2406,6 +2409,70 @@ body {
     padding: 0.35rem 0.8rem;
   }
   /*HOME PAGE HEADER END*/
+
+  /*SEARCH SECTION*/
+  .searchBarContainer {
+    max-width: 250px;
+  }
+
+  .searchBarDiv {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .searchBarAndClearBtn input {
+    padding: 8px 12px;
+    font-size: 15px;
+  }
+
+  .searchBarButton {
+    padding: 8px 12px;
+    font-size: 14px;
+  }
+
+  .randomPokemonButton {
+    padding: 8px 14px;
+    font-size: 14px;
+    max-width: 220px;
+  }
+
+  .searchHistoryList {
+    max-width: 240px;
+  }
+
+  .searchHistoryItem {
+    padding: 6px 10px;
+    font-size: 14px;
+  }
+
+  .searchHistoryPokeball {
+    width: 18px;
+  }
+
+  .prevSearchesTitle {
+    font-size: 14px;
+  }
+
+  /*SEARCH SECTION END*/
+
+  /*FILTER BY TYPE BUTTONS*/
+  .filterButtonContainer {
+    width: 100%;
+    max-width: 320px;
+    justify-content: center;
+  }
+
+  .filterButtonContainer button {
+    max-width: 120px;
+    font-size: 13px;
+    padding: 6px 10px;
+  }
+
+  .filterButtonContainer button img {
+    display: none;
+  }
+  /*FILTER BY TYPE BUTTONS END*/
 
   .uiCard {
     min-width: 340px;
