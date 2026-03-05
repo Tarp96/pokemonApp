@@ -61,6 +61,7 @@ export const PokemonStats = () => {
                 type: "bar",
                 height: 700,
               },
+              colors: statColors,
               grid: {
                 padding: {
                   top: 0,
@@ -70,6 +71,7 @@ export const PokemonStats = () => {
               plotOptions: {
                 bar: {
                   borderRadius: 4,
+                  distributed: true,
                 },
               },
               dataLabels: {
