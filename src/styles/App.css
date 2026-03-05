@@ -2556,6 +2556,46 @@ body {
   }
   /*PAGINATION END*/
 
+  /*GRID*/
+  .pokemonGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    max-width: 100%;
+    padding: 10px;
+    max-height: none;
+  }
+
+  .pokemon-card {
+    max-width: 90%;
+    padding: 10px;
+    margin: 0;
+  }
+
+  .displayCardPokemonSprite {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 10px;
+  }
+
+  .pokemon-card h3 {
+    font-size: 1rem;
+  }
+
+  .pokemon-card p {
+    font-size: 0.8rem;
+  }
+
+  .linkToDetailsPageButton {
+    font-size: 12px;
+    padding: 5px 10px;
+  }
+
+  .pokemon-card:hover {
+    transform: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  /*GRID END*/
+
   .uiCard {
     min-width: 340px;
     margin: 6px 6px;
