@@ -39,7 +39,7 @@ export const PokemonStats = () => {
         <div className="chartCard">
           <ReactApexChart
             type="bar"
-            width={800}
+            width="100%"
             height={400}
             series={[
               {
@@ -68,6 +68,9 @@ export const PokemonStats = () => {
               },
               xaxis: {
                 categories: statNames,
+                labels: {
+                  rotate: -20,
+                },
               },
               yaxis: {
                 min: 0,
@@ -78,6 +81,21 @@ export const PokemonStats = () => {
                   },
                 },
               },
+              responsive: [
+                {
+                  breakpoint: 480,
+                  options: {
+                    chart: {
+                      height: 300,
+                    },
+                    xaxis: {
+                      labels: {
+                        rotate: -30,
+                      },
+                    },
+                  },
+                },
+              ],
             }}
           />
         </div>

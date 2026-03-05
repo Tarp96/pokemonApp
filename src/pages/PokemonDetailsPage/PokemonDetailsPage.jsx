@@ -176,9 +176,9 @@ export const PokemonDetailsPage = () => {
         links={[
           { path: "", label: "Overview" },
           { path: "stats", label: "Stats" },
-          { path: "photos", label: "Photos" },
-          { path: "games", label: "Games" },
           { path: "moves", label: "Moves" },
+          { path: "games", label: "Games" },
+          { path: "photos", label: "Photos" },
         ]}
       />
 

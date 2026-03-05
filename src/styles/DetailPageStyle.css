@@ -840,7 +840,8 @@
 
 .chartCard {
   height: auto;
-  width: fit-content;
+  width: 100%;
+  max-width: 900px;
   padding: 20px 30px;
   box-sizing: border-box;
   background-color: #fff;
@@ -1157,7 +1158,20 @@
   }
   /*DETAIL PAGE OVERVIEW MIDDLE SECTION END*/
 
-  /*DETAIL PAGE OVERVIEW PAGE END*/
+  /*STAT PAGE*/
+  .statsPageContainer {
+    padding: 20px 10px;
+  }
+
+  .statsTitle {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+  }
+
+  .chartCard {
+    padding: 16px;
+  }
+  /*STAT PAGE END*/
 }
 
 /*MEDIA QUERIES END*/
