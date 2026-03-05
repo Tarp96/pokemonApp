@@ -1199,6 +1199,70 @@
     display: none;
   }
   /*STAT PAGE END*/
+
+  /*MOVES PAGE*/
+
+  .movesHeader {
+    display: none;
+  }
+
+  .movesTable {
+    table-layout: fixed;
+    width: 100%;
+  }
+
+  .movesTable td {
+    padding: 6px 8px;
+
+    word-break: break-word;
+  }
+
+  .movesTable th {
+    font-size: 0.75rem;
+    letter-spacing: 0.3px;
+  }
+
+  .movesTable th:nth-child(3),
+  .movesTable td:nth-child(3) {
+    display: none;
+  }
+
+  .movesTable th:nth-child(5),
+  .movesTable td:nth-child(5) {
+    display: none;
+  }
+
+  .movesTable th:nth-child(7),
+  .movesTable td:nth-child(7) {
+    display: none;
+  }
+
+  .movesTable th,
+  .movesTable td {
+    padding: 6px 8px;
+    word-break: break-word;
+  }
+  .movesTable th {
+    font-size: 0.6rem;
+    letter-spacing: 0.4px;
+  }
+
+  .movesTable td {
+    font-size: 0.85rem;
+  }
+
+  .typeBadge.detail {
+    font-size: 0.7rem;
+    padding: 2px 6px;
+    gap: 3px;
+  }
+
+  .typeBadge.detail img,
+  .typeBadge.detail svg {
+    display: none;
+  }
+
+  /*MOVES PAGE END*/
 }
 
 /*MEDIA QUERIES END*/
