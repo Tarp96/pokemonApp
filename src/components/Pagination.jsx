@@ -26,7 +26,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
           }}
         />
         Prev
-      </button>
+      </button>,
     );
   }
 
@@ -38,7 +38,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
         className={i === currentPage ? "active-page" : ""}
       >
         {i}
-      </button>
+      </button>,
     );
   }
 
@@ -51,7 +51,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
           alt="Pokeball"
           className="paginationButtonImage"
         />
-      </button>
+      </button>,
     );
   }
 

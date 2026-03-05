@@ -2537,6 +2537,24 @@ body {
   }
   /*FILTER BY TYPE BUTTONS END*/
 
+  /*PAGINATION*/
+  .pagination-container {
+    gap: 4px;
+    margin-top: 16px;
+    border-width: 1.5px;
+  }
+
+  .pagination-container button {
+    padding: 6px 10px;
+    font-size: 12px;
+  }
+
+  .paginationButtonImage {
+    width: 16px;
+    margin-right: 4px;
+  }
+  /*PAGINATION END*/
+
   .uiCard {
     min-width: 340px;
     margin: 6px 6px;
