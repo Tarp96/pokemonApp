@@ -162,7 +162,7 @@ export const PokemonDetailsPage = () => {
   return loading ? (
     <p>Loading...</p>
   ) : (
-    <div className="detailsPageContainer">
+    <div className="detailsPageContainer" {...swipeHandlers}>
       <div className="detailsPageHeader">
         <NavLink to={from} className="navigateBackButton">
           <FaArrowLeft className="backIcon" />
