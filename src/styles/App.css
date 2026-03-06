@@ -141,25 +141,29 @@ body {
   background: none;
   cursor: pointer;
   padding: 0;
+  display: flex;
+  align-items: center;
 }
 
 .profileAvatarImg {
-  width: 40px;
-  height: 40px;
+  width: 48px;
+  height: 48px;
   border-radius: 50%;
   object-fit: cover;
 
-  border: 2px solid rgba(255, 255, 255, 0.7);
+  border: 3px solid #ffcc01;
+  box-shadow: 0 0 8px rgba(255, 204, 1, 0.6);
   transition: transform 0.2s ease;
 }
 
 .profileAvatarImg:hover {
   transform: scale(1.1);
+  border-color: #fff176;
 }
 
 .profileDropdown {
   position: absolute;
-  top: 50px;
+  top: 58px;
   right: 0;
 
   display: flex;
