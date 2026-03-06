@@ -131,6 +131,65 @@ body {
   border-color: rgba(0, 0, 0, 0.2);
 }
 
+.profileMenuWrapper {
+  position: relative;
+}
+
+.profileAvatarBtn {
+  border: none;
+  background: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.profileAvatarImg {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+
+  border: 2px solid rgba(255, 255, 255, 0.7);
+  transition: transform 0.2s ease;
+}
+
+.profileAvatarImg:hover {
+  transform: scale(1.1);
+}
+
+.profileDropdown {
+  position: absolute;
+  top: 50px;
+  right: 0;
+
+  display: flex;
+  flex-direction: column;
+
+  background: rgba(0, 0, 0, 0.85);
+  border-radius: 10px;
+  padding: 0.4rem;
+
+  min-width: 140px;
+  z-index: 100;
+}
+
+.dropdownItem {
+  padding: 0.6rem 1rem;
+  text-align: left;
+
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.dropdownItem:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 6px;
+}
+
 .mainContent {
   padding-top: 50px;
 }
