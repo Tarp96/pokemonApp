@@ -9,6 +9,7 @@ import { firstLetterUpperCase } from "../../utils/helperFunctions";
 import { FaArrowLeft } from "react-icons/fa6";
 import { PageNavigationBar } from "../../components/PageNavigationbar";
 import PrevNextMonButton from "../../components/PrevNextMonButton";
+import useSwipe from "./../../hooks/useSwipe";
 
 export const PokemonDetailsPage = () => {
   const { name } = useParams();
