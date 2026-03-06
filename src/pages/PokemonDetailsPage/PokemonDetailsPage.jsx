@@ -23,6 +23,11 @@ export const PokemonDetailsPage = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || "/";
 
+  const swipeHandlers = useSwipe({
+    onSwipeLeft: () => navigate(`/pokemon/${nextId}`),
+    onSwipeRight: () => navigate(`/pokemon/${prevId}`),
+  });
+
   useEffect(() => {
     if (!pokemon?.id) return;
     let cancelled = false;
