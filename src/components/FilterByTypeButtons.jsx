@@ -6,7 +6,7 @@ import { useState } from "react";
 export const FilterByTypeButtons = ({ filterByTypeFunc, activeFilter }) => {
   const myObj = typeColors;
 
-  const [showFilters, setShowFilters] = useState(false);
+  const [showFilters, setShowFilters] = useState(window.innerWidth > 480);
 
   return (
     <>
