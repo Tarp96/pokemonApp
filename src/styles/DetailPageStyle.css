@@ -1291,6 +1291,21 @@
     font-size: 0.85rem;
   }
   /*GAMES PAGE END*/
+
+  /*PHOTOS PAGE */
+  .modeButton {
+    padding: 6px 14px;
+    font-size: 0.9rem;
+    border-radius: 5px;
+  }
+
+  .modeToggle {
+    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+  }
+  /*PHOTOS PAGE END*/
 }
 
 /*MEDIA QUERIES END*/
