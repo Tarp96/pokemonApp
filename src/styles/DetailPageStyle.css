@@ -1269,8 +1269,28 @@
   .typeBadge.detail svg {
     display: none;
   }
-
   /*MOVES PAGE END*/
+
+  /*GAMES PAGE*/
+
+  .gamePageTitle {
+    display: none;
+  }
+
+  .gamePageContainer {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    padding: 10px;
+  }
+
+  .gameCard {
+    padding: 8px;
+  }
+
+  .gameCard p {
+    font-size: 0.85rem;
+  }
+  /*GAMES PAGE END*/
 }
 
 /*MEDIA QUERIES END*/
