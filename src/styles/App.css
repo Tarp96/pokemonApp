@@ -168,7 +168,7 @@ body {
   border: 1px solid #ddd;
   border-radius: 8px;
   outline: none;
-  max-width: 250px;
+  max-width: 350px;
 }
 
 .searchBarDiv input:focus {
@@ -221,7 +221,7 @@ body {
 
 .searchBarButton {
   padding: 10px 16px;
-  font-size: 16px;
+  font-size: 12px;
   font-weight: 600;
   background: linear-gradient(to bottom right, #ffcb05, #ffdf70);
   color: #2a2a2a;
