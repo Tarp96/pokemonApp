@@ -1,5 +1,6 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/authContext/AuthContext";
+import { useState } from "react";
 
 export const Header = () => {
   let navigate = useNavigate();
