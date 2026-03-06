@@ -6,6 +6,12 @@ export const Header = () => {
   let navigate = useNavigate();
   const { userLoggedIn, logout } = useAuth();
 
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setMenuOpen(!menuOpen);
+  };
+
   return (
     <header className="headerContainer">
       <div className="headerLeft">
