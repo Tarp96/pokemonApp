@@ -2657,15 +2657,20 @@ body {
     font-size: 0.9rem;
   }
 
+  .uiAuthLink {
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    border-radius: 6px;
+    padding: 6px 10px;
+    display: inline-block;
+  }
+
+  .uiAuthLink:active {
+    background-color: rgba(0, 0, 0, 0.08);
+  }
+
   .uiAuthLinkText {
     margin: 0;
     padding: 0;
-  }
-
-  .uiAuthLink {
-    margin: 0;
-    padding: 0;
-    padding-bottom: 8px;
   }
 
   .gameStartPageContainer .uiCard,
