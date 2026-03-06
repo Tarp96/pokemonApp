@@ -7,10 +7,25 @@ export const Header = () => {
   const { userLoggedIn, logout } = useAuth();
 
   const [menuOpen, setMenuOpen] = useState(false);
+  const menuRef = useRef(null);
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
+
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setMenuOpen(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
 
   return (
     <header className="headerContainer">
@@ -47,7 +62,7 @@ export const Header = () => {
         )}
 
         {userLoggedIn && (
-          <div className="profileMenuWrapper">
+          <div className="profileMenuWrapper" ref={menuRef}>
             <button className="profileAvatarBtn" onClick={toggleMenu}>
               <img
                 src="https://boxchatter.wordpress.com/wp-content/uploads/2013/06/pkmn-trainer-red.jpg"
