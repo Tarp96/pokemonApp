@@ -24,8 +24,8 @@ export const listenToHighScore = (uid, callback) => {
 export const updateHighScore = async (uid, score) => {
   const userRef = doc(db, "users", uid);
 
-  const snapShot = await getDoc(useRef);
-  const currentHighScore = snapshotEqual.data()?.highScore ?? 0;
+  const snapShot = await getDoc(userRef);
+  const currentHighScore = snapShot.data()?.highScore ?? 0;
 
   if (currentHighScore >= score) {
     throw new Error("Not enough to beat the current highscore!");
