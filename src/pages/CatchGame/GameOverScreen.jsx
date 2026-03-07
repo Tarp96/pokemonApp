@@ -5,6 +5,7 @@ import {
   listenToHighScore,
   updateHighScore,
 } from "../../services/highScoreService";
+import confetti from "canvas-confetti";
 
 export const GameOverScreen = ({
   score,
