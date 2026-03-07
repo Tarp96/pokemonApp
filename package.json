@@ -12,6 +12,7 @@
   "dependencies": {
     "@vitejs/plugin-rsc": "^0.5.9",
     "apexcharts": "^5.3.3",
+    "canvas-confetti": "^1.9.4",
     "firebase": "^12.1.0",
     "he": "^1.2.0",
     "howler": "^2.2.4",
