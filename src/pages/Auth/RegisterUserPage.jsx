@@ -39,6 +39,7 @@ const RegisterUserPage = () => {
         email: user.email,
         coins: 600,
         coinsSpent: 0,
+        highScore: 0,
         createdAt: new Date(),
       });
 
