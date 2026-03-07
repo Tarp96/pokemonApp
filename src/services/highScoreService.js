@@ -14,9 +14,9 @@ export const getUserHighScore = async (uid) => {
 export const listenToHighScore = (uid, callback) => {
   const userRef = doc(db, "users", uid);
 
-  return onSnapshot(userRef, (docSnap) => {
-    if (docSnap.exists()) {
-      callback(docSnap.data().highScore ?? 0);
+  return onSnapshot(userRef, (snapshot) => {
+    if (snapshot.exists()) {
+      callback(snapshot.data().highScore ?? 0);
     }
   });
 };
@@ -28,10 +28,10 @@ export const updateHighScore = async (uid, score) => {
   const currentHighScore = snapShot.data()?.highScore ?? 0;
 
   if (currentHighScore >= score) {
-    throw new Error("Not enough to beat the current highscore!");
+    return false;
   }
 
-  await updateDoc(useRef, {
+  await updateDoc(userRef, {
     highScore: score,
   });
 
