@@ -62,14 +62,19 @@ export const GameOverScreen = ({
   }, [coinsEarned]);
 
   useEffect(() => {
-    const updateHighScore = async () => {
+    const handleHighScoreUpdate = async () => {
       try {
+        const user = auth.currentUser;
+        if (!user) return;
+
         await updateHighScore(user.uid, score);
       } catch (err) {
         console.error("Failed to update high score", err);
       }
     };
-  }, [userHighScore]);
+
+    handleHighScoreUpdate();
+  }, [score]);
 
   return (
     <div className="gameOverContainer">
