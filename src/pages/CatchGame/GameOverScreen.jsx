@@ -1,6 +1,7 @@
 import { auth } from "../../firebaseConfig";
 import { useState, useEffect, useRef } from "react";
 import { addCoins, listenToCoins } from "../../services/coinService";
+import { listenToHighScore } from "../../services/highScoreService";
 
 export const GameOverScreen = ({
   score,
@@ -11,6 +12,7 @@ export const GameOverScreen = ({
 }) => {
   const [userCoins, setUserCoins] = useState(null);
   const [animateStats, setAnimateStats] = useState(false);
+  const [userHighScore, setUserHighScore] = useState(null);
 
   const rewardedRef = useRef(false);
 
@@ -31,6 +33,14 @@ export const GameOverScreen = ({
   }, []);
 
   useEffect(() => {
+    const user = auth.currentUser;
+    if (!user) return;
+
+    const unsubscribe = listenToHighScore(user.uid, setUserHighScore);
+    return () => unsubscribe();
+  }, []);
+
+  useEffect(() => {
     const rewardCoins = async () => {
       if (rewardedRef.current || coinsEarned <= 0) return;
       rewardedRef.current = true;
@@ -47,6 +57,8 @@ export const GameOverScreen = ({
 
     rewardCoins();
   }, [coinsEarned]);
+
+  useEffect(() => {}, [userHighScore]);
 
   return (
     <div className="gameOverContainer">
