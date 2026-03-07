@@ -3,6 +3,7 @@ import { auth, db } from "../firebaseConfig";
 import { doc, getDoc } from "firebase/firestore";
 import { listenToCoins } from "../services/coinService";
 import { getTeamSize, getUserTeam } from "../services/teamService";
+import { listenToHighScore } from "../services/highScoreService";
 
 export const useProfileData = () => {
   const [username, setUsername] = useState("");
@@ -10,6 +11,7 @@ export const useProfileData = () => {
   const [coinsSpent, setCoinsSpent] = useState(null);
   const [teamSize, setTeamSize] = useState(null);
   const [team, setTeam] = useState([]);
+  const [highScore, setHighScore] = useState(null);
 
   useEffect(() => {
     const user = auth.currentUser;
@@ -35,9 +37,14 @@ export const useProfileData = () => {
 
     fetchData();
 
-    const unsubscribe = listenToCoins(user.uid, setCoinBalance);
-    return () => unsubscribe();
+    const unsubscribeCoins = listenToCoins(user.uid, setCoinBalance);
+    const unsubscribeHighScore = listenToHighScore(user.uid, setHighScore);
+
+    return () => {
+      unsubscribeCoins();
+      unsubscribeHighScore();
+    };
   }, []);
 
-  return { username, coinBalance, teamSize, coinsSpent, team };
+  return { username, coinBalance, teamSize, coinsSpent, team, highScore };
 };
