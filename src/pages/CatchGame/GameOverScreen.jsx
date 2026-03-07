@@ -16,6 +16,7 @@ export const GameOverScreen = ({
   const [userCoins, setUserCoins] = useState(null);
   const [animateStats, setAnimateStats] = useState(false);
   const [userHighScore, setUserHighScore] = useState(null);
+  const [isNewHighScore, setIsNewHighScore] = useState(false);
 
   const rewardedRef = useRef(false);
 
@@ -26,6 +27,14 @@ export const GameOverScreen = ({
 
     return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    if (userHighScore === null) return;
+
+    if (coinsEarned > userHighScore) {
+      setIsNewHighScore(true);
+    }
+  }, [userHighScore, coinsEarned]);
 
   useEffect(() => {
     const user = auth.currentUser;
@@ -86,7 +95,11 @@ export const GameOverScreen = ({
                 <span className="value">{score}</span>
               </div>
 
-              <div className="statRow" role="group" aria-label="High score">
+              <div
+                className={`statRow ${isNewHighScore ? "highScoreHighlight" : ""}`}
+                role="group"
+                aria-label="High score"
+              >
                 <span className="label">High Score</span>
                 <span className="value">{userHighScore}</span>
               </div>
