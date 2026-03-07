@@ -97,6 +97,10 @@ export const GameOverScreen = ({
               <div className="statRow" role="group" aria-label="Score">
                 <span className="label">Score</span>
                 <span className="value">{score}</span>
+              </div>
+
+              <div className="statRow" role="group" aria-label="High score">
+                <span className="label">High Score</span>
                 <span className="value">{userHighScore}</span>
               </div>
 
