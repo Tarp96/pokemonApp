@@ -1,7 +1,10 @@
 import { auth } from "../../firebaseConfig";
 import { useState, useEffect, useRef } from "react";
 import { addCoins, listenToCoins } from "../../services/coinService";
-import { listenToHighScore } from "../../services/highScoreService";
+import {
+  listenToHighScore,
+  updateHighScore,
+} from "../../services/highScoreService";
 
 export const GameOverScreen = ({
   score,
@@ -58,7 +61,15 @@ export const GameOverScreen = ({
     rewardCoins();
   }, [coinsEarned]);
 
-  useEffect(() => {}, [userHighScore]);
+  useEffect(() => {
+    const updateHighScore = async () => {
+      try {
+        await updateHighScore(user.uid, score);
+      } catch (err) {
+        console.error("Failed to update high score", err);
+      }
+    };
+  }, [userHighScore]);
 
   return (
     <div className="gameOverContainer">
@@ -81,6 +92,7 @@ export const GameOverScreen = ({
               <div className="statRow" role="group" aria-label="Score">
                 <span className="label">Score</span>
                 <span className="value">{score}</span>
+                <span className="value">{userHighScore}</span>
               </div>
 
               <div className="statRow" role="group" aria-label="Difficulty">
