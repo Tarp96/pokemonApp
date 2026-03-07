@@ -22,7 +22,7 @@ export const listenToHighScore = (uid, callback) => {
 };
 
 export const updateHighScore = async (uid, score) => {
-  const useRef = doc(db, "users", uid);
+  const userRef = doc(db, "users", uid);
 
   const snapShot = await getDoc(useRef);
   const currentHighScore = snapshotEqual.data()?.highScore ?? 0;
