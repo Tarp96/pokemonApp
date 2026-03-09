@@ -2567,6 +2567,54 @@ body {
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
 }
 
+.podiumContainer {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.podiumFirst,
+.podiumSecond,
+.podiumThird {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: white;
+  border-radius: 10px;
+  padding: 12px;
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.podiumFirst {
+  height: 140px;
+  background: linear-gradient(135deg, #ffd700, #ffcc00);
+}
+
+.podiumSecond {
+  height: 110px;
+  background: linear-gradient(135deg, #dcdcdc, #cfcfcf);
+}
+
+.podiumThird {
+  height: 95px;
+  background: linear-gradient(135deg, #cd7f32, #b56a2b);
+}
+
+.podiumPlace {
+  font-size: 28px;
+  margin-bottom: 6px;
+}
+
+.podiumName {
+  font-weight: 600;
+}
+
+.podiumScore {
+  font-size: 14px;
+}
+
 .leaderboardPageTitle {
   text-align: center;
   margin-bottom: 25px;
