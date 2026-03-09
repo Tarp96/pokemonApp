@@ -21,9 +21,6 @@ export const GameOverScreen = ({
   const [userHighScore, setUserHighScore] = useState(null);
   const [isNewHighScore, setIsNewHighScore] = useState(false);
 
-  const rewardedRef = useRef(false);
-  const leaderboardUpdatedRef = useRef(false);
-
   const { username } = useProfileData();
 
   useEffect(() => {
