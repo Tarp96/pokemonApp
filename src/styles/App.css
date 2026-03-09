@@ -2558,10 +2558,61 @@ body {
 
 /*LEADERBOARD PAGE*/
 .leaderboardPageContainer {
-  background-color: white;
+  background: white;
   max-width: 600px;
   width: 60%;
-  margin: 0 auto;
+  margin: 40px auto;
+  padding: 30px;
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+}
+
+.leaderboardPageTitle {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 1.8rem;
+  font-weight: 700;
+}
+
+.leaderboardPageList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.leaderboardListItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 14px 18px;
+  margin-bottom: 10px;
+
+  border-radius: 10px;
+  background: #f7f7f7;
+
+  font-weight: 500;
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.leaderboardListItem:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+}
+
+.leaderboardListItem:nth-child(1) {
+  background: linear-gradient(135deg, #ffd700, #ffcc00);
+  font-weight: 700;
+}
+
+.leaderboardListItem:nth-child(2) {
+  background: linear-gradient(135deg, #dcdcdc, #cfcfcf);
+}
+
+.leaderboardListItem:nth-child(3) {
+  background: linear-gradient(135deg, #cd7f32, #b56a2b);
 }
 /*LEADERBOARD PAGE END*/
 

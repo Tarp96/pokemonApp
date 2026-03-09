@@ -25,7 +25,8 @@ export const LeaderboardScreen = () => {
   return (
     <>
       <div className="leaderboardPageContainer">
-        <ol>{displayLeaderboard}</ol>
+        <h2 className="leaderboardPageTitle">Top 10</h2>
+        <ol className="leaderboardPageList">{displayLeaderboard}</ol>
       </div>
     </>
   );
