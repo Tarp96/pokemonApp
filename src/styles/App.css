@@ -2662,18 +2662,6 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
-.leaderboardListItem:nth-child(1) {
-  background: linear-gradient(135deg, #ffd700, #ffcc00);
-  font-weight: 700;
-}
-
-.leaderboardListItem:nth-child(2) {
-  background: linear-gradient(135deg, #dcdcdc, #cfcfcf);
-}
-
-.leaderboardListItem:nth-child(3) {
-  background: linear-gradient(135deg, #cd7f32, #b56a2b);
-}
 /*LEADERBOARD PAGE END*/
 
 @media (max-width: 480px) {

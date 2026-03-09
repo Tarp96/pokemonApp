@@ -62,7 +62,7 @@ export const LeaderboardScreen = () => {
   return (
     <>
       <div className="leaderboardPageContainer">
-        <h2 className="leaderboardPageTitle">Top 10</h2>
+        <h2 className="leaderboardPageTitle">🏆 Top 10 🏆 </h2>
         <div className="podiumContainer">
           {podium[1] && (
             <div className="podiumSecond">
