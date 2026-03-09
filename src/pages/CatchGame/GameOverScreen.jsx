@@ -36,24 +36,18 @@ export const GameOverScreen = ({
 
   useEffect(() => {
     if (userHighScore === null) return;
+    if (isNewHighScore) return;
 
-    console.log("userHighScore:", userHighScore);
-    console.log("coinsEarned:", coinsEarned);
-
-    if (coinsEarned >= userHighScore) {
+    if (coinsEarned > userHighScore) {
       setIsNewHighScore(true);
-    }
-  }, [userHighScore, coinsEarned]);
 
-  useEffect(() => {
-    if (userHighScore !== null && coinsEarned > userHighScore) {
       confetti({
         particleCount: 150,
         spread: 100,
         origin: { y: 0.6 },
       });
     }
-  }, [userHighScore]);
+  }, [userHighScore, coinsEarned, isNewHighScore]);
 
   useEffect(() => {
     const user = auth.currentUser;
