@@ -19,6 +19,7 @@ import RegisterUserPage from "./pages/Auth/RegisterUserPage";
 import { GamePageLayout } from "./pages/CatchGame/GamePageLayout";
 import { GamePage } from "./pages/CatchGame/GamePage";
 import { ProfileTeamPage } from "./pages/ProfilePage/ProfileTeamPage";
+import { LeaderboardScreen } from "./pages/CatchGame/LeaderboardScreen";
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
           </Route>
           <Route path="game" element={<GamePageLayout />}>
             <Route index element={<GamePage />} />
+            <Route path="leaderboard" element={<LeaderboardScreen />} />
           </Route>
         </Route>
 
