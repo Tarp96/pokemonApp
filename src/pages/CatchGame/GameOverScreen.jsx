@@ -1,5 +1,6 @@
 import { useGameOveLogic } from "../../hooks/useGameOverLogic";
 
+import { Link } from "react-router-dom";
 export const GameOverScreen = ({
   score,
   difficulty,
@@ -87,7 +88,9 @@ export const GameOverScreen = ({
                 Play Again
               </button>
 
-              <button className="uiButtonPrimary">🏆 Leaderboard</button>
+              <Link to="leaderboard" className="uiButtonPrimary">
+                🏆 Leaderboard
+              </Link>
             </div>
           </div>
         </div>
