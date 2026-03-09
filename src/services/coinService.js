@@ -19,6 +19,11 @@ export const getUserCoins = async (uid) => {
 export const addCoins = async (uid, amount) => {
   const userRef = doc(db, "users", uid);
 
+  if (typeof amount !== "number" || isNaN(amount)) {
+    console.error("Invalid coin amount:", amount);
+    return;
+  }
+
   await updateDoc(userRef, {
     coins: increment(amount),
   });

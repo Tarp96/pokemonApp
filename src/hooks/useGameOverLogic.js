@@ -9,7 +9,7 @@ import { useProfileData } from "./useProfileData";
 import { auth } from "../firebaseConfig";
 
 export const useGameOveLogic = (coinsEarned) => {
-  const [userCoins, setUserCoins] = useState(null);
+  const [userCoins, setUserCoins] = useState(0);
   const [animateStats, setAnimateStats] = useState(false);
   const [userHighScore, setUserHighScore] = useState(null);
   const [isNewHighScore, setIsNewHighScore] = useState(false);
@@ -46,7 +46,10 @@ export const useGameOveLogic = (coinsEarned) => {
     const user = auth.currentUser;
     if (!user) return;
 
-    const unsubscribe = listenToCoins(user.uid, setUserCoins);
+    const unsubscribe = listenToCoins(user.uid, (coins) => {
+      console.log("Coins received:", coins);
+      setUserCoins(coins ?? 0);
+    });
     return () => unsubscribe();
   }, []);
 
