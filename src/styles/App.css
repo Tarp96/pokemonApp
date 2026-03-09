@@ -2603,6 +2603,12 @@ body {
   font-weight: 600;
 }
 
+.leaderboardCurrentUser {
+  background: linear-gradient(135deg, #ffe082, #ffd54f);
+  font-weight: 700;
+  border: 2px solid #fbc02d;
+}
+
 .leaderboardListItem:hover {
   transform: translateY(-2px);
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);

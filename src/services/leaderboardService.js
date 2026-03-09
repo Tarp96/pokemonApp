@@ -1,5 +1,6 @@
 import { db } from "../firebaseConfig";
 import {
+  getDoc,
   doc,
   setDoc,
   collection,
@@ -8,6 +9,8 @@ import {
   limit,
   getDocs,
   onSnapshot,
+  where,
+  getCountFromServer,
 } from "firebase/firestore";
 
 export const updateLeaderboard = async (uid, username, score) => {
@@ -44,4 +47,28 @@ export const listenToLeaderboard = (callback) => {
     const leaderboard = snapshot.docs.map((doc) => doc.data());
     callback(leaderboard);
   });
+};
+
+export const getUserRank = async (uid) => {
+  const playerDoc = await getDoc(doc(db, "leaderboard", uid));
+
+  if (!playerDoc.exists()) {
+    return { rank: null, score: null };
+  }
+
+  const playerScore = playerDoc.data().score;
+
+  const betterScoresQuery = query(
+    collection(db, "leaderboard"),
+    where("score", ">", playerScore),
+  );
+
+  const snapshot = await getCountFromServer(betterScoresQuery);
+
+  const rank = snapshot.data().count + 1;
+
+  return {
+    rank: rank,
+    score: playerScore,
+  };
 };
