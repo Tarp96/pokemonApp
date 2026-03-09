@@ -16,8 +16,10 @@ export const LeaderboardScreen = () => {
 
   const displayLeaderboard = leaderboard.map((item, index) => {
     return (
-      <li key={index} className="leaderboardListItem">
-        {item.score} {item.username}
+      <li key={item.uid} className="leaderboardListItem">
+        <span className="leaderboardRank">{index + 1})</span>
+        <span className="leaderboardName">{item.username}</span>
+        <span className="leaderboardScore">{item.score} pts</span>
       </li>
     );
   });
