@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useGameOveLogic } from "../../hooks/useGameOverLogic";
 
 export const GameOverScreen = ({
   score,
@@ -7,6 +8,9 @@ export const GameOverScreen = ({
   coinsEarned,
   onPlayAgain,
 }) => {
+  const { userCoins, userHighScore, isNewHighScore, animateStats } =
+    useGameOveLogic();
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setAnimateStats(true);
