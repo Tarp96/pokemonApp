@@ -7,6 +7,7 @@ import {
 import confetti from "canvas-confetti";
 import { useProfileData } from "./useProfileData";
 import { auth } from "../firebaseConfig";
+import { updateLeaderboard } from "../services/leaderboardService";
 
 export const useGameOveLogic = (coinsEarned) => {
   const [userCoins, setUserCoins] = useState(0);
