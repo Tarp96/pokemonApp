@@ -1,6 +1,7 @@
 import { useGameOveLogic } from "../../hooks/useGameOverLogic";
 
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
 export const GameOverScreen = ({
   score,
   difficulty,
@@ -8,6 +9,8 @@ export const GameOverScreen = ({
   coinsEarned,
   onPlayAgain,
 }) => {
+  const navigate = useNavigate();
+
   const { userCoins, userHighScore, isNewHighScore, animateStats } =
     useGameOveLogic(coinsEarned);
 
@@ -88,9 +91,12 @@ export const GameOverScreen = ({
                 Play Again
               </button>
 
-              <Link to="leaderboard" className="uiButtonPrimary">
+              <button
+                className="uiButtonPrimary"
+                onClick={() => navigate("leaderboard")}
+              >
                 🏆 Leaderboard
-              </Link>
+              </button>
             </div>
           </div>
         </div>
