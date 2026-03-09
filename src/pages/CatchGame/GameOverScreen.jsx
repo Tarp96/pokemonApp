@@ -37,7 +37,10 @@ export const GameOverScreen = ({
   useEffect(() => {
     if (userHighScore === null) return;
 
-    if (coinsEarned > userHighScore) {
+    console.log("userHighScore:", userHighScore);
+    console.log("coinsEarned:", coinsEarned);
+
+    if (coinsEarned >= userHighScore) {
       setIsNewHighScore(true);
     }
   }, [userHighScore, coinsEarned]);
@@ -64,7 +67,13 @@ export const GameOverScreen = ({
     const user = auth.currentUser;
     if (!user) return;
 
-    const unsubscribe = listenToHighScore(user.uid, setUserHighScore);
+    console.log("Subscribing to high score for:", user.uid);
+
+    const unsubscribe = listenToHighScore(user.uid, (score) => {
+      console.log("High score received:", score);
+      setUserHighScore(score);
+    });
+
     return () => unsubscribe();
   }, []);
 
