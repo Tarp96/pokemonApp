@@ -2617,6 +2617,7 @@ body {
 
 .leaderboardPageTitle {
   text-align: center;
+  margin-top: 0;
   margin-bottom: 25px;
   font-size: 1.8rem;
   font-weight: 700;
