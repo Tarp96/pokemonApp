@@ -16,7 +16,7 @@ export const LeaderboardScreen = () => {
 
   const displayLeaderboard = leaderboard.map((item, index) => {
     return (
-      <li key={index}>
+      <li key={index} className="leaderboardListItem">
         {item.score} {item.username}
       </li>
     );
