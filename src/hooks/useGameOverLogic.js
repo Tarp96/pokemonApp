@@ -5,6 +5,8 @@ import {
   updateHighScore,
 } from "../services/highScoreService";
 import confetti from "canvas-confetti";
+import { useProfileData } from "./useProfileData";
+import { auth } from "../firebaseConfig";
 
 export const useGameOveLogic = (coinsEarned) => {
   const [userCoins, setUserCoins] = useState(null);
@@ -14,6 +16,16 @@ export const useGameOveLogic = (coinsEarned) => {
 
   const rewardedRef = useRef(false);
   const leaderboardUpdatedRef = useRef(false);
+
+  const { username } = useProfileData();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setAnimateStats(true);
+    }, 50);
+
+    return () => clearTimeout(timer);
+  }, []);
 
   useEffect(() => {
     if (userHighScore === null) return;
