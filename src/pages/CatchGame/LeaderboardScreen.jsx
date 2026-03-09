@@ -1,6 +1,6 @@
 import {
-  getLeaderboardTop10,
   getUserRank,
+  listenToLeaderboard,
 } from "../../services/leaderboardService";
 import { useState, useEffect } from "react";
 import { auth } from "../../firebaseConfig";
@@ -33,13 +33,11 @@ export const LeaderboardScreen = () => {
   }, [currentUid]);
 
   useEffect(() => {
-    const fetchLeaderboard = async () => {
-      const arr = await getLeaderboardTop10();
-      setLeaderboard(arr);
-      console.log(arr);
-    };
+    const unsubscribe = listenToLeaderboard((data) => {
+      setLeaderboard(data);
+    });
 
-    fetchLeaderboard();
+    return () => unsubscribe();
   }, []);
 
   const displayLeaderboard = restOfLeaderboard.map((item, index) => {
