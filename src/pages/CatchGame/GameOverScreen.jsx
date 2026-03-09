@@ -8,7 +8,7 @@ export const GameOverScreen = ({
   onPlayAgain,
 }) => {
   const { userCoins, userHighScore, isNewHighScore, animateStats } =
-    useGameOveLogic();
+    useGameOveLogic(coinsEarned);
 
   return (
     <div className="gameOverContainer">
