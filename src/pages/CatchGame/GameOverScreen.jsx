@@ -6,6 +6,8 @@ import {
   updateHighScore,
 } from "../../services/highScoreService";
 import confetti from "canvas-confetti";
+import { updateLeaderboard } from "../../services/leaderboardService";
+import { updateLeaderboard } from "./../../services/leaderboardService";
 
 export const GameOverScreen = ({
   score,
@@ -82,6 +84,24 @@ export const GameOverScreen = ({
 
     rewardCoins();
   }, [coinsEarned]);
+
+  useEffect(() => {
+    const user = auth.currentUser;
+    if (!user || !username || coinsEarned <= 0) return;
+
+    if (leaderboardUpdatedRef.current) return;
+    leaderboardUpdatedRef.current = true;
+
+    const addScore = async () => {
+      try {
+        await updateLeaderboard(user.uid, username, coinsEarned);
+      } catch (err) {
+        console.error("Failed to update leaderboard:", err);
+      }
+    };
+
+    addScore();
+  }, [coinsEarned, username]);
 
   return (
     <div className="gameOverContainer">
