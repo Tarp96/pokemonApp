@@ -7,7 +7,7 @@ import {
 } from "../../services/highScoreService";
 import confetti from "canvas-confetti";
 import { updateLeaderboard } from "../../services/leaderboardService";
-import { updateLeaderboard } from "./../../services/leaderboardService";
+import { useProfileData } from "../../hooks/useProfileData";
 
 export const GameOverScreen = ({
   score,
@@ -22,6 +22,9 @@ export const GameOverScreen = ({
   const [isNewHighScore, setIsNewHighScore] = useState(false);
 
   const rewardedRef = useRef(false);
+  const leaderboardUpdatedRef = useRef(false);
+
+  const { username } = useProfileData();
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -40,7 +43,7 @@ export const GameOverScreen = ({
   }, [userHighScore, coinsEarned]);
 
   useEffect(() => {
-    if (coinsEarned > userHighScore) {
+    if (userHighScore !== null && coinsEarned > userHighScore) {
       confetti({
         particleCount: 150,
         spread: 100,
@@ -86,6 +89,8 @@ export const GameOverScreen = ({
   }, [coinsEarned]);
 
   useEffect(() => {
+    if (!isNewHighScore) return;
+
     const user = auth.currentUser;
     if (!user || !username || coinsEarned <= 0) return;
 
@@ -95,13 +100,18 @@ export const GameOverScreen = ({
     const addScore = async () => {
       try {
         await updateLeaderboard(user.uid, username, coinsEarned);
+        console.log("Updating leaderboard with:", {
+          uid: user.uid,
+          username,
+          coinsEarned,
+        });
       } catch (err) {
         console.error("Failed to update leaderboard:", err);
       }
     };
 
     addScore();
-  }, [coinsEarned, username]);
+  }, [isNewHighScore, username, coinsEarned]);
 
   return (
     <div className="gameOverContainer">
