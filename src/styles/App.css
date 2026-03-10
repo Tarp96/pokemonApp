@@ -2652,6 +2652,11 @@ body {
   font-weight: 600;
 }
 
+.playerRankP {
+  display: flex;
+  justify-content: space-between;
+}
+
 .leaderboardCurrentUser {
   background: linear-gradient(135deg, #ffe082, #ffd54f);
   font-weight: 700;

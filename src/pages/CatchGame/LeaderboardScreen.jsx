@@ -17,6 +17,7 @@ export const LeaderboardScreen = () => {
   const { username } = useProfileData();
 
   const currentUid = auth.currentUser?.uid;
+  const isUserInTop10 = leaderboard.some((p) => p.uid === currentUid);
 
   useEffect(() => {
     const rankCalc = async () => {
@@ -87,14 +88,17 @@ export const LeaderboardScreen = () => {
           )}
         </div>
         <ol className="leaderboardPageList">{displayLeaderboard}</ol>
-        <div className="playerRankCard">
-          <h3>Your Rank</h3>
-          {userRank && playerScore !== null && (
-            <p>
-              {userRank}) {username} — {playerScore} pts
+        {!isUserInTop10 && (
+          <div className="playerRankCard">
+            <h3>Your Rank</h3>
+
+            <p className="leaderboardListItem">
+              <span className="leaderboardRank">{userRank})</span>
+              <span className="leaderboardName">{username}</span>
+              <span className="leaderboardScore">{playerScore} pts</span>
             </p>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     </>
   );
