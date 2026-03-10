@@ -2255,7 +2255,7 @@ body {
 
 .gameStartButtonContainer {
   margin-top: 28px;
-  padding-top: 16px;
+  padding-top: 24px;
   padding-bottom: 0;
   border-top: 1px solid rgba(0, 0, 0, 0.06);
 }
@@ -3169,7 +3169,7 @@ body {
     width: auto;
     padding: 16px 40px;
     border-radius: 999px;
-    margin: 0 auto;
+    margin: 24px auto;
     gap: 12px;
   }
 
