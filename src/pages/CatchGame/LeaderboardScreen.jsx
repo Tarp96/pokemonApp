@@ -4,37 +4,17 @@ import {
 } from "../../services/leaderboardService";
 import { useState, useEffect } from "react";
 import { auth } from "../../firebaseConfig";
-import { useProfileData } from "./../../hooks/useProfileData";
 import { useNavigate } from "react-router-dom";
 
 export const LeaderboardScreen = () => {
   const [leaderboard, setLeaderboard] = useState([]);
-  const [userRank, setUserRank] = useState();
-  const [playerScore, setPlayerScore] = useState(null);
 
   const navigate = useNavigate();
 
   const podium = leaderboard.slice(0, 3);
   const restOfLeaderboard = leaderboard.slice(3);
 
-  const { username } = useProfileData();
-
   const currentUid = auth.currentUser?.uid;
-  const isUserInTop10 = leaderboard.some((p) => p.uid === currentUid);
-
-  useEffect(() => {
-    const rankCalc = async () => {
-      if (!currentUid) return;
-
-      const result = await getUserRank(currentUid);
-      console.log("Rank result:", result);
-
-      setUserRank(result.rank);
-      setPlayerScore(result.score);
-    };
-
-    rankCalc();
-  }, [currentUid]);
 
   useEffect(() => {
     const unsubscribe = listenToLeaderboard((data) => {
@@ -91,17 +71,6 @@ export const LeaderboardScreen = () => {
           )}
         </div>
         <ol className="leaderboardPageList">{displayLeaderboard}</ol>
-        {!isUserInTop10 && (
-          <div className="playerRankCard">
-            <h3>Your Rank</h3>
-
-            <p className="leaderboardListItem">
-              <span className="leaderboardRank">{userRank})</span>
-              <span className="leaderboardName">{username}</span>
-              <span className="leaderboardScore">{playerScore} pts</span>
-            </p>
-          </div>
-        )}
 
         <div className="leaderboardNavContainer">
           <button
