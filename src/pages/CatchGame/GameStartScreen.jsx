@@ -1,5 +1,6 @@
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { useProfileData } from "../../hooks/useProfileData";
 
 export const GameStartScreen = ({
   selectedDifficulty,
