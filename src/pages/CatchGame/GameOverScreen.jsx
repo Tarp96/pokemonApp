@@ -92,7 +92,7 @@ export const GameOverScreen = ({
               </button>
 
               <button
-                className="uiButtonPrimary"
+                className="uiButtonPrimary uiButtonSecondary"
                 onClick={() => navigate("leaderboard")}
               >
                 🏆 Leaderboard
