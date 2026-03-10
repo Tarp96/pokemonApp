@@ -1694,7 +1694,7 @@ body {
   background: linear-gradient(135deg, #ffcb05, #ffdf70);
   color: #1f2937;
 
-  border: 2.5px solid #3b4cca;
+  border: 3px solid #3b4cca;
   border-radius: 999px;
 
   cursor: pointer;
@@ -3220,7 +3220,7 @@ body {
     font-weight: 700;
     background: #4a90e2;
     color: white;
-    border: 3px solid white;
+    border: 3px solid #3b4cca;
     border-radius: 999px;
     cursor: pointer;
     transition: all 0.2s ease;
