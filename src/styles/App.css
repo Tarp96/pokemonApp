@@ -2329,6 +2329,32 @@ body {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
+.gameStartSecondaryBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 50%;
+  margin: 24px auto;
+  padding: 16px 40px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  background: #4a90e2;
+  color: white;
+  border: 3px solid #3b4cca;
+  border-radius: 999px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.gameStartSecondaryBtn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  background-color: white;
+  color: #4a90e2;
+  border-color: #4a90e2;
+}
+
 .gamePlayScreenContainer {
   background: #ffffff;
   border-radius: 24px;
@@ -2703,6 +2729,12 @@ body {
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
+.leaderboardNavContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+
 /*LEADERBOARD PAGE END*/
 
 @media (max-width: 480px) {
@@ -3005,6 +3037,12 @@ body {
     padding: 10px 22px;
   }
 
+  .gameStartSecondaryBtn {
+    font-size: 0.8rem;
+    font-weight: bold;
+    padding: 10px 25px;
+  }
+
   /*GAMEPLAY SCREEN*/
 
   .gamePlayScreenContainer {
@@ -3206,32 +3244,6 @@ body {
     border-radius: 999px;
     margin: 24px auto;
     gap: 12px;
-  }
-
-  .gameStartSecondaryBtn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    width: 50%;
-    margin: 24px auto;
-    padding: 16px 40px;
-    font-size: 1.1rem;
-    font-weight: 700;
-    background: #4a90e2;
-    color: white;
-    border: 3px solid #3b4cca;
-    border-radius: 999px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-  }
-
-  .gameStartSecondaryBtn:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
-    background-color: white;
-    color: #4a90e2;
-    border-color: #4a90e2;
   }
 
   .gameStartBtnIcon {

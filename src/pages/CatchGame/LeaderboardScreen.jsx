@@ -5,11 +5,14 @@ import {
 import { useState, useEffect } from "react";
 import { auth } from "../../firebaseConfig";
 import { useProfileData } from "./../../hooks/useProfileData";
+import { useNavigate } from "react-router-dom";
 
 export const LeaderboardScreen = () => {
   const [leaderboard, setLeaderboard] = useState([]);
   const [userRank, setUserRank] = useState();
   const [playerScore, setPlayerScore] = useState(null);
+
+  const navigate = useNavigate();
 
   const podium = leaderboard.slice(0, 3);
   const restOfLeaderboard = leaderboard.slice(3);
@@ -99,6 +102,15 @@ export const LeaderboardScreen = () => {
             </p>
           </div>
         )}
+
+        <div className="leaderboardNavContainer">
+          <button
+            className="uiButtonPrimary uiButtonSecondary"
+            onClick={() => navigate("/game")}
+          >
+            ⬅ Back to Game
+          </button>
+        </div>
       </div>
     </>
   );
