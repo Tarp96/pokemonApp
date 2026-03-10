@@ -1,6 +1,5 @@
 import { db } from "../firebaseConfig";
 import {
-  getDoc,
   doc,
   setDoc,
   collection,
@@ -9,8 +8,6 @@ import {
   limit,
   getDocs,
   onSnapshot,
-  where,
-  getCountFromServer,
 } from "firebase/firestore";
 
 export const updateLeaderboard = async (uid, username, score) => {
