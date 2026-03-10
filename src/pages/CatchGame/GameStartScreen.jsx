@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useProfileData } from "../../hooks/useProfileData";
+import { useNavigate } from "react-router-dom";
 
 export const GameStartScreen = ({
   selectedDifficulty,
@@ -10,6 +11,10 @@ export const GameStartScreen = ({
   isLoggedIn,
 }) => {
   const [showDifficultyError, setShowDifficultyError] = useState(false);
+
+  const navigate = useNavigate();
+
+  const { highScore } = useProfileData();
 
   useEffect(() => {
     if (shakeButtons && !selectedDifficulty) {
@@ -61,6 +66,11 @@ export const GameStartScreen = ({
                   <p className="uiAuthInfoText">
                     Catch the Pokémon that appears to earn coins.
                   </p>
+                </div>
+                <div className="startPageStats">
+                  <span className="statIcon">⭐</span>
+                  <span className="statLabel">Your High Score</span>
+                  <span className="statValue">{highScore} pts</span>
                 </div>
 
                 <div className="difficultySection">
@@ -124,6 +134,12 @@ export const GameStartScreen = ({
                       alt="pokeball icon"
                       className="gameStartBtnIcon"
                     />
+                  </button>
+                  <button
+                    className="gameStartSecondaryBtn"
+                    onClick={() => navigate("leaderboard")}
+                  >
+                    Leaderboard
                   </button>
                 </div>
               </div>

@@ -1688,13 +1688,13 @@ body {
   gap: 10px;
 
   padding: 12px 28px;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 800;
 
   background: linear-gradient(135deg, #ffcb05, #ffdf70);
   color: #1f2937;
 
-  border: 3px solid #3b4cca;
+  border: 2.5px solid #3b4cca;
   border-radius: 999px;
 
   cursor: pointer;
@@ -2096,6 +2096,30 @@ body {
 }
 .gameStartImageContainer {
   margin-bottom: 0px;
+}
+
+.startPageStats {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin: 0 auto;
+  margin-top: 16px;
+
+  font-weight: 600;
+  font-size: 16px;
+  color: #333;
+}
+
+.statIcon {
+  font-size: 18px;
+}
+
+.statLabel {
+  color: #666;
+}
+
+.statValue {
+  font-weight: 700;
 }
 
 /* Difficulty Section */
@@ -3146,7 +3170,7 @@ body {
 
   .gameStartIntro {
     padding-bottom: 24px;
-    margin-bottom: 24px;
+    margin-bottom: 4px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.06);
   }
 
@@ -3173,9 +3197,35 @@ body {
     gap: 12px;
   }
 
+  .gameStartSecondaryBtn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 50%;
+    margin: 24px auto;
+    padding: 16px 40px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    background: #4a90e2;
+    color: white;
+    border: 3px solid white;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+  }
+
+  .gameStartSecondaryBtn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    background-color: white;
+    color: #4a90e2;
+    border-color: #4a90e2;
+  }
+
   .gameStartBtnIcon {
-    width: 26px;
-    height: 26px;
+    width: 22px;
+    height: 22px;
     object-fit: contain;
     display: block;
   }
