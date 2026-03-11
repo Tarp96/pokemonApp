@@ -19,7 +19,12 @@ export const ProfilePage = () => {
             {firstLetterUpperCase(username) || "Trainer"}
           </h2>
 
-          <p className="trainerSubtitle">The best like no one ever was</p>
+          <p className="trainerSubtitle">
+            {" "}
+            Even if we don't understand each other, that is not a reason to
+            reject one another. There are two sides to every argument. Is there
+            a side that has the answer to everything?
+          </p>
         </div>
 
         <div className="trainerStatsList">

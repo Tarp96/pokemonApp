@@ -1162,6 +1162,8 @@ body {
 .trainerAvatarColumn {
   display: flex;
   justify-content: center;
+  align-items: flex-start;
+  padding-top: 0.5rem;
 }
 
 .trainerInfoContainer {
@@ -1180,6 +1182,8 @@ body {
 }
 
 .trainerDetails {
+  width: 100%;
+  border: solid 1px red;
   text-align: center;
 }
 
