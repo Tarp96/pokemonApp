@@ -13,25 +13,25 @@ export const ProfilePage = () => {
 
   return (
     <div className="profileLayout">
-      <div className="trainerStatsGrid">
-        <div className="trainerStatCard">
-          <h4>Pokémon Caught</h4>
-          <p>84</p>
+      <div className="trainerStatsList">
+        <div className="trainerStatRow">
+          <span>Pokémon Caught</span>
+          <span>84</span>
         </div>
 
-        <div className="trainerStatCard">
-          <h4>High Score</h4>
-          <p>{highScore ?? "unavailable"}</p>
+        <div className="trainerStatRow">
+          <span>High Score</span>
+          <span>{highScore ?? "unavailable"}</span>
         </div>
 
-        <div className="trainerStatCard">
-          <h4>Coins</h4>
-          <p>{coinBalance ?? "unavailable"}</p>
+        <div className="trainerStatRow">
+          <span>Coins</span>
+          <span>{coinBalance ?? "unavailable"}</span>
         </div>
 
-        <div className="trainerStatCard">
-          <h4>Coins Spent</h4>
-          <p>{coinsSpent ?? "unavailable"}</p>
+        <div className="trainerStatRow">
+          <span>Coins Spent</span>
+          <span>{coinsSpent ?? "unavailable"}</span>
         </div>
       </div>
 
