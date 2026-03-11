@@ -1148,10 +1148,22 @@ body {
 }
 .profileLayout {
   display: grid;
-  grid-template-columns: 1fr 320px;
+  grid-template-columns: 1fr 260px;
   gap: 2rem;
   align-items: start;
 }
+
+.trainerLeftColumn {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.trainerAvatarColumn {
+  display: flex;
+  justify-content: center;
+}
+
 .trainerInfoContainer {
   padding: 2rem;
   background-color: white;
@@ -1159,16 +1171,8 @@ body {
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
 }
 
-.trainerInfoHeader {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
 .trainerAvatar {
   width: 220px;
-  height: auto;
   border-radius: 12px;
   border: 3px solid #3b4cca;
   outline: 3px solid #ffcb05;
@@ -1189,9 +1193,8 @@ body {
 .trainerSubtitle {
   font-size: 1.1rem;
   color: #666;
-  margin-top: 0.3rem;
   font-style: italic;
-  max-width: 240px;
+  max-width: 420px;
 }
 
 .trainerSubtitle::before {

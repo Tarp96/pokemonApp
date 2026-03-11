@@ -13,39 +13,44 @@ export const ProfilePage = () => {
 
   return (
     <div className="profileLayout">
-      <div className="trainerStatsList">
-        <div className="trainerStatRow">
-          <span>Pokémon Caught</span>
-          <span>84</span>
+      <div className="trainerLeftColumn">
+        <div className="trainerDetails">
+          <h2 className="trainerName">
+            {firstLetterUpperCase(username) || "Trainer"}
+          </h2>
+
+          <p className="trainerSubtitle">The best there ever was</p>
         </div>
 
-        <div className="trainerStatRow">
-          <span>High Score</span>
-          <span>{highScore ?? "unavailable"}</span>
-        </div>
+        <div className="trainerStatsList">
+          <div className="trainerStatRow">
+            <span>Pokémon Caught</span>
+            <span>4</span>
+          </div>
 
-        <div className="trainerStatRow">
-          <span>Coins</span>
-          <span>{coinBalance ?? "unavailable"}</span>
-        </div>
+          <div className="trainerStatRow">
+            <span>High Score</span>
+            <span>{highScore ?? "unavailable"}</span>
+          </div>
 
-        <div className="trainerStatRow">
-          <span>Coins Spent</span>
-          <span>{coinsSpent ?? "unavailable"}</span>
+          <div className="trainerStatRow">
+            <span>Coins</span>
+            <span>{coinBalance ?? "unavailable"}</span>
+          </div>
+
+          <div className="trainerStatRow">
+            <span>Coins Spent</span>
+            <span>{coinsSpent ?? "unavailable"}</span>
+          </div>
         </div>
       </div>
 
-      <div className="trainerInfoHeader">
+      <div className="trainerAvatarColumn">
         <img
           src={`/assets/trainerAvatars/pt${avatarId}.webp`}
           alt="Trainer Avatar"
           className="trainerAvatar"
         />
-
-        <div className="trainerDetails">
-          <h2 className="trainerName">{firstLetterUpperCase(username)}</h2>
-          <p className="trainerSubtitle">The best like no one ever was!</p>
-        </div>
       </div>
     </div>
   );
