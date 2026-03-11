@@ -1146,7 +1146,12 @@ body {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   font-family: "Montserrat", sans-serif;
 }
-
+.profileLayout {
+  display: grid;
+  grid-template-columns: 1fr 320px;
+  gap: 2rem;
+  align-items: start;
+}
 .trainerInfoContainer {
   padding: 2rem;
   background-color: white;
@@ -1156,21 +1161,18 @@ body {
 
 .trainerInfoHeader {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-bottom: 2rem;
+  text-align: center;
 }
 
 .trainerAvatar {
-  width: 140px;
-  height: 140px;
-  border-radius: 50%;
-  object-fit: cover;
+  width: 220px;
+  height: auto;
+  border-radius: 12px;
   border: 3px solid #3b4cca;
   outline: 3px solid #ffcb05;
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
 }
 
 .trainerDetails {
@@ -1188,6 +1190,15 @@ body {
   font-size: 1.1rem;
   color: #666;
   margin-top: 0.3rem;
+  font-style: italic;
+  max-width: 240px;
+}
+
+.trainerSubtitle::before {
+  content: "“";
+}
+.trainerSubtitle::after {
+  content: "”";
 }
 
 .trainerStatsGrid {
