@@ -40,6 +40,8 @@ const RegisterUserPage = () => {
         coins: 600,
         coinsSpent: 0,
         highScore: 0,
+        quoteId: 1,
+        avatarId: 1,
         createdAt: new Date(),
       });
 
