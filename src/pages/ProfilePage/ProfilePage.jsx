@@ -1,14 +1,21 @@
 import { firstLetterUpperCase } from "../../utils/helperFunctions";
 import { useOutletContext } from "react-router-dom";
+import { useEffect } from "react";
 
 export const ProfilePage = () => {
-  const { username, coinBalance, coinsSpent, highScore } = useOutletContext();
+  const { username, coinBalance, coinsSpent, highScore, avatarId } =
+    useOutletContext();
+
+  useEffect(() => {
+    console.log("avatarId in ProfilePage:", avatarId);
+    console.log(`/assets/trainerAvatars/pt${avatarId}.webp`);
+  }, []);
 
   return (
     <div className="trainerInfoContainer">
       <div className="trainerInfoHeader">
         <img
-          src="https://boxchatter.wordpress.com/wp-content/uploads/2013/06/pkmn-trainer-red.jpg"
+          src={`/assets/trainerAvatars/pt${avatarId ?? 1}.webp`}
           alt="Trainer Avatar"
           className="trainerAvatar"
         />
