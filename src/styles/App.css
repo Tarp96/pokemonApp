@@ -1183,8 +1183,6 @@ body {
 
 .trainerDetails {
   width: 100%;
-  border: solid 1px red;
-  text-align: center;
 }
 
 .trainerName {
@@ -1195,10 +1193,14 @@ body {
 }
 
 .trainerSubtitle {
-  font-size: 1.1rem;
+  font-size: 1.15rem;
   color: #666;
   font-style: italic;
-  max-width: 420px;
+  max-width: 520px;
+  line-height: 1.5;
+  border-left: 4px solid #ffcb05;
+  padding-left: 1rem;
+  text-align: left;
 }
 
 .trainerSubtitle::before {
