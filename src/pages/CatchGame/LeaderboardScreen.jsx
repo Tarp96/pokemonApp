@@ -41,7 +41,19 @@ export const LeaderboardScreen = () => {
   return (
     <>
       <div className="leaderboardPageContainer">
-        <h2 className="leaderboardPageTitle">🏆 Top 10 🏆 </h2>
+        <div className="leaderboardTitleContainer">
+          <img
+            src="/assets/pokeTrophy.png"
+            alt="Golden trophy"
+            className="leaderboardTrophyPic"
+          />
+          <h2 className="leaderboardPageTitle"> Top 10 </h2>
+          <img
+            src="/assets/pokeTrophy.png"
+            alt="Golden trophy"
+            className="leaderboardTrophyPic"
+          />
+        </div>
         <div className="podiumContainer">
           {podium[1] && (
             <div className="podiumSecond">

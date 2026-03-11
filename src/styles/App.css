@@ -2676,10 +2676,23 @@ body {
   font-size: 14px;
 }
 
-.leaderboardPageTitle {
-  text-align: center;
-  margin-top: 0;
+.leaderboardTitleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
   margin-bottom: 25px;
+}
+
+.leaderboardTrophyPic {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+.leaderboardPageTitle {
+  margin: 0;
   font-size: 1.8rem;
   font-weight: 700;
 }
