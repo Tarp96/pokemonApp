@@ -1207,26 +1207,31 @@ body {
 .trainerStatsList {
   display: flex;
   flex-direction: column;
-  gap: 0.8rem;
+  gap: 1rem;
 }
 
 .trainerStatRow {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.8rem 1rem;
+  padding: 1.1rem 1.3rem;
   border-bottom: 2px solid #f0f0f0;
-  font-size: 1rem;
 }
 
 .trainerStatRow span:first-child {
   font-weight: 600;
+  font-size: 1.1rem;
   color: #555;
 }
 
 .trainerStatRow span:last-child {
   font-weight: 700;
+  font-size: 1.35rem;
   color: #3b4cca;
+}
+
+.trainerStatRow:last-child {
+  border-bottom: none;
 }
 
 /*TEAM CARD*/

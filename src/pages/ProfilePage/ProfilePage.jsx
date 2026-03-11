@@ -19,7 +19,7 @@ export const ProfilePage = () => {
             {firstLetterUpperCase(username) || "Trainer"}
           </h2>
 
-          <p className="trainerSubtitle">The best there ever was</p>
+          <p className="trainerSubtitle">The best like no one ever was</p>
         </div>
 
         <div className="trainerStatsList">
