@@ -144,7 +144,7 @@ export const GamePlayScreen = ({ difficulty, onReset }) => {
             onClick={handlePokemonClick}
           >
             <img
-              src="/assets/gengar.png"
+              src="/assets/gengar.webp"
               alt="Gengar"
               className={`gamePokemon ${hit ? "hit" : ""}`}
             />
