@@ -1339,9 +1339,11 @@ body {
 
 .trainerAvatarColumn {
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: flex-start;
   padding-top: 0.5rem;
+  margin-left: 25px;
+  gap: 8px;
 }
 
 .trainerInfoContainer {
