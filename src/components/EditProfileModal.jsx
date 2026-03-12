@@ -13,13 +13,17 @@ export const EditProfileModal = ({
   currentQuoteId,
   onClose,
 }) => {
+  const [saving, setSaving] = useState(false);
   const [selectedAvatar, setSelectedAvatar] = useState(currentAvatarId);
   const [selectedQuote, setSelectedQuote] = useState(currentQuoteId);
 
   const handleSave = async () => {
+    setSaving(true);
+
     await updateUserAvatar(userId, selectedAvatar);
     await updateUserQuote(userId, selectedQuote);
 
+    setSaving(false);
     onClose();
   };
 
@@ -66,8 +70,8 @@ export const EditProfileModal = ({
 
         <div className="modalActions">
           <button onClick={onClose}>Cancel</button>
-          <button className="saveButton" onClick={handleSave}>
-            Save
+          <button disabled={saving} className="saveButton" onClick={handleSave}>
+            {saving ? "Saving..." : "Save"}
           </button>
         </div>
       </div>

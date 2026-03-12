@@ -22,7 +22,6 @@ export const useProfileData = () => {
 
     const userRef = doc(db, "users", user.uid);
 
-    // Real-time listener for user profile
     const unsubscribeUser = onSnapshot(userRef, (docSnap) => {
       if (!docSnap.exists()) return;
 
@@ -35,7 +34,6 @@ export const useProfileData = () => {
       setQuoteId(data.quoteId ?? 1);
     });
 
-    // Fetch team data once
     const fetchTeamData = async () => {
       const size = await getTeamSize();
       setTeamSize(size);
