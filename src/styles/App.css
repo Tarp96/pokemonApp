@@ -1179,6 +1179,7 @@ body {
 .avatarPreview img {
   width: 140px;
   border-radius: 12px;
+  transition: opacity 0.15s ease;
 }
 
 .avatarGrid {
