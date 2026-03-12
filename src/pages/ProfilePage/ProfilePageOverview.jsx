@@ -10,10 +10,7 @@ export const ProfilePageOverview = () => {
   return (
     <div className="profilePageContainer">
       <section className="profilePageTitleSection">
-        <h1 className="profileMainTitle">
-          {firstLetterUpperCase(username) || "Trainer"}
-        </h1>
-        <p className="profileSubtitle">Welcome back, Trainer!</p>
+        <h1 className="profileMainTitle">Welcome back {username}!</h1>
       </section>
 
       <div>
