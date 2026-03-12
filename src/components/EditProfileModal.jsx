@@ -35,6 +35,15 @@ export const EditProfileModal = ({
         <div className="avatarSection">
           <h3>Choose Avatar</h3>
 
+          <div className="avatarPreview">
+            <div className="avatarPreviewFrame">
+              <img
+                src={`/assets/trainerAvatars/pt${selectedAvatar}.webp`}
+                alt="Selected avatar"
+              />
+            </div>
+          </div>
+
           <div className="avatarGrid">
             {Array.from({ length: TOTAL_AVATARS }, (_, i) => {
               const id = i + 1;
