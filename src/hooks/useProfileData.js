@@ -14,6 +14,7 @@ export const useProfileData = () => {
   const [team, setTeam] = useState([]);
   const [highScore, setHighScore] = useState(null);
   const [avatarId, setAvatarId] = useState(1);
+  const [quoteId, setQuoteId] = useState(1);
 
   useEffect(() => {
     const user = auth.currentUser;
@@ -30,6 +31,7 @@ export const useProfileData = () => {
         setUsername(data.username ?? "");
         setCoinsSpent(data.coinsSpent ?? 0);
         setAvatarId(data.avatarId ?? 1);
+        setQuoteId(data.quoteId ?? 1);
       }
 
       const size = await getTeamSize();
@@ -59,5 +61,6 @@ export const useProfileData = () => {
     team,
     highScore,
     avatarId,
+    quoteId,
   };
 };

@@ -12,6 +12,7 @@ export const ProfilePageOverview = () => {
     team,
     highScore,
     avatarId,
+    quoteId,
   } = useProfileData();
 
   return (
@@ -39,6 +40,7 @@ export const ProfilePageOverview = () => {
           team,
           highScore,
           avatarId,
+          quoteId,
         }}
       />
     </div>

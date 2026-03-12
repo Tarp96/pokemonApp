@@ -4,8 +4,15 @@ import { useEffect, useState } from "react";
 import { EditProfileModal } from "../../components/EditProfileModal";
 
 export const ProfilePage = () => {
-  const { userId, username, coinBalance, coinsSpent, highScore, avatarId } =
-    useOutletContext();
+  const {
+    userId,
+    username,
+    coinBalance,
+    coinsSpent,
+    highScore,
+    avatarId,
+    quoteId,
+  } = useOutletContext();
 
   const [isEditing, setIsEditing] = useState(false);
 
