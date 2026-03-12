@@ -1289,7 +1289,7 @@ body {
   padding: 0.7rem 0.9rem;
   border-radius: 8px;
   background: #f8f9fa;
-  border: 2px solid transparent;
+  border: 2px solid #03cafc;
 
   font-style: italic;
   cursor: pointer;
