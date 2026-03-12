@@ -60,6 +60,7 @@ export const ProfilePage = () => {
           alt="Trainer Avatar"
           className="trainerAvatar"
         />
+        <button onClick={() => setIsEditing(true)}>Edit Profile</button>
       </div>
     </div>
   );
