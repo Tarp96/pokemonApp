@@ -28,7 +28,7 @@ export const ProfilePage = () => {
           userId={userId}
           currentAvatarId={avatarId}
           currentQuoteId={quoteId}
-          onClose={() => setEditingProfile(false)}
+          onClose={() => setIsEditing(false)}
         />
       )}
       <div className="trainerLeftColumn">
