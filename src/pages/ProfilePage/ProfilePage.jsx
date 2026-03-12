@@ -29,6 +29,8 @@ export const ProfilePage = () => {
           </p>
         </div>
 
+        <div className="profileDivider"></div>
+
         <div className="trainerStatsList">
           <div className="trainerStatRow">
             <span>Pokémon Caught</span>

@@ -1210,6 +1210,13 @@ body {
   content: "”";
 }
 
+.profileDivider {
+  height: 2px;
+  background: linear-gradient(to right, #3b4cca, #ffcb05, #3b4cca);
+  width: 100%;
+  border-radius: 2px;
+}
+
 .trainerStatsList {
   display: flex;
   flex-direction: column;
