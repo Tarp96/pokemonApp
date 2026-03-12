@@ -67,18 +67,21 @@ export const EditProfileModal = ({
         </div>
 
         <div className="quoteSection">
-          <h3>Choose Quote</h3>
+          <h3>Select a quote from the Pokemon Universe</h3>
 
-          <select
-            value={selectedQuote}
-            onChange={(e) => setSelectedQuote(Number(e.target.value))}
-          >
+          <div className="quoteList">
             {pokemonQuotes.map((q) => (
-              <option key={q.id} value={q.id}>
+              <div
+                key={q.id}
+                className={`quoteCard ${
+                  selectedQuote === q.id ? "selected" : ""
+                }`}
+                onClick={() => setSelectedQuote(q.id)}
+              >
                 {q.quote}
-              </option>
+              </div>
             ))}
-          </select>
+          </div>
         </div>
 
         <div className="modalActions">

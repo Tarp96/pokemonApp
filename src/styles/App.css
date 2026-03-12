@@ -1274,6 +1274,41 @@ body {
   border: 3px solid #ffcb05;
 }
 
+.quoteList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 0.8rem;
+
+  max-height: 180px;
+  overflow-y: auto;
+  padding-right: 4px;
+}
+
+.quoteCard {
+  padding: 0.7rem 0.9rem;
+  border-radius: 8px;
+  background: #f8f9fa;
+  border: 2px solid transparent;
+
+  font-style: italic;
+  cursor: pointer;
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+}
+
+.quoteCard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.quoteCard.selected {
+  border: 2px solid #ffcb05;
+  background: #fffdf5;
+}
+
 .modalActions {
   margin-top: 1.5rem;
   display: flex;
