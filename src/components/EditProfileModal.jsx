@@ -3,6 +3,9 @@ import {
   updateUserQuote,
   updateUserAvatar,
 } from "./../services/profileService";
+import pokemonQuotes from "../data/pokemonQuotes";
+
+const TOTAL_AVATARS = 26;
 
 export const EditProfileModal = ({
   userId,
