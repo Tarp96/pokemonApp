@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { auth, db } from "../firebaseConfig";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, onSnapshot } from "firebase/firestore";
 import { listenToCoins } from "../services/coinService";
 import { getTeamSize, getUserTeam } from "../services/teamService";
 import { listenToHighScore } from "../services/highScoreService";
@@ -20,33 +20,37 @@ export const useProfileData = () => {
     const user = auth.currentUser;
     if (!user) return;
 
-    const fetchData = async () => {
-      const docRef = doc(db, "users", user.uid);
-      const docSnap = await getDoc(docRef);
+    const userRef = doc(db, "users", user.uid);
 
-      if (docSnap.exists()) {
-        const data = docSnap.data();
+    // Real-time listener for user profile
+    const unsubscribeUser = onSnapshot(userRef, (docSnap) => {
+      if (!docSnap.exists()) return;
 
-        setUserId(user.uid);
-        setUsername(data.username ?? "");
-        setCoinsSpent(data.coinsSpent ?? 0);
-        setAvatarId(data.avatarId ?? 1);
-        setQuoteId(data.quoteId ?? 1);
-      }
+      const data = docSnap.data();
 
+      setUserId(user.uid);
+      setUsername(data.username ?? "");
+      setCoinsSpent(data.coinsSpent ?? 0);
+      setAvatarId(data.avatarId ?? 1);
+      setQuoteId(data.quoteId ?? 1);
+    });
+
+    // Fetch team data once
+    const fetchTeamData = async () => {
       const size = await getTeamSize();
       setTeamSize(size);
+
       const userTeam = await getUserTeam();
       setTeam(userTeam);
-      console.log(userTeam);
     };
 
-    fetchData();
+    fetchTeamData();
 
     const unsubscribeCoins = listenToCoins(user.uid, setCoinBalance);
     const unsubscribeHighScore = listenToHighScore(user.uid, setHighScore);
 
     return () => {
+      unsubscribeUser();
       unsubscribeCoins();
       unsubscribeHighScore();
     };
