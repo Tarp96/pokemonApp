@@ -1,10 +1,12 @@
 import { firstLetterUpperCase } from "../../utils/helperFunctions";
 import { useOutletContext } from "react-router-dom";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 export const ProfilePage = () => {
   const { username, coinBalance, coinsSpent, highScore, avatarId } =
     useOutletContext();
+
+  const [isEditing, setIsEditing] = useState(false);
 
   useEffect(() => {
     console.log("avatarId in ProfilePage:", avatarId);
