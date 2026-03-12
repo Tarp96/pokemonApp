@@ -6,6 +6,7 @@ import { getTeamSize, getUserTeam } from "../services/teamService";
 import { listenToHighScore } from "../services/highScoreService";
 
 export const useProfileData = () => {
+  const [userId, setUserId] = useState(null);
   const [username, setUsername] = useState("");
   const [coinBalance, setCoinBalance] = useState(null);
   const [coinsSpent, setCoinsSpent] = useState(null);
@@ -25,6 +26,7 @@ export const useProfileData = () => {
       if (docSnap.exists()) {
         const data = docSnap.data();
 
+        setUserId(user.uid);
         setUsername(data.username ?? "");
         setCoinsSpent(data.coinsSpent ?? 0);
         setAvatarId(data.avatarId ?? 1);
@@ -49,6 +51,7 @@ export const useProfileData = () => {
   }, []);
 
   return {
+    userId,
     username,
     coinBalance,
     teamSize,

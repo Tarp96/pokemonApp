@@ -1,9 +1,10 @@
 import { firstLetterUpperCase } from "../../utils/helperFunctions";
 import { useOutletContext } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { EditProfileModal } from "../../components/EditProfileModal";
 
 export const ProfilePage = () => {
-  const { username, coinBalance, coinsSpent, highScore, avatarId } =
+  const { userId, username, coinBalance, coinsSpent, highScore, avatarId } =
     useOutletContext();
 
   const [isEditing, setIsEditing] = useState(false);
@@ -15,6 +16,14 @@ export const ProfilePage = () => {
 
   return (
     <div className="profileLayout">
+      {isEditing && (
+        <EditProfileModal
+          userId={userId}
+          currentAvatarId={avatarId}
+          currentQuoteId={quoteId}
+          onClose={() => setEditingProfile(false)}
+        />
+      )}
       <div className="trainerLeftColumn">
         <div className="trainerDetails">
           <h2 className="trainerName">
