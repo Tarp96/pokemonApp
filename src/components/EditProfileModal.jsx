@@ -40,14 +40,18 @@ export const EditProfileModal = ({
               const id = i + 1;
 
               return (
-                <img
+                <div
                   key={id}
-                  src={`/assets/trainerAvatars/pt${id}.webp`}
-                  className={`avatarOption ${
+                  className={`avatarFrame ${
                     selectedAvatar === id ? "selected" : ""
                   }`}
                   onClick={() => setSelectedAvatar(id)}
-                />
+                >
+                  <img
+                    src={`/assets/trainerAvatars/pt${id}.webp`}
+                    alt={`Trainer avatar ${id}`}
+                  />
+                </div>
               );
             })}
           </div>

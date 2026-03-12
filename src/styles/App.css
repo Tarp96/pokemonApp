@@ -1172,9 +1172,36 @@ body {
 
 .avatarGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
   gap: 0.7rem;
   margin-top: 1rem;
+}
+
+.avatarFrame {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f7f7f7;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  overflow: hidden;
+  transition: transform 0.15s ease;
+}
+
+.avatarFrame img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+.avatarFrame:hover {
+  transform: scale(1.05);
+}
+
+.avatarFrame.selected {
+  border: 3px solid #ffcb05;
 }
 
 .avatarOption {
