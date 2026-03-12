@@ -3174,6 +3174,53 @@ body {
     max-width: 260px;
   }
   /*LEADERBOARD PAGE END*/
+
+  /*PROFILE PAGE*/
+  .profileLayout {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .trainerAvatarColumn {
+    order: -1;
+    justify-content: center;
+    padding-top: 0;
+  }
+
+  .trainerAvatar {
+    width: 180px;
+  }
+
+  .trainerName {
+    display: none;
+  }
+
+  .trainerSubtitle {
+    max-width: 100%;
+    font-size: 1.05rem;
+    padding-left: 0.8rem;
+  }
+
+  .trainerStatsList {
+    gap: 0.7rem;
+  }
+
+  .trainerStatRow {
+    padding: 1rem;
+  }
+
+  .trainerStatRow span:first-child {
+    font-size: 1rem;
+  }
+
+  .trainerStatRow span:last-child {
+    font-size: 1.25rem;
+  }
+
+  .trainerInfoContainer {
+    padding: 1.5rem;
+  }
+  /*PROFILE PAGE END*/
 }
 
 @media (max-width: 899px) {
