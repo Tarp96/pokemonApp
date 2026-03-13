@@ -3,6 +3,7 @@ import { useOutletContext } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { EditProfileModal } from "../../components/EditProfileModal";
 import { FaRegEdit } from "react-icons/fa";
+import pokemonQuotes from "../../data/pokemonQuotes";
 
 export const ProfilePage = () => {
   const {
@@ -21,6 +22,10 @@ export const ProfilePage = () => {
     console.log("avatarId in ProfilePage:", avatarId);
     console.log(`/assets/trainerAvatars/pt${avatarId}.webp`);
   }, []);
+
+  const selectedQuote =
+    pokemonQuotes.find((q) => q.id === quoteId)?.quote ||
+    "A true trainer never gives up.";
 
   return (
     <div className="profileLayout">
@@ -47,12 +52,7 @@ export const ProfilePage = () => {
             </button>
           </div>
 
-          <p className="trainerSubtitle">
-            {" "}
-            Even if we don't understand each other, that is not a reason to
-            reject one another. There are two sides to every argument. Is there
-            a side that has the answer to everything?
-          </p>
+          <p className="trainerSubtitle">{selectedQuote}</p>
         </div>
 
         <div className="profileDivider"></div>
@@ -81,11 +81,13 @@ export const ProfilePage = () => {
       </div>
 
       <div className="trainerAvatarColumn">
-        <img
-          src={`/assets/trainerAvatars/pt${avatarId}.webp`}
-          alt="Trainer Avatar"
-          className="trainerAvatar"
-        />
+        <div className="trainerAvatarFrame">
+          <img
+            src={`/assets/trainerAvatars/pt${avatarId}.webp`}
+            alt="Trainer Avatar"
+            className="trainerAvatar"
+          />
+        </div>
       </div>
     </div>
   );
