@@ -3545,6 +3545,26 @@ body {
   .trainerInfoContainer {
     padding: 1.5rem;
   }
+
+  .editProfileButton {
+    font-size: 0.8rem;
+    padding: 0.2rem 0.4rem;
+  }
+
+  .editProfileButtonIcon {
+    font-size: 0.75rem;
+  }
+
+  .quoteCard {
+    padding: 0.55rem 0.7rem;
+    font-size: 0.9rem;
+  }
+
+  .avatarPreviewFrame {
+    width: 130px;
+    height: 130px;
+  }
+
   /*PROFILE PAGE END*/
 }
 
