@@ -1241,7 +1241,7 @@ body {
 .avatarGrid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-  gap: 0.9rem;
+  gap: 1rem;
   margin-top: 1rem;
 }
 
@@ -1251,12 +1251,29 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
+
   background: #f7f7f7;
   border-radius: 8px;
   border: 2px solid transparent;
+
   cursor: pointer;
   overflow: hidden;
-  transition: transform 0.15s ease;
+}
+
+.avatarPlaceholder {
+  width: 40px;
+  opacity: 0.6;
+  animation: pokeballSpin 2s linear infinite;
+}
+
+@keyframes pokeballSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .avatarPreviewFrame {
@@ -1280,10 +1297,18 @@ body {
   object-fit: contain;
 }
 
-.avatarFrame img {
+.avatarImage {
+  position: absolute;
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;
+
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.avatarImage.visible {
+  opacity: 1;
 }
 
 .avatarFrame:hover {

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import {
   updateUserQuote,
   updateUserAvatar,
@@ -16,6 +16,7 @@ export const EditProfileModal = ({
   const [saving, setSaving] = useState(false);
   const [selectedAvatar, setSelectedAvatar] = useState(currentAvatarId);
   const [selectedQuote, setSelectedQuote] = useState(currentQuoteId);
+  const [loadedAvatars, setLoadedAvatars] = useState({});
 
   const handleSave = async () => {
     setSaving(true);
@@ -52,6 +53,7 @@ export const EditProfileModal = ({
           <div className="avatarGrid">
             {Array.from({ length: TOTAL_AVATARS }, (_, i) => {
               const id = i + 1;
+              const isLoaded = loadedAvatars[id];
 
               return (
                 <div
@@ -61,9 +63,21 @@ export const EditProfileModal = ({
                   }`}
                   onClick={() => setSelectedAvatar(id)}
                 >
+                  {!isLoaded && (
+                    <img
+                      src="/assets/pokeballIcon.svg"
+                      className="avatarPlaceholder"
+                      alt="Loading avatar"
+                    />
+                  )}
+
                   <img
                     src={`/assets/trainerAvatars/pt${id}.webp`}
                     alt={`Trainer avatar ${id}`}
+                    className={`avatarImage ${isLoaded ? "visible" : ""}`}
+                    onLoad={() =>
+                      setLoadedAvatars((prev) => ({ ...prev, [id]: true }))
+                    }
                   />
                 </div>
               );
