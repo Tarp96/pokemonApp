@@ -33,9 +33,17 @@ export const ProfilePage = () => {
       )}
       <div className="trainerLeftColumn">
         <div className="trainerDetails">
-          <h2 className="trainerName">
-            {firstLetterUpperCase(username) || "Trainer"}
-          </h2>
+          <div className="trainerNameContainer">
+            <h2 className="trainerName">
+              {firstLetterUpperCase(username) || "Trainer"}
+            </h2>
+            <button
+              onClick={() => setIsEditing(true)}
+              className="editProfileButton"
+            >
+              Edit Profile
+            </button>
+          </div>
 
           <p className="trainerSubtitle">
             {" "}
@@ -76,12 +84,6 @@ export const ProfilePage = () => {
           alt="Trainer Avatar"
           className="trainerAvatar"
         />
-        <button
-          onClick={() => setIsEditing(true)}
-          className="editProfileButton"
-        >
-          Edit Profile
-        </button>
       </div>
     </div>
   );
