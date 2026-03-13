@@ -2,6 +2,7 @@ import { firstLetterUpperCase } from "../../utils/helperFunctions";
 import { useOutletContext } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { EditProfileModal } from "../../components/EditProfileModal";
+import { FaRegEdit } from "react-icons/fa";
 
 export const ProfilePage = () => {
   const {
@@ -42,7 +43,7 @@ export const ProfilePage = () => {
               className="editProfileButton"
             >
               Edit Profile
-              <img src="assets/edit.png" className="editProfileButtonImage" />
+              <FaRegEdit />
             </button>
           </div>
 
