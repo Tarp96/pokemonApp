@@ -1365,6 +1365,11 @@ body {
   width: 100%;
 }
 
+.trainerNameContainer {
+  display: flex;
+  justify-content: space-between;
+}
+
 .trainerName {
   font-size: 2rem;
   font-weight: 800;
