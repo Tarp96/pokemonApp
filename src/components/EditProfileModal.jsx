@@ -30,7 +30,12 @@ export const EditProfileModal = ({
   return (
     <div className="modalOverlay">
       <div className="editProfileModal">
-        <h2>Edit Profile</h2>
+        <div className="editProfileModalHeaderContainer">
+          <h2>Edit Profile</h2>
+          <button className="closeEditModalButton" onClick={onClose}>
+            X
+          </button>
+        </div>
 
         <div className="avatarSection">
           <h3>Choose Avatar</h3>
@@ -85,7 +90,9 @@ export const EditProfileModal = ({
         </div>
 
         <div className="modalActions">
-          <button onClick={onClose}>Cancel</button>
+          <button onClick={onClose} className="cancelProfileEditButton">
+            Cancel
+          </button>
           <button disabled={saving} className="saveButton" onClick={handleSave}>
             {saving ? "Saving..." : "Save"}
           </button>
