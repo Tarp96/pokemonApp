@@ -42,6 +42,7 @@ export const ProfilePage = () => {
               className="editProfileButton"
             >
               Edit Profile
+              <img src="assets/edit.png" className="editProfileButtonImage" />
             </button>
           </div>
 
