@@ -3055,6 +3055,11 @@ body {
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
 }
 
+.leaderboardLink {
+  text-decoration: none;
+  color: inherit;
+}
+
 .podiumContainer {
   display: flex;
   justify-content: center;
@@ -3073,6 +3078,14 @@ body {
   border-radius: 10px;
   padding: 12px;
   box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+}
+
+.podiumFirst:hover,
+.podiumSecond:hover,
+.podiumThird:hover,
+.leaderboardListItem:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
 .podiumFirst {
@@ -3162,11 +3175,6 @@ body {
   background: linear-gradient(135deg, #ffe082, #ffd54f);
   font-weight: 700;
   border: 2px solid #fbc02d;
-}
-
-.leaderboardListItem:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
 }
 
 .leaderboardNavContainer {

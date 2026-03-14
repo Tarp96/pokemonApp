@@ -2,6 +2,7 @@ import { listenToLeaderboard } from "../../services/leaderboardService";
 import { useState, useEffect } from "react";
 import { auth } from "../../firebaseConfig";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 export const LeaderboardScreen = () => {
   const [leaderboard, setLeaderboard] = useState([]);
@@ -25,16 +26,21 @@ export const LeaderboardScreen = () => {
     const isCurrentUser = item.uid === currentUid;
 
     return (
-      <li
+      <Link
         key={item.uid}
-        className={`leaderboardListItem ${
-          isCurrentUser ? "leaderboardCurrentUser" : ""
-        }`}
+        to={`/trainer/${item.uid}`}
+        className="leaderboardLink"
       >
-        <span className="leaderboardRank">{index + 4}</span>
-        <span className="leaderboardName">{item.username}</span>
-        <span className="leaderboardScore">{item.score} pts</span>
-      </li>
+        <li
+          className={`leaderboardListItem ${
+            isCurrentUser ? "leaderboardCurrentUser" : ""
+          }`}
+        >
+          <span className="leaderboardRank">{index + 4}</span>
+          <span className="leaderboardName">{item.username}</span>
+          <span className="leaderboardScore">{item.score} pts</span>
+        </li>
+      </Link>
     );
   });
 
@@ -56,27 +62,45 @@ export const LeaderboardScreen = () => {
         </div>
         <div className="podiumContainer">
           {podium[1] && (
-            <div className="podiumSecond">
-              <div className="podiumPlace">🥈</div>
-              <div className="podiumName">{podium[1].username}</div>
-              <div className="podiumScore">{podium[1].score} pts</div>
-            </div>
+            <Link
+              key={podium[0].uid}
+              to={`/trainer/${podium[0].uid}`}
+              className="leaderboardLink"
+            >
+              <div className="podiumSecond">
+                <div className="podiumPlace">🥈</div>
+                <div className="podiumName">{podium[1].username}</div>
+                <div className="podiumScore">{podium[1].score} pts</div>
+              </div>
+            </Link>
           )}
 
           {podium[0] && (
-            <div className="podiumFirst">
-              <div className="podiumPlace">🥇</div>
-              <div className="podiumName">{podium[0].username}</div>
-              <div className="podiumScore">{podium[0].score} pts</div>
-            </div>
+            <Link
+              key={podium[1].uid}
+              to={`/trainer/${podium[1].uid}`}
+              className="leaderboardLink"
+            >
+              <div className="podiumFirst">
+                <div className="podiumPlace">🥇</div>
+                <div className="podiumName">{podium[0].username}</div>
+                <div className="podiumScore">{podium[0].score} pts</div>
+              </div>
+            </Link>
           )}
 
           {podium[2] && (
-            <div className="podiumThird">
-              <div className="podiumPlace">🥉</div>
-              <div className="podiumName">{podium[2].username}</div>
-              <div className="podiumScore">{podium[2].score} pts</div>
-            </div>
+            <Link
+              key={podium[2].uid}
+              to={`/trainer/${podium[2].uid}`}
+              className="leaderboardLink"
+            >
+              <div className="podiumThird">
+                <div className="podiumPlace">🥉</div>
+                <div className="podiumName">{podium[2].username}</div>
+                <div className="podiumScore">{podium[2].score} pts</div>
+              </div>
+            </Link>
           )}
         </div>
         <ol className="leaderboardPageList">{displayLeaderboard}</ol>
