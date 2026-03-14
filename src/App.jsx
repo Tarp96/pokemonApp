@@ -20,6 +20,7 @@ import { GamePageLayout } from "./pages/CatchGame/GamePageLayout";
 import { GamePage } from "./pages/CatchGame/GamePage";
 import { ProfileTeamPage } from "./pages/ProfilePage/ProfileTeamPage";
 import { LeaderboardScreen } from "./pages/CatchGame/LeaderboardScreen";
+import { TrainerCardPage } from "./pages/TrainerCard/TrainerCardPage";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
             <Route index element={<GamePage />} />
             <Route path="leaderboard" element={<LeaderboardScreen />} />
           </Route>
+          <Route path="trainer/:userId" element={<TrainerCardPage />} />
         </Route>
 
         <Route path="/pokemon/:name" element={<PokemonDetailsPage />}>
