@@ -32,31 +32,34 @@ export const TrainerCardPage = () => {
   return (
     <div className="trainerCardPage">
       <div className="trainerCard">
-        <div className="trainerCardAvatarFrame">
-          <img
-            src={`/assets/trainerAvatars/pt${profile.avatarId}.webp`}
-            alt="Trainer Avatar"
-          />
+        <div>
+          <h2 className="trainerCardTitle">Trainer {profile.username}</h2>
+
+          <p className="trainerCardQuote">{quote}</p>
+
+          <div className="trainerCardStats">
+            <div>
+              <span>Pokémon Caught</span>
+              <span>{profile.pokemonCaught ?? 0}</span>
+            </div>
+
+            <div>
+              <span>High Score</span>
+              <span>{profile.highScore ?? 0}</span>
+            </div>
+
+            <div>
+              <span>Coins</span>
+              <span>{profile.coins ?? 0}</span>
+            </div>
+          </div>
         </div>
-
-        <h2>{profile.username}</h2>
-
-        <p className="trainerCardQuote">{quote}</p>
-
-        <div className="trainerCardStats">
-          <div>
-            <span>Pokémon Caught</span>
-            <span>{profile.pokemonCaught ?? 0}</span>
-          </div>
-
-          <div>
-            <span>High Score</span>
-            <span>{profile.highScore ?? 0}</span>
-          </div>
-
-          <div>
-            <span>Coins</span>
-            <span>{profile.coins ?? 0}</span>
+        <div className="trainerAvatarContainer">
+          <div className="trainerCardAvatarFrame">
+            <img
+              src={`/assets/trainerAvatars/pt${profile.avatarId}.webp`}
+              alt="Trainer Avatar"
+            />
           </div>
         </div>
       </div>

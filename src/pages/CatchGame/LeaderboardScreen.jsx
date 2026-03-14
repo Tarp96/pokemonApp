@@ -63,8 +63,8 @@ export const LeaderboardScreen = () => {
         <div className="podiumContainer">
           {podium[1] && (
             <Link
-              key={podium[0].uid}
-              to={`/trainer/${podium[0].uid}`}
+              key={podium[1].uid}
+              to={`/trainer/${podium[1].uid}`}
               className="leaderboardLink"
             >
               <div className="podiumSecond">
@@ -77,8 +77,8 @@ export const LeaderboardScreen = () => {
 
           {podium[0] && (
             <Link
-              key={podium[1].uid}
-              to={`/trainer/${podium[1].uid}`}
+              key={podium[0].uid}
+              to={`/trainer/${podium[0].uid}`}
               className="leaderboardLink"
             >
               <div className="podiumFirst">
