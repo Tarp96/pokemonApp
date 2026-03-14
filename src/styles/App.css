@@ -2010,6 +2010,54 @@ body {
 }
 /*FAVORITES PAGE END*/
 
+/*TRAINER CARD PAGE*/
+
+/*TRAINER CARD PAGE END*/
+.trainerCardPage {
+  display: flex;
+  justify-content: center;
+  margin-top: 3rem;
+}
+
+.trainerCard {
+  width: 340px;
+  padding: 2rem;
+  background: white;
+  border-radius: 16px;
+  border: 4px solid #3b4cca;
+  outline: 4px solid #ffcb05;
+  text-align: center;
+}
+
+.trainerCardAvatarFrame {
+  width: 160px;
+  height: 160px;
+
+  margin: 0 auto 1rem auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.trainerCardAvatarFrame img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.trainerCardQuote {
+  font-style: italic;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
+.trainerCardQuote {
+  font-style: italic;
+  color: #666;
+  margin-bottom: 1.5rem;
+}
+
 /*AUTH LAYOUT PAGE*/
 .authLayoutContainer {
   max-width: 50%;
