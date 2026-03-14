@@ -46,6 +46,15 @@ export const FavoritePokemonsPage = () => {
     );
   });
 
+  if (favoritesList.length === 0) {
+    return (
+      <div className="favoriteListEmptyContainer">
+        <h2>Add Pokemon to your favorites to view them here</h2>
+        <img src="/assets/favoriteEmpty.png" alt="Pokemon image" />
+      </div>
+    );
+  }
+
   return (
     <div>
       <h1>Your Favorite Pokemon</h1>
