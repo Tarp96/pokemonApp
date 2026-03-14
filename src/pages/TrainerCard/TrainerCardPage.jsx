@@ -26,7 +26,7 @@ export const TrainerCardPage = () => {
   }
 
   const quote =
-    pokemonQuotes.find((q) => q.id === profile.quoteId?.quote) ||
+    pokemonQuotes.find((q) => q.id === profile.quoteId)?.quote ||
     "A true trainer never gives up";
 
   return (
