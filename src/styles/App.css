@@ -1147,6 +1147,10 @@ body {
   font-family: "Montserrat", sans-serif;
 }
 
+.profileMainTitle {
+  margin-top: 0;
+}
+
 .modalOverlay {
   position: fixed;
   top: 0;
