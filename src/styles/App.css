@@ -2057,10 +2057,8 @@ body {
   margin-right: 10px;
 }
 
-.trainerCardQuote {
-  font-style: italic;
-  color: #666;
-  margin-bottom: 1.5rem;
+.trainerCardTitle {
+  font-size: 1.5em;
 }
 
 .trainerCardQuote {
@@ -2068,6 +2066,7 @@ body {
   color: #666;
   margin-bottom: 1.5rem;
   border-left: 4px solid #ffcb05;
+  text-align: center;
 }
 
 .trainerCardStats {
