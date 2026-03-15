@@ -36,6 +36,7 @@ export const TrainerCardPage = () => {
           <h2 className="trainerCardTitle">Trainer {profile.username}</h2>
 
           <p className="trainerCardQuote">{quote}</p>
+          <div className="profileDivider"></div>
 
           <div className="trainerCardStats">
             <div className="trainerCardStatRow">
@@ -60,6 +61,7 @@ export const TrainerCardPage = () => {
         </div>
         <div className="trainerAvatarContainer">
           <div className="trainerCardAvatarFrame">
+            <div></div>
             <img
               src={`/assets/trainerAvatars/pt${profile.avatarId}.webp`}
               alt="Trainer Avatar"
