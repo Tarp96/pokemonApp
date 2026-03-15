@@ -2018,7 +2018,7 @@ body {
 }
 
 .trainerCard {
-  width: 340px;
+  width: 600px;
   padding: 2rem;
   background: white;
   border-radius: 16px;
@@ -2026,6 +2026,7 @@ body {
   outline: 4px solid #ffcb05;
   text-align: center;
   display: flex;
+  justify-content: space-between;
 }
 
 .trainerCardAvatarFrame {
