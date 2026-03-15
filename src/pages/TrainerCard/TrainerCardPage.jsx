@@ -32,7 +32,7 @@ export const TrainerCardPage = () => {
   return (
     <div className="trainerCardPage">
       <div className="trainerCard">
-        <div>
+        <div className="trainerCardContent">
           <div className="trainerCardTitleContainer">
             <img
               src="/assets/pokeb.png"
@@ -68,7 +68,6 @@ export const TrainerCardPage = () => {
         </div>
         <div className="trainerAvatarContainer">
           <div className="trainerCardAvatarFrame">
-            <div></div>
             <img
               src={`/assets/trainerAvatars/pt${profile.avatarId}.webp`}
               alt="Trainer Avatar"
