@@ -2057,6 +2057,36 @@ body {
   color: #666;
   margin-bottom: 1.5rem;
 }
+
+.trainerCardStats {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.trainerCardStatRow {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 0.5rem 0;
+
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.trainerCardStatRow:last-child {
+  border-bottom: none;
+}
+
+.trainerCardStatRow:last-child {
+  border-bottom: none;
+}
+
+.trainerCardStatLabel {
+  font-size: 0.95rem;
+  color: #555;
+}
 /*TRAINER CARD PAGE END*/
 
 /*AUTH LAYOUT PAGE*/
