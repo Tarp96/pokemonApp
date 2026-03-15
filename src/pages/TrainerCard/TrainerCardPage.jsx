@@ -33,7 +33,14 @@ export const TrainerCardPage = () => {
     <div className="trainerCardPage">
       <div className="trainerCard">
         <div>
-          <h2 className="trainerCardTitle">Trainer {profile.username}</h2>
+          <div className="trainerCardTitleContainer">
+            <img
+              src="/assets/pokeb.png"
+              alt="Pokeball"
+              className="trainerCardTitleImage"
+            />
+            <h2 className="trainerCardTitle">Trainer {profile.username}</h2>
+          </div>
 
           <p className="trainerCardQuote">{quote}</p>
           <div className="profileDivider"></div>
