@@ -1690,44 +1690,76 @@ body {
   padding: 0.35rem 0.65rem;
 }
 
-.type-water:hover {
-  border-color: rgba(74, 144, 226, 0.45);
-}
-
-.type-dragon:hover {
-  border-color: rgba(99, 102, 241, 0.45);
-}
-
-.type-flying:hover {
-  border-color: rgba(56, 189, 248, 0.45);
-}
-
 .type-fire:hover {
-  border-color: rgba(255, 86, 86, 0.45);
+  border-color: rgba(228, 97, 62, 0.55);
+}
+
+.type-water:hover {
+  border-color: rgba(48, 153, 225, 0.55);
 }
 
 .type-grass:hover {
-  border-color: rgba(34, 197, 94, 0.45);
+  border-color: rgba(67, 152, 55, 0.55);
 }
 
 .type-electric:hover {
-  border-color: rgba(250, 204, 21, 0.6);
+  border-color: rgba(223, 188, 40, 0.6);
 }
 
 .type-psychic:hover {
-  border-color: rgba(236, 72, 153, 0.45);
-}
-
-.type-dark:hover {
-  border-color: rgba(31, 41, 55, 0.45);
-}
-
-.type-fairy:hover {
-  border-color: rgba(244, 114, 182, 0.45);
+  border-color: rgba(233, 108, 140, 0.55);
 }
 
 .type-ghost:hover {
-  border-color: rgba(168, 85, 247, 0.45);
+  border-color: rgba(111, 69, 112, 0.55);
+}
+
+.type-dragon:hover {
+  border-color: rgba(87, 111, 188, 0.55);
+}
+
+.type-fairy:hover {
+  border-color: rgba(225, 140, 225, 0.55);
+}
+
+.type-bug:hover {
+  border-color: rgba(159, 159, 40, 0.55);
+}
+
+.type-normal:hover {
+  border-color: rgba(130, 130, 130, 0.55);
+}
+
+.type-poison:hover {
+  border-color: rgba(147, 84, 203, 0.55);
+}
+
+.type-ground:hover {
+  border-color: rgba(164, 115, 60, 0.55);
+}
+
+.type-fighting:hover {
+  border-color: rgba(228, 144, 33, 0.55);
+}
+
+.type-rock:hover {
+  border-color: rgba(169, 164, 129, 0.55);
+}
+
+.type-steel:hover {
+  border-color: rgba(116, 176, 203, 0.55);
+}
+
+.type-ice:hover {
+  border-color: rgba(71, 200, 200, 0.55);
+}
+
+.type-dark:hover {
+  border-color: rgba(79, 71, 71, 0.55);
+}
+
+.type-flying:hover {
+  border-color: rgba(116, 170, 208, 0.55);
 }
 
 /* Body */

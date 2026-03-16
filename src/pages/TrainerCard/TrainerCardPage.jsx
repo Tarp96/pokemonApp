@@ -107,7 +107,12 @@ export const TrainerCardPage = () => {
                 const pokemon = team[index];
 
                 return (
-                  <div key={index} className="trainerTeamSlot">
+                  <div
+                    key={index}
+                    className={`trainerTeamSlot ${
+                      pokemon?.types?.length ? `type-${pokemon.types[0]}` : ""
+                    }`}
+                  >
                     {pokemon ? (
                       <img src={pokemon.sprite} alt={pokemon.name} />
                     ) : (
