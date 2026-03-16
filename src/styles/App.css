@@ -2045,7 +2045,6 @@ body {
 
 .trainerAvatarContainer {
   padding-left: 2rem;
-  border-left: 3px solid #ffcb05;
 }
 
 .trainerCardAvatarFrame {
@@ -2133,6 +2132,43 @@ body {
   font-size: 1.1rem;
   color: #555;
 }
+
+.trainerCardTeamDisplayContainer {
+  margin-top: 1.5rem;
+  padding-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.trainerTeamSlot {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: #f8f8f8;
+  border: 3px solid #3b4cca;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.2s ease;
+}
+
+.trainerTeamSlot img {
+  width: 65px;
+  height: 65px;
+  object-fit: contain;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.25));
+}
+
+.trainerTeamSlot .emptySlot {
+  width: 35px;
+  opacity: 0.4;
+}
+
+.trainerTeamSlot:hover {
+  transform: scale(1.08);
+}
+
 /*TRAINER CARD PAGE END*/
 
 /*AUTH LAYOUT PAGE*/

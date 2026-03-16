@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { doc, getDoc } from "firebase/firestore";
+import { doc, getDoc, collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebaseConfig";
 import pokemonQuotes from "../../data/pokemonQuotes";
 
@@ -8,16 +8,32 @@ export const TrainerCardPage = () => {
   const { userId } = useParams();
 
   const [profile, setProfile] = useState(null);
+  const [team, setTeam] = useState([]);
 
   useEffect(() => {
     const fetchTrainer = async () => {
-      const docRef = doc(db, "users", userId);
-      const docSnap = await getDoc(docRef);
+      try {
+        const docRef = doc(db, "users", userId);
+        const docSnap = await getDoc(docRef);
 
-      if (docSnap.exists()) {
-        setProfile(docSnap.data());
+        if (docSnap.exists()) {
+          setProfile(docSnap.data());
+        }
+
+        const teamRef = collection(db, "users", userId, "team");
+        const teamSnap = await getDocs(teamRef);
+
+        const teamPokemon = teamSnap.docs.map((doc) => ({
+          id: doc.id,
+          ...doc.data(),
+        }));
+
+        setTeam(teamPokemon);
+      } catch (error) {
+        console.error("Error fetching trainer data:", error);
       }
     };
+
     fetchTrainer();
   }, [userId]);
 
@@ -80,9 +96,23 @@ export const TrainerCardPage = () => {
         </div>
         <div className="profileDivider"></div>
         <div className="trainerCardTeamDisplayContainer">
-          <div>1</div>
-          <div>2</div>
-          <div>3</div>
+          {[...Array(6)].map((_, index) => {
+            const pokemon = team[index];
+
+            return (
+              <div key={index} className="trainerTeamSlot">
+                {pokemon ? (
+                  <img src={pokemon.sprite} alt={pokemon.name} />
+                ) : (
+                  <img
+                    src="/assets/pokeb.png"
+                    alt="Empty slot"
+                    className="emptySlot"
+                  />
+                )}
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
