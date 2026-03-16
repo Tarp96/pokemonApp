@@ -32,47 +32,57 @@ export const TrainerCardPage = () => {
   return (
     <div className="trainerCardPage">
       <div className="trainerCard">
-        <div className="trainerCardContent">
-          <div className="trainerCardTitleContainer">
-            <img
-              src="/assets/pokeb.png"
-              alt="Pokeball"
-              className="trainerCardTitleImage"
-            />
-            <h2 className="trainerCardTitle">Trainer {profile.username}</h2>
+        <div className="trainerCardFlexContainer">
+          <div className="trainerCardContent">
+            <div className="trainerCardTitleContainer">
+              <img
+                src="/assets/pokeb.png"
+                alt="Pokeball"
+                className="trainerCardTitleImage"
+              />
+              <h2 className="trainerCardTitle">Trainer {profile.username}</h2>
+            </div>
+
+            <p className="trainerCardQuote">{quote}</p>
+            <div className="profileDivider"></div>
+
+            <div className="trainerCardStats">
+              <div className="trainerCardStatRow">
+                <span className="trainerCardStatLabel">Pokémon Caught</span>
+                <span className="trainerCardStatValue">
+                  {profile.pokemonCaught ?? 0}
+                </span>
+              </div>
+
+              <div className="trainerCardStatRow">
+                <span className="trainerCardStatLabel">High Score</span>
+                <span className="trainerCardStatValue">
+                  {profile.highScore ?? 0}
+                </span>
+              </div>
+
+              <div className="trainerCardStatRow">
+                <span className="trainerCardStatLabel">Coins</span>
+                <span className="trainerCardStatValue">
+                  {profile.coins ?? 0}
+                </span>
+              </div>
+            </div>
           </div>
-
-          <p className="trainerCardQuote">{quote}</p>
-          <div className="profileDivider"></div>
-
-          <div className="trainerCardStats">
-            <div className="trainerCardStatRow">
-              <span className="trainerCardStatLabel">Pokémon Caught</span>
-              <span className="trainerCardStatValue">
-                {profile.pokemonCaught ?? 0}
-              </span>
-            </div>
-
-            <div className="trainerCardStatRow">
-              <span className="trainerCardStatLabel">High Score</span>
-              <span className="trainerCardStatValue">
-                {profile.highScore ?? 0}
-              </span>
-            </div>
-
-            <div className="trainerCardStatRow">
-              <span className="trainerCardStatLabel">Coins</span>
-              <span className="trainerCardStatValue">{profile.coins ?? 0}</span>
+          <div className="trainerAvatarContainer">
+            <div className="trainerCardAvatarFrame">
+              <img
+                src={`/assets/trainerAvatars/pt${profile.avatarId}.webp`}
+                alt="Trainer Avatar"
+              />
             </div>
           </div>
         </div>
-        <div className="trainerAvatarContainer">
-          <div className="trainerCardAvatarFrame">
-            <img
-              src={`/assets/trainerAvatars/pt${profile.avatarId}.webp`}
-              alt="Trainer Avatar"
-            />
-          </div>
+        <div className="profileDivider"></div>
+        <div className="trainerCardTeamDisplayContainer">
+          <div>1</div>
+          <div>2</div>
+          <div>3</div>
         </div>
       </div>
     </div>
