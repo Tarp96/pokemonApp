@@ -2134,11 +2134,29 @@ body {
 }
 
 .trainerCardTeamDisplayContainer {
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   padding-top: 1rem;
   display: flex;
   justify-content: center;
   gap: 1rem;
+}
+
+.trainerCardTeamHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.1rem;
+}
+
+.trainerCardTeamHeader h3 {
+  margin: 0;
+  font-size: 1rem;
+  color: #3b4cca;
+}
+
+.trainerCardTeamHeader span {
+  font-weight: bold;
+  color: #555;
 }
 
 .trainerTeamSlot {

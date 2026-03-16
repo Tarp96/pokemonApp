@@ -96,23 +96,32 @@ export const TrainerCardPage = () => {
         </div>
         <div className="profileDivider"></div>
         <div className="trainerCardTeamDisplayContainer">
-          {[...Array(6)].map((_, index) => {
-            const pokemon = team[index];
+          <div className="trainerCardTeamSection">
+            <div className="trainerCardTeamHeader">
+              <h3>Team</h3>
+              <span>{team.length} / 6</span>
+            </div>
 
-            return (
-              <div key={index} className="trainerTeamSlot">
-                {pokemon ? (
-                  <img src={pokemon.sprite} alt={pokemon.name} />
-                ) : (
-                  <img
-                    src="/assets/pokeb.png"
-                    alt="Empty slot"
-                    className="emptySlot"
-                  />
-                )}
-              </div>
-            );
-          })}
+            <div className="trainerCardTeamDisplayContainer">
+              {[...Array(6)].map((_, index) => {
+                const pokemon = team[index];
+
+                return (
+                  <div key={index} className="trainerTeamSlot">
+                    {pokemon ? (
+                      <img src={pokemon.sprite} alt={pokemon.name} />
+                    ) : (
+                      <img
+                        src="/assets/pokeb.png"
+                        alt="Empty slot"
+                        className="emptySlot"
+                      />
+                    )}
+                  </div>
+                );
+              })}
+            </div>
+          </div>
         </div>
       </div>
     </div>
