@@ -10,6 +10,7 @@ export const TrainerCardPage = () => {
 
   const [profile, setProfile] = useState(null);
   const [team, setTeam] = useState([]);
+  const [error, setError] = useState(true);
 
   useEffect(() => {
     let isMounted = true;
@@ -36,6 +37,7 @@ export const TrainerCardPage = () => {
         setTeam(teamPokemon);
       } catch (error) {
         console.error("Error fetching trainer data:", error);
+        setError("Unable to load trainer profile.");
       }
     };
 
@@ -45,6 +47,22 @@ export const TrainerCardPage = () => {
       isMounted = false;
     };
   }, [userId]);
+
+  if (error) {
+    return (
+      <div className="trainerCardPage">
+        <div className="trainerCard errorCard">
+          <h3>ERROR! ⚠ Trainer Card Unavailable</h3>
+          <p>{error}</p>
+          <img
+            src="/assets/pikaconfused.gif"
+            alt="A confused Pikachu leaning side to side"
+            className="trainerCardErrorImage"
+          />
+        </div>
+      </div>
+    );
+  }
 
   if (!profile) {
     return (

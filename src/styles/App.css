@@ -2298,6 +2298,27 @@ body {
   border-color: #222 transparent transparent transparent;
 }
 
+.errorCard {
+  text-align: center;
+  padding: 2rem;
+}
+
+.errorCard h3 {
+  color: #d33;
+  margin-bottom: 0.5rem;
+}
+
+.errorCard p {
+  color: #555;
+}
+
+.trainerCardErrorImage {
+  width: 50%;
+  max-width: 450px;
+  margin: 0 auto;
+  border-radius: 14px;
+}
+
 /*TRAINER CARD SKELETON LOADING*/
 @keyframes skeletonPulse {
   0% {
