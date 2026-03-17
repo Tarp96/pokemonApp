@@ -9,7 +9,6 @@ import { useNavigate, useLocation } from "react-router-dom";
 import Pagination from "../../components/Pagination";
 import { getItem, setItem } from "../../utils/localStorage";
 import { setCachedPageFull } from "../../utils/cache";
-import CenterSpinner from "../../components/CenterSpinner";
 import { PaymentModal } from "../../components/PaymentModal";
 import { auth } from "../../firebaseConfig";
 import { listenToTeam } from "../../services/teamService";
@@ -34,6 +33,7 @@ export const HomePage = () => {
   const [priceTagClicked, setPriceTagClicked] = useState(false);
   const [selectedPokemon, setSelectedPokemon] = useState(null);
   const [ownedPokemonIds, setOwnedPokemonIds] = useState([]);
+  const [randomLoading, setRandomLoading] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
@@ -122,7 +122,6 @@ export const HomePage = () => {
     }
 
     try {
-      // Use the same enrichment pipeline
       const [details] = await safeFetchBatch([searchTerm.toLowerCase()]);
       if (details) {
         setFilteredPokemon([details]);
@@ -143,15 +142,18 @@ export const HomePage = () => {
   };
 
   const getRandomPokemon = async () => {
+    setRandomLoading(true);
+
     const arrayToDisplay = [];
 
     for (let i = 0; i < 4; i++) {
       const id = Math.floor(Math.random() * 1025) + 1;
+
       try {
         const [details] = await safeFetchBatch([String(id)]);
+
         if (details) {
           arrayToDisplay.push(details);
-          console.log(details);
         } else {
           setFilteredPokemon([]);
         }
@@ -162,6 +164,7 @@ export const HomePage = () => {
     }
 
     setFilteredPokemon(arrayToDisplay);
+    setRandomLoading(false);
   };
 
   const renderPokemonCards = () => {
@@ -223,6 +226,8 @@ export const HomePage = () => {
 
       {pageLoading || typeLoading ? (
         <PokemonGrid>{renderSkeletonCards(20)}</PokemonGrid>
+      ) : randomLoading ? (
+        <PokemonGrid>{renderSkeletonCards(4)}</PokemonGrid>
       ) : filteredPokemon.length > 0 ? (
         <PokemonGrid>{renderPokemonCards()}</PokemonGrid>
       ) : (
