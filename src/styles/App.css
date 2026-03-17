@@ -3456,6 +3456,7 @@ body {
   margin-bottom: 8px;
   border-radius: 8px;
   background: #f6f6f6;
+  border: solid 2px #4a90e2;
 }
 
 .leaderboardRank {
