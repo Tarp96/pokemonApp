@@ -575,6 +575,7 @@ body {
   background: #fff;
   border-radius: 10px;
   border: 1px solid #ddd;
+
   padding: 15px;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -2129,7 +2130,7 @@ body {
 }
 
 .trainerCardTitle {
-  font-size: 1.5em;
+  font-size: 2em;
 }
 
 .trainerCardQuote {
