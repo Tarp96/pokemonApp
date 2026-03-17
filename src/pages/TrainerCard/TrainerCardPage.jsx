@@ -10,7 +10,7 @@ export const TrainerCardPage = () => {
 
   const [profile, setProfile] = useState(null);
   const [team, setTeam] = useState([]);
-  const [error, setError] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     let isMounted = true;
