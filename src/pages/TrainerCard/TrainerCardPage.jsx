@@ -39,7 +39,35 @@ export const TrainerCardPage = () => {
   }, [userId]);
 
   if (!profile) {
-    return <p>Loading...</p>;
+    return (
+      <div className="trainerCardPage">
+        <div className="trainerCard skeletonCard">
+          <div className="trainerCardFlexContainer">
+            <div className="trainerCardContent">
+              <div className="skeletonTitle"></div>
+
+              <div className="skeletonQuote"></div>
+
+              <div className="trainerCardStats">
+                <div className="skeletonStat"></div>
+                <div className="skeletonStat"></div>
+                <div className="skeletonStat"></div>
+              </div>
+            </div>
+
+            <div className="skeletonAvatar"></div>
+          </div>
+
+          <div className="trainerCardTeamSection">
+            <div className="trainerCardTeamDisplayContainer">
+              {[...Array(6)].map((_, i) => (
+                <div key={i} className="skeletonTeamSlot"></div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
   }
 
   const quote =
