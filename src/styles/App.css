@@ -3908,6 +3908,10 @@ body {
     padding: 0.8rem;
   }
 
+  .trainerCardTitleContainer {
+    justify-content: center;
+  }
+
   .trainerCardFlexContainer {
     flex-direction: column;
     gap: 1rem;
