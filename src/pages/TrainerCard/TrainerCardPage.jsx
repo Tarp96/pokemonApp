@@ -12,14 +12,12 @@ export const TrainerCardPage = () => {
   const [team, setTeam] = useState([]);
 
   useEffect(() => {
+    let isMounted = true;
+
     const fetchTrainer = async () => {
       try {
         const docRef = doc(db, "users", userId);
         const docSnap = await getDoc(docRef);
-
-        if (docSnap.exists()) {
-          setProfile(docSnap.data());
-        }
 
         const teamRef = collection(db, "users", userId, "team");
         const teamSnap = await getDocs(teamRef);
@@ -29,6 +27,12 @@ export const TrainerCardPage = () => {
           ...doc.data(),
         }));
 
+        if (!isMounted) return;
+
+        if (docSnap.exists()) {
+          setProfile(docSnap.data());
+        }
+
         setTeam(teamPokemon);
       } catch (error) {
         console.error("Error fetching trainer data:", error);
@@ -36,6 +40,10 @@ export const TrainerCardPage = () => {
     };
 
     fetchTrainer();
+
+    return () => {
+      isMounted = false;
+    };
   }, [userId]);
 
   if (!profile) {
