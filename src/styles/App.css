@@ -2379,6 +2379,8 @@ body {
   width: 100%;
   max-width: 480px;
   margin: 40px auto;
+  border: 4px solid #3b4cca;
+  outline: 4px solid #ffcb05;
 }
 
 .uiCardHero {
@@ -3358,6 +3360,8 @@ body {
   padding: 30px;
   border-radius: 14px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+  border: 4px solid #3b4cca;
+  outline: 4px solid #ffcb05;
 }
 
 .leaderboardLink {
