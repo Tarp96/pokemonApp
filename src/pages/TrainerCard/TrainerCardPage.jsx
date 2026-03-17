@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import { doc, getDoc, collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebaseConfig";
 import pokemonQuotes from "../../data/pokemonQuotes";
+import { firstLetterUpperCase } from "./../../utils/helperFunctions";
 
 export const TrainerCardPage = () => {
   const { userId } = useParams();
@@ -114,7 +115,12 @@ export const TrainerCardPage = () => {
                     }`}
                   >
                     {pokemon ? (
-                      <img src={pokemon.sprite} alt={pokemon.name} />
+                      <>
+                        <img src={pokemon.sprite} alt={pokemon.name} />
+                        <span className="pokemonTooltip">
+                          {firstLetterUpperCase(pokemon.name)}
+                        </span>
+                      </>
                     ) : (
                       <img
                         src="/assets/pokeb.png"
