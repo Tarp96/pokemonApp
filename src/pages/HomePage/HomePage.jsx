@@ -144,26 +144,24 @@ export const HomePage = () => {
   const getRandomPokemon = async () => {
     setRandomLoading(true);
 
-    const arrayToDisplay = [];
+    try {
+      const ids = Array.from(
+        { length: 4 },
+        () => Math.floor(Math.random() * 1025) + 1,
+      );
 
-    for (let i = 0; i < 4; i++) {
-      const id = Math.floor(Math.random() * 1025) + 1;
+      const results = await Promise.all(
+        ids.map((id) => safeFetchBatch([String(id)])),
+      );
 
-      try {
-        const [details] = await safeFetchBatch([String(id)]);
+      const pokemon = results.map(([details]) => details).filter(Boolean);
 
-        if (details) {
-          arrayToDisplay.push(details);
-        } else {
-          setFilteredPokemon([]);
-        }
-      } catch (error) {
-        console.log("Something went wrong");
-        setFilteredPokemon([]);
-      }
+      setFilteredPokemon(pokemon);
+    } catch (error) {
+      console.log("Something went wrong");
+      setFilteredPokemon([]);
     }
 
-    setFilteredPokemon(arrayToDisplay);
     setRandomLoading(false);
   };
 
