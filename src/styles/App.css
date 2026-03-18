@@ -777,24 +777,16 @@ body {
   transform: scale(1.2);
 }
 
-/*DISPLAY CARD SKELETON LOADING*/
-.skeletonCard {
-  pointer-events: none;
-}
+/*SKELETON*/
 
-.skeletonCard:hover {
-  transform: none;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-}
-
-.sk {
+.skeleton {
   background: #e2e8f0;
   border-radius: 10px;
   position: relative;
   overflow: hidden;
 }
 
-.sk::after {
+.skeleton::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -858,7 +850,7 @@ body {
   border-radius: 20px;
   margin-top: 10px;
 }
-/*DISPLAY CARD SKELETON LOADING END*/
+/*SKELETON END*/
 
 /*PAYMENT MODAL*/
 .paymentModalOverlay {
