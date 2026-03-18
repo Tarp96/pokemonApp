@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { firstLetterUpperCase } from "../../utils/helperFunctions";
 import { fetchMoveData } from "../../utils/pokeApi";
 import { TypeBadge } from "../../components/TypeBadge";
+import PokemonMovesSkeleton from "../../components/SkeletonLoading/PokemonMovesSkeleton";
 
 export const PokemonMoves = () => {
   const { pokemon } = useOutletContext();
@@ -18,7 +19,11 @@ export const PokemonMoves = () => {
 
   useEffect(() => {
     async function getMoveDetails() {
-      if (moves.length === 0) return;
+      if (moves.length === 0) {
+        setMoveDetails([]);
+        setLoading(false);
+        return;
+      }
 
       setLoading(true);
       try {
@@ -26,7 +31,7 @@ export const PokemonMoves = () => {
           moves.map(async (move) => {
             const data = await fetchMoveData(move);
             return data;
-          })
+          }),
         );
         setMoveDetails(results);
       } catch (error) {
@@ -40,11 +45,7 @@ export const PokemonMoves = () => {
   }, [moves]);
 
   if (loading) {
-    return (
-      <div className="movesPage">
-        <p>Loading data....</p>
-      </div>
-    );
+    return <PokemonMovesSkeleton />;
   }
 
   return (
@@ -56,7 +57,7 @@ export const PokemonMoves = () => {
           alt={pokemon.name}
         />
         <h1 className="movesTitle">{`${firstLetterUpperCase(
-          pokemon.name
+          pokemon.name,
         )} Moves`}</h1>
       </div>
 
@@ -91,7 +92,7 @@ export const PokemonMoves = () => {
               <td>
                 {move.effect_entries?.[0]?.short_effect?.replace(
                   /\$effect_chance/g,
-                  move.effect_chance ?? ""
+                  move.effect_chance ?? "",
                 ) ?? "—"}
               </td>
             </tr>
