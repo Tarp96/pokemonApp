@@ -850,6 +850,11 @@ body {
   border-radius: 20px;
   margin-top: 10px;
 }
+
+.skeletonCard {
+  pointer-events: none;
+  user-select: none;
+}
 /*SKELETON END*/
 
 /*PAYMENT MODAL*/
