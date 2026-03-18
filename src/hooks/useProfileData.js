@@ -15,10 +15,13 @@ export const useProfileData = () => {
   const [highScore, setHighScore] = useState(null);
   const [avatarId, setAvatarId] = useState(1);
   const [quoteId, setQuoteId] = useState(1);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const user = auth.currentUser;
     if (!user) return;
+
+    let isMounted = true;
 
     const userRef = doc(db, "users", user.uid);
 
@@ -26,6 +29,8 @@ export const useProfileData = () => {
       if (!docSnap.exists()) return;
 
       const data = docSnap.data();
+
+      if (!isMounted) return;
 
       setUserId(user.uid);
       setUsername(data.username ?? "");
@@ -36,18 +41,32 @@ export const useProfileData = () => {
 
     const fetchTeamData = async () => {
       const size = await getTeamSize();
-      setTeamSize(size);
-
       const userTeam = await getUserTeam();
+
+      if (!isMounted) return;
+
+      setTeamSize(size);
       setTeam(userTeam);
     };
 
     fetchTeamData();
 
-    const unsubscribeCoins = listenToCoins(user.uid, setCoinBalance);
-    const unsubscribeHighScore = listenToHighScore(user.uid, setHighScore);
+    const unsubscribeCoins = listenToCoins(user.uid, (coins) => {
+      if (!isMounted) return;
+      setCoinBalance(coins);
+    });
+
+    const unsubscribeHighScore = listenToHighScore(user.uid, (score) => {
+      if (!isMounted) return;
+      setHighScore(score);
+    });
+
+    setTimeout(() => {
+      if (isMounted) setLoading(false);
+    }, 0);
 
     return () => {
+      isMounted = false;
       unsubscribeUser();
       unsubscribeCoins();
       unsubscribeHighScore();
@@ -64,5 +83,6 @@ export const useProfileData = () => {
     highScore,
     avatarId,
     quoteId,
+    loading,
   };
 };

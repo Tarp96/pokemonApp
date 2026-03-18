@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { EditProfileModal } from "../../components/EditProfileModal";
 import { FaRegEdit } from "react-icons/fa";
 import pokemonQuotes from "../../data/pokemonQuotes";
+import ProfileTrainerSkeleton from "../../components/SkeletonLoading/ProfileTrainerSkeleton";
 
 export const ProfilePage = () => {
   const {
@@ -14,6 +15,7 @@ export const ProfilePage = () => {
     highScore,
     avatarId,
     quoteId,
+    loading,
   } = useOutletContext();
 
   const [isEditing, setIsEditing] = useState(false);
@@ -26,6 +28,10 @@ export const ProfilePage = () => {
   const selectedQuote =
     pokemonQuotes.find((q) => q.id === quoteId)?.quote ||
     "A true trainer never gives up.";
+
+  if (loading) {
+    return <ProfileTrainerSkeleton />;
+  }
 
   return (
     <div className="profileLayout">

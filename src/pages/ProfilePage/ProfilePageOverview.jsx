@@ -12,6 +12,7 @@ export const ProfilePageOverview = () => {
     highScore,
     avatarId,
     quoteId,
+    loading,
   } = useProfileData();
 
   return (
@@ -40,6 +41,7 @@ export const ProfilePageOverview = () => {
           highScore,
           avatarId,
           quoteId,
+          loading,
         }}
       />
     </div>
