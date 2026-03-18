@@ -12,7 +12,7 @@ import { setCachedPageFull } from "../../utils/cache";
 import { PaymentModal } from "../../components/PaymentModal";
 import { auth } from "../../firebaseConfig";
 import { listenToTeam } from "../../services/teamService";
-import PokemonDisplayCardSkeleton from "../../components/PokemonDisplayCardSkeleton";
+import PokemonDisplayCardSkeleton from "../../components/SkeletonLoading/PokemonDisplayCardSkeleton";
 
 export const HomePage = () => {
   const [pokemon, setPokemon] = useState([]);

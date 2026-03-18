@@ -9,6 +9,7 @@ import { firstLetterUpperCase } from "../../utils/helperFunctions";
 import { FaArrowLeft } from "react-icons/fa6";
 import { PageNavigationBar } from "../../components/PageNavigationbar";
 import PrevNextMonButton from "../../components/PrevNextMonButton";
+import DetailPageOverviewSkeleton from "../../components/SkeletonLoading/DetailPageOverviewSkeleton";
 
 export const PokemonDetailsPage = () => {
   const { name } = useParams();
@@ -97,13 +98,15 @@ export const PokemonDetailsPage = () => {
         const [prevMon, nextMon] = await Promise.all(requests);
 
         if (!cancelled) {
-          setPrevAndNextMon([prevMon, nextMon]); // no push()
+          setPrevAndNextMon([prevMon, nextMon]);
         }
       } catch (error) {
         console.error("Failed to fetch Pokémon details:", error);
         if (!cancelled) setError("Could not load Pokémon data.");
       } finally {
-        if (!cancelled) setLoading(false);
+        setTimeout(() => {
+          if (!cancelled) setLoading(false);
+        }, 2000);
       }
     };
 
@@ -150,12 +153,10 @@ export const PokemonDetailsPage = () => {
   }, [name]);
 
   if (loading || !pokemon || !pokemonSpecies) {
-    return <p>Loading...</p>;
+    return <DetailPageOverviewSkeleton />;
   }
 
-  return loading ? (
-    <p>Loading...</p>
-  ) : (
+  return (
     <div className="detailsPageContainer">
       <div className="detailsPageHeader">
         <NavLink to={from} className="navigateBackButton">

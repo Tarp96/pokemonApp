@@ -1,6 +1,6 @@
 import Skeleton from "./Skeleton";
 
-export const DetailPageOverivewSkeleton = () => {
+export default function DetailPageOverviewSkeleton() {
   return (
     <div className="detailsPageContainer skeletonPage">
       <div className="detailsPageHeader">
@@ -97,4 +97,4 @@ export const DetailPageOverivewSkeleton = () => {
       </div>
     </div>
   );
-};
+}
