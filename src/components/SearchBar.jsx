@@ -48,12 +48,17 @@ export const SearchBar = ({
       </div>
 
       <div className="randomBtnWrapper">
-        <button onClick={secondOnClick} className="randomPokemonButton">
-          <img
-            src="/assets/pokeb.png"
-            alt="Pokeball"
-            className="randomPokeballIcon"
-          />
+        <button
+          onClick={secondOnClick}
+          className={`randomPokemonButton ${isFiltered ? "" : "biggerRandomButton"}`}
+        >
+          {!isFiltered && (
+            <img
+              src="/assets/pokeb.png"
+              alt="Pokeball"
+              className="randomPokeballIcon"
+            />
+          )}
           Random Pokémon
         </button>
 

@@ -298,8 +298,8 @@ body {
 }
 
 .searchBarButton {
-  padding: 10px 16px;
-  font-size: 12px;
+  padding: 8px 12px;
+  font-size: 14px;
   font-weight: 600;
   background: linear-gradient(to bottom right, #ffcb05, #ffdf70);
   color: #2a2a2a;
@@ -325,30 +325,51 @@ body {
   justify-content: center;
   margin-top: 10px;
   width: 100%;
+  gap: 25px;
 }
 
-.randomPokemonButton {
+.randomPokemonButton,
+.clearFilterButton {
+  border: 2px solid #000;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
   padding: 10px 16px;
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 600;
-  background: linear-gradient(to bottom right, #ff4d4d, #ff9999);
-  color: #fff;
-  border: 2px solid #000;
-  border-radius: 8px;
-  cursor: pointer;
-  transition: all 0.2s ease-in-out;
-  box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
-  width: 100%;
-  max-width: 300px;
 }
 
-.randomPokemonButton:hover {
-  background: linear-gradient(to bottom right, #e63946, #ff7b7b);
-  transform: translateY(-1px);
+.randomPokemonButton {
+  width: 100%;
+  max-width: 175px;
+  background-color: #ffd125;
+}
+
+.biggerRandomButton {
+  max-width: 200px;
+  gap: 6px;
+}
+
+.randomPokeballIcon {
+  height: 20px;
+  width: 20px;
+}
+
+.randomPokemonButton:hover,
+.clearFilterButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+.randomPokemonButton:active,
+.clearFilterButton:active {
+  transform: translateY(0px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
 }
 
 .randomPokemonButton:active {
@@ -356,9 +377,9 @@ body {
   box-shadow: none;
 }
 
-.randomPokeballIcon {
-  width: 20px;
-  height: 20px;
+.clearFilterButton {
+  background: linear-gradient(to bottom right, #ff4d4d, #ff9999);
+  color: white;
 }
 
 .searchHistoryList {
