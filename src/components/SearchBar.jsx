@@ -6,6 +6,8 @@ export const SearchBar = ({
   setQuery,
   onClick,
   secondOnClick,
+  clearFilter,
+  isFiltered,
   list,
   showSearches,
   setShowSearches,
@@ -54,6 +56,12 @@ export const SearchBar = ({
           />
           Random Pokémon
         </button>
+
+        {isFiltered && (
+          <button onClick={clearFilter} className="clearFilterButton">
+            Clear Filter
+          </button>
+        )}
       </div>
 
       {showSearches && list.length > 0 && (

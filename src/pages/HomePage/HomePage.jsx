@@ -76,6 +76,13 @@ export const HomePage = () => {
     return () => unsubscribe();
   }, []);
 
+  const clearFilter = () => {
+    setFilteredPokemon(pokemon);
+    setActiveFilter(null);
+    setIsFiltered(false);
+    setQuery("");
+  };
+
   const filterByType = async (key) => {
     if (isFiltered && activeFilter === key) {
       setFilteredPokemon(pokemon);
@@ -110,10 +117,12 @@ export const HomePage = () => {
     ));
 
   const removeFilter = () => {
-    setActiveFilter((prev) => (prev = null));
+    setActiveFilter(null);
     setFilteredPokemon(pokemon);
     setQuery("");
+    setIsFiltered(false);
   };
+
   const renderQueryPokemonCard = async (customQuery) => {
     const searchTerm = String(customQuery ?? query).trim();
     if (!searchTerm) {
@@ -125,6 +134,7 @@ export const HomePage = () => {
       const [details] = await safeFetchBatch([searchTerm.toLowerCase()]);
       if (details) {
         setFilteredPokemon([details]);
+        setIsFiltered(true);
 
         const updatedHistory = Array.from(
           new Set([searchTerm, ...searchHistory]),
@@ -157,6 +167,7 @@ export const HomePage = () => {
       const pokemon = results.map(([details]) => details).filter(Boolean);
 
       setFilteredPokemon(pokemon);
+      setIsFiltered(true);
     } catch (error) {
       console.log("Something went wrong");
       setFilteredPokemon([]);
@@ -203,6 +214,8 @@ export const HomePage = () => {
         query={query}
         setQuery={setQuery}
         onClick={renderQueryPokemonCard}
+        clearFilter={clearFilter}
+        isFiltered={isFiltered}
         list={searchHistory}
         showSearches={showSearches}
         setShowSearches={setShowSearches}
@@ -212,6 +225,7 @@ export const HomePage = () => {
       <FilterByTypeButtons
         filterByTypeFunc={filterByType}
         activeFilter={activeFilter}
+        isFiltered={isFiltered}
       />
 
       {!activeFilter && (

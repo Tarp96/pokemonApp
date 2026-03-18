@@ -1,12 +1,22 @@
 import typeColors from "./../utils/typecolors";
 import { firstLetterUpperCase } from "../utils/helperFunctions";
 import { getTypeIcon } from "../utils/typeIcons";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-export const FilterByTypeButtons = ({ filterByTypeFunc, activeFilter }) => {
+export const FilterByTypeButtons = ({
+  filterByTypeFunc,
+  activeFilter,
+  isFiltered,
+}) => {
   const myObj = typeColors;
 
   const [showFilters, setShowFilters] = useState(window.innerWidth > 480);
+
+  useEffect(() => {
+    if (!isFiltered) {
+      setShowFilters(true);
+    }
+  }, [isFiltered]);
 
   return (
     <>
@@ -34,7 +44,9 @@ export const FilterByTypeButtons = ({ filterByTypeFunc, activeFilter }) => {
                 }}
                 onClick={() => {
                   filterByTypeFunc(key);
-                  setShowFilters(false);
+                  if (window.innerWidth < 480) {
+                    setShowFilters(false);
+                  }
                 }}
               >
                 <span>{firstLetterUpperCase(key)}</span>
