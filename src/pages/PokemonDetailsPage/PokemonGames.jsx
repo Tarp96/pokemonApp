@@ -8,6 +8,8 @@ export const PokemonGames = () => {
   const displayGames = pokemon.game_indices?.map((g) => {
     const matchedImage = gameImages.find((img) => img.name === g.version.name);
 
+    if (!pokemon) return null;
+
     return (
       <div key={g.version.name} className="gameCard">
         <p>{firstLetterUpperCase(g.version.name)}</p>

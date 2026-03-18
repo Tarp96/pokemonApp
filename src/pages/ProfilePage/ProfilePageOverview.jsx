@@ -1,6 +1,5 @@
 import { Outlet } from "react-router-dom";
 import { PageNavigationBar } from "../../components/PageNavigationbar";
-import { firstLetterUpperCase } from "../../utils/helperFunctions";
 import { useProfileData } from "../../hooks/useProfileData";
 
 export const ProfilePageOverview = () => {
