@@ -1,12 +1,12 @@
 import {
   collection,
-  addDoc,
   deleteDoc,
   doc,
   getDocs,
   setDoc,
   query,
   where,
+  onSnapshot,
 } from "firebase/firestore";
 import { db, auth } from "../firebaseConfig";
 
@@ -27,6 +27,18 @@ export const isAlreadyFavorited = async (name) => {
   }
 };
 
+export const listenToFavorites = (userId, callback) => {
+  const favoritesRef = collection(db, "users", userId, "favorites");
+
+  return onSnapshot(favoritesRef, (snapshot) => {
+    const favorites = snapshot.docs.map((doc) => ({
+      id: doc.id,
+      ...doc.data(),
+    }));
+    callback(favorites);
+  });
+};
+
 export const addFavorite = async (pokemon) => {
   const user = auth.currentUser;
   if (!user) {
@@ -38,7 +50,7 @@ export const addFavorite = async (pokemon) => {
     "users",
     user.uid,
     "favorites",
-    pokemon.id.toString()
+    pokemon.id.toString(),
   );
 
   try {
@@ -68,7 +80,7 @@ export const removeFavorite = async (pokemonName) => {
   try {
     const snapshot = await getDocs(q);
     const batch = snapshot.docs.map((docItem) =>
-      deleteDoc(doc(db, "users", user.uid, "favorites", docItem.id))
+      deleteDoc(doc(db, "users", user.uid, "favorites", docItem.id)),
     );
     await Promise.all(batch);
   } catch (error) {

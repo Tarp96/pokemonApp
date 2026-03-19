@@ -4,6 +4,7 @@ import { doc, onSnapshot } from "firebase/firestore";
 import { listenToCoins } from "../services/coinService";
 import { getTeamSize, getUserTeam } from "../services/teamService";
 import { listenToHighScore } from "../services/highScoreService";
+import { listenToFavorites } from "../services/favoritesService";
 
 export const useProfileData = () => {
   const [userId, setUserId] = useState(null);
@@ -16,6 +17,7 @@ export const useProfileData = () => {
   const [avatarId, setAvatarId] = useState(1);
   const [quoteId, setQuoteId] = useState(1);
   const [loading, setLoading] = useState(true);
+  const [favorites, setFavorites] = useState(null);
 
   useEffect(() => {
     const user = auth.currentUser;
@@ -51,6 +53,8 @@ export const useProfileData = () => {
 
     fetchTeamData();
 
+    const unsubscribeFavorites = listenToFavorites(user.uid, setFavorites);
+
     const unsubscribeCoins = listenToCoins(user.uid, (coins) => {
       if (!isMounted) return;
       setCoinBalance(coins);
@@ -70,6 +74,7 @@ export const useProfileData = () => {
       unsubscribeUser();
       unsubscribeCoins();
       unsubscribeHighScore();
+      unsubscribeFavorites();
     };
   }, []);
 
@@ -84,5 +89,6 @@ export const useProfileData = () => {
     avatarId,
     quoteId,
     loading,
+    favorites,
   };
 };

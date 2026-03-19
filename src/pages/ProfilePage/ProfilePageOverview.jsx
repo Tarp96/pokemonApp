@@ -13,6 +13,7 @@ export const ProfilePageOverview = () => {
     avatarId,
     quoteId,
     loading,
+    favorites,
   } = useProfileData();
 
   const location = useLocation();
@@ -46,6 +47,7 @@ export const ProfilePageOverview = () => {
               avatarId,
               quoteId,
               loading,
+              favorites,
             }}
           />
         </div>

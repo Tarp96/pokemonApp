@@ -1,23 +1,12 @@
-import { useEffect, useState } from "react";
-import { getAllFavorites } from "../../services/favoritesService";
 import PokemonDisplayCard from "../../components/PokemonDisplayCard";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, useOutletContext } from "react-router-dom";
 
 export const FavoritePokemonsPage = () => {
-  const [favoritesList, setFavoritesList] = useState([]);
   const navigate = useNavigate();
   const location = useLocation();
+  const { favorites } = useOutletContext();
 
-  useEffect(() => {
-    const load = async () => {
-      const externalList = await getAllFavorites();
-      setFavoritesList(externalList);
-      console.log(externalList);
-    };
-    load();
-  }, []);
-
-  const displayFavorites = favoritesList.map((pokemon) => {
+  const displayFavorites = favorites?.map((pokemon) => {
     const normalizedTypes = pokemon.types?.map((t) =>
       typeof t === "string" ? { type: { name: t } } : t,
     );
@@ -46,7 +35,9 @@ export const FavoritePokemonsPage = () => {
     );
   });
 
-  if (favoritesList.length === 0) {
+  if (!favorites) return null;
+
+  if (favorites.length === 0) {
     return (
       <div className="favoriteListEmptyContainer">
         <h2>Add Pokemon to your favorites to view them here</h2>

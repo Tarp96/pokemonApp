@@ -16,6 +16,7 @@ export const ProfilePage = () => {
     avatarId,
     quoteId,
     loading,
+    favorites,
   } = useOutletContext();
 
   const [isEditing, setIsEditing] = useState(false);
