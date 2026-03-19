@@ -19,7 +19,6 @@ import { AbilitiesList } from "../../components/AbilitiesList";
 import { BsVolumeUp } from "react-icons/bs";
 import { EvolutionSection } from "../../components/EveloutionSection";
 import { AlternativeFormsSection } from "../../components/AlternativeFormsSection";
-import { getPokemonPrice } from "../../data/pokemonPricing";
 import { PriceTag } from "../../components/PriceTag";
 
 export const PokemonDetailOverView = () => {
@@ -28,8 +27,6 @@ export const PokemonDetailOverView = () => {
   const [showDefense, setShowDefense] = useState(true);
 
   const { pokemon, pokemonSpecies } = useOutletContext();
-
-  const price = pokemon?.name ? getPokemonPrice(pokemon.name) : 0;
 
   useEffect(() => {
     const controller = new AbortController();
@@ -132,19 +129,24 @@ export const PokemonDetailOverView = () => {
           </div>
         </div>
         <div className="overviewPageMainImageContainer">
-          <div className="audioButtonContainer ">
-            <AudioPlayer
-              src={pokemon?.cries?.legacy}
-              className="audioButtonExpanded"
-            >
-              <BsVolumeUp aria-hidden="true" /> Legacy Cry
-            </AudioPlayer>
-            <AudioPlayer
-              src={pokemon?.cries?.latest}
-              className="audioButtonExpanded"
-            >
-              <BsVolumeUp aria-hidden="true" /> Latest Cry
-            </AudioPlayer>
+          <div className="audioButtonContainer">
+            {pokemon?.cries?.legacy && (
+              <AudioPlayer
+                src={pokemon.cries.legacy}
+                className="audioButtonExpanded"
+              >
+                <BsVolumeUp aria-hidden="true" /> Legacy Cry
+              </AudioPlayer>
+            )}
+
+            {pokemon?.cries?.latest && (
+              <AudioPlayer
+                src={pokemon.cries.latest}
+                className="audioButtonExpanded"
+              >
+                <BsVolumeUp aria-hidden="true" /> Latest Cry
+              </AudioPlayer>
+            )}
           </div>
           {sprite && (
             <img
