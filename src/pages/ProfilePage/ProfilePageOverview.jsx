@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { PageNavigationBar } from "../../components/PageNavigationbar";
 import { useProfileData } from "../../hooks/useProfileData";
 
@@ -14,6 +14,8 @@ export const ProfilePageOverview = () => {
     quoteId,
     loading,
   } = useProfileData();
+
+  const location = useLocation();
 
   return (
     <div className="profilePageContainer">
@@ -31,19 +33,23 @@ export const ProfilePageOverview = () => {
         />
       </div>
 
-      <Outlet
-        context={{
-          userId,
-          username,
-          coinBalance,
-          coinsSpent,
-          team,
-          highScore,
-          avatarId,
-          quoteId,
-          loading,
-        }}
-      />
+      <div className="profileContentWrapper">
+        <div key={location.pathname} className="profileTabContent fadeSlide">
+          <Outlet
+            context={{
+              userId,
+              username,
+              coinBalance,
+              coinsSpent,
+              team,
+              highScore,
+              avatarId,
+              quoteId,
+              loading,
+            }}
+          />
+        </div>
+      </div>
     </div>
   );
 };
