@@ -52,12 +52,23 @@ export const HomePage = () => {
       const allPokemonDetails = await safeFetchBatch(pokemonNames);
 
       const pages = Math.ceil((result.count ?? 0) / 20);
+
       setPokemon(allPokemonDetails);
       setFilteredPokemon(allPokemonDetails);
       setTotalPages(pages);
 
+      const lightweightList = allPokemonDetails.map((p) => ({
+        id: p.id,
+        name: p.name,
+        sprite:
+          p.sprites?.other["official-artwork"]?.front_default ??
+          p.sprites?.front_default,
+        types: p.types,
+        cries: p.cries?.legacy ?? null,
+      }));
+
       setCachedPageFull(pageNumber, {
-        list: allPokemonDetails,
+        list: lightweightList,
         totalPages: pages,
       });
     } catch (error) {
