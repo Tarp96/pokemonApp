@@ -1,5 +1,6 @@
 import PokemonDisplayCard from "../../components/PokemonDisplayCard";
 import { useLocation, useNavigate, useOutletContext } from "react-router-dom";
+import PokemonDisplayCardSkeleton from "./../../components/SkeletonLoading/PokemonDisplayCardSkeleton";
 
 export const FavoritePokemonsPage = () => {
   const navigate = useNavigate();
@@ -31,11 +32,20 @@ export const FavoritePokemonsPage = () => {
         pokemon={pokemon}
         fromFavorites
         generation={pokemon.generation}
+        className="profileFavoritePokemonCard"
       />
     );
   });
 
-  if (!favorites) return null;
+  if (favorites === null) {
+    return (
+      <div className="favoritePageGridContainer">
+        {Array.from({ length: 3 }).map((_, i) => (
+          <PokemonDisplayCardSkeleton key={i} />
+        ))}
+      </div>
+    );
+  }
 
   if (favorites.length === 0) {
     return (

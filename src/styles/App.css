@@ -661,6 +661,7 @@ body {
   align-items: center;
   justify-content: center;
   margin-top: 10px;
+  margin-bottom: 25px;
   cursor: pointer;
   transition:
     background-color 0.3s ease,
@@ -2163,6 +2164,11 @@ body {
   max-width: 840px;
   width: 60%;
 }
+
+.profileFavoritePokemonCard {
+  outline: 3px solid #ffcb05;
+}
+
 /*FAVORITES PAGE END*/
 
 /*TRAINER CARD PAGE*/
@@ -3782,6 +3788,7 @@ body {
   .linkToDetailsPageButton {
     font-size: 12px;
     padding: 5px 10px;
+    margin-bottom: 25px;
   }
 
   .pokemon-card:hover {

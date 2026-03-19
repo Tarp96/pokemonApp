@@ -25,6 +25,7 @@ function PokemonDisplayCard({
   generation,
   priceTagOnClick,
   isOwned,
+  className,
 }) {
   const { userLoggedIn } = useAuth();
 
@@ -70,7 +71,7 @@ function PokemonDisplayCard({
   });
 
   return (
-    <div className="pokemon-card">
+    <div className={`pokemon-card ${className || ""}`}>
       <div className="favoriteButtonContainer">
         <FavoriteButton onClick={handleFavoriteClick} isClicked={isFavorite} />
       </div>
