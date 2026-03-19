@@ -61,7 +61,7 @@ export const HomePage = () => {
         id: p.id,
         name: p.name,
         sprite:
-          p.sprites?.other["official-artwork"]?.front_default ??
+          p.sprites?.other?.["official-artwork"]?.front_default ??
           p.sprites?.front_default,
         types: p.types,
         cries: p.cries?.legacy ?? null,

@@ -9,8 +9,6 @@ export const PriceTag = ({
 }) => {
   const price = pokemonName ? getPokemonPrice(pokemonName) : 0;
 
-  console.log("isOwned:", isOwned);
-
   return (
     <div className="priceTagWrapper">
       <span
