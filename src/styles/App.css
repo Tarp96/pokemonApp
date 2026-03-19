@@ -596,7 +596,6 @@ body {
   background: #fff;
   border-radius: 10px;
   border: 1px solid #ddd;
-
   padding: 15px;
   text-align: center;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -613,6 +612,10 @@ body {
   position: relative;
   overflow: visible;
   animation: fadeIn 0.3s ease;
+}
+
+.pokemon-card--profile {
+  outline: 3px solid #ffcb05;
 }
 
 @keyframes fadeIn {
@@ -2163,10 +2166,6 @@ body {
 .favoriteListEmptyContainer img {
   max-width: 840px;
   width: 60%;
-}
-
-.profileFavoritePokemonCard {
-  outline: 3px solid #ffcb05;
 }
 
 /*FAVORITES PAGE END*/

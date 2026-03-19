@@ -32,7 +32,7 @@ export const FavoritePokemonsPage = () => {
         pokemon={pokemon}
         fromFavorites
         generation={pokemon.generation}
-        className="profileFavoritePokemonCard"
+        variant="profile"
       />
     );
   });
