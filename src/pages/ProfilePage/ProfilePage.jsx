@@ -19,6 +19,11 @@ export const ProfilePage = () => {
   } = useOutletContext();
 
   const [isEditing, setIsEditing] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  useEffect(() => {
+    setImageLoaded(false);
+  }, [avatarId]);
 
   useEffect(() => {
     console.log("avatarId in ProfilePage:", avatarId);
@@ -88,10 +93,23 @@ export const ProfilePage = () => {
 
       <div className="trainerAvatarColumn">
         <div className="trainerAvatarFrame">
+          {!imageLoaded && (
+            <div className="imageSkeleton">
+              <img
+                src="/assets/pokeballIcon.svg"
+                alt=""
+                className="imageSkeletonIcon"
+              />
+            </div>
+          )}
+
           <img
             src={`/assets/trainerAvatars/pt${avatarId}.webp`}
             alt="Trainer Avatar"
-            className="trainerAvatar"
+            className={`trainerAvatar ${imageLoaded ? "loaded" : ""}`}
+            onLoad={() => {
+              setTimeout(() => setImageLoaded(true), 100);
+            }}
           />
         </div>
       </div>

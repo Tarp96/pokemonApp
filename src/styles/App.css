@@ -1581,6 +1581,7 @@ body {
   border: 3px solid #3b4cca;
   outline: 3px solid #ffcb05;
   overflow: hidden;
+  position: relative;
 }
 
 .trainerAvatar {
@@ -1590,6 +1591,34 @@ body {
   max-height: 100%;
   object-fit: contain;
   border-radius: 12px;
+}
+
+.imageSkeleton {
+  position: absolute;
+  inset: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: #f7f7f7;
+  z-index: 1;
+}
+
+.imageSkeletonIcon {
+  width: 48px;
+  height: 48px;
+  opacity: 0.75;
+  animation: pokeballSpin 2s linear infinite;
+}
+
+.trainerAvatar {
+  opacity: 0;
+  transition: opacity 0.25s ease;
+}
+
+.trainerAvatar.loaded {
+  opacity: 1;
 }
 
 .trainerInfoContainer {
