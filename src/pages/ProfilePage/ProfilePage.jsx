@@ -108,7 +108,7 @@ export const ProfilePage = () => {
             alt="Trainer Avatar"
             className={`trainerAvatar ${imageLoaded ? "loaded" : ""}`}
             onLoad={() => {
-              setTimeout(() => setImageLoaded(true), 100);
+              setTimeout(() => setImageLoaded(true), 200);
             }}
           />
         </div>
