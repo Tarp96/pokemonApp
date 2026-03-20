@@ -1,5 +1,6 @@
 import { GameOverScreen } from "./GameOverScreen";
 import { useEffect, useState, useRef } from "react";
+import gengar from "../../assets/gengar.webp";
 
 const GAME_DURATION = 3;
 const pokemonSize = window.innerWidth <= 480 ? 35 : 60;
@@ -144,7 +145,7 @@ export const GamePlayScreen = ({ difficulty, onReset }) => {
             onClick={handlePokemonClick}
           >
             <img
-              src="/assets/gengar.webp"
+              src={gengar}
               alt="Gengar"
               className={`gamePokemon ${hit ? "hit" : ""}`}
             />
