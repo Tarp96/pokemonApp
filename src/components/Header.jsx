@@ -1,6 +1,8 @@
 import { NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../contexts/authContext/AuthContext";
 import { useState, useEffect, useRef } from "react";
+import pikalogo from "../assets/pikalogo.png";
+import pokemonlogo from "../assets/pokelogo.png";
 
 export const Header = () => {
   let navigate = useNavigate();
@@ -30,16 +32,12 @@ export const Header = () => {
   return (
     <header className="headerContainer">
       <div className="headerLeft">
-        <img
-          src="assets/pikalogo.png"
-          alt=""
-          className="pageTitlePokeBallImg"
-        />
+        <img src={pikalogo} alt="" className="pageTitlePokeBallImg" />
       </div>
 
       <div className="headerCenter">
         <img
-          src="assets/pokelogo.png"
+          src={pokemonlogo}
           alt="Pokemon title"
           className="headerImage"
           onClick={() => navigate("/")}

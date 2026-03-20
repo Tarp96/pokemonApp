@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { useProfileData } from "../../hooks/useProfileData";
 import { useNavigate } from "react-router-dom";
 import gameStartImage from "../../assets/gameStartImg.png";
+import psyduckSign from "../../assets/psyduckSign.jpg";
 
 export const GameStartScreen = ({
   selectedDifficulty,
@@ -34,8 +35,8 @@ export const GameStartScreen = ({
       {!isLoggedIn ? (
         <div className="loginReminderContainer">
           <img
-            src="assets/psyduckSign.jpg"
-            alt="yellow duck holding a sign"
+            src={psyduckSign}
+            alt="Yellow duck holding a sign"
             className="loginReminderImage"
           />
           <p className="loginReminderText">
