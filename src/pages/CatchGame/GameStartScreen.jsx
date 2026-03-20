@@ -2,6 +2,7 @@ import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useProfileData } from "../../hooks/useProfileData";
 import { useNavigate } from "react-router-dom";
+import gameStartImage from "../../assets/gameStartImg.png";
 
 export const GameStartScreen = ({
   selectedDifficulty,
@@ -53,8 +54,7 @@ export const GameStartScreen = ({
               <div className="uiAuthHero">
                 <img
                   className="uiCardHero square gameStartImage"
-                  src="assets/gameStartImg.png
-                  "
+                  src={gameStartImage}
                   alt="Pokémon artwork"
                 />
               </div>
