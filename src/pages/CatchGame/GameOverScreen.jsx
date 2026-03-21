@@ -1,4 +1,5 @@
 import { useGameOveLogic } from "../../hooks/useGameOverLogic";
+import gameOverImage from "../../assets/pokeHappy.jpg";
 
 import { useNavigate } from "react-router-dom";
 
@@ -20,7 +21,7 @@ export const GameOverScreen = ({
         <div className="uiAuthContent">
           <div className="uiAuthHero">
             <img
-              src="assets/pokeHappy.jpg"
+              src={gameOverImage}
               alt="Person holding a big trophy"
               className="uiCardHero square pokeTrophyImg"
             />
