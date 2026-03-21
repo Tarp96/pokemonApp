@@ -1693,6 +1693,20 @@ body {
   border-left: 4px solid #ffcb05;
   padding-left: 1rem;
   text-align: left;
+  opacity: 0;
+  transform: translateY(6px);
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+}
+
+.trainerSubtitle.quoteLoaded {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.trainerSubtitle.quoteLoading {
+  opacity: 0;
 }
 
 .trainerSubtitle::before {

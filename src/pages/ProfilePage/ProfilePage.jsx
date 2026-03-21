@@ -64,7 +64,13 @@ export const ProfilePage = () => {
           </div>
 
           {selectedQuote ? (
-            <p className="trainerSubtitle">{selectedQuote}</p>
+            <p
+              className={`trainerSubtitle ${
+                selectedQuote ? "quoteLoaded" : "quoteLoading"
+              }`}
+            >
+              {selectedQuote || " "}
+            </p>
           ) : (
             <p className="trainerSubtitle loading">Loading quote...</p>
           )}
