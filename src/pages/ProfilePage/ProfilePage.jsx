@@ -21,6 +21,8 @@ export const ProfilePage = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
 
+  const hasAvatar = avatarId !== null && avatarId !== undefined;
+
   useEffect(() => {
     setImageLoaded(false);
   }, [avatarId]);
@@ -30,9 +32,7 @@ export const ProfilePage = () => {
     console.log(`/assets/trainerAvatars/pt${avatarId}.webp`);
   }, []);
 
-  const selectedQuote =
-    pokemonQuotes.find((q) => q.id === quoteId)?.quote ||
-    "A true trainer never gives up.";
+  const selectedQuote = pokemonQuotes.find((q) => q.id === quoteId)?.quote;
 
   if (loading) {
     return <ProfileTrainerSkeleton />;
@@ -63,7 +63,11 @@ export const ProfilePage = () => {
             </button>
           </div>
 
-          <p className="trainerSubtitle">{selectedQuote}</p>
+          {selectedQuote ? (
+            <p className="trainerSubtitle">{selectedQuote}</p>
+          ) : (
+            <p className="trainerSubtitle loading">Loading quote...</p>
+          )}
         </div>
 
         <div className="profileDivider"></div>
@@ -93,7 +97,7 @@ export const ProfilePage = () => {
 
       <div className="trainerAvatarColumn">
         <div className="trainerAvatarFrame">
-          {!imageLoaded && (
+          {(!imageLoaded || !hasAvatar) && (
             <div className="imageSkeleton">
               <img
                 src="/assets/pokeballIcon.svg"
@@ -103,14 +107,16 @@ export const ProfilePage = () => {
             </div>
           )}
 
-          <img
-            src={`/assets/trainerAvatars/pt${avatarId}.webp`}
-            alt="Trainer Avatar"
-            className={`trainerAvatar ${imageLoaded ? "loaded" : ""}`}
-            onLoad={() => {
-              setTimeout(() => setImageLoaded(true), 200);
-            }}
-          />
+          {hasAvatar && (
+            <img
+              src={`/assets/trainerAvatars/pt${avatarId}.webp`}
+              alt="Trainer Avatar"
+              className={`trainerAvatar ${imageLoaded ? "loaded" : ""}`}
+              onLoad={() => {
+                setTimeout(() => setImageLoaded(true), 200);
+              }}
+            />
+          )}
         </div>
       </div>
     </div>

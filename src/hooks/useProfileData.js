@@ -14,8 +14,8 @@ export const useProfileData = () => {
   const [teamSize, setTeamSize] = useState(null);
   const [team, setTeam] = useState([]);
   const [highScore, setHighScore] = useState(null);
-  const [avatarId, setAvatarId] = useState(1);
-  const [quoteId, setQuoteId] = useState(1);
+  const [avatarId, setAvatarId] = useState(0);
+  const [quoteId, setQuoteId] = useState(null);
   const [loading, setLoading] = useState(true);
   const [favorites, setFavorites] = useState(null);
 
