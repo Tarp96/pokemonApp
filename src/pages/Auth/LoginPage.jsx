@@ -6,7 +6,7 @@ import {
 } from "./../../services/authService";
 import { useAuth } from "./../../contexts/authContext/AuthContext";
 import { Navigate, useNavigate } from "react-router-dom";
-import loginPic from "../../assets/loginPic.jpg";
+import loginPic from "../../assets/loginPic.webp";
 
 const LoginPage = () => {
   const { userLoggedIn, loading } = useAuth();

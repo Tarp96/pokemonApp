@@ -2,8 +2,8 @@ import { NavLink } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useProfileData } from "../../hooks/useProfileData";
 import { useNavigate } from "react-router-dom";
-import gameStartImage from "../../assets/gameStartImg.png";
-import psyduckSign from "../../assets/psyduckSign.jpg";
+import psyduckSign from "../../assets/psyduckSign.webp";
+import gameStartImage from "../../assets/gameStartImg.webp";
 
 export const GameStartScreen = ({
   selectedDifficulty,

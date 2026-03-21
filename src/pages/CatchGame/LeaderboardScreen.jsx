@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { auth } from "../../firebaseConfig";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import pokemonTrophy from "../../assets/poketrophy.webp";
 
 export const LeaderboardScreen = () => {
   const [leaderboard, setLeaderboard] = useState([]);
@@ -49,13 +50,13 @@ export const LeaderboardScreen = () => {
       <div className="leaderboardPageContainer">
         <div className="leaderboardTitleContainer">
           <img
-            src="/assets/pokeTrophy.png"
+            src={pokemonTrophy}
             alt="Golden trophy"
             className="leaderboardTrophyPic"
           />
           <h2 className="leaderboardPageTitle"> Top 10 </h2>
           <img
-            src="/assets/pokeTrophy.png"
+            src={pokemonTrophy}
             alt="Golden trophy"
             className="leaderboardTrophyPic"
           />

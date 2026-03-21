@@ -1,5 +1,5 @@
 import { useGameOveLogic } from "../../hooks/useGameOverLogic";
-import gameOverImage from "../../assets/pokeHappy.jpg";
+import gameOverImage from "../../assets/pokeHappy.webp";
 
 import { useNavigate } from "react-router-dom";
 
