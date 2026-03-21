@@ -4,6 +4,7 @@ import { useProfileData } from "../../hooks/useProfileData";
 import { useNavigate } from "react-router-dom";
 import psyduckSign from "../../assets/psyduckSign.webp";
 import gameStartImage from "../../assets/gameStartImg.webp";
+import pokeball from "../../assets/pokeb.webp";
 
 export const GameStartScreen = ({
   selectedDifficulty,
@@ -131,7 +132,7 @@ export const GameStartScreen = ({
                   >
                     Start
                     <img
-                      src="assets/pokeb.png"
+                      src={pokeball}
                       alt="pokeball icon"
                       className="gameStartBtnIcon"
                     />

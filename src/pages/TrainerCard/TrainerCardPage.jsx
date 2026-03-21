@@ -4,6 +4,7 @@ import { doc, getDoc, collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebaseConfig";
 import pokemonQuotes from "../../data/pokemonQuotes";
 import { firstLetterUpperCase } from "./../../utils/helperFunctions";
+import pokeball from "../../assets/pokeb.webp";
 
 export const TrainerCardPage = () => {
   const { userId } = useParams();
@@ -107,7 +108,7 @@ export const TrainerCardPage = () => {
           <div className="trainerCardContent">
             <div className="trainerCardTitleContainer">
               <img
-                src="/assets/pokeb.png"
+                src={pokeball}
                 alt="Pokeball"
                 className="trainerCardTitleImage"
               />
@@ -177,7 +178,7 @@ export const TrainerCardPage = () => {
                       </>
                     ) : (
                       <img
-                        src="/assets/pokeb.png"
+                        src={pokeball}
                         alt="Empty slot"
                         className="emptySlot"
                       />

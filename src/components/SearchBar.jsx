@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { firstLetterUpperCase } from "../utils/helperFunctions";
+import pokeball from "../assets/pokeb.webp";
 
 export const SearchBar = ({
   query,
@@ -53,11 +54,7 @@ export const SearchBar = ({
           className={`randomPokemonButton ${isFiltered ? "" : "biggerRandomButton"}`}
         >
           {!isFiltered && (
-            <img
-              src="/assets/pokeb.png"
-              alt="Pokeball"
-              className="randomPokeballIcon"
-            />
+            <img src={pokeball} alt="Pokeball" className="randomPokeballIcon" />
           )}
           Random Pokémon
         </button>

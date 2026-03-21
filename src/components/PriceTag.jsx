@@ -1,5 +1,6 @@
 import { getPokemonPrice } from "../data/pokemonPricing";
 import "../styles/DetailPageStyle.css";
+import pokeball from "../assets/pokeb.webp";
 
 export const PriceTag = ({
   pokemonName,
@@ -28,11 +29,7 @@ export const PriceTag = ({
         }`}
       >
         <p className="ownedLabel">Owned</p>
-        <img
-          className="pokemonOwnedImage"
-          src="/assets/pokeb.png"
-          alt="Pokeball"
-        />
+        <img className="pokemonOwnedImage" src={pokeball} alt="Pokeball" />
       </div>
     </div>
   );

@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import pokeball from "../assets/pokeb.webp";
 
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   const pageButtons = [];
@@ -36,11 +37,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
         onClick={() => onPageChange(currentPage - 1)}
         className="paginationButton"
       >
-        <img
-          src="/assets/pokeb.png"
-          alt="Pokeball"
-          className="paginationButtonImage"
-        />
+        <img src={pokeball} alt="Pokeball" className="paginationButtonImage" />
         Prev
       </button>,
     );
@@ -66,11 +63,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
         className="paginationButton"
       >
         Next
-        <img
-          src="/assets/pokeb.png"
-          alt="Pokeball"
-          className="paginationButtonImage"
-        />
+        <img src={pokeball} alt="Pokeball" className="paginationButtonImage" />
       </button>,
     );
   }
