@@ -6,6 +6,7 @@ import {
 } from "./../../services/authService";
 import { useAuth } from "./../../contexts/authContext/AuthContext";
 import { Navigate, useNavigate } from "react-router-dom";
+import loginPic from "../../assets/loginPic.jpg";
 
 const LoginPage = () => {
   const { userLoggedIn, loading } = useAuth();
@@ -63,7 +64,7 @@ const LoginPage = () => {
         <div className="uiAuthContent">
           <div className="uiAuthHero">
             <img
-              src="assets/loginPic.jpg"
+              src={loginPic}
               alt="Pokémon Logo"
               className="uiCardHero square"
             />

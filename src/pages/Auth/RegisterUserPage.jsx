@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { setDoc, doc } from "firebase/firestore";
 import { db } from "../../firebaseConfig";
 import { NavLink } from "react-router-dom";
+import registerUserImage from "../../assets/registerUserPic.webp";
 
 const RegisterUserPage = () => {
   const [email, setEmail] = useState("");
@@ -61,7 +62,7 @@ const RegisterUserPage = () => {
         <div className="uiAuthContent">
           <div className="uiAuthHero">
             <img
-              src="https://64.media.tumblr.com/f3cf3c3c5083acf7ab7444abc7698737/50fc556398e85aa7-a2/s1280x1920/59b1238ca19f82b5e7b1b24061911267a3e9abbc.jpg"
+              src={registerUserImage}
               alt="Pokémon Trainers"
               className="uiCardHero square"
             />
