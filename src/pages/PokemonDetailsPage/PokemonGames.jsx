@@ -1,6 +1,7 @@
 import { useOutletContext } from "react-router-dom";
 import { gameImages } from "../../data/gameImages";
 import { firstLetterUpperCase } from "../../utils/helperFunctions";
+import { ImageWithSkeleton } from "./../../components/SkeletonLoading/ImageWithSkeleton";
 
 export const PokemonGames = () => {
   const { pokemon } = useOutletContext();
@@ -14,7 +15,7 @@ export const PokemonGames = () => {
       <div key={g.version.name} className="gameCard">
         <p>{firstLetterUpperCase(g.version.name)}</p>
         {matchedImage ? (
-          <img src={matchedImage.imgUrl} alt={g.version.name} />
+          <ImageWithSkeleton src={matchedImage.imgUrl} alt={g.version.name} />
         ) : (
           <p>Image not available</p>
         )}
