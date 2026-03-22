@@ -1,5 +1,7 @@
 import { useGameOveLogic } from "../../hooks/useGameOverLogic";
 import gameOverImage from "../../assets/pokeHappy.webp";
+import pokeball from "../../assets/pokeb.webp";
+import { ImageWithSkeleton } from "../../components/SkeletonLoading/ImageWithSkeleton";
 
 import { useNavigate } from "react-router-dom";
 
@@ -20,9 +22,9 @@ export const GameOverScreen = ({
       <div className="uiCard uiAuthSplit">
         <div className="uiAuthContent">
           <div className="uiAuthHero">
-            <img
+            <ImageWithSkeleton
               src={gameOverImage}
-              alt="Person holding a big trophy"
+              alt="5 happy pokemon celebrating"
               className="uiCardHero square pokeTrophyImg"
             />
           </div>
@@ -85,7 +87,7 @@ export const GameOverScreen = ({
             <div className="gameOverBtnContainer">
               <button onClick={onPlayAgain} className="uiButtonPrimary">
                 <img
-                  src="/assets/pokeb.png"
+                  src={pokeball}
                   alt="Pokeball"
                   className="gameOverBtnIcon"
                 />

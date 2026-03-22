@@ -6,6 +6,7 @@ import { setDoc, doc } from "firebase/firestore";
 import { db } from "../../firebaseConfig";
 import { NavLink } from "react-router-dom";
 import registerUserImage from "../../assets/registerUserPic.webp";
+import { ImageWithSkeleton } from "../../components/SkeletonLoading/ImageWithSkeleton";
 
 const RegisterUserPage = () => {
   const [email, setEmail] = useState("");
@@ -61,7 +62,7 @@ const RegisterUserPage = () => {
       <div className="uiCard uiAuthSplit">
         <div className="uiAuthContent">
           <div className="uiAuthHero">
-            <img
+            <ImageWithSkeleton
               src={registerUserImage}
               alt="Pokémon Trainers"
               className="uiCardHero square"

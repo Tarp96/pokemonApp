@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import psyduckSign from "../../assets/psyduckSign.webp";
 import gameStartImage from "../../assets/gameStartImg.webp";
 import pokeball from "../../assets/pokeb.webp";
+import { ImageWithSkeleton } from "../../components/SkeletonLoading/ImageWithSkeleton";
 
 export const GameStartScreen = ({
   selectedDifficulty,
@@ -35,11 +36,12 @@ export const GameStartScreen = ({
     <div className="gameScreenContainer gameStartPageContainer">
       {!isLoggedIn ? (
         <div className="loginReminderContainer">
-          <img
+          <ImageWithSkeleton
             src={psyduckSign}
             alt="Yellow duck holding a sign"
             className="loginReminderImage"
           />
+
           <p className="loginReminderText">
             Looks like you are not logged in. Please{" "}
             <NavLink to="/login">log in</NavLink> or create an account to play!
@@ -54,10 +56,10 @@ export const GameStartScreen = ({
           <div className="uiCard uiAuthSplit">
             <div className="uiAuthContent">
               <div className="uiAuthHero">
-                <img
-                  className="uiCardHero square gameStartImage"
+                <ImageWithSkeleton
                   src={gameStartImage}
-                  alt="Pokémon artwork"
+                  alt="Pokemon Artwork"
+                  className="uiCardHero square gameStartImage"
                 />
               </div>
 

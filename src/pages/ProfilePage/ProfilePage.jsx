@@ -22,8 +22,6 @@ export const ProfilePage = () => {
   const [isEditing, setIsEditing] = useState(false);
   const [imageLoaded, setImageLoaded] = useState(false);
 
-  const hasAvatar = avatarId !== null && avatarId !== undefined;
-
   useEffect(() => {
     setImageLoaded(false);
   }, [avatarId]);

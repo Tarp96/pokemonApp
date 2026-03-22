@@ -7,6 +7,7 @@ import {
 import { useAuth } from "./../../contexts/authContext/AuthContext";
 import { Navigate, useNavigate } from "react-router-dom";
 import loginPic from "../../assets/loginPic.webp";
+import { ImageWithSkeleton } from "../../components/SkeletonLoading/ImageWithSkeleton";
 
 const LoginPage = () => {
   const { userLoggedIn, loading } = useAuth();
@@ -63,7 +64,7 @@ const LoginPage = () => {
       <div className="uiCard uiAuthSplit">
         <div className="uiAuthContent">
           <div className="uiAuthHero">
-            <img
+            <ImageWithSkeleton
               src={loginPic}
               alt="Pokémon Logo"
               className="uiCardHero square"
