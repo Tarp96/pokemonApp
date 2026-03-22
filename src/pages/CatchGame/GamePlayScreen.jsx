@@ -15,6 +15,8 @@ export const GamePlayScreen = ({ difficulty, onReset }) => {
   const [coinMultiplier, setCoinMultiplier] = useState(1);
   const [hit, setHit] = useState(false);
   const [isGengarLoaded, setIsGengarLoaded] = useState(false);
+  const [countdown, setCountdown] = useState(3);
+  const [isGameStarted, setIsGameStarted] = useState(false);
 
   const gameOver = timeLeft <= 0;
 
@@ -28,6 +30,23 @@ export const GamePlayScreen = ({ difficulty, onReset }) => {
   }, []);
 
   useEffect(() => {
+    if (!isGengarLoaded) return;
+
+    if (countdown <= 0) {
+      setIsGameStarted(true);
+      return;
+    }
+
+    const timer = setTimeout(() => {
+      setCountdown((prev) => prev - 1);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [countdown, isGengarLoaded]);
+
+  useEffect(() => {
+    if (!isGameStarted) return;
+
     const timer = setInterval(() => {
       setTimeLeft((prev) => {
         if (prev <= 1) {
@@ -39,10 +58,10 @@ export const GamePlayScreen = ({ difficulty, onReset }) => {
     }, 1000);
 
     return () => clearInterval(timer);
-  }, []);
+  }, [isGameStarted]);
 
   useEffect(() => {
-    if (gameOver) return;
+    if (!isGameStarted || gameOver) return;
 
     setPosition(generateRandomPosition());
 
@@ -52,10 +71,10 @@ export const GamePlayScreen = ({ difficulty, onReset }) => {
     }, intervalDelay);
 
     return () => clearInterval(moveInterval);
-  }, [difficulty, gameOver]);
+  }, [difficulty, gameOver, isGameStarted]);
 
   const handlePokemonClick = () => {
-    if (gameOver) return;
+    if (!isGameStarted || gameOver) return;
 
     setHit(true);
     setScore((prev) => prev + 1);
@@ -122,6 +141,16 @@ export const GamePlayScreen = ({ difficulty, onReset }) => {
 
   if (!isGengarLoaded) {
     return <div className="gameWrapper">Loading game...</div>;
+  }
+
+  if (!isGameStarted) {
+    return (
+      <div className="gameWrapper">
+        <div className="gamePlayScreenContainer">
+          <h1 className="countdown">{countdown === 0 ? "GO!" : countdown}</h1>
+        </div>
+      </div>
+    );
   }
 
   if (gameOver) {
