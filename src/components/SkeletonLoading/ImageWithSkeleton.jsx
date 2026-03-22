@@ -17,7 +17,7 @@ export const ImageWithSkeleton = ({
       {!loaded && (
         <div className={`imageSkeleton ${skeletonClassName}`}>
           <img
-            src="/assets/pokeball.svg"
+            src="/assets/pokeballIcon.svg"
             alt=""
             className="imageSkeletonIcon"
           />

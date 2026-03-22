@@ -5,6 +5,7 @@ import { EditProfileModal } from "../../components/EditProfileModal";
 import { FaRegEdit } from "react-icons/fa";
 import pokemonQuotes from "../../data/pokemonQuotes";
 import ProfileTrainerSkeleton from "../../components/SkeletonLoading/ProfileTrainerSkeleton";
+import { ImageWithSkeleton } from "../../components/SkeletonLoading/ImageWithSkeleton";
 
 export const ProfilePage = () => {
   const {
@@ -103,26 +104,10 @@ export const ProfilePage = () => {
 
       <div className="trainerAvatarColumn">
         <div className="trainerAvatarFrame">
-          {(!imageLoaded || !hasAvatar) && (
-            <div className="imageSkeleton">
-              <img
-                src="/assets/pokeballIcon.svg"
-                alt=""
-                className="imageSkeletonIcon"
-              />
-            </div>
-          )}
-
-          {hasAvatar && (
-            <img
-              src={`/assets/trainerAvatars/pt${avatarId}.webp`}
-              alt="Trainer Avatar"
-              className={`trainerAvatar ${imageLoaded ? "loaded" : ""}`}
-              onLoad={() => {
-                setTimeout(() => setImageLoaded(true), 100);
-              }}
-            />
-          )}
+          <ImageWithSkeleton
+            src={`/assets/trainerAvatars/pt${avatarId}.webp`}
+            alt="Trainer Avatar"
+          />
         </div>
       </div>
     </div>
