@@ -14,8 +14,18 @@ export const GamePlayScreen = ({ difficulty, onReset }) => {
   const [coinsEarned, setCoinsEarned] = useState(0);
   const [coinMultiplier, setCoinMultiplier] = useState(1);
   const [hit, setHit] = useState(false);
+  const [isGengarLoaded, setIsGengarLoaded] = useState(false);
 
   const gameOver = timeLeft <= 0;
+
+  useEffect(() => {
+    const img = new Image();
+    img.src = gengar;
+
+    img.onload = () => {
+      setIsGengarLoaded(true);
+    };
+  }, []);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -109,6 +119,10 @@ export const GamePlayScreen = ({ difficulty, onReset }) => {
         return 1;
     }
   };
+
+  if (!isGengarLoaded) {
+    return <div className="gameWrapper">Loading game...</div>;
+  }
 
   if (gameOver) {
     return (
