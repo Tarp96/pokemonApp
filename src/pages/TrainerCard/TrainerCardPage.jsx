@@ -120,23 +120,9 @@ export const TrainerCardPage = () => {
 
             <div className="trainerCardStats">
               <div className="trainerCardStatRow">
-                <span className="trainerCardStatLabel">Pokémon Caught</span>
-                <span className="trainerCardStatValue">
-                  {profile.pokemonCaught ?? 0}
-                </span>
-              </div>
-
-              <div className="trainerCardStatRow">
                 <span className="trainerCardStatLabel">High Score</span>
                 <span className="trainerCardStatValue">
                   {profile.highScore ?? 0}
-                </span>
-              </div>
-
-              <div className="trainerCardStatRow">
-                <span className="trainerCardStatLabel">Coins</span>
-                <span className="trainerCardStatValue">
-                  {profile.coins ?? 0}
                 </span>
               </div>
             </div>

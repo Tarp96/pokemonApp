@@ -2365,8 +2365,13 @@ body {
 }
 
 .trainerCardStatLabel {
-  font-size: 1.1rem;
+  font-size: 1.4rem;
   color: #555;
+}
+
+.trainerCardStatValue {
+  font-size: 1.4rem;
+  font-weight: bold;
 }
 
 .trainerCardTeamDisplayContainer {
