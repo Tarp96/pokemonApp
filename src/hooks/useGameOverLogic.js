@@ -8,8 +8,9 @@ import confetti from "canvas-confetti";
 import { useProfileData } from "./useProfileData";
 import { auth } from "../firebaseConfig";
 import { updateLeaderboard } from "../services/leaderboardService";
+import { updatePokemonCaught } from "./../services/pokemonCaughtService";
 
-export const useGameOveLogic = (coinsEarned) => {
+export const useGameOveLogic = (coinsEarned, score) => {
   const [userCoins, setUserCoins] = useState(0);
   const [animateStats, setAnimateStats] = useState(false);
   const [userHighScore, setUserHighScore] = useState(null);
@@ -80,6 +81,10 @@ export const useGameOveLogic = (coinsEarned) => {
         await addCoins(user.uid, coinsEarned);
 
         await updateHighScore(user.uid, coinsEarned);
+
+        await updatePokemonCaught(user.uid, score);
+
+        console.log("Pokemon caught increased by:", score);
       } catch (err) {
         console.error("Game reward error:", err);
       }
