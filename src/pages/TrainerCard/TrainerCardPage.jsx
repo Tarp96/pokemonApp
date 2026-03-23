@@ -5,12 +5,14 @@ import { db } from "../../firebaseConfig";
 import pokemonQuotes from "../../data/pokemonQuotes";
 import { firstLetterUpperCase } from "./../../utils/helperFunctions";
 import pokeball from "../../assets/pokeb.webp";
+import { TrainerBadge } from "../../components/TrainerBadge";
 
 export const TrainerCardPage = () => {
   const { userId } = useParams();
 
   const [profile, setProfile] = useState(null);
   const [team, setTeam] = useState([]);
+  const [pokemonCaught, setPokemonCaught] = useState(0);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -32,7 +34,11 @@ export const TrainerCardPage = () => {
         if (!isMounted) return;
 
         if (docSnap.exists()) {
-          setProfile(docSnap.data());
+          const data = docSnap.data();
+
+          setProfile(data);
+
+          setPokemonCaught(data.pokemonCaught ?? 0);
         }
 
         setTeam(teamPokemon);
@@ -114,7 +120,7 @@ export const TrainerCardPage = () => {
               />
               <h2 className="trainerCardTitle">Trainer {profile.username}</h2>
             </div>
-
+            <TrainerBadge pokemonCaught={pokemonCaught} />
             <p className="trainerCardQuote">{quote}</p>
             <div className="profileDivider"></div>
 
