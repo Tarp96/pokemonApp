@@ -1,4 +1,4 @@
-import { useGameOveLogic } from "../../hooks/useGameOverLogic";
+import { useGameOverLogic } from "../../hooks/useGameOverLogic";
 import gameOverImage from "../../assets/pokeHappy.webp";
 import pokeball from "../../assets/pokeb.webp";
 import { ImageWithSkeleton } from "../../components/SkeletonLoading/ImageWithSkeleton";
@@ -15,7 +15,7 @@ export const GameOverScreen = ({
   const navigate = useNavigate();
 
   const { userCoins, userHighScore, isNewHighScore, animateStats } =
-    useGameOveLogic(coinsEarned);
+    useGameOverLogic(coinsEarned, score);
 
   return (
     <div className="gameOverContainer">

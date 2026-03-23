@@ -10,7 +10,7 @@ import { auth } from "../firebaseConfig";
 import { updateLeaderboard } from "../services/leaderboardService";
 import { updatePokemonCaught } from "./../services/pokemonCaughtService";
 
-export const useGameOveLogic = (coinsEarned, score) => {
+export const useGameOverLogic = (coinsEarned, score) => {
   const [userCoins, setUserCoins] = useState(0);
   const [animateStats, setAnimateStats] = useState(false);
   const [userHighScore, setUserHighScore] = useState(null);
