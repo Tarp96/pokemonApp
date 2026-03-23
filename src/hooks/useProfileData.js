@@ -12,6 +12,7 @@ export const useProfileData = () => {
   const [coinBalance, setCoinBalance] = useState(null);
   const [coinsSpent, setCoinsSpent] = useState(null);
   const [teamSize, setTeamSize] = useState(null);
+  const [pokemonCaught, setPokemonCaught] = useState(null);
   const [team, setTeam] = useState([]);
   const [highScore, setHighScore] = useState(null);
   const [avatarId, setAvatarId] = useState(0);
@@ -39,6 +40,7 @@ export const useProfileData = () => {
       setCoinsSpent(data.coinsSpent ?? 0);
       setAvatarId(data.avatarId ?? 1);
       setQuoteId(data.quoteId ?? 1);
+      setPokemonCaught(data.pokemonCaught ?? 0);
     });
 
     const fetchTeamData = async () => {
@@ -83,6 +85,7 @@ export const useProfileData = () => {
     username,
     coinBalance,
     teamSize,
+    pokemonCaught,
     coinsSpent,
     team,
     highScore,
