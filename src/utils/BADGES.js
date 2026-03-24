@@ -18,7 +18,7 @@ import largeIcebergBadge from "../assets/largeGymBadges/largeIcebergBadge.webp";
 
 export const BADGES = [
   {
-    threshold: 0,
+    threshold: 10,
     name: "Coal Badge",
     image: coalBadge,
     largeImage: largeCoalBadge,
