@@ -222,6 +222,13 @@
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
+.smallPokemonPriceTag:hover {
+  background: #e6f0ff;
+  border-color: #bcd2ff;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
+}
+
 .priceTagWrapper {
   position: relative;
   display: inline-flex;

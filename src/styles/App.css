@@ -1004,11 +1004,11 @@ body {
 }
 
 .paymentModalContainer {
-  width: 340px;
+  width: 380px;
   max-width: 90%;
   background: #fff;
   border-radius: 18px;
-  padding: 28px 26px;
+  padding: 36px 36px;
   box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
   text-align: center;
   border: 3px solid #facc15;
@@ -1033,8 +1033,8 @@ body {
 }
 
 .paymentModalSprite {
-  width: 96px;
-  height: 96px;
+  width: 105px;
+  height: 105px;
   object-fit: contain;
   image-rendering: pixelated;
 }
@@ -1049,7 +1049,7 @@ body {
 }
 
 .paymentModalNameTitle {
-  font-size: 22px;
+  font-size: 28px;
   font-weight: 700;
   margin: 0;
   text-transform: capitalize;
@@ -1058,13 +1058,13 @@ body {
 
 .paymentModalPriceTag {
   margin-top: 4px;
-  font-size: 16px;
+  font-size: 22px;
   font-weight: 600;
   color: #f59e0b;
 }
 
 .paymentModalNameTitle {
-  font-size: 24px;
+  font-size: 28px;
   font-weight: 700;
   margin-bottom: 16px;
   color: #222;
@@ -1072,7 +1072,7 @@ body {
 }
 
 .paymentModalInfo {
-  font-size: 16px;
+  font-size: 24px;
   margin: 8px 0;
   color: #444;
 }
