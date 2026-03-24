@@ -4800,6 +4800,67 @@ body {
     font-size: 16px;
   }
 
+  /*SEARCHBAR*/
+  .searchBarContainer {
+    max-width: 520px;
+    padding: 8px 14px;
+    border-radius: 14px;
+  }
+
+  .searchBarDiv {
+    gap: 10px;
+    margin: 24px 0;
+  }
+
+  .searchBarDiv label {
+    font-size: 18px;
+  }
+
+  .searchBarDiv input {
+    font-size: 17px;
+    padding: 12px;
+    max-width: 400px;
+  }
+
+  .searchBarAndClearBtn {
+    max-width: 360px;
+    gap: 12px;
+  }
+
+  .searchBarAndClearBtn input {
+    font-size: 17px;
+    padding: 12px 44px 12px 14px;
+  }
+
+  .clearSearchButton {
+    font-size: 20px;
+    right: 12px;
+  }
+
+  .searchBarButton {
+    font-size: 15px;
+    padding: 10px 16px;
+    border-radius: 10px;
+  }
+
+  .randomBtnWrapper {
+    gap: 30px;
+    margin-top: 14px;
+  }
+
+  .randomPokemonButton,
+  .clearFilterButton {
+    font-size: 15px;
+    padding: 12px 18px;
+    border-radius: 10px;
+  }
+
+  .biggerRandomButton {
+    max-width: 350px;
+    gap: 6px;
+  }
+  /*SEARCHBAR END*/
+
   .pokemon-card {
     max-width: 240px;
     padding: 18px;
