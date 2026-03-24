@@ -4752,12 +4752,12 @@ body {
   }
 
   .headerImage {
-    max-width: 200px;
+    max-width: 300px;
   }
 
   .headerNavBtn {
-    padding: 0.4rem 0.9rem;
-    font-size: 0.9rem;
+    padding: 0.6rem 1.2rem;
+    font-size: 1.2rem;
   }
   /*HEADER*/
 
@@ -4775,8 +4775,74 @@ body {
 }
 
 @media (min-width: 1250px) {
+  /*HOME PAGE*/
   .headerLeft {
     display: flex;
     justify-content: flex-start;
   }
+
+  .headerImage {
+    max-width: 310px;
+  }
+
+  .headerNavBtn {
+    padding: 0.9rem 1.8rem;
+    font-size: 1.4rem;
+  }
+
+  .profileAvatarImg {
+    width: 64px;
+    height: 64px;
+  }
+
+  .dropdownItem {
+    padding: 1rem 1.4rem;
+    font-size: 16px;
+  }
+
+  .pokemon-card {
+    max-width: 240px;
+    padding: 18px;
+    max-height: 340px;
+  }
+
+  .displayCardPokemonSprite {
+    width: 120px;
+    height: 120px;
+    margin-bottom: 18px;
+  }
+
+  .pokemon-card h3 {
+    font-size: 1.4rem;
+  }
+
+  .pokemon-card p {
+    font-size: 1rem;
+  }
+
+  .linkToDetailsPageButton {
+    font-size: 15px;
+    padding: 8px 16px;
+    border-radius: 22px;
+  }
+
+  .linkToDetailsPageButton svg {
+    font-size: 18px;
+  }
+
+  .audioButton {
+    width: 46px;
+    height: 46px;
+    font-size: 26px;
+  }
+
+  .filledIcon {
+    font-size: 2rem;
+  }
+
+  .favoriteButtonContainer button {
+    padding: 6px;
+  }
+
+  /*HOME PAGE END*/
 }
