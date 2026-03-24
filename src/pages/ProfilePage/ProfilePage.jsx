@@ -85,6 +85,11 @@ export const ProfilePage = () => {
           </div>
 
           <div className="trainerStatRow">
+            <span>Pokemon Caught</span>
+            <span>{pokemonCaught ?? "unavailable"}</span>
+          </div>
+
+          <div className="trainerStatRow">
             <span>Coins</span>
             <span>{coinBalance ?? "unavailable"}</span>
           </div>
