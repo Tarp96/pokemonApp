@@ -7,6 +7,14 @@ import rainbowBadge from "../assets/gymBadges/rainbowBadge.webp";
 import rainBadge from "../assets/gymBadges/rainBadge.webp";
 import icebergBadge from "../assets/gymBadges/icebergbadge.webp";
 
+import largeBoulderBadge from "../assets/largeGymBadges/largeBoulderBadge.webp";
+import largeFenBadge from "../assets/largeGymBadges/largeFenBadge.webp";
+import largeEarthBadge from "../assets/largeGymBadges/largeEarthBadge.webp";
+import largeForestBadge from "../assets/largeGymBadges/largeForestBadge.webp";
+import largeRainbowBadge from "../assets/largeGymBadges/largeRainbowBadge.webp";
+import largeRainBadge from "../assets/largeGymBadges/largeRainBadge.webp";
+import largeIcebergBadge from "../assets/largeGymBadges/largeIcebergBadge.webp";
+
 export const BADGES = [
   { threshold: 0, name: "Coal Badge", image: coalBadge },
   { threshold: 25, name: "Boulder Badge", image: boulderBadge },
