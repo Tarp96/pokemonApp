@@ -2501,7 +2501,7 @@ body {
   content: "";
   width: 10px;
   height: 10px;
-  background-image: url("/assets/pokeb.png");
+  background-image: url("/assets/pokeb.webp");
   background-size: contain;
   background-repeat: no-repeat;
 }
@@ -2541,8 +2541,9 @@ body {
 
 /*BADGE ROW*/
 .trainerCardBadgeSection {
+  margin: 0 auto;
   margin-top: 1rem;
-  padding: 0.5rem 1.2rem;
+  padding: 0.8rem 1.2rem;
   background: rgba(59, 76, 202, 0.08);
   border-radius: 14px;
 }
@@ -2567,8 +2568,8 @@ body {
 
 .trainerBadgeRow {
   display: flex;
-  gap: 10px;
-  justify-content: center;
+  gap: 16px;
+  justify-content: flex-start;
 }
 
 .badgeSlot {
@@ -2591,8 +2592,8 @@ body {
 }
 
 .badgeSlot img {
-  width: 40px;
-  height: 40px;
+  width: 55px;
+  height: 55px;
   object-fit: contain;
 }
 
