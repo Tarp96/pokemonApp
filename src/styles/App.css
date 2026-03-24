@@ -2336,6 +2336,53 @@ body {
 .badgeCard:hover .badgeCardGlow {
   opacity: 0.5;
 }
+
+.badgeCard.unlocked {
+  border-color: rgba(59, 76, 202, 0.35);
+}
+
+.badgeCard.unlocked .badgeCardGlow {
+  opacity: 0.55;
+}
+
+.badgeCard.unlocked:hover .badgeCardGlow {
+  opacity: 0.8;
+}
+
+@keyframes shimmer {
+  0% {
+    left: -75%;
+  }
+  100% {
+    left: 130%;
+  }
+}
+
+.badgeCard.unlocked::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+
+  transform: skewX(-20deg);
+  animation: shimmer 3.5s infinite;
+}
+
+.badgeGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 1.8rem;
+  margin-top: 2rem;
+}
 /*BADGE CARD END*/
 
 /*PROFILE PAGE END*/
