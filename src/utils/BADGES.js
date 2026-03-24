@@ -7,6 +7,7 @@ import rainbowBadge from "../assets/gymBadges/rainbowBadge.webp";
 import rainBadge from "../assets/gymBadges/rainBadge.webp";
 import icebergBadge from "../assets/gymBadges/icebergbadge.webp";
 
+import largeCoalBadge from "../assets/largeGymBadges/largeCoalBadge.webp";
 import largeBoulderBadge from "../assets/largeGymBadges/largeBoulderBadge.webp";
 import largeFenBadge from "../assets/largeGymBadges/largeFenBadge.webp";
 import largeEarthBadge from "../assets/largeGymBadges/largeEarthBadge.webp";
@@ -16,14 +17,54 @@ import largeRainBadge from "../assets/largeGymBadges/largeRainBadge.webp";
 import largeIcebergBadge from "../assets/largeGymBadges/largeIcebergBadge.webp";
 
 export const BADGES = [
-  { threshold: 0, name: "Coal Badge", image: coalBadge },
-  { threshold: 25, name: "Boulder Badge", image: boulderBadge },
-  { threshold: 75, name: "Fen Badge", image: fenBadge },
-  { threshold: 150, name: "Earth Badge", image: earthBadge },
-  { threshold: 250, name: "Forest Badge", image: forestBadge },
-  { threshold: 400, name: "Rainbow Badge", image: rainbowBadge },
-  { threshold: 600, name: "Rain Badge", image: rainBadge },
-  { threshold: 1000, name: "Iceberg Badge", image: icebergBadge },
+  {
+    threshold: 0,
+    name: "Coal Badge",
+    image: coalBadge,
+    largeImage: largeCoalBadge,
+  },
+  {
+    threshold: 25,
+    name: "Boulder Badge",
+    image: boulderBadge,
+    largeImage: largeBoulderBadge,
+  },
+  {
+    threshold: 75,
+    name: "Fen Badge",
+    image: fenBadge,
+    largeImage: largeFenBadge,
+  },
+  {
+    threshold: 150,
+    name: "Earth Badge",
+    image: earthBadge,
+    largeImage: largeEarthBadge,
+  },
+  {
+    threshold: 250,
+    name: "Forest Badge",
+    image: forestBadge,
+    largeImage: largeForestBadge,
+  },
+  {
+    threshold: 400,
+    name: "Rainbow Badge",
+    image: rainbowBadge,
+    largeImage: largeRainbowBadge,
+  },
+  {
+    threshold: 600,
+    name: "Rain Badge",
+    image: rainBadge,
+    largeImage: largeRainBadge,
+  },
+  {
+    threshold: 1000,
+    name: "Iceberg Badge",
+    image: icebergBadge,
+    largeImage: largeIcebergBadge,
+  },
 ];
 
 export const getUnlockedBadges = (pokemonCaught) => {
