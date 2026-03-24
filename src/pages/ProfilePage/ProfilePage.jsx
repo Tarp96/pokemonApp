@@ -80,6 +80,11 @@ export const ProfilePage = () => {
 
         <div className="trainerStatsList">
           <div className="trainerStatRow">
+            <span>Coins</span>
+            <span>{coinBalance ?? "unavailable"}</span>
+          </div>
+
+          <div className="trainerStatRow">
             <span>High Score</span>
             <span>{highScore ?? "unavailable"}</span>
           </div>
@@ -87,11 +92,6 @@ export const ProfilePage = () => {
           <div className="trainerStatRow">
             <span>Pokemon Caught</span>
             <span>{pokemonCaught ?? "unavailable"}</span>
-          </div>
-
-          <div className="trainerStatRow">
-            <span>Coins</span>
-            <span>{coinBalance ?? "unavailable"}</span>
           </div>
 
           <div className="trainerStatRow">
