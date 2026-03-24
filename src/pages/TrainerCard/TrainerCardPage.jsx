@@ -5,6 +5,7 @@ import { db } from "../../firebaseConfig";
 import pokemonQuotes from "../../data/pokemonQuotes";
 import { firstLetterUpperCase } from "./../../utils/helperFunctions";
 import pokeball from "../../assets/pokeb.webp";
+import { BadgeRow } from "./../../components/BadgeRow";
 
 export const TrainerCardPage = () => {
   const { userId } = useParams();
@@ -142,6 +143,8 @@ export const TrainerCardPage = () => {
           </div>
         </div>
         <div className="profileDivider"></div>
+        <BadgeRow pokemonCaught={profile.pokemonCaught ?? 0} />
+
         <div className="trainerCardTeamDisplayContainer">
           <div className="trainerCardTeamSection">
             <div className="trainerCardTeamHeader">
