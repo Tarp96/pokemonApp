@@ -2210,6 +2210,134 @@ body {
   max-width: 200px;
 }
 
+/*BADGE CARD*/
+.badgeCard {
+  position: relative;
+  overflow: hidden;
+
+  border-radius: 18px;
+  padding: 1.2rem;
+
+  background: linear-gradient(145deg, #ffffff, #f4f6ff);
+  border: 2px solid rgba(0, 0, 0, 0.08);
+
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.1),
+    0 1px 0 rgba(255, 255, 255, 0.9) inset;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+
+  min-height: 260px;
+
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.3s ease;
+}
+
+.badgeCard:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    0 0 0 2px rgba(255, 255, 255, 0.9) inset,
+    0 0 0 3px rgba(59, 76, 202, 0.35);
+}
+
+.badgeCardTopRow {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.badgeTier {
+  font-weight: 900;
+  font-size: 0.85rem;
+  color: #3b4cca;
+  background: rgba(59, 76, 202, 0.1);
+  border: 1px solid rgba(59, 76, 202, 0.18);
+  border-radius: 999px;
+  padding: 0.3rem 0.6rem;
+}
+
+.badgeImageContainer {
+  width: 140px;
+  height: 140px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 24px;
+
+  background: radial-gradient(circle, #ffffff 40%, #e9eeff 100%);
+  border: 1px solid rgba(59, 76, 202, 0.12);
+
+  box-shadow:
+    0 8px 14px rgba(0, 0, 0, 0.1),
+    0 1px 0 rgba(255, 255, 255, 0.9) inset;
+}
+
+.badgeImage {
+  width: 110px;
+  height: 110px;
+  object-fit: contain;
+
+  filter: drop-shadow(0 8px 10px rgba(0, 0, 0, 0.2));
+}
+
+.badgeCardText {
+  text-align: center;
+}
+
+.badgeName {
+  font-size: 1.2rem;
+  font-weight: 900;
+  color: #2a2a2a;
+  margin: 0.5rem 0 0.2rem 0;
+}
+
+.badgeRequirement {
+  font-size: 0.8rem;
+  color: #777;
+}
+
+.badgeCard.locked {
+  background: linear-gradient(145deg, #f5f5f5, #ebebeb);
+  border: 2px dashed rgba(59, 76, 202, 0.25);
+  box-shadow: none;
+}
+
+.badgeCard.locked:hover {
+  transform: none;
+  box-shadow: none;
+}
+
+.badgeCard.locked .badgeImage {
+  filter: grayscale(100%) opacity(0.5);
+}
+
+.badgeCardGlow {
+  position: absolute;
+  bottom: -20px;
+  left: 0;
+  right: 0;
+  height: 80px;
+  filter: blur(16px);
+  opacity: 0.3;
+  pointer-events: none;
+
+  background: radial-gradient(circle, rgba(59, 76, 202, 0.35), transparent 60%);
+
+  transition: opacity 0.3s ease;
+}
+
+.badgeCard:hover .badgeCardGlow {
+  opacity: 0.5;
+}
+/*BADGE CARD END*/
+
 /*PROFILE PAGE END*/
 
 /*FAVORITES PAGE*/
