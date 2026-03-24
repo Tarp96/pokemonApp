@@ -10,6 +10,7 @@ export const ProfilePageOverview = () => {
     coinsSpent,
     team,
     highScore,
+    pokemonCaught,
     avatarId,
     quoteId,
     loading,
@@ -28,7 +29,8 @@ export const ProfilePageOverview = () => {
         <PageNavigationBar
           links={[
             { path: "", label: "Trainer Info" },
-            { path: "team", label: "Your Team" },
+            { path: "team", label: "Team" },
+            { path: "badges", label: "Badges" },
             { path: "favorites", label: "Favorites" },
           ]}
         />
@@ -44,6 +46,7 @@ export const ProfilePageOverview = () => {
               coinsSpent,
               team,
               highScore,
+              pokemonCaught,
               avatarId,
               quoteId,
               loading,

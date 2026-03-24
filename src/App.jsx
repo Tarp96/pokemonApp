@@ -21,6 +21,7 @@ import { GamePage } from "./pages/CatchGame/GamePage";
 import { ProfileTeamPage } from "./pages/ProfilePage/ProfileTeamPage";
 import { LeaderboardScreen } from "./pages/CatchGame/LeaderboardScreen";
 import { TrainerCardPage } from "./pages/TrainerCard/TrainerCardPage";
+import { BadgeDisplayPage } from "./pages/ProfilePage/BadgeDisplayPage";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
             <Route index element={<ProfilePage />} />
             <Route path="favorites" element={<FavoritePokemonsPage />} />
             <Route path="team" element={<ProfileTeamPage />} />
+            <Route path="badges" element={<BadgeDisplayPage />} />
           </Route>
           <Route path="login" element={<AuthLayout />}>
             <Route index element={<LoginPage />} />

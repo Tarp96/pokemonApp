@@ -14,6 +14,7 @@ export const ProfilePage = () => {
     coinBalance,
     coinsSpent,
     highScore,
+    pokemonCaught,
     avatarId,
     quoteId,
     loading,
