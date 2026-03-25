@@ -20,6 +20,8 @@ import { BsVolumeUp } from "react-icons/bs";
 import { EvolutionSection } from "../../components/EveloutionSection";
 import { AlternativeFormsSection } from "../../components/AlternativeFormsSection";
 import { PriceTag } from "../../components/PriceTag";
+import { usePurchaseModal } from "./../../hooks/usePurchaseModal";
+import { PaymentModal } from "./../../components/PaymentModal";
 
 export const PokemonDetailOverView = () => {
   const [abilityDetails, setAbilityDetails] = useState([]);
@@ -27,6 +29,8 @@ export const PokemonDetailOverView = () => {
   const [showDefense, setShowDefense] = useState(true);
 
   const { pokemon, pokemonSpecies } = useOutletContext();
+
+  const { isOpen, selectedPokemon, openModal, closeModal } = usePurchaseModal();
 
   useEffect(() => {
     const controller = new AbortController();
@@ -97,7 +101,11 @@ export const PokemonDetailOverView = () => {
         <div className="overviewPageTopInfoSection">
           <h2 className="pageTopInfoTitle">
             {firstLetterUpperCase(pokemon.name)}
-            <PriceTag pokemonName={pokemon.name} displayedOnCard={false} />
+            <PriceTag
+              pokemonName={pokemon.name}
+              displayedOnCard={false}
+              onClick={() => openModal(pokemon)}
+            />
             <div className="topInfoSectionTypeBadges">{types}</div>
           </h2>
 
@@ -237,6 +245,13 @@ export const PokemonDetailOverView = () => {
         <h3>Alternative Forms</h3>
         <AlternativeFormsSection species={pokemonSpecies} />
       </div>
+
+      {isOpen && selectedPokemon && (
+        <PaymentModal
+          pokemon={selectedPokemon}
+          closeModalOnClick={closeModal}
+        />
+      )}
     </>
   );
 };
