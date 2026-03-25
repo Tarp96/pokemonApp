@@ -1,11 +1,15 @@
 import PokemonDisplayCard from "../../components/PokemonDisplayCard";
 import { useLocation, useNavigate, useOutletContext } from "react-router-dom";
 import PokemonDisplayCardSkeleton from "./../../components/SkeletonLoading/PokemonDisplayCardSkeleton";
+import { PaymentModal } from "../../components/PaymentModal";
+import { usePurchaseModal } from "../../hooks/usePurchaseModal";
 
 export const FavoritePokemonsPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { favorites } = useOutletContext();
+
+  const { isOpen, selectedPokemon, openModal, closeModal } = usePurchaseModal();
 
   const displayFavorites = favorites?.map((pokemon) => {
     const normalizedTypes = pokemon.types?.map((t) =>
@@ -30,6 +34,7 @@ export const FavoritePokemonsPage = () => {
           })
         }
         pokemon={pokemon}
+        priceTagOnClick={() => openModal(pokemon)}
         fromFavorites
         generation={pokemon.generation}
         variant="profile"
@@ -60,6 +65,13 @@ export const FavoritePokemonsPage = () => {
     <div>
       <h1>Your Favorite Pokemon</h1>
       <div className="favoritePageGridContainer">{displayFavorites}</div>
+
+      {isOpen && selectedPokemon && (
+        <PaymentModal
+          pokemon={selectedPokemon}
+          closeModalOnClick={closeModal}
+        />
+      )}
     </div>
   );
 };

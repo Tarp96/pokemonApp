@@ -78,7 +78,11 @@ export const PaymentModal = ({ pokemon, closeModalOnClick }) => {
       <div className="paymentModalContainer modalPop">
         <div className="paymentModalHeaderRow">
           <img
-            src={pokemon?.sprites?.front_default}
+            src={
+              pokemon?.sprites?.front_default ||
+              pokemon?.sprite ||
+              pokemon?.sprites?.other?.["official-artwork"]?.front_default
+            }
             alt={pokemon?.name}
             className="paymentModalSprite"
           />
