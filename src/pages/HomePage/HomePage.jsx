@@ -13,6 +13,7 @@ import { PaymentModal } from "../../components/PaymentModal";
 import { auth } from "../../firebaseConfig";
 import { listenToTeam } from "../../services/teamService";
 import PokemonDisplayCardSkeleton from "../../components/SkeletonLoading/PokemonDisplayCardSkeleton";
+import { usePurchaseModal } from "./../../hooks/usePurchaseModal";
 
 export const HomePage = () => {
   const [pokemon, setPokemon] = useState([]);
@@ -30,13 +31,13 @@ export const HomePage = () => {
   const [showSearches, setShowSearches] = useState(false);
   const [typeLoading, setTypeLoading] = useState(false);
   const pageLoading = loading && !activeFilter;
-  const [priceTagClicked, setPriceTagClicked] = useState(false);
-  const [selectedPokemon, setSelectedPokemon] = useState(null);
   const [ownedPokemonIds, setOwnedPokemonIds] = useState([]);
   const [randomLoading, setRandomLoading] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
+
+  const { isOpen, selectedPokemon, openModal, closeModal } = usePurchaseModal();
 
   useEffect(() => {
     loadPokemonData(pageNumber);
@@ -204,19 +205,10 @@ export const HomePage = () => {
           })
         }
         pokemon={pokemonItem}
-        priceTagOnClick={() => flipPriceTagClicked(pokemonItem)}
+        priceTagOnClick={() => openModal(pokemonItem)}
         isOwned={ownedPokemonIds.includes(pokemonItem.id.toString())}
       />
     ));
-  };
-
-  const flipPriceTagClicked = (pokemonItem) => {
-    setSelectedPokemon(pokemonItem);
-    setPriceTagClicked(true);
-  };
-
-  const closeModal = () => {
-    setPriceTagClicked(false);
   };
 
   return (
@@ -260,7 +252,7 @@ export const HomePage = () => {
         />
       )}
 
-      {priceTagClicked && selectedPokemon && (
+      {isOpen && selectedPokemon && (
         <PaymentModal
           pokemon={selectedPokemon}
           closeModalOnClick={closeModal}
