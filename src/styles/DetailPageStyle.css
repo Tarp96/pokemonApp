@@ -1315,4 +1315,27 @@
   /*PHOTOS PAGE END*/
 }
 
+@media (min-width: 1250px) {
+  .flavorTextDiv {
+    font-size: 1.2rem;
+  }
+
+  .listItemTopic,
+  .listItemValue {
+    font-size: 1.2rem;
+  }
+
+  .abilityName {
+    font-size: 1.4rem;
+  }
+
+  .abilityEffect {
+    font-size: 1.2rem;
+  }
+
+  .tabButton {
+    font-size: 1.2rem;
+  }
+}
+
 /*MEDIA QUERIES END*/
