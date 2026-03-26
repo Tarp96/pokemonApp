@@ -85,7 +85,7 @@ export const SearchBar = ({
                 <div className="prevSearchListItemDiv">
                   {firstLetterUpperCase(item)}
                   <img
-                    src="assets/pokeb.png"
+                    src="assets/pokeb.webp"
                     className="searchHistoryPokeball"
                   />
                 </div>
