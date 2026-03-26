@@ -11,26 +11,32 @@ export const PriceTag = ({
   const price = pokemonName ? getPokemonPrice(pokemonName) : 0;
 
   return (
-    <div className="priceTagWrapper">
-      <span
-        onClick={!isOwned ? onClick : undefined}
-        className={`
-    ${displayedOnCard ? "smallPokemonPriceTag" : "bigPokemonPriceTag"}
-    priceTagElement
-    ${isOwned ? "priceTagHidden" : ""}
-  `}
-      >
-        💰 {price}
-      </span>
-
-      <div
-        className={`ownedLabelContainer ownedElement ${
-          isOwned ? "ownedVisible" : ""
-        }`}
-      >
-        <p className="ownedLabel">Owned</p>
-        <img className="pokemonOwnedImage" src={pokeball} alt="Pokeball" />
-      </div>
+    <div
+      className={`priceTagWrapper ${
+        displayedOnCard ? "priceTagWrapperCard" : ""
+      }`}
+    >
+      {!isOwned ? (
+        <span
+          onClick={onClick}
+          className={`
+        ${displayedOnCard ? "smallPokemonPriceTag" : "bigPokemonPriceTag"}
+        priceTagElement
+      `}
+        >
+          💰 {price}
+        </span>
+      ) : (
+        <div
+          className={`
+        ownedLabelContainer
+        ${displayedOnCard ? "" : "ownedStatic"}
+      `}
+        >
+          <p className="ownedLabel">Owned</p>
+          <img className="pokemonOwnedImage" src={pokeball} alt="Pokeball" />
+        </div>
+      )}
     </div>
   );
 };
