@@ -75,7 +75,11 @@ export const PaymentModal = ({ pokemon, closeModalOnClick }) => {
 
   return (
     <div className="paymentModalOverlay">
-      <div className="paymentModalContainer modalPop">
+      <div
+        className={`paymentModalContainer modalPop ${
+          paymentStatus === "success" ? "successFlash" : ""
+        }`}
+      >
         <div className="paymentModalHeaderRow">
           <img
             src={
