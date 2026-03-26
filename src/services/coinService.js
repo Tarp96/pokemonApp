@@ -7,6 +7,8 @@ import {
   increment,
   onSnapshot,
   runTransaction,
+  collection,
+  query,
 } from "firebase/firestore";
 
 export const getUserCoins = async (uid) => {
@@ -47,22 +49,22 @@ export const purchasePokemon = async (uid, pokemon, price) => {
       throw new Error("You already own this Pokémon");
     }
 
-    const currentCoins = userSnap.data().coins ?? 0;
+    const userData = userSnap.data();
+    const currentCoins = userData.coins ?? 0;
+    const teamCount = userData.teamCount ?? 0;
 
     if (currentCoins < price) {
       throw new Error("Not enough coins");
     }
 
-    const teamCollectionRef = collection(db, "users", uid, "team");
-    const teamSnapshot = await transaction.get(teamCollectionRef);
-
-    if (teamSnapshot.size >= 6) {
+    if (teamCount >= 6) {
       throw new Error("Team is full");
     }
 
     transaction.update(userRef, {
       coins: currentCoins - price,
-      coinsSpent: (userSnap.data().coinsSpent ?? 0) + price,
+      coinsSpent: (userData.coinsSpent ?? 0) + price,
+      teamCount: teamCount + 1,
     });
 
     transaction.set(teamRef, formatPokemonForTeam(pokemon));

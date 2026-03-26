@@ -2,7 +2,6 @@ import { getPokemonPrice } from "../data/pokemonPricing";
 import { useState, useEffect } from "react";
 import { auth } from "../firebaseConfig";
 import { listenToCoins, purchasePokemon } from "../services/coinService";
-import { addPokemonToTeam } from "../services/teamService";
 
 export const PaymentModal = ({ pokemon, closeModalOnClick }) => {
   const [coinBalance, setCoinBalance] = useState();
