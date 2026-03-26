@@ -1,4 +1,5 @@
 import { db } from "../firebaseConfig";
+import { formatPokemonForTeam } from "../utils/formatPokemon";
 import {
   doc,
   getDoc,
@@ -36,9 +37,14 @@ export const purchasePokemon = async (uid, pokemon, price) => {
 
   await runTransaction(db, async (transaction) => {
     const userSnap = await transaction.get(userRef);
+    const teamSnap = await transaction.get(teamRef);
 
     if (!userSnap.exists()) {
       throw new Error("User not found");
+    }
+
+    if (teamSnap.exists()) {
+      throw new Error("You already own this Pokémon");
     }
 
     const currentCoins = userSnap.data().coins ?? 0;
@@ -47,15 +53,19 @@ export const purchasePokemon = async (uid, pokemon, price) => {
       throw new Error("Not enough coins");
     }
 
+    const teamCollectionRef = collection(db, "users", uid, "team");
+    const teamSnapshot = await transaction.get(teamCollectionRef);
+
+    if (teamSnapshot.size >= 6) {
+      throw new Error("Team is full");
+    }
+
     transaction.update(userRef, {
       coins: currentCoins - price,
       coinsSpent: (userSnap.data().coinsSpent ?? 0) + price,
     });
 
-    transaction.set(teamRef, {
-      ...pokemon,
-      purchasedAt: new Date(),
-    });
+    transaction.set(teamRef, formatPokemonForTeam(pokemon));
   });
 };
 
