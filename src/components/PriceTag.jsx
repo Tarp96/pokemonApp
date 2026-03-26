@@ -13,12 +13,12 @@ export const PriceTag = ({
   return (
     <div className="priceTagWrapper">
       <span
-        onClick={onClick}
+        onClick={!isOwned ? onClick : undefined}
         className={`
-        ${displayedOnCard ? "smallPokemonPriceTag" : "bigPokemonPriceTag"}
-        priceTagElement
-        ${isOwned ? "priceTagHidden" : ""}
-      `}
+    ${displayedOnCard ? "smallPokemonPriceTag" : "bigPokemonPriceTag"}
+    priceTagElement
+    ${isOwned ? "priceTagHidden" : ""}
+  `}
       >
         💰 {price}
       </span>
