@@ -5,6 +5,7 @@ import {
   updateDoc,
   increment,
   onSnapshot,
+  runTransaction,
 } from "firebase/firestore";
 
 export const getUserCoins = async (uid) => {
@@ -29,21 +30,33 @@ export const addCoins = async (uid, amount) => {
   });
 };
 
-export const spendCoins = async (uid, amount) => {
+export const purchasePokemon = async (uid, pokemon, price) => {
   const userRef = doc(db, "users", uid);
+  const teamRef = doc(db, "users", uid, "team", pokemon.id.toString());
 
-  const snapshot = await getDoc(userRef);
-  const currentCoins = snapshot.data()?.coins ?? 0;
+  await runTransaction(db, async (transaction) => {
+    const userSnap = await transaction.get(userRef);
 
-  if (currentCoins < amount) {
-    throw new Error("Not enough coins");
-  }
+    if (!userSnap.exists()) {
+      throw new Error("User not found");
+    }
 
-  await updateDoc(userRef, {
-    coins: increment(-amount),
-    coinsSpent: increment(amount),
+    const currentCoins = userSnap.data().coins ?? 0;
+
+    if (currentCoins < price) {
+      throw new Error("Not enough coins");
+    }
+
+    transaction.update(userRef, {
+      coins: currentCoins - price,
+      coinsSpent: (userSnap.data().coinsSpent ?? 0) + price,
+    });
+
+    transaction.set(teamRef, {
+      ...pokemon,
+      purchasedAt: new Date(),
+    });
   });
-  console.log("Current:", currentCoins, "Price:", amount);
 };
 
 export const listenToCoins = (uid, callback) => {

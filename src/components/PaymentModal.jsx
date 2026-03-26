@@ -1,7 +1,7 @@
 import { getPokemonPrice } from "../data/pokemonPricing";
 import { useState, useEffect } from "react";
 import { auth } from "../firebaseConfig";
-import { listenToCoins, spendCoins } from "../services/coinService";
+import { listenToCoins, purchasePokemon } from "../services/coinService";
 import { addPokemonToTeam } from "../services/teamService";
 
 export const PaymentModal = ({ pokemon, closeModalOnClick }) => {
@@ -58,9 +58,7 @@ export const PaymentModal = ({ pokemon, closeModalOnClick }) => {
     try {
       setPaymentStatus("processing");
 
-      await addPokemonToTeam(pokemon);
-
-      await spendCoins(user, price);
+      await purchasePokemon(user, pokemon, price);
 
       setPaymentStatus("success");
 
