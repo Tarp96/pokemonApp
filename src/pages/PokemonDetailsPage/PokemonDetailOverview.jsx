@@ -22,18 +22,17 @@ import { AlternativeFormsSection } from "../../components/AlternativeFormsSectio
 import { PriceTag } from "../../components/PriceTag";
 import { usePurchaseModal } from "./../../hooks/usePurchaseModal";
 import { PaymentModal } from "./../../components/PaymentModal";
-import { listenToTeam } from "../../services/teamService";
-import { auth } from "../../firebaseConfig";
+import { useOwnedPokemon } from "../../hooks/useOwnedPokemon";
 
 export const PokemonDetailOverView = () => {
   const [abilityDetails, setAbilityDetails] = useState([]);
   const [shiny, setShiny] = useState(false);
   const [showDefense, setShowDefense] = useState(true);
-  const [ownedPokemonIds, setOwnedPokemonIds] = useState([]);
 
   const { pokemon, pokemonSpecies } = useOutletContext();
 
   const { isOpen, selectedPokemon, openModal, closeModal } = usePurchaseModal();
+  const { isOwned } = useOwnedPokemon();
 
   useEffect(() => {
     const controller = new AbortController();
@@ -67,15 +66,6 @@ export const PokemonDetailOverView = () => {
 
     return () => controller.abort();
   }, [pokemon]);
-
-  useEffect(() => {
-    const user = auth.currentUser;
-    if (!user) return;
-
-    const unsubscribe = listenToTeam(user.uid, setOwnedPokemonIds);
-
-    return () => unsubscribe();
-  }, []);
 
   const sprite = shiny
     ? pokemon.sprites?.other["official-artwork"]?.front_shiny
@@ -117,7 +107,7 @@ export const PokemonDetailOverView = () => {
               pokemonName={pokemon.name}
               displayedOnCard={false}
               onClick={() => openModal(pokemon)}
-              isOwned={ownedPokemonIds.includes(pokemon.id.toString())}
+              isOwned={isOwned(pokemon.id)}
             />
             <div className="topInfoSectionTypeBadges">{types}</div>
           </h2>
