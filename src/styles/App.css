@@ -608,7 +608,7 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  max-height: 300px;
+  max-height: 320px;
   position: relative;
   overflow: visible;
   animation: fadeIn 0.3s ease;
@@ -4908,7 +4908,7 @@ body {
   .pokemon-card {
     max-width: 240px;
     padding: 18px;
-    max-height: 340px;
+    max-height: 350px;
   }
 
   .displayCardPokemonSprite {
