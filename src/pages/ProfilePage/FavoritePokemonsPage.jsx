@@ -3,6 +3,7 @@ import { useLocation, useNavigate, useOutletContext } from "react-router-dom";
 import PokemonDisplayCardSkeleton from "./../../components/SkeletonLoading/PokemonDisplayCardSkeleton";
 import { PaymentModal } from "../../components/PaymentModal";
 import { usePurchaseModal } from "../../hooks/usePurchaseModal";
+import { useOwnedPokemon } from "../../hooks/useOwnedPokemon";
 
 export const FavoritePokemonsPage = () => {
   const navigate = useNavigate();
@@ -10,6 +11,7 @@ export const FavoritePokemonsPage = () => {
   const { favorites } = useOutletContext();
 
   const { isOpen, selectedPokemon, openModal, closeModal } = usePurchaseModal();
+  const { ownedPokemonIds, isOwned } = useOwnedPokemon();
 
   const displayFavorites = favorites?.map((pokemon) => {
     const normalizedTypes = pokemon.types?.map((t) =>
@@ -38,6 +40,7 @@ export const FavoritePokemonsPage = () => {
         fromFavorites
         generation={pokemon.generation}
         variant="profile"
+        isOwned={isOwned(pokemon.id)}
       />
     );
   });
