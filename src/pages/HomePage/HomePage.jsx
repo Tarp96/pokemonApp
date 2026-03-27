@@ -10,10 +10,9 @@ import Pagination from "../../components/Pagination";
 import { getItem, setItem } from "../../utils/localStorage";
 import { setCachedPageFull } from "../../utils/cache";
 import { PaymentModal } from "../../components/PaymentModal";
-import { auth } from "../../firebaseConfig";
-import { listenToTeam } from "../../services/teamService";
 import PokemonDisplayCardSkeleton from "../../components/SkeletonLoading/PokemonDisplayCardSkeleton";
 import { usePurchaseModal } from "./../../hooks/usePurchaseModal";
+import { useOwnedPokemon } from "../../hooks/useOwnedPokemon";
 
 export const HomePage = () => {
   const [pokemon, setPokemon] = useState([]);
@@ -31,13 +30,14 @@ export const HomePage = () => {
   const [showSearches, setShowSearches] = useState(false);
   const [typeLoading, setTypeLoading] = useState(false);
   const pageLoading = loading && !activeFilter;
-  const [ownedPokemonIds, setOwnedPokemonIds] = useState([]);
+
   const [randomLoading, setRandomLoading] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
 
   const { isOpen, selectedPokemon, openModal, closeModal } = usePurchaseModal();
+  const { ownedPokemonIds, isOwned } = useOwnedPokemon();
 
   useEffect(() => {
     loadPokemonData(pageNumber);
@@ -78,15 +78,6 @@ export const HomePage = () => {
       setLoading(false);
     }
   };
-
-  useEffect(() => {
-    const user = auth.currentUser;
-    if (!user) return;
-
-    const unsubscribe = listenToTeam(user.uid, setOwnedPokemonIds);
-
-    return () => unsubscribe();
-  }, []);
 
   const clearFilter = () => {
     setFilteredPokemon(pokemon);
@@ -206,7 +197,7 @@ export const HomePage = () => {
         }
         pokemon={pokemonItem}
         priceTagOnClick={() => openModal(pokemonItem)}
-        isOwned={ownedPokemonIds.includes(pokemonItem.id.toString())}
+        isOwned={isOwned(pokemonItem.id)}
       />
     ));
   };
