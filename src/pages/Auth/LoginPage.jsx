@@ -79,7 +79,7 @@ const LoginPage = () => {
 
             <form
               onSubmit={handleLogin}
-              className="loginForm formSpaceControl"
+              className="loginForm formSpaceControl loginFormSpecific"
               id="loginForm"
             >
               <div className="formField">

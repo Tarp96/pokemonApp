@@ -955,7 +955,6 @@ body {
 .imageSkeleton {
   position: absolute;
   inset: 0;
-
   display: flex;
   align-items: center;
   justify-content: center;
@@ -975,10 +974,8 @@ body {
   width: 100%;
   height: 100%;
   object-fit: contain;
-
   opacity: 0;
   transition: opacity 0.25s ease;
-
   position: relative;
   z-index: 2;
 }
@@ -986,6 +983,7 @@ body {
 .imageElement.loaded {
   opacity: 1;
 }
+
 /*IMAGE SKELETON LOADER END*/
 
 /*SKELETON END*/
@@ -4289,6 +4287,18 @@ body {
     justify-content: center;
   }
 
+  .uiCardHero.square {
+    aspect-ratio: unset;
+  }
+
+  .imageWrapper {
+    height: auto;
+  }
+
+  .imageElement {
+    height: auto;
+  }
+
   .gameStartPageContainer .gameStartImage {
     width: 85%;
     margin: 10px auto 0 auto;
@@ -4967,6 +4977,40 @@ body {
   }
 
   /*HOME PAGE END*/
+
+  /*LOGIN/REGISTER*/
+  .uiCard {
+    max-width: 1200px;
+    border-radius: 28px;
+  }
+
+  .uiCardBody {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .uiAuthInfoText {
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  .registerTitle {
+    font-size: 2rem;
+  }
+
+  .uiAuthLinkText {
+    font-size: 16px;
+  }
+
+  .loginFormSpecific {
+    padding: 25px;
+    height: 350px;
+    display: flex;
+    font-size: 18px;
+    justify-content: space-evenly;
+  }
+
+  /*LOGIN/REGISTER END*/
 
   /*LEADERBOARD PAGE*/
   .leaderboardPageTitle {

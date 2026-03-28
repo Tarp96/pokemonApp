@@ -23,8 +23,23 @@ const RegisterUserPage = () => {
     setError("");
     setSuccess("");
 
+    if (username.trim().length > 7) {
+      setError("Username can not be longer than 7 characters");
+      return;
+    }
+
     if (password !== confirmPassword) {
       setError("Passwords do not match.");
+      return;
+    }
+
+    if (password.trim().length < 6) {
+      setError("Password must be at least 6 characters long");
+      return;
+    }
+
+    if (!/\d/.test(trimmedPassword)) {
+      setError("Password must contain at least one number");
       return;
     }
 
