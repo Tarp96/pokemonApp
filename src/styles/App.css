@@ -4691,6 +4691,39 @@ body {
     }
   }
 
+  .registerFormField .passwordWrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .registerFormField .passwordWrapper input {
+    width: 100%;
+    padding-right: 70px;
+  }
+
+  .registerFormField .togglePassword {
+    position: absolute;
+    right: 10px;
+
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #357abd;
+
+    padding: 4px 6px;
+    border-radius: 6px;
+
+    transition: background 0.2s ease;
+  }
+
+  .registerFormField .togglePassword:hover {
+    background: rgba(74, 144, 226, 0.1);
+  }
+
   .uiAuthButton:disabled {
     opacity: 0.6;
     cursor: not-allowed;

@@ -16,6 +16,8 @@ const RegisterUserPage = () => {
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
   const [touched, setTouched] = useState({});
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
   const navigate = useNavigate();
 
@@ -157,23 +159,35 @@ const RegisterUserPage = () => {
               </div>
 
               <div className="formField registerFormField">
-                <label htmlFor="username">Password</label>
-                <input
-                  id="username"
-                  type="text"
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  onBlur={() =>
-                    setTouched((prev) => ({ ...prev, password: true }))
-                  }
-                  className={
-                    touched.password && passwordError
-                      ? "inputError"
-                      : touched.password && password
-                        ? "inputSuccess"
-                        : ""
-                  }
-                />
+                <label htmlFor="password">Password</label>
+
+                <div className="passwordWrapper">
+                  <input
+                    id="password"
+                    type={showPassword ? "text" : "password"}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    onBlur={() =>
+                      setTouched((prev) => ({ ...prev, password: true }))
+                    }
+                    className={
+                      touched.password && passwordError
+                        ? "inputError"
+                        : touched.password && password
+                          ? "inputSuccess"
+                          : ""
+                    }
+                  />
+
+                  <button
+                    type="button"
+                    className="togglePassword"
+                    onClick={() => setShowPassword((prev) => !prev)}
+                  >
+                    {showPassword ? "Hide" : "Show"}
+                  </button>
+                </div>
+
                 {touched.password && passwordError && (
                   <span className="fieldError animatedError">
                     {passwordError}
@@ -182,23 +196,35 @@ const RegisterUserPage = () => {
               </div>
 
               <div className="formField registerFormField">
-                <label htmlFor="username">Confirm Password</label>
-                <input
-                  id="username"
-                  type="text"
-                  value={confirmPassword}
-                  onChange={(e) => setConfirmPassword(e.target.value)}
-                  onBlur={() =>
-                    setTouched((prev) => ({ ...prev, confirmPassword: true }))
-                  }
-                  className={
-                    touched.confirmPassword && confirmPasswordError
-                      ? "inputError"
-                      : touched.confirmPassword && confirmPassword
-                        ? "inputSuccess"
-                        : ""
-                  }
-                />
+                <label htmlFor="confirmPassword">Confirm Password</label>
+
+                <div className="passwordWrapper">
+                  <input
+                    id="confirmPassword"
+                    type={showConfirmPassword ? "text" : "password"}
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    onBlur={() =>
+                      setTouched((prev) => ({ ...prev, confirmPassword: true }))
+                    }
+                    className={
+                      touched.confirmPassword && confirmPasswordError
+                        ? "inputError"
+                        : touched.confirmPassword && confirmPassword
+                          ? "inputSuccess"
+                          : ""
+                    }
+                  />
+
+                  <button
+                    type="button"
+                    className="togglePassword"
+                    onClick={() => setShowConfirmPassword((prev) => !prev)}
+                  >
+                    {showConfirmPassword ? "Hide" : "Show"}
+                  </button>
+                </div>
+
                 {touched.confirmPassword && confirmPasswordError && (
                   <span className="fieldError animatedError">
                     {confirmPasswordError}
