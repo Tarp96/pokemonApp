@@ -3969,7 +3969,7 @@ body {
 }
 
 .podiumThird {
-  height: 95px;
+  height: 100px;
   background: linear-gradient(135deg, #cd7f32, #b56a2b);
 }
 
@@ -3995,8 +3995,8 @@ body {
 }
 
 .leaderboardTrophyPic {
-  width: 42px;
-  height: 42px;
+  width: 50px;
+  height: 50px;
   object-fit: contain;
   filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
 }
@@ -4022,6 +4022,7 @@ body {
   border-radius: 8px;
   background: #f6f6f6;
   border: solid 2px #4a90e2;
+  font-size: 18px;
 }
 
 .leaderboardRank {
