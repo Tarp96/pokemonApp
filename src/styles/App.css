@@ -4967,4 +4967,16 @@ body {
   }
 
   /*HOME PAGE END*/
+
+  /*LEADERBOARD PAGE*/
+  .leaderboardPageTitle {
+    font-size: 2.2rem;
+  }
+
+  .leaderboardTrophyPic {
+    width: 80px;
+    height: 80px;
+  }
+
+  /*LEADERBOARD PAGE END*/
 }
