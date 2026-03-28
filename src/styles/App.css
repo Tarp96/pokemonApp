@@ -4654,13 +4654,55 @@ body {
     margin-bottom: 8px;
   }
 
+  .registerFormField input {
+    transition:
+      border 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .registerFormField input.inputError {
+    border: 2px solid #ef4444;
+    box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.15);
+  }
+
+  .registerFormField input.inputSuccess {
+    border: 2px solid #22c55e;
+    box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.15);
+  }
+
+  .registerFormField .fieldError {
+    display: block;
+    margin-top: 6px;
+    font-size: 0.8rem;
+    color: #ef4444;
+    font-weight: 500;
+  }
+
+  .animatedError {
+    opacity: 0;
+    transform: translateY(-4px);
+    animation: fadeSlideIn 0.25s ease forwards;
+  }
+
+  @keyframes fadeSlideIn {
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .uiAuthButton:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+    filter: grayscale(0.3);
+  }
+
   .authButtonContainer {
     margin-top: auto;
     display: flex;
     justify-content: space-between;
     align-items: flex-end;
     width: 100%;
-
     padding: 0;
   }
 

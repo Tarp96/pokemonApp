@@ -15,33 +15,43 @@ const RegisterUserPage = () => {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [touched, setTouched] = useState({});
 
   const navigate = useNavigate();
+
+  const usernameError =
+    username && username.length > 7 ? "Max 7 characters" : "";
+
+  const emailError =
+    email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
+      ? "Please enter a valid email address"
+      : "";
+
+  const passwordError =
+    password && password.length < 6
+      ? "Must be at least 6 characters long"
+      : password && !/\d/.test(password)
+        ? "Must include a number"
+        : "";
+
+  const confirmPasswordError =
+    confirmPassword && confirmPassword !== password
+      ? "Passwords do not match"
+      : "";
+
+  const isFormValid =
+    username &&
+    username.length <= 7 &&
+    email &&
+    !emailError &&
+    password.length >= 6 &&
+    /\d/.test(password) &&
+    confirmPassword === password;
 
   const handleRegister = async (e) => {
     e.preventDefault();
     setError("");
     setSuccess("");
-
-    if (username.trim().length > 7) {
-      setError("Username can not be longer than 7 characters");
-      return;
-    }
-
-    if (password !== confirmPassword) {
-      setError("Passwords do not match.");
-      return;
-    }
-
-    if (password.trim().length < 6) {
-      setError("Password must be at least 6 characters long");
-      return;
-    }
-
-    if (!/\d/.test(trimmedPassword)) {
-      setError("Password must contain at least one number");
-      return;
-    }
 
     try {
       const userCredential = await createUserWithEmailAndPassword(
@@ -97,48 +107,103 @@ const RegisterUserPage = () => {
               className="loginForm registerForm formSpaceControl"
               id="registerForm"
             >
-              <div className="formField">
+              <div className="formField registerFormField">
                 <label htmlFor="username">Username</label>
                 <input
                   id="username"
                   type="text"
-                  required
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
+                  onBlur={() =>
+                    setTouched((prev) => ({ ...prev, username: true }))
+                  }
+                  className={
+                    touched.username && usernameError
+                      ? "inputError"
+                      : touched.username && username
+                        ? "inputSuccess"
+                        : ""
+                  }
                 />
+                {touched.username && usernameError && (
+                  <span className="fieldError animatedError">
+                    {usernameError}
+                  </span>
+                )}
               </div>
 
-              <div className="formField">
+              <div className="formField registerFormField">
                 <label htmlFor="email">Email</label>
                 <input
                   id="email"
                   type="email"
-                  required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
+                  onBlur={() =>
+                    setTouched((prev) => ({ ...prev, email: true }))
+                  }
+                  className={
+                    touched.email && emailError
+                      ? "inputError"
+                      : touched.email && email
+                        ? "inputSuccess"
+                        : ""
+                  }
                 />
+
+                {touched.email && emailError && (
+                  <span className="fieldError animatedError">{emailError}</span>
+                )}
               </div>
 
-              <div className="formField">
-                <label htmlFor="password">Password</label>
+              <div className="formField registerFormField">
+                <label htmlFor="username">Password</label>
                 <input
-                  id="password"
-                  type="password"
-                  required
+                  id="username"
+                  type="text"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
+                  onBlur={() =>
+                    setTouched((prev) => ({ ...prev, password: true }))
+                  }
+                  className={
+                    touched.password && passwordError
+                      ? "inputError"
+                      : touched.password && password
+                        ? "inputSuccess"
+                        : ""
+                  }
                 />
+                {touched.password && passwordError && (
+                  <span className="fieldError animatedError">
+                    {passwordError}
+                  </span>
+                )}
               </div>
 
-              <div className="formField">
-                <label htmlFor="confirmPassword">Confirm Password</label>
+              <div className="formField registerFormField">
+                <label htmlFor="username">Confirm Password</label>
                 <input
-                  id="confirmPassword"
-                  type="password"
-                  required
+                  id="username"
+                  type="text"
                   value={confirmPassword}
                   onChange={(e) => setConfirmPassword(e.target.value)}
+                  onBlur={() =>
+                    setTouched((prev) => ({ ...prev, confirmPassword: true }))
+                  }
+                  className={
+                    touched.confirmPassword && confirmPasswordError
+                      ? "inputError"
+                      : touched.confirmPassword && confirmPassword
+                        ? "inputSuccess"
+                        : ""
+                  }
                 />
+                {touched.confirmPassword && confirmPasswordError && (
+                  <span className="fieldError animatedError">
+                    {confirmPasswordError}
+                  </span>
+                )}
               </div>
 
               {error && (
@@ -167,6 +232,7 @@ const RegisterUserPage = () => {
               <button
                 type="submit"
                 className="uiAuthButton"
+                disabled={!isFormValid}
                 onClick={handleRegister}
                 form="registerForm"
               >
