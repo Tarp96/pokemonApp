@@ -21,7 +21,7 @@ export const HomePage = () => {
   const [isFiltered, setIsFiltered] = useState(false);
   const [loading, setLoading] = useState(false);
   const [query, setQuery] = useState("");
-  const [pageNumber, setPageNumber] = useState(1);
+  const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
   const [searchHistory, setSearchHistory] = useState(() => {
     const item = getItem("searchHistory");
@@ -29,6 +29,13 @@ export const HomePage = () => {
   });
   const [showSearches, setShowSearches] = useState(false);
   const [typeLoading, setTypeLoading] = useState(false);
+
+  const [filteredFullList, setFilteredFullList] = useState([]);
+  const [filteredPage, setFilteredPage] = useState(1);
+  const [filteredTotalPages, setFilteredTotalPages] = useState(0);
+
+  const ITEMS_PER_PAGE = 20;
+
   const pageLoading = loading && !activeFilter;
 
   const [randomLoading, setRandomLoading] = useState(false);
@@ -37,17 +44,17 @@ export const HomePage = () => {
   const location = useLocation();
 
   const { isOpen, selectedPokemon, openModal, closeModal } = usePurchaseModal();
-  const { ownedPokemonIds, isOwned } = useOwnedPokemon();
+  const { isOwned } = useOwnedPokemon();
 
   useEffect(() => {
-    loadPokemonData(pageNumber);
-  }, [pageNumber]);
+    loadPokemonData(currentPage);
+  }, [currentPage]);
 
-  const loadPokemonData = async (pageNumber) => {
+  const loadPokemonData = async (currentPage) => {
     try {
       setLoading(true);
 
-      const result = await fetchData(pageNumber, 20);
+      const result = await fetchData(currentPage, 20);
       const pokemonNames = result.results.map((p) => p.name);
 
       const allPokemonDetails = await safeFetchBatch(pokemonNames);
@@ -68,7 +75,7 @@ export const HomePage = () => {
         cries: p.cries?.legacy ?? null,
       }));
 
-      setCachedPageFull(pageNumber, {
+      setCachedPageFull(currentPage, {
         list: lightweightList,
         totalPages: pages,
       });
@@ -86,6 +93,11 @@ export const HomePage = () => {
     setQuery("");
   };
 
+  const handlePageChange = (page) => {
+    setCurrentPage(page);
+    loadPokemonData(page);
+  };
+
   const filterByType = async (key) => {
     if (isFiltered && activeFilter === key) {
       setFilteredPokemon(pokemon);
@@ -96,13 +108,24 @@ export const HomePage = () => {
 
     try {
       setTypeLoading(true);
+
       const result = await fetchTypeData(key);
+
       const pokemonNames = (result?.pokemon || [])
         .map((p) => p?.pokemon?.name)
         .filter(Boolean);
 
       const allPokemonDetails = await safeFetchBatch(pokemonNames);
-      setFilteredPokemon(allPokemonDetails);
+
+      setFilteredFullList(allPokemonDetails);
+
+      setFilteredPage(1);
+
+      const total = Math.ceil(allPokemonDetails.length / ITEMS_PER_PAGE);
+      setFilteredTotalPages(total);
+
+      const firstPage = allPokemonDetails.slice(0, ITEMS_PER_PAGE);
+      setFilteredPokemon(firstPage);
 
       setActiveFilter(key);
       setIsFiltered(true);
@@ -112,6 +135,16 @@ export const HomePage = () => {
     } finally {
       setTypeLoading(false);
     }
+  };
+
+  const handleFilteredPageChange = (page) => {
+    setFilteredPage(page);
+
+    const start = (page - 1) * ITEMS_PER_PAGE;
+    const end = start + ITEMS_PER_PAGE;
+
+    const sliced = filteredFullList.slice(start, end);
+    setFilteredPokemon(sliced);
   };
 
   const renderSkeletonCards = (count = 20) =>
@@ -222,13 +255,11 @@ export const HomePage = () => {
         isFiltered={isFiltered}
       />
 
-      {!activeFilter && (
-        <Pagination
-          currentPage={pageNumber}
-          totalPages={totalPages}
-          onPageChange={(newPage) => setPageNumber(newPage)}
-        />
-      )}
+      <Pagination
+        currentPage={isFiltered ? filteredPage : currentPage}
+        totalPages={isFiltered ? filteredTotalPages : totalPages}
+        onPageChange={isFiltered ? handleFilteredPageChange : handlePageChange}
+      />
 
       {pageLoading || typeLoading ? (
         <PokemonGrid>{renderSkeletonCards(20)}</PokemonGrid>
