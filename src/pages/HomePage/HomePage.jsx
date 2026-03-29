@@ -188,11 +188,15 @@ export const HomePage = () => {
 
       const pokemon = results.map(([details]) => details).filter(Boolean);
 
-      setFilteredPokemon(pokemon);
+      setFilteredFullList(pokemon);
+
+      resetFilteredPage();
+
       setIsFiltered(true);
+      setActiveFilter("random");
     } catch (error) {
       console.log("Something went wrong");
-      setFilteredPokemon([]);
+      setFilteredFullList([]);
     }
 
     setRandomLoading(false);
