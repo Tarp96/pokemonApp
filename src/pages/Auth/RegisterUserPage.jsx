@@ -175,6 +175,11 @@ const RegisterUserPage = () => {
 
               <div className="formField registerFormField">
                 <label htmlFor="password">Password</label>
+                <div className="strengthBar">
+                  <div
+                    className={`strengthFill ${passwordStrength.toLowerCase()}`}
+                  ></div>
+                </div>
 
                 <div className="passwordWrapper">
                   <input

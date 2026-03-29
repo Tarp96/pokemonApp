@@ -4724,6 +4724,34 @@ body {
     background: rgba(74, 144, 226, 0.1);
   }
 
+  .strengthBar {
+    height: 6px;
+    background: #e5e7eb;
+    border-radius: 999px;
+    margin-top: 6px;
+    overflow: hidden;
+  }
+
+  .strengthFill {
+    height: 100%;
+    transition: width 0.3s ease;
+  }
+
+  .strengthFill.weak {
+    width: 25%;
+    background: #ef4444;
+  }
+
+  .strengthFill.medium {
+    width: 66%;
+    background: #f59e0b;
+  }
+
+  .strengthFill.strong {
+    width: 100%;
+    background: #22c55e;
+  }
+
   .registerFormField .passwordStrength {
     display: block;
     margin-top: 6px;
