@@ -7,6 +7,7 @@ import { db } from "../../firebaseConfig";
 import { NavLink } from "react-router-dom";
 import registerUserImage from "../../assets/registerUserPic.webp";
 import { ImageWithSkeleton } from "../../components/SkeletonLoading/ImageWithSkeleton";
+import { getFirebaseErrorMessage } from "../../utils/getFireBaseErrorMessage";
 
 const RegisterUserPage = () => {
   const [email, setEmail] = useState("");
@@ -95,8 +96,9 @@ const RegisterUserPage = () => {
         navigate("/login", { replace: true });
       }, 2000);
     } catch (err) {
-      console.error("Error registering user:", err);
-      setError(err.message);
+      const message = getFirebaseErrorMessage(err.code);
+      setError(message);
+      console.Error(err);
     }
   };
 

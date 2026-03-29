@@ -3157,6 +3157,142 @@ body {
   padding: 32px;
 }
 
+.registerFormField input.inputError {
+  border: 2px solid #ef4444;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.15);
+}
+
+.registerFormField input.inputSuccess {
+  border: 2px solid #22c55e;
+  box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.15);
+}
+
+.registerFormField .fieldError {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.8rem;
+  color: #ef4444;
+  font-weight: 500;
+}
+
+.animatedError {
+  opacity: 0;
+  transform: translateY(-4px);
+  animation: fadeSlideIn 0.25s ease forwards;
+}
+
+@keyframes fadeSlideIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.registerFormField .passwordWrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.registerFormField .passwordWrapper input {
+  width: 100%;
+  padding-right: 70px;
+}
+
+.registerFormField .togglePassword {
+  position: absolute;
+  right: 10px;
+
+  background: none;
+  border: none;
+  cursor: pointer;
+
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: #357abd;
+
+  padding: 4px 6px;
+  border-radius: 6px;
+
+  transition: background 0.2s ease;
+}
+
+.registerFormField .togglePassword:hover {
+  background: rgba(74, 144, 226, 0.1);
+}
+
+.strengthBar {
+  height: 6px;
+  background: #e5e7eb;
+  border-radius: 999px;
+  margin-top: 6px;
+  overflow: hidden;
+}
+
+@keyframes strengthPulse {
+  0% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(1.3);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+.strengthFill {
+  height: 100%;
+  transform-origin: left;
+  animation: strengthPulse 0.3s ease;
+  transition:
+    width 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+    background 0.25s ease;
+}
+
+.strengthFill.weak {
+  width: 33%;
+  background: #ef4444;
+  box-shadow: 0 0 6px rgba(239, 68, 68, 0.4);
+}
+
+.strengthFill.medium {
+  width: 66%;
+  background: #f59e0b;
+  box-shadow: 0 0 8px rgba(245, 158, 11, 0.4);
+}
+
+.strengthFill.strong {
+  width: 100%;
+  background: #22c55e;
+  box-shadow: 0 0 10px rgba(34, 197, 94, 0.4);
+}
+
+.registerFormField .passwordStrength {
+  display: block;
+  margin-top: 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+.passwordStrength.weak {
+  color: #ef4444;
+}
+
+.passwordStrength.medium {
+  color: #f59e0b;
+}
+
+.passwordStrength.strong {
+  color: #22c55e;
+}
+
+.uiAuthButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  filter: grayscale(0.3);
+}
+
 .loginRegisterFeedbackMessage {
   max-width: 90%;
   margin: 0 auto;
@@ -4658,142 +4794,6 @@ body {
     transition:
       border 0.2s ease,
       box-shadow 0.2s ease;
-  }
-
-  .registerFormField input.inputError {
-    border: 2px solid #ef4444;
-    box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.15);
-  }
-
-  .registerFormField input.inputSuccess {
-    border: 2px solid #22c55e;
-    box-shadow: 0 0 0 2px rgba(34, 197, 94, 0.15);
-  }
-
-  .registerFormField .fieldError {
-    display: block;
-    margin-top: 6px;
-    font-size: 0.8rem;
-    color: #ef4444;
-    font-weight: 500;
-  }
-
-  .animatedError {
-    opacity: 0;
-    transform: translateY(-4px);
-    animation: fadeSlideIn 0.25s ease forwards;
-  }
-
-  @keyframes fadeSlideIn {
-    to {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  }
-
-  .registerFormField .passwordWrapper {
-    position: relative;
-    display: flex;
-    align-items: center;
-  }
-
-  .registerFormField .passwordWrapper input {
-    width: 100%;
-    padding-right: 70px;
-  }
-
-  .registerFormField .togglePassword {
-    position: absolute;
-    right: 10px;
-
-    background: none;
-    border: none;
-    cursor: pointer;
-
-    font-size: 0.8rem;
-    font-weight: 600;
-    color: #357abd;
-
-    padding: 4px 6px;
-    border-radius: 6px;
-
-    transition: background 0.2s ease;
-  }
-
-  .registerFormField .togglePassword:hover {
-    background: rgba(74, 144, 226, 0.1);
-  }
-
-  .strengthBar {
-    height: 6px;
-    background: #e5e7eb;
-    border-radius: 999px;
-    margin-top: 6px;
-    overflow: hidden;
-  }
-
-  @keyframes strengthPulse {
-    0% {
-      transform: scaleY(1);
-    }
-    50% {
-      transform: scaleY(1.3);
-    }
-    100% {
-      transform: scaleY(1);
-    }
-  }
-
-  .strengthFill {
-    height: 100%;
-    transform-origin: left;
-    animation: strengthPulse 0.3s ease;
-    transition:
-      width 0.4s cubic-bezier(0.4, 0, 0.2, 1),
-      background 0.25s ease;
-  }
-
-  .strengthFill.weak {
-    width: 33%;
-    background: #ef4444;
-    box-shadow: 0 0 6px rgba(239, 68, 68, 0.4);
-  }
-
-  .strengthFill.medium {
-    width: 66%;
-    background: #f59e0b;
-    box-shadow: 0 0 8px rgba(245, 158, 11, 0.4);
-  }
-
-  .strengthFill.strong {
-    width: 100%;
-    background: #22c55e;
-    box-shadow: 0 0 10px rgba(34, 197, 94, 0.4);
-  }
-
-  .registerFormField .passwordStrength {
-    display: block;
-    margin-top: 6px;
-    font-size: 0.8rem;
-    font-weight: 600;
-  }
-
-  .passwordStrength.weak {
-    color: #ef4444;
-  }
-
-  .passwordStrength.medium {
-    color: #f59e0b;
-  }
-
-  .passwordStrength.strong {
-    color: #22c55e;
-  }
-
-  .uiAuthButton:disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
-    filter: grayscale(0.3);
   }
 
   .authButtonContainer {
