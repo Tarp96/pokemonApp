@@ -13,6 +13,7 @@ import { PaymentModal } from "../../components/PaymentModal";
 import PokemonDisplayCardSkeleton from "../../components/SkeletonLoading/PokemonDisplayCardSkeleton";
 import { usePurchaseModal } from "./../../hooks/usePurchaseModal";
 import { useOwnedPokemon } from "../../hooks/useOwnedPokemon";
+import { usePagination } from "./../../hooks/usePagination";
 
 export const HomePage = () => {
   const [pokemon, setPokemon] = useState([]);
@@ -29,12 +30,7 @@ export const HomePage = () => {
   });
   const [showSearches, setShowSearches] = useState(false);
   const [typeLoading, setTypeLoading] = useState(false);
-
   const [filteredFullList, setFilteredFullList] = useState([]);
-  const [filteredPage, setFilteredPage] = useState(1);
-  const [filteredTotalPages, setFilteredTotalPages] = useState(0);
-
-  const ITEMS_PER_PAGE = 20;
 
   const pageLoading = loading && !activeFilter;
 
@@ -45,6 +41,13 @@ export const HomePage = () => {
 
   const { isOpen, selectedPokemon, openModal, closeModal } = usePurchaseModal();
   const { isOwned } = useOwnedPokemon();
+  const {
+    currentPage: filteredPage,
+    totalPages: filteredTotalPages,
+    currentData: paginatedFilteredPokemon,
+    goToPage: goToFilteredPage,
+    resetPage: resetFilteredPage,
+  } = usePagination(filteredFullList, 20);
 
   useEffect(() => {
     loadPokemonData(currentPage);
@@ -100,9 +103,9 @@ export const HomePage = () => {
 
   const filterByType = async (key) => {
     if (isFiltered && activeFilter === key) {
-      setFilteredPokemon(pokemon);
-      setActiveFilter(null);
       setIsFiltered(false);
+      setActiveFilter(null);
+      resetFilteredPage();
       return;
     }
 
@@ -119,32 +122,15 @@ export const HomePage = () => {
 
       setFilteredFullList(allPokemonDetails);
 
-      setFilteredPage(1);
-
-      const total = Math.ceil(allPokemonDetails.length / ITEMS_PER_PAGE);
-      setFilteredTotalPages(total);
-
-      const firstPage = allPokemonDetails.slice(0, ITEMS_PER_PAGE);
-      setFilteredPokemon(firstPage);
-
+      resetFilteredPage();
+      setCurrentPage(1);
       setActiveFilter(key);
       setIsFiltered(true);
     } catch (error) {
       console.error("Error fetching type data:", error);
-      setFilteredPokemon([]);
     } finally {
       setTypeLoading(false);
     }
-  };
-
-  const handleFilteredPageChange = (page) => {
-    setFilteredPage(page);
-
-    const start = (page - 1) * ITEMS_PER_PAGE;
-    const end = start + ITEMS_PER_PAGE;
-
-    const sliced = filteredFullList.slice(start, end);
-    setFilteredPokemon(sliced);
   };
 
   const renderSkeletonCards = (count = 20) =>
@@ -213,7 +199,11 @@ export const HomePage = () => {
   };
 
   const renderPokemonCards = () => {
-    return filteredPokemon.map((pokemonItem, index) => (
+    const dataToRender = isFiltered
+      ? paginatedFilteredPokemon
+      : filteredPokemon;
+
+    return dataToRender.map((pokemonItem, index) => (
       <PokemonDisplayCard
         key={index}
         name={pokemonItem.name}
@@ -258,7 +248,7 @@ export const HomePage = () => {
       <Pagination
         currentPage={isFiltered ? filteredPage : currentPage}
         totalPages={isFiltered ? filteredTotalPages : totalPages}
-        onPageChange={isFiltered ? handleFilteredPageChange : handlePageChange}
+        onPageChange={isFiltered ? goToFilteredPage : handlePageChange}
       />
 
       {pageLoading || typeLoading ? (
