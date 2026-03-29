@@ -4724,6 +4724,25 @@ body {
     background: rgba(74, 144, 226, 0.1);
   }
 
+  .registerFormField .passwordStrength {
+    display: block;
+    margin-top: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .passwordStrength.weak {
+    color: #ef4444;
+  }
+
+  .passwordStrength.medium {
+    color: #f59e0b;
+  }
+
+  .passwordStrength.strong {
+    color: #22c55e;
+  }
+
   .uiAuthButton:disabled {
     opacity: 0.6;
     cursor: not-allowed;

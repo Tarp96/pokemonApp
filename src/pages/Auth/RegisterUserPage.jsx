@@ -18,6 +18,7 @@ const RegisterUserPage = () => {
   const [touched, setTouched] = useState({});
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const [passwordStrength, setPasswordStrength] = useState("");
 
   const navigate = useNavigate();
 
@@ -49,6 +50,20 @@ const RegisterUserPage = () => {
     password.length >= 6 &&
     /\d/.test(password) &&
     confirmPassword === password;
+
+  const passwordStrengthCalc = (value) => {
+    let score = 0;
+
+    if (value.length >= 6) score++;
+    if (value.length >= 8) score++;
+    if (/\d/.test(value)) score++;
+    if (/[A-Z]/.test(value)) score++;
+    if (/[^A-Za-z0-9]/.test(value)) score++;
+
+    if (score <= 2) setPasswordStrength("Weak");
+    else if (score === 3 || score === 4) setPasswordStrength("Medium");
+    else setPasswordStrength("Strong");
+  };
 
   const handleRegister = async (e) => {
     e.preventDefault();
@@ -166,7 +181,10 @@ const RegisterUserPage = () => {
                     id="password"
                     type={showPassword ? "text" : "password"}
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                      passwordStrengthCalc(e.target.value);
+                    }}
                     onBlur={() =>
                       setTouched((prev) => ({ ...prev, password: true }))
                     }
@@ -187,6 +205,14 @@ const RegisterUserPage = () => {
                     {showPassword ? "Hide" : "Show"}
                   </button>
                 </div>
+
+                {password && (
+                  <span
+                    className={`passwordStrength ${passwordStrength.toLowerCase()}`}
+                  >
+                    {passwordStrength}
+                  </span>
+                )}
 
                 {touched.password && passwordError && (
                   <span className="fieldError animatedError">
