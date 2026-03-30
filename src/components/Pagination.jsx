@@ -34,6 +34,7 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
       className="pagination-container"
       aria-label="Pagination"
       tabIndex={0}
+      aria-describedby="pagination-hint"
       onKeyDown={(e) => {
         if (e.key === "ArrowLeft" && currentPage > 1) {
           onPageChange(currentPage - 1);
@@ -44,6 +45,9 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
         }
       }}
     >
+      <span id="pagination-hint" className="sr-only">
+        Use left and right arrow keys to navigate pages
+      </span>
       {currentPage > 1 && (
         <button
           key="prev"
