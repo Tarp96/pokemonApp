@@ -482,9 +482,10 @@ body {
   height: 20px;
 }
 
-.filterButtonContainer button:hover {
+.filterButtonContainer button:hover,
+.filterButtonContainer button:focus {
   background-color: #f0f0f0;
-  transform: scale(1.05);
+  transform: scale(1.08);
 }
 
 .filterButtonContainer button:focus {

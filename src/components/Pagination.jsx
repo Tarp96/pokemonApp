@@ -2,7 +2,6 @@ import { useState, useEffect } from "react";
 import pokeball from "../assets/pokeb.webp";
 
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
-  const pageButtons = [];
   const [maxPagesToShow, setMaxPagesToShow] = useState(5);
   const half = Math.floor(maxPagesToShow / 2);
 
@@ -31,7 +30,20 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   }
 
   return (
-    <nav className="pagination-container" aria-label="Pagination">
+    <nav
+      className="pagination-container"
+      aria-label="Pagination"
+      tabIndex={0}
+      onKeyDown={(e) => {
+        if (e.key === "ArrowLeft" && currentPage > 1) {
+          onPageChange(currentPage - 1);
+        }
+
+        if (e.key === "ArrowRight" && currentPage < totalPages) {
+          onPageChange(currentPage + 1);
+        }
+      }}
+    >
       {currentPage > 1 && (
         <button
           key="prev"
