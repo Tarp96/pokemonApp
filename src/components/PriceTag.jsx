@@ -34,7 +34,7 @@ export const PriceTag = ({
       `}
         >
           <p className="ownedLabel">Owned</p>
-          <img className="pokemonOwnedImage" src={pokeball} alt="Pokeball" />
+          <img className="pokemonOwnedImage" src={pokeball} alt="" />
         </div>
       )}
     </div>

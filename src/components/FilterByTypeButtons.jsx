@@ -23,12 +23,14 @@ export const FilterByTypeButtons = ({
       <button
         className="filterToggleBtn"
         onClick={() => setShowFilters(!showFilters)}
+        aria-expanded={showFilters}
+        aria-controls="filter-buttons"
       >
         Filter by Type {showFilters ? "▲" : "▼"}
       </button>
 
       {showFilters && (
-        <div className="filterButtonContainer">
+        <div id="filter-buttons" className="filterButtonContainer">
           {Object.keys(myObj).map((key) => {
             const isActive = activeFilter === key;
             const iconUrl = getTypeIcon(key);
@@ -48,9 +50,11 @@ export const FilterByTypeButtons = ({
                     setShowFilters(false);
                   }
                 }}
+                aria-label={`Filter by ${firstLetterUpperCase(key)} type`}
+                aria-pressed={isActive}
               >
-                <span>{firstLetterUpperCase(key)}</span>
-                <img src={iconUrl} alt={`${key} icon`} />
+                <span aria-hidden="true">{firstLetterUpperCase(key)}</span>
+                <img src={iconUrl} alt="" aria-hidden="true" />
               </button>
             );
           })}

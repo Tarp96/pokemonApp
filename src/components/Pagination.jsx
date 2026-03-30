@@ -30,45 +30,58 @@ const Pagination = ({ currentPage, totalPages, onPageChange }) => {
     startPage = Math.max(1, totalPages - maxPagesToShow + 1);
   }
 
-  if (currentPage > 1) {
-    pageButtons.push(
-      <button
-        key="prev"
-        onClick={() => onPageChange(currentPage - 1)}
-        className="paginationButton"
-      >
-        <img src={pokeball} alt="Pokeball" className="paginationButtonImage" />
-        Prev
-      </button>,
-    );
-  }
+  return (
+    <nav className="pagination-container" aria-label="Pagination">
+      {currentPage > 1 && (
+        <button
+          key="prev"
+          onClick={() => onPageChange(currentPage - 1)}
+          className="paginationButton"
+          aria-label="Go to previous page"
+        >
+          <img
+            src={pokeball}
+            alt=""
+            aria-hidden="true"
+            className="paginationButtonImage"
+          />
+          Prev
+        </button>
+      )}
 
-  for (let i = startPage; i <= endPage; i++) {
-    pageButtons.push(
-      <button
-        key={i}
-        onClick={() => onPageChange(i)}
-        className={i === currentPage ? "active-page" : ""}
-      >
-        {i}
-      </button>,
-    );
-  }
+      {Array.from({ length: endPage - startPage + 1 }, (_, idx) => {
+        const i = startPage + idx;
+        return (
+          <button
+            key={i}
+            onClick={() => onPageChange(i)}
+            className={i === currentPage ? "active-page" : ""}
+            aria-current={i === currentPage ? "page" : undefined}
+            aria-label={`Go to page ${i}`}
+          >
+            {i}
+          </button>
+        );
+      })}
 
-  if (currentPage < totalPages) {
-    pageButtons.push(
-      <button
-        key="next"
-        onClick={() => onPageChange(currentPage + 1)}
-        className="paginationButton"
-      >
-        Next
-        <img src={pokeball} alt="Pokeball" className="paginationButtonImage" />
-      </button>,
-    );
-  }
-
-  return <div className="pagination-container">{pageButtons}</div>;
+      {currentPage < totalPages && (
+        <button
+          key="next"
+          onClick={() => onPageChange(currentPage + 1)}
+          className="paginationButton"
+          aria-label="Go to next page"
+        >
+          Next
+          <img
+            src={pokeball}
+            alt=""
+            aria-hidden="true"
+            className="paginationButtonImage"
+          />
+        </button>
+      )}
+    </nav>
+  );
 };
 
 export default Pagination;
