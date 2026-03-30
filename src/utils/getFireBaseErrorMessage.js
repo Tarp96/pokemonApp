@@ -15,6 +15,15 @@ export const getFirebaseErrorMessage = (errorCode) => {
     case "auth/wrong-password":
       return "Incorrect password. Please try again.";
 
+    case "auth/too-many-requests":
+      return "Too many login attempts. Please try again later.";
+
+    case "auth/network-request-failed":
+      return "Network error. Check your connection and try again.";
+
+    case "auth/user-disabled":
+      return "This account has been disabled. Contact support.";
+
     default:
       return "Something went wrong. Please try again.";
   }

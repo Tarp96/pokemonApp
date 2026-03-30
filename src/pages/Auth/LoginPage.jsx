@@ -18,6 +18,10 @@ const LoginPage = () => {
   const [submitting, setSubmitting] = useState(false);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const [isSigningIn, setIsSigningIn] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
+
+  const isFormValid = email && password;
 
   const handleLogin = async (e) => {
     e.preventDefault();
@@ -47,11 +51,22 @@ const LoginPage = () => {
     }
   };
 
-  const googleSignIn = (e) => {
+  const googleSignIn = async (e) => {
     e.preventDefault();
-    if (!isSigningIn) {
-      setIsSigningIn(true);
-      doSignInWithGoogle().catch((err) => {});
+
+    if (isSigningIn) return;
+
+    setIsSigningIn(true);
+    setError("");
+
+    try {
+      await doSignInWithGoogle();
+      navigate("/", { replace: true });
+    } catch (err) {
+      console.error("Google login error:", err);
+      setError("Google sign-in failed. Please try again.");
+    } finally {
+      setIsSigningIn(false);
     }
   };
 
@@ -66,7 +81,7 @@ const LoginPage = () => {
           <div className="uiAuthHero">
             <ImageWithSkeleton
               src={loginPic}
-              alt="Pokémon Logo"
+              alt="Official Pokemon Explorers of the sky artwork"
               className="uiCardHero square"
             />
           </div>
@@ -89,21 +104,33 @@ const LoginPage = () => {
                   type="email"
                   required
                   value={email}
-                  onChange={(e) => setEmail(e.target.value)}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    if (error) setError("");
+                  }}
                   disabled={submitting}
+                  autoFocus
                 />
               </div>
 
               <div className="formField">
-                <label htmlFor="password">Password</label>
-                <input
-                  id="password"
-                  type="password"
-                  required
-                  value={password}
-                  onChange={(e) => setPassword(e.target.value)}
-                  disabled={submitting}
-                />
+                <div className="passwordWrapper">
+                  <input
+                    id="password"
+                    type={showPassword ? "text" : "password"}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    disabled={submitting}
+                  />
+
+                  <button
+                    type="button"
+                    className="togglePassword"
+                    onClick={() => setShowPassword((prev) => !prev)}
+                  >
+                    {showPassword ? "Hide" : "Show"}
+                  </button>
+                </div>
               </div>
 
               <NavLink to="/forgot-password" className="uiAuthForgotLink">
@@ -115,7 +142,7 @@ const LoginPage = () => {
             </form>
             <div className="authButtonContainer">
               <div className="uiAuthLinkContainer">
-                <p className="uiAuthLinkText">Dont have an account?</p>
+                <p className="uiAuthLinkText">Don't have an account?</p>
                 <NavLink to="register" className="uiAuthLink">
                   Register
                   <span>&gt;</span>
@@ -127,7 +154,7 @@ const LoginPage = () => {
               <button
                 type="submit"
                 className="uiAuthButton"
-                disabled={submitting}
+                disabled={submitting || !isFormValid}
                 form="loginForm"
               >
                 {submitting ? "Logging in…" : "Log In"}
