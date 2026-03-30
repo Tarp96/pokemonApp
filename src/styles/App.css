@@ -3538,6 +3538,10 @@ body {
   transform: translateY(0) scale(0.99);
 }
 
+.loginReminderButton:focus {
+  transform: translateY(-2px) scale(1.08);
+}
+
 .gameStartPageContainer {
   max-width: none;
   width: 100%;

@@ -35,19 +35,27 @@ export const GameStartScreen = ({
   return (
     <div className="gameScreenContainer gameStartPageContainer">
       {!isLoggedIn ? (
-        <div className="loginReminderContainer">
+        <div
+          className="loginReminderContainer"
+          role="region"
+          aria-labelledby="login-reminder-title"
+        >
           <ImageWithSkeleton
             src={psyduckSign}
-            alt="Yellow duck holding a sign"
+            alt="Psyduck holding a sign reminding you to log in"
             className="loginReminderImage"
           />
 
-          <p className="loginReminderText">
+          <p id="login-reminder-title" className="loginReminderText">
             Looks like you are not logged in. Please{" "}
             <NavLink to="/login">log in</NavLink> or create an account to play!
           </p>
 
-          <NavLink to="/login" className="loginReminderButton">
+          <NavLink
+            to="/login"
+            className="loginReminderButton"
+            aria-label="Log in to your account to start playing"
+          >
             Log In to Play <span aria-hidden="true">🎮</span>
           </NavLink>
         </div>
