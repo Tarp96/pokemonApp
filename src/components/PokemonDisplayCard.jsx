@@ -84,7 +84,11 @@ function PokemonDisplayCard({
         )}
       </div>
 
-      <img src={sprite} alt={name} className="displayCardPokemonSprite" />
+      <img
+        src={sprite}
+        alt={`${name} artwork`}
+        className="displayCardPokemonSprite"
+      />
       <h3>{firstLetterUpperCase(name)}</h3>
 
       <PriceTag
@@ -99,7 +103,11 @@ function PokemonDisplayCard({
       <div className="types">{renderTypes}</div>
 
       <div className="linkToDetailPageBtnContainer">
-        <button onClick={onClick} className="linkToDetailsPageButton">
+        <button
+          onClick={onClick}
+          className="linkToDetailsPageButton"
+          aria-label="Navigate to Details page"
+        >
           Details
           <FaArrowRight />
         </button>

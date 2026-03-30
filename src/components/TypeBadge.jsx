@@ -15,6 +15,7 @@ export const TypeBadge = ({
     <span
       className={`typeBadge ${variant} ${className}`}
       style={{ backgroundColor: bg, color: "white" }}
+      aria-label={`${firstLetterUpperCase(type)} type`}
     >
       {iconUrl && (
         <img

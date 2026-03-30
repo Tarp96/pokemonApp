@@ -43,13 +43,18 @@ export const SearchBar = ({
           )}
         </div>
 
-        <button onClick={() => onClick(query)} className="searchBarButton">
+        <button
+          onClick={() => onClick(query)}
+          className="searchBarButton"
+          aria-label="Search"
+        >
           Search 🔎
         </button>
       </div>
 
       <div className="randomBtnWrapper">
         <button
+          aria-label="Get Random Pokemon"
           onClick={secondOnClick}
           className={`randomPokemonButton ${isFiltered ? "" : "biggerRandomButton"}`}
         >
@@ -60,7 +65,11 @@ export const SearchBar = ({
         </button>
 
         {isFiltered && (
-          <button onClick={clearFilter} className="clearFilterButton">
+          <button
+            onClick={clearFilter}
+            className="clearFilterButton"
+            aria-label="Clear Filter"
+          >
             Clear Filter
           </button>
         )}
@@ -87,6 +96,7 @@ export const SearchBar = ({
                   <img
                     src="assets/pokeb.webp"
                     className="searchHistoryPokeball"
+                    aria-label={item}
                   />
                 </div>
               </li>

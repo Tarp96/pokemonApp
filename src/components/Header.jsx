@@ -32,7 +32,11 @@ export const Header = () => {
   return (
     <header className="headerContainer">
       <div className="headerLeft">
-        <img src={pikalogo} alt="" className="pageTitlePokeBallImg" />
+        <img
+          src={pikalogo}
+          alt="Pikachu official artwork"
+          className="pageTitlePokeBallImg"
+        />
       </div>
 
       <div className="headerCenter">
@@ -45,16 +49,16 @@ export const Header = () => {
       </div>
 
       <div className="headerRight">
-        <NavLink to="/" className="headerNavBtn">
+        <NavLink to="/" className="headerNavBtn" aria-label="Home">
           Home
         </NavLink>
 
-        <NavLink to="/game" className="headerNavBtn">
+        <NavLink to="/game" className="headerNavBtn" aria-label="Game">
           Game
         </NavLink>
 
         {!userLoggedIn && (
-          <NavLink to="/login" className="headerNavBtn">
+          <NavLink to="/login" className="headerNavBtn" aria-label="Log In">
             Log In
           </NavLink>
         )}
