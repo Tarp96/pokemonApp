@@ -98,7 +98,7 @@ const RegisterUserPage = () => {
     } catch (err) {
       const message = getFirebaseErrorMessage(err.code);
       setError(message);
-      console.Error(err);
+      console.error(err);
     }
   };
 
@@ -129,8 +129,12 @@ const RegisterUserPage = () => {
               <div className="formField registerFormField">
                 <label htmlFor="username">Username</label>
                 <input
+                  required
                   id="username"
                   type="text"
+                  autoComplete="username"
+                  aria-describedby="username-error"
+                  aria-invalid={!!(touched.username && usernameError)}
                   value={username}
                   onChange={(e) => setUsername(e.target.value)}
                   onBlur={() =>
@@ -145,7 +149,10 @@ const RegisterUserPage = () => {
                   }
                 />
                 {touched.username && usernameError && (
-                  <span className="fieldError animatedError">
+                  <span
+                    id="username-error"
+                    className="fieldError animatedError"
+                  >
                     {usernameError}
                   </span>
                 )}
@@ -154,8 +161,12 @@ const RegisterUserPage = () => {
               <div className="formField registerFormField">
                 <label htmlFor="email">Email</label>
                 <input
+                  required
                   id="email"
                   type="email"
+                  autoComplete="email"
+                  aria-describedby="email-error"
+                  aria-invalid={!!(touched.email && emailError)}
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   onBlur={() =>
@@ -171,13 +182,31 @@ const RegisterUserPage = () => {
                 />
 
                 {touched.email && emailError && (
-                  <span className="fieldError animatedError">{emailError}</span>
+                  <span id="email-error" className="fieldError animatedError">
+                    {emailError}
+                  </span>
                 )}
               </div>
 
               <div className="formField registerFormField">
                 <label htmlFor="password">Password</label>
-                <div className="strengthBar">
+
+                <div
+                  className="strengthBar"
+                  role="progressbar"
+                  aria-valuenow={
+                    passwordStrength === "Weak"
+                      ? 33
+                      : passwordStrength === "Medium"
+                        ? 66
+                        : passwordStrength === "Strong"
+                          ? 100
+                          : 0
+                  }
+                  aria-valuemin="0"
+                  aria-valuemax="100"
+                  aria-label="Password strength"
+                >
                   <div
                     className={`strengthFill ${passwordStrength.toLowerCase()}`}
                   ></div>
@@ -185,8 +214,12 @@ const RegisterUserPage = () => {
 
                 <div className="passwordWrapper">
                   <input
+                    required
                     id="password"
                     type={showPassword ? "text" : "password"}
+                    autoComplete="new-password"
+                    aria-describedby="password-error"
+                    aria-invalid={!!(touched.password && passwordError)}
                     value={password}
                     onChange={(e) => {
                       setPassword(e.target.value);
@@ -207,6 +240,9 @@ const RegisterUserPage = () => {
                   <button
                     type="button"
                     className="togglePassword"
+                    aria-label={
+                      showPassword ? "Hide password" : "Show password"
+                    }
                     onClick={() => setShowPassword((prev) => !prev)}
                   >
                     {showPassword ? "Hide" : "Show"}
@@ -222,7 +258,10 @@ const RegisterUserPage = () => {
                 )}
 
                 {touched.password && passwordError && (
-                  <span className="fieldError animatedError">
+                  <span
+                    id="password-error"
+                    className="fieldError animatedError"
+                  >
                     {passwordError}
                   </span>
                 )}
@@ -233,12 +272,21 @@ const RegisterUserPage = () => {
 
                 <div className="passwordWrapper">
                   <input
+                    required
                     id="confirmPassword"
                     type={showConfirmPassword ? "text" : "password"}
+                    autoComplete="new-password"
+                    aria-describedby="confirmPassword-error"
+                    aria-invalid={
+                      !!(touched.confirmPassword && confirmPasswordError)
+                    }
                     value={confirmPassword}
                     onChange={(e) => setConfirmPassword(e.target.value)}
                     onBlur={() =>
-                      setTouched((prev) => ({ ...prev, confirmPassword: true }))
+                      setTouched((prev) => ({
+                        ...prev,
+                        confirmPassword: true,
+                      }))
                     }
                     className={
                       touched.confirmPassword && confirmPasswordError
@@ -252,6 +300,11 @@ const RegisterUserPage = () => {
                   <button
                     type="button"
                     className="togglePassword"
+                    aria-label={
+                      showConfirmPassword
+                        ? "Hide confirm password"
+                        : "Show confirm password"
+                    }
                     onClick={() => setShowConfirmPassword((prev) => !prev)}
                   >
                     {showConfirmPassword ? "Hide" : "Show"}
@@ -259,20 +312,29 @@ const RegisterUserPage = () => {
                 </div>
 
                 {touched.confirmPassword && confirmPasswordError && (
-                  <span className="fieldError animatedError">
+                  <span
+                    id="confirmPassword-error"
+                    className="fieldError animatedError"
+                  >
                     {confirmPasswordError}
                   </span>
                 )}
               </div>
 
               {error && (
-                <div className="errorMessage loginRegisterFeedbackMessage">
+                <div
+                  className="errorMessage loginRegisterFeedbackMessage"
+                  aria-live="assertive"
+                >
                   {error}
                 </div>
               )}
 
               {success && (
-                <div className="successMessage loginRegisterFeedbackMessage">
+                <div
+                  className="successMessage loginRegisterFeedbackMessage"
+                  aria-live="polite"
+                >
                   {success}
                 </div>
               )}
@@ -292,7 +354,6 @@ const RegisterUserPage = () => {
                 type="submit"
                 className="uiAuthButton"
                 disabled={!isFormValid}
-                onClick={handleRegister}
                 form="registerForm"
               >
                 Register
