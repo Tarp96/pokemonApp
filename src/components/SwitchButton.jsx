@@ -6,22 +6,24 @@ export const SwitchButton = ({
   className = "",
 }) => {
   return (
-    <div role="group" aria-label="Toggle option">
+    <>
       <button
         className={`tabButton ${!condition ? "active" : ""} ${className}`}
-        onClick={() => !condition && onClick()}
+        onClick={onClick}
         aria-pressed={!condition}
+        aria-label={`${firstText} view`}
       >
         {firstText}
       </button>
 
       <button
         className={`tabButton ${condition ? "active" : ""} ${className}`}
-        onClick={() => condition && onClick()}
+        onClick={onClick}
         aria-pressed={condition}
+        aria-label={`${secondText} view`}
       >
         {secondText}
       </button>
-    </div>
+    </>
   );
 };

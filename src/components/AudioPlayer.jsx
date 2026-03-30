@@ -1,15 +1,17 @@
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Howl } from "howler";
 
 let currentlyPlayingSound = null;
 
 const AudioPlayer = ({ src, children, className = "", ...buttonProps }) => {
   const soundRef = useRef(null);
+  const [isPlaying, setIsPlaying] = useState(false);
 
   useEffect(() => {
     soundRef.current = new Howl({
       src: [src],
       format: ["ogg", "mp3"],
+      onend: () => setIsPlaying(false),
     });
 
     return () => {
@@ -27,10 +29,13 @@ const AudioPlayer = ({ src, children, className = "", ...buttonProps }) => {
     }
 
     currentlyPlayingSound = soundRef.current;
+
     if (soundRef.current.playing()) {
       soundRef.current.stop();
+      setIsPlaying(false);
     } else {
       soundRef.current.play();
+      setIsPlaying(true);
     }
   };
 
@@ -40,8 +45,13 @@ const AudioPlayer = ({ src, children, className = "", ...buttonProps }) => {
       onClick={playAudio}
       className={className}
       disabled={!src}
+      aria-pressed={isPlaying}
       aria-label={
-        typeof children === "string" ? `Play ${children}` : "Play audio"
+        typeof children === "string"
+          ? `${isPlaying ? "Stop" : "Play"} ${children}`
+          : isPlaying
+            ? "Stop audio"
+            : "Play audio"
       }
       {...buttonProps}
     >
