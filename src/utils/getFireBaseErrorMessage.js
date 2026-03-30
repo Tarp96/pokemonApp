@@ -15,6 +15,9 @@ export const getFirebaseErrorMessage = (errorCode) => {
     case "auth/wrong-password":
       return "Incorrect password. Please try again.";
 
+    case "auth/invalid-credential":
+      return "Invalid email or password. Please try again.";
+
     case "auth/too-many-requests":
       return "Too many login attempts. Please try again later.";
 

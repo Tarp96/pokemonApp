@@ -8,6 +8,7 @@ import { useAuth } from "./../../contexts/authContext/AuthContext";
 import { Navigate, useNavigate } from "react-router-dom";
 import loginPic from "../../assets/loginPic.webp";
 import { ImageWithSkeleton } from "../../components/SkeletonLoading/ImageWithSkeleton";
+import { getFirebaseErrorMessage } from "../../utils/getFireBaseErrorMessage";
 
 const LoginPage = () => {
   const { userLoggedIn, loading } = useAuth();
@@ -20,6 +21,21 @@ const LoginPage = () => {
   const [success, setSuccess] = useState("");
   const [isSigningIn, setIsSigningIn] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+
+  const [fieldErrors, setFieldErrors] = useState({
+    email: "",
+    password: "",
+  });
+
+  const mapErrorToField = (errorCode) => {
+    switch (errorCode) {
+      case "auth/invalid-credential":
+        return {};
+
+      default:
+        return {};
+    }
+  };
 
   const isFormValid = email && password;
 
@@ -35,17 +51,9 @@ const LoginPage = () => {
       setTimeout(() => navigate("/", { replace: true }), 1500);
     } catch (err) {
       console.error("Login error:", err);
-      const msg =
-        err.code === "auth/user-not-found"
-          ? "No account found for this email."
-          : err.code === "auth/wrong-password"
-            ? "Incorrect password."
-            : err.code === "auth/invalid-email"
-              ? "Please enter a valid email address."
-              : err.code === "auth/too-many-requests"
-                ? "Too many attempts. Please try again later."
-                : "Failed to log in. Please try again.";
-      setError(msg);
+
+      setError(getFirebaseErrorMessage(err.code));
+      setFieldErrors(mapErrorToField(err.code));
     } finally {
       setSubmitting(false);
     }
@@ -85,6 +93,7 @@ const LoginPage = () => {
               className="uiCardHero square"
             />
           </div>
+
           <div className="uiCardBody">
             <h2 className="loginTitle">Welcome Trainer!</h2>
 
@@ -97,6 +106,7 @@ const LoginPage = () => {
               className="loginForm formSpaceControl loginFormSpecific"
               id="loginForm"
             >
+              {/* EMAIL */}
               <div className="formField">
                 <label htmlFor="email">Email</label>
                 <input
@@ -106,21 +116,42 @@ const LoginPage = () => {
                   value={email}
                   onChange={(e) => {
                     setEmail(e.target.value);
-                    if (error) setError("");
+                    if (fieldErrors.email) {
+                      setFieldErrors((prev) => ({ ...prev, email: "" }));
+                    }
                   }}
                   disabled={submitting}
                   autoFocus
+                  className={fieldErrors.email ? "inputError" : ""}
                 />
+
+                {fieldErrors.email && (
+                  <span className="fieldError animatedError">
+                    {fieldErrors.email}
+                  </span>
+                )}
               </div>
 
               <div className="formField">
+                <label htmlFor="password">Password</label>
+
                 <div className="passwordWrapper">
                   <input
                     id="password"
                     type={showPassword ? "text" : "password"}
+                    required
                     value={password}
-                    onChange={(e) => setPassword(e.target.value)}
+                    onChange={(e) => {
+                      setPassword(e.target.value);
+                      if (fieldErrors.password) {
+                        setFieldErrors((prev) => ({
+                          ...prev,
+                          password: "",
+                        }));
+                      }
+                    }}
                     disabled={submitting}
+                    className={fieldErrors.password ? "inputError" : ""}
                   />
 
                   <button
@@ -131,6 +162,12 @@ const LoginPage = () => {
                     {showPassword ? "Hide" : "Show"}
                   </button>
                 </div>
+
+                {fieldErrors.password && (
+                  <span className="fieldError animatedError">
+                    {fieldErrors.password}
+                  </span>
+                )}
               </div>
 
               <NavLink to="/forgot-password" className="uiAuthForgotLink">
@@ -140,6 +177,7 @@ const LoginPage = () => {
               {error && <div className="errorMessage">{error}</div>}
               {success && <div className="successMessage">{success}</div>}
             </form>
+
             <div className="authButtonContainer">
               <div className="uiAuthLinkContainer">
                 <p className="uiAuthLinkText">Don't have an account?</p>

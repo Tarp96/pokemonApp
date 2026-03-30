@@ -3155,10 +3155,15 @@ body {
   background: rgba(74, 144, 226, 0.1);
 }
 
+.formField input.inputError {
+  border: 2px solid #ef4444;
+  box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.15);
+}
+
 .errorMessage {
   color: red;
   text-align: center;
-  font-size: 14px;
+  font-size: 18px;
 }
 
 .arrowGroup span {
