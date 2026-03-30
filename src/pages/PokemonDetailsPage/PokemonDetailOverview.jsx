@@ -99,20 +99,26 @@ export const PokemonDetailOverView = () => {
 
   return (
     <>
-      <div className="detailsTopSection">
+      <section className="detailsTopSection">
         <div className="overviewPageTopInfoSection">
           <h2 className="pageTopInfoTitle">
             {firstLetterUpperCase(pokemon.name)}
+
             <PriceTag
               pokemonName={pokemon.name}
               displayedOnCard={false}
               onClick={() => openModal(pokemon)}
               isOwned={isOwned(pokemon.id)}
             />
-            <div className="topInfoSectionTypeBadges">{types}</div>
+            <div
+              className="topInfoSectionTypeBadges"
+              aria-label="Pokemon types"
+            >
+              {types}
+            </div>
           </h2>
 
-          <div className="flavorTextDiv">{flavorText}</div>
+          <p className="flavorTextDiv">{flavorText}</p>
           <InformationList
             className="two-columns"
             items={[
@@ -145,6 +151,7 @@ export const PokemonDetailOverView = () => {
               <AudioPlayer
                 src={pokemon.cries.legacy}
                 className="audioButtonExpanded"
+                aria-label={`Play ${pokemon.name} legacy cry`}
               >
                 <BsVolumeUp aria-hidden="true" /> Legacy Cry
               </AudioPlayer>
@@ -154,6 +161,7 @@ export const PokemonDetailOverView = () => {
               <AudioPlayer
                 src={pokemon.cries.latest}
                 className="audioButtonExpanded"
+                aria-label={`Play ${pokemon.name} latest cry`}
               >
                 <BsVolumeUp aria-hidden="true" /> Latest Cry
               </AudioPlayer>
@@ -162,7 +170,9 @@ export const PokemonDetailOverView = () => {
           {sprite && (
             <img
               src={sprite}
-              alt={shiny ? "Shiny artwork" : "Official artwork"}
+              alt={`${firstLetterUpperCase(pokemon.name)} ${
+                shiny ? "shiny" : "official"
+              } artwork`}
               className="mainDetailImage"
             />
           )}
@@ -177,8 +187,8 @@ export const PokemonDetailOverView = () => {
             />
           </div>
         </div>
-      </div>
-      <div className="overViewMiddleSection">
+      </section>
+      <section className="overViewMiddleSection">
         <div className="middleSectionInfo">
           <h3 className="middleSectionTitleUnderline">Breeding</h3>
           <InformationList
@@ -188,7 +198,7 @@ export const PokemonDetailOverView = () => {
                 label: "Gender",
                 value: <GenderRate rate={pokemonSpecies?.gender_rate} />,
               },
-              ,
+
               {
                 label: "Growth rate",
                 value: pokemonSpecies?.growth_rate?.name ?? "—",
@@ -239,15 +249,21 @@ export const PokemonDetailOverView = () => {
             <TypeRelations pokemon={pokemon} />
           )}
         </div>
-      </div>
-      <div className="overViewEvolutionSection">
+      </section>
+      <section
+        className="overViewEvolutionSection"
+        aria-labelledby="evolution-heading"
+      >
         <h3 className="evoTitle">Evolution Chain</h3>
         <EvolutionSection pokemon={pokemonSpecies} />
-      </div>
-      <div className="overViewAlternativeFormSection">
+      </section>
+      <section
+        className="overViewAlternativeFormSection"
+        aria-labelledby="alternative-form-heading"
+      >
         <h3>Alternative Forms</h3>
         <AlternativeFormsSection species={pokemonSpecies} />
-      </div>
+      </section>
 
       {isOpen && selectedPokemon && (
         <PaymentModal
