@@ -35,9 +35,8 @@ export const GameStartScreen = ({
   return (
     <div className="gameScreenContainer gameStartPageContainer">
       {!isLoggedIn ? (
-        <div
+        <section
           className="loginReminderContainer"
-          role="region"
           aria-labelledby="login-reminder-title"
         >
           <ImageWithSkeleton
@@ -58,35 +57,41 @@ export const GameStartScreen = ({
           >
             Log In to Play <span aria-hidden="true">🎮</span>
           </NavLink>
-        </div>
+        </section>
       ) : (
-        <div className="gameStartContainer">
-          <div className="uiCard uiAuthSplit">
+        <main className="gameStartContainer">
+          <section className="uiCard uiAuthSplit">
             <div className="uiAuthContent">
-              <div className="uiAuthHero">
+              <header className="uiAuthHero">
                 <ImageWithSkeleton
                   src={gameStartImage}
-                  alt="Pokemon Artwork"
+                  alt="Pokemon artwork showing gameplay theme"
                   className="uiCardHero square gameStartImage"
                 />
-              </div>
+              </header>
 
               <div className="uiCardBody">
-                <div className="gameStartIntro">
+                <section className="gameStartIntro">
                   <h1 className="gameStartTitle">Ready to play?</h1>
 
                   <p className="uiAuthInfoText">
                     Catch the Pokémon that appears to earn coins.
                   </p>
-                </div>
-                <div className="startPageStats">
-                  <span className="statIcon">⭐</span>
-                  <span className="statLabel">Your High Score</span>
-                  <span className="statValue">{highScore} pts</span>
-                </div>
+                </section>
 
-                <div className="difficultySection">
-                  <h2>Select difficulty</h2>
+                <section
+                  className="startPageStats"
+                  aria-label="Player statistics"
+                >
+                  <span className="statIcon" aria-hidden="true">
+                    ⭐
+                  </span>
+                  <span className="statLabel">Your High Score</span>
+                  <span className="statValue">{highScore} points</span>
+                </section>
+
+                <section className="difficultySection">
+                  <h2 id="difficulty-heading">Select difficulty</h2>
 
                   <p className="uiAuthInfoText">
                     Higher difficulty gives more coins.
@@ -98,18 +103,27 @@ export const GameStartScreen = ({
                   </p>
 
                   {showDifficultyError && (
-                    <p className="gameStartErrorMessage">
+                    <p
+                      className="gameStartErrorMessage"
+                      role="alert"
+                      aria-live="assertive"
+                    >
                       Please select a difficulty before starting the game.
                     </p>
                   )}
 
-                  <div className="difficultyContainer">
+                  <div
+                    className="difficultyContainer"
+                    role="group"
+                    aria-labelledby="difficulty-heading"
+                  >
                     <button
                       onClick={() => onDifficultyChange("Easy")}
                       className={`difficultyBtn easy 
-                    ${selectedDifficulty === "Easy" ? "activeDifficulty" : ""}
-                    ${shakeButtons ? "shake" : ""}
-                  `}
+                      ${selectedDifficulty === "Easy" ? "activeDifficulty" : ""}
+                      ${shakeButtons ? "shake" : ""}
+                    `}
+                      aria-pressed={selectedDifficulty === "Easy"}
                     >
                       Easy
                     </button>
@@ -117,9 +131,10 @@ export const GameStartScreen = ({
                     <button
                       onClick={() => onDifficultyChange("Medium")}
                       className={`difficultyBtn medium 
-                    ${selectedDifficulty === "Medium" ? "activeDifficulty" : ""}
-                    ${shakeButtons ? "shake" : ""}
-                   `}
+                      ${selectedDifficulty === "Medium" ? "activeDifficulty" : ""}
+                      ${shakeButtons ? "shake" : ""}
+                    `}
+                      aria-pressed={selectedDifficulty === "Medium"}
                     >
                       Medium
                     </button>
@@ -127,37 +142,42 @@ export const GameStartScreen = ({
                     <button
                       onClick={() => onDifficultyChange("Hard")}
                       className={`difficultyBtn hard 
-                    ${selectedDifficulty === "Hard" ? "activeDifficulty" : ""}
-                    ${shakeButtons ? "shake" : ""}
-                   `}
+                      ${selectedDifficulty === "Hard" ? "activeDifficulty" : ""}
+                      ${shakeButtons ? "shake" : ""}
+                    `}
+                      aria-pressed={selectedDifficulty === "Hard"}
                     >
                       Hard
                     </button>
                   </div>
-                </div>
+                </section>
+
                 <div className="authButtonContainer">
                   <button
                     className="uiButtonPrimary gameStartPrimaryBtn"
                     onClick={onStart}
+                    aria-label="Start game with selected difficulty"
                   >
                     Start
                     <img
                       src={pokeball}
-                      alt="pokeball icon"
+                      alt=""
+                      aria-hidden="true"
                       className="gameStartBtnIcon"
                     />
                   </button>
+
                   <button
                     className="gameStartSecondaryBtn"
                     onClick={() => navigate("leaderboard")}
                   >
-                    Leaderboard
+                    View leaderboard
                   </button>
                 </div>
               </div>
             </div>
-          </div>
-        </div>
+          </section>
+        </main>
       )}
     </div>
   );

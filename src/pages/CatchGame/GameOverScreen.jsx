@@ -18,77 +18,90 @@ export const GameOverScreen = ({
     useGameOverLogic(coinsEarned, score);
 
   return (
-    <div className="gameOverContainer">
-      <div className="uiCard uiAuthSplit">
+    <main className="gameOverContainer">
+      <section className="uiCard uiAuthSplit">
         <div className="uiAuthContent">
-          <div className="uiAuthHero">
+          <header className="uiAuthHero">
             <ImageWithSkeleton
               src={gameOverImage}
-              alt="5 happy pokemon celebrating"
+              alt="Happy Pokémon celebrating your results"
               className="uiCardHero square pokeTrophyImg"
             />
-          </div>
+          </header>
 
           <div className="uiCardBody">
-            <h2 className="gameOverTitle">🎮 Game Over</h2>
+            <h1 className="gameOverTitle">
+              <span aria-hidden="true">🎮</span> Game Over
+            </h1>
 
-            <div
+            <section
               className={`gameOverStats ${animateStats ? "animateStats" : ""}`}
+              aria-label="Game results"
             >
-              <div className="statRow" role="group" aria-label="Score">
-                <span className="label">Score</span>
-                <span className="value">{score}</span>
-              </div>
-
-              <div
-                className={`statRow ${isNewHighScore ? "highScoreHighlight" : ""}`}
-                role="group"
-                aria-label="High score"
-              >
-                <span className="label">High Score</span>
-                <span className="value">{userHighScore}</span>
-              </div>
-
-              <div className="statRow" role="group" aria-label="Difficulty">
-                <span className="label">Difficulty</span>
-                <span
-                  className={`value difficulty ${difficulty.toLowerCase()}`}
-                >
-                  {difficulty}
-                </span>
-              </div>
-
-              <div className="statRow" role="group" aria-label="Multiplier">
-                <span className="label">Multiplier</span>
-                <span className="value">x{multiplier}</span>
-              </div>
-
-              <div className="rewardSection">
-                <div
-                  className="statRow highlight"
-                  role="group"
-                  aria-label="Coins Earned"
-                >
-                  <span className="label">Coins Earned</span>
-                  <span className="value coins">💰 {coinsEarned}</span>
+              <dl>
+                <div className="statRow">
+                  <dt className="label">Score</dt>
+                  <dd className="value">{score}</dd>
                 </div>
 
                 <div
-                  className="statRow highlight"
-                  role="group"
-                  aria-label="Coins Total"
+                  className={`statRow ${
+                    isNewHighScore ? "highScoreHighlight" : ""
+                  }`}
                 >
-                  <span className="label">Coins Total</span>
-                  <span className="value coins">💰 {userCoins}</span>
+                  <dt className="label">High Score</dt>
+                  <dd className="value">
+                    {userHighScore}
+                    {isNewHighScore && (
+                      <span className="sr-only"> - New high score!</span>
+                    )}
+                  </dd>
                 </div>
-              </div>
-            </div>
+
+                <div className="statRow">
+                  <dt className="label">Difficulty</dt>
+                  <dd
+                    className={`value difficulty ${difficulty.toLowerCase()}`}
+                  >
+                    {difficulty}
+                  </dd>
+                </div>
+
+                <div className="statRow">
+                  <dt className="label">Multiplier</dt>
+                  <dd className="value">x{multiplier}</dd>
+                </div>
+              </dl>
+
+              <section className="rewardSection" aria-label="Rewards earned">
+                <dl>
+                  <div className="statRow highlight">
+                    <dt className="label">Coins Earned</dt>
+                    <dd className="value coins">
+                      <span aria-hidden="true">💰</span> {coinsEarned}
+                    </dd>
+                  </div>
+
+                  <div className="statRow highlight">
+                    <dt className="label">Coins Total</dt>
+                    <dd className="value coins">
+                      <span aria-hidden="true">💰</span> {userCoins}
+                    </dd>
+                  </div>
+                </dl>
+              </section>
+            </section>
 
             <div className="gameOverBtnContainer">
-              <button onClick={onPlayAgain} className="uiButtonPrimary">
+              <button
+                onClick={onPlayAgain}
+                className="uiButtonPrimary"
+                aria-label="Play again"
+              >
                 <img
                   src={pokeball}
-                  alt="Pokeball"
+                  alt=""
+                  aria-hidden="true"
                   className="gameOverBtnIcon"
                 />
                 Play Again
@@ -98,12 +111,12 @@ export const GameOverScreen = ({
                 className="uiButtonPrimary uiButtonSecondary"
                 onClick={() => navigate("leaderboard")}
               >
-                🏆 Leaderboard
+                <span aria-hidden="true">🏆</span> Leaderboard
               </button>
             </div>
           </div>
         </div>
-      </div>
-    </div>
+      </section>
+    </main>
   );
 };

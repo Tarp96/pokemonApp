@@ -3931,6 +3931,16 @@ body {
   transform: translateY(12px);
 }
 
+.statRow dt,
+.statRow dd {
+  margin: 0;
+  padding: 0;
+}
+
+.statRow dd {
+  margin-left: 0;
+}
+
 .animateStats .statRow {
   animation: statSlideIn 0.4s ease forwards;
 }
