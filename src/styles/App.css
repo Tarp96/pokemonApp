@@ -5114,8 +5114,8 @@ body {
   }
 
   .headerNavBtn {
-    padding: 0.9rem 1.8rem;
-    font-size: 1.4rem;
+    padding: 0.2rem 1.4rem;
+    font-size: 1.2rem;
   }
 
   .profileAvatarImg {
@@ -5192,7 +5192,7 @@ body {
   .pokemon-card {
     max-width: 240px;
     padding: 18px;
-    max-height: 350px;
+    max-height: 380px;
   }
 
   .displayCardPokemonSprite {
