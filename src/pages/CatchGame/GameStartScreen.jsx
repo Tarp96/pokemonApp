@@ -170,8 +170,9 @@ export const GameStartScreen = ({
                   <button
                     className="gameStartSecondaryBtn"
                     onClick={() => navigate("leaderboard")}
+                    aria-label="View leaderboard"
                   >
-                    View leaderboard
+                    Leaderboard
                   </button>
                 </div>
               </div>

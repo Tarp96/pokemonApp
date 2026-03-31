@@ -2972,6 +2972,7 @@ body {
 
   cursor: pointer;
   transition: all 0.2s ease;
+  margin-bottom: 15px;
 }
 
 .uiButtonPrimary:hover {
@@ -3929,6 +3930,7 @@ body {
     box-shadow 0.15s ease;
   opacity: 0;
   transform: translateY(12px);
+  margin-bottom: 6px;
 }
 
 .statRow dt,
