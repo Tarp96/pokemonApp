@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, NavLink } from "react-router-dom";
 import { doc, getDoc, collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebaseConfig";
 import pokemonQuotes from "../../data/pokemonQuotes";
 import { firstLetterUpperCase } from "./../../utils/helperFunctions";
 import pokeball from "../../assets/pokeb.webp";
 import { BadgeRow } from "./../../components/BadgeRow";
+import { FaArrowLeft } from "react-icons/fa6";
 
 export const TrainerCardPage = () => {
   const { userId } = useParams();
@@ -110,6 +111,14 @@ export const TrainerCardPage = () => {
   return (
     <div className="trainerCardPage">
       <div className="trainerCard">
+        <NavLink
+          to="/game/leaderboard"
+          className="navigateBackButton"
+          aria-label="Go back to leaderboard"
+        >
+          <FaArrowLeft className="backIcon" />
+          <span className="backText">Back</span>
+        </NavLink>
         <div className="trainerCardFlexContainer">
           <div className="trainerCardContent">
             <div className="trainerCardTitleContainer">
