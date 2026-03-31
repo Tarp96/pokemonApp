@@ -7,6 +7,7 @@ import pokemonTrophy from "../../assets/poketrophy.webp";
 
 export const LeaderboardScreen = () => {
   const [leaderboard, setLeaderboard] = useState([]);
+  const [loading, setLoading] = useState(true);
 
   const navigate = useNavigate();
 
@@ -18,30 +19,44 @@ export const LeaderboardScreen = () => {
   useEffect(() => {
     const unsubscribe = listenToLeaderboard((data) => {
       setLeaderboard(data);
+      setLoading(false);
     });
 
     return () => unsubscribe();
   }, []);
 
+  if (loading) {
+    return (
+      <div className="leaderboardPageContainer">
+        <p>Loading leaderboard....</p>;
+      </div>
+    );
+  }
+
   const displayLeaderboard = restOfLeaderboard.map((item, index) => {
     const isCurrentUser = item.uid === currentUid;
 
     return (
-      <Link
-        key={item.uid}
-        to={`/trainer/${item.uid}`}
-        className="leaderboardLink"
+      <li
+        className={`leaderboardListItem ${
+          isCurrentUser ? "leaderboardCurrentUser" : ""
+        }`}
+        aria-current={isCurrentUser ? "true" : undefined}
       >
-        <li
-          className={`leaderboardListItem ${
-            isCurrentUser ? "leaderboardCurrentUser" : ""
-          }`}
+        <Link
+          key={item.uid}
+          to={`/trainer/${item.uid}`}
+          className="leaderboardLink"
+          aria-label={`View profile of ${item.username}, rank ${index + 4}, ${item.score} points`}
         >
-          <span className="leaderboardRank">{index + 4}</span>
+          <span className="leaderboardRank">
+            <span className="visually-hidden">Rank </span>
+            {index + 4}
+          </span>
           <span className="leaderboardName">{item.username}</span>
           <span className="leaderboardScore">{item.score} pts</span>
-        </li>
-      </Link>
+        </Link>
+      </li>
     );
   });
 
@@ -49,17 +64,9 @@ export const LeaderboardScreen = () => {
     <>
       <div className="leaderboardPageContainer">
         <div className="leaderboardTitleContainer">
-          <img
-            src={pokemonTrophy}
-            alt="Golden trophy"
-            className="leaderboardTrophyPic"
-          />
-          <h2 className="leaderboardPageTitle"> Top 10 </h2>
-          <img
-            src={pokemonTrophy}
-            alt="Golden trophy"
-            className="leaderboardTrophyPic"
-          />
+          <img src={pokemonTrophy} alt="" className="leaderboardTrophyPic" />
+          <h1 className="leaderboardPageTitle">Top 10</h1>
+          <img src={pokemonTrophy} alt="" className="leaderboardTrophyPic" />
         </div>
         <div className="podiumContainer">
           {podium[1] && (
@@ -68,7 +75,10 @@ export const LeaderboardScreen = () => {
               to={`/trainer/${podium[1].uid}`}
               className="leaderboardLink"
             >
-              <div className="podiumSecond">
+              <div
+                className="podiumSecond"
+                aria-label={`Second place: ${podium[1].username}, ${podium[1].score} points`}
+              >
                 <div className="podiumPlace">🥈</div>
                 <div className="podiumName">{podium[1].username}</div>
                 <div className="podiumScore">{podium[1].score} pts</div>
@@ -82,7 +92,10 @@ export const LeaderboardScreen = () => {
               to={`/trainer/${podium[0].uid}`}
               className="leaderboardLink"
             >
-              <div className="podiumFirst">
+              <div
+                className="podiumFirst"
+                aria-label={`First place: ${podium[0].username}, ${podium[0].score} points`}
+              >
                 <div className="podiumPlace">🥇</div>
                 <div className="podiumName">{podium[0].username}</div>
                 <div className="podiumScore">{podium[0].score} pts</div>
@@ -96,7 +109,10 @@ export const LeaderboardScreen = () => {
               to={`/trainer/${podium[2].uid}`}
               className="leaderboardLink"
             >
-              <div className="podiumThird">
+              <div
+                className="podiumThird"
+                aria-label={`Third place: ${podium[2].username}, ${podium[2].score} points`}
+              >
                 <div className="podiumPlace">🥉</div>
                 <div className="podiumName">{podium[2].username}</div>
                 <div className="podiumScore">{podium[2].score} pts</div>
@@ -110,6 +126,7 @@ export const LeaderboardScreen = () => {
           <button
             className="uiButtonPrimary uiButtonSecondary"
             onClick={() => navigate("/game")}
+            aria-label="Go back to Game start page"
           >
             ⬅ Back to Game
           </button>

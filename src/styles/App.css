@@ -4118,6 +4118,13 @@ body {
   color: inherit;
 }
 
+.leaderboardListItem .leaderboardLink {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
 .podiumContainer {
   display: flex;
   justify-content: center;
@@ -4173,6 +4180,10 @@ body {
 
 .podiumScore {
   font-size: 14px;
+}
+
+.visually-hidden {
+  display: none;
 }
 
 .leaderboardTitleContainer {
@@ -4244,6 +4255,43 @@ body {
   margin-top: 24px;
 }
 
+.leaderboardLink:focus-visible,
+.uiButtonPrimary:focus-visible {
+  outline: 3px solid #ffcb05;
+  outline-offset: 3px;
+  border-radius: 8px;
+}
+
+.leaderboardLink:focus-visible {
+  box-shadow: 0 0 0 3px #ffcb05;
+}
+
+.podiumFirst a:focus-visible,
+.podiumSecond a:focus-visible,
+.podiumThird a:focus-visible,
+.podiumContainer .leaderboardLink:focus-visible {
+  outline: 3px solid #ffcb05;
+  outline-offset: 4px;
+  border-radius: 10px;
+}
+
+.podiumFirst:hover,
+.podiumSecond:hover,
+.podiumThird:hover,
+.leaderboardListItem:hover {
+  transform: translateY(-2px);
+}
+
+.podiumFirst:has(a:focus-visible),
+.podiumSecond:has(a:focus-visible),
+.podiumThird:has(a:focus-visible),
+.leaderboardListItem:has(a:focus-visible) {
+  transform: translateY(-2px);
+}
+
+.leaderboardLink:focus-visible {
+  transform: translateY(-2px);
+}
 /*LEADERBOARD PAGE END*/
 
 @media (max-width: 480px) {
