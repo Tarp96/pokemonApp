@@ -5,9 +5,9 @@ export const HomePageLayout = () => {
   return (
     <>
       <Header />
-      <div className="mainContent">
+      <main id="main-content" className="mainContent">
         <Outlet />
-      </div>
+      </main>
     </>
   );
 };
