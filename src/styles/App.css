@@ -2974,6 +2974,10 @@ body {
   display: none;
 }
 
+.authButtonContainer {
+  border: solid 1px orange;
+}
+
 .uiAuthInfoText {
   font-size: 0.95rem;
   color: #6b7280;

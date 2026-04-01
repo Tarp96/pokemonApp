@@ -350,12 +350,7 @@ const RegisterUserPage = () => {
                 </NavLink>
               </div>
 
-              <button
-                type="submit"
-                className="uiAuthButton"
-                disabled={!isFormValid}
-                form="registerForm"
-              >
+              <button type="submit" className="" form="registerForm">
                 Register
               </button>
             </div>
