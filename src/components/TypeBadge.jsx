@@ -8,14 +8,17 @@ export const TypeBadge = ({
   variant = "compact",
   className = "",
 }) => {
-  const bg = typeColors[type] || "#888";
+  const style = typeColors[type] || { bg: "#888", color: "#fff" };
   const iconUrl = withIcon ? getTypeIcon(type) : null;
 
   return (
     <span
       className={`typeBadge ${variant} ${className}`}
-      style={{ backgroundColor: bg, color: "white" }}
-      aria-label={`${firstLetterUpperCase(type)} type`}
+      style={{
+        backgroundColor: style.bg,
+        color: style.color,
+      }}
+      aria-label={firstLetterUpperCase(type)}
     >
       {iconUrl && (
         <img
