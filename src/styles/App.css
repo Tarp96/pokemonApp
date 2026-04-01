@@ -320,6 +320,14 @@ body {
   box-shadow: none;
 }
 
+.searchBarButton:focus-visible {
+  transform: translateY(-2px);
+  background: linear-gradient(to bottom right, #f5c400, #ffd84d);
+  border: 2px solid white;
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.6);
+}
+
 .randomBtnWrapper {
   display: flex;
   justify-content: center;
@@ -375,6 +383,13 @@ body {
 .randomPokemonButton:active {
   transform: translateY(1px);
   box-shadow: none;
+}
+
+.randomPokemonButton:focus-visible {
+  background-color: #e6bc1f;
+  transform: translateY(-2px);
+  border: white 2px solid;
+  outline-offset: 3px;
 }
 
 .clearFilterButton {
