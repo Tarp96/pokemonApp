@@ -10,6 +10,7 @@ export const TypeBadge = ({
 }) => {
   const style = typeColors[type] || { bg: "#888", color: "#fff" };
   const iconUrl = withIcon ? getTypeIcon(type) : null;
+  const displayName = firstLetterUpperCase(type);
 
   return (
     <span
@@ -18,7 +19,7 @@ export const TypeBadge = ({
         backgroundColor: style.bg,
         color: style.color,
       }}
-      aria-label={firstLetterUpperCase(type)}
+      aria-label={displayName}
     >
       {iconUrl && (
         <img
@@ -28,7 +29,7 @@ export const TypeBadge = ({
           className="typeBadgeIcon"
         />
       )}
-      {firstLetterUpperCase(type)}
+      {displayName}
     </span>
   );
 };
