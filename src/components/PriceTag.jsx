@@ -17,7 +17,7 @@ export const PriceTag = ({
       }`}
     >
       {!isOwned ? (
-        <span
+        <button
           onClick={onClick}
           className={`
         ${displayedOnCard ? "smallPokemonPriceTag" : "bigPokemonPriceTag"}
@@ -25,7 +25,7 @@ export const PriceTag = ({
       `}
         >
           💰 {price}
-        </span>
+        </button>
       ) : (
         <div
           className={`

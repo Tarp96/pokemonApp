@@ -208,6 +208,13 @@
   box-shadow: 0 3px 6px rgba(0, 0, 0, 0.08);
 }
 
+.priceTagElement:focus-visible {
+  transform: translateY(-2px);
+  outline: 2px solid white;
+  outline-offset: 2px;
+  border: solid 2px black;
+}
+
 .priceTagElement.disabled {
   opacity: 0.5;
   cursor: not-allowed;
