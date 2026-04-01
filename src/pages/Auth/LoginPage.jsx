@@ -9,6 +9,7 @@ import { Navigate, useNavigate } from "react-router-dom";
 import loginPic from "../../assets/loginPic.webp";
 import { ImageWithSkeleton } from "../../components/SkeletonLoading/ImageWithSkeleton";
 import { getFirebaseErrorMessage } from "../../utils/getFireBaseErrorMessage";
+import registerPageArt from "../../assets/registerPageArt.png";
 
 const LoginPage = () => {
   const { userLoggedIn, loading } = useAuth();
@@ -88,7 +89,7 @@ const LoginPage = () => {
         <div className="uiAuthContent">
           <div className="uiAuthHero">
             <ImageWithSkeleton
-              src={loginPic}
+              src={registerPageArt}
               alt="Official Pokemon Explorers of the sky artwork"
               className="uiCardHero square"
             />

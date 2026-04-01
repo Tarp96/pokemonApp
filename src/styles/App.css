@@ -3221,13 +3221,72 @@ body {
 
 /*REGISTER ACCOUNT PAGE*/
 .registerContainer {
+  margin: 0 auto;
+  height: 800px;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  background-color: white;
+  width: 100%;
+  min-width: 1000px;
 }
 
-.registerContent {
-  padding: 32px;
+.authImageSection,
+.authFormSection {
+  flex: 1 1 0;
+}
+
+.authImageSection {
+  position: relative;
+  overflow: hidden;
+  flex: 1;
+}
+
+.authImageSection img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.authFormSection {
+  border: solid 1px red;
+}
+
+.authFormInner {
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.authFormInner form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.authFormInner label {
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 4px;
+  display: block;
+}
+
+.authFormInner input {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  transition: all 0.2s ease;
+}
+
+.authFormInner input:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
 }
 
 .registerFormField input.inputError {

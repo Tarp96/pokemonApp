@@ -6,6 +6,7 @@ import { setDoc, doc } from "firebase/firestore";
 import { db } from "../../firebaseConfig";
 import { NavLink } from "react-router-dom";
 import registerUserImage from "../../assets/registerUserPic.webp";
+import registerPageArt from "../../assets/registerPageArt.png";
 import { ImageWithSkeleton } from "../../components/SkeletonLoading/ImageWithSkeleton";
 import { getFirebaseErrorMessage } from "../../utils/getFireBaseErrorMessage";
 
@@ -104,256 +105,210 @@ const RegisterUserPage = () => {
 
   return (
     <div className="registerContainer">
-      <div className="uiCard uiAuthSplit">
-        <div className="uiAuthContent">
-          <div className="uiAuthHero">
-            <ImageWithSkeleton
-              src={registerUserImage}
-              alt="Pokémon Trainers"
-              className="uiCardHero square"
-            />
-          </div>
+      <div className="authImageSection">
+        <div>
+          <img src={registerPageArt} />
+        </div>
+      </div>
 
-          <div className="uiCardBody">
-            <h2 className="registerTitle">Join the Adventure!</h2>
+      <div className="authFormSection">
+        <div className="authFormInner">
+          <h2>Join the Adventure!</h2>
 
-            <p className="uiAuthInfoText">
-              Create your account and start your journey as a Pokémon Trainer.
-            </p>
+          <p>
+            Create your account and start your journey as a Pokémon Trainer.
+          </p>
 
-            <form
-              onSubmit={handleRegister}
-              className="loginForm registerForm formSpaceControl"
-              id="registerForm"
-            >
-              <div className="formField registerFormField">
-                <label htmlFor="username">Username</label>
-                <input
-                  required
-                  id="username"
-                  type="text"
-                  autoComplete="username"
-                  aria-describedby="username-error"
-                  aria-invalid={!!(touched.username && usernameError)}
-                  value={username}
-                  onChange={(e) => setUsername(e.target.value)}
-                  onBlur={() =>
-                    setTouched((prev) => ({ ...prev, username: true }))
-                  }
-                  className={
-                    touched.username && usernameError
-                      ? "inputError"
-                      : touched.username && username
-                        ? "inputSuccess"
-                        : ""
-                  }
-                />
-                {touched.username && usernameError && (
-                  <span
-                    id="username-error"
-                    className="fieldError animatedError"
-                  >
-                    {usernameError}
-                  </span>
-                )}
-              </div>
-
-              <div className="formField registerFormField">
-                <label htmlFor="email">Email</label>
-                <input
-                  required
-                  id="email"
-                  type="email"
-                  autoComplete="email"
-                  aria-describedby="email-error"
-                  aria-invalid={!!(touched.email && emailError)}
-                  value={email}
-                  onChange={(e) => setEmail(e.target.value)}
-                  onBlur={() =>
-                    setTouched((prev) => ({ ...prev, email: true }))
-                  }
-                  className={
-                    touched.email && emailError
-                      ? "inputError"
-                      : touched.email && email
-                        ? "inputSuccess"
-                        : ""
-                  }
-                />
-
-                {touched.email && emailError && (
-                  <span id="email-error" className="fieldError animatedError">
-                    {emailError}
-                  </span>
-                )}
-              </div>
-
-              <div className="formField registerFormField">
-                <label htmlFor="password">Password</label>
-
-                <div
-                  className="strengthBar"
-                  role="progressbar"
-                  aria-valuenow={
-                    passwordStrength === "Weak"
-                      ? 33
-                      : passwordStrength === "Medium"
-                        ? 66
-                        : passwordStrength === "Strong"
-                          ? 100
-                          : 0
-                  }
-                  aria-valuemin="0"
-                  aria-valuemax="100"
-                  aria-label="Password strength"
-                >
-                  <div
-                    className={`strengthFill ${passwordStrength.toLowerCase()}`}
-                  ></div>
-                </div>
-
-                <div className="passwordWrapper">
-                  <input
-                    required
-                    id="password"
-                    type={showPassword ? "text" : "password"}
-                    autoComplete="new-password"
-                    aria-describedby="password-error"
-                    aria-invalid={!!(touched.password && passwordError)}
-                    value={password}
-                    onChange={(e) => {
-                      setPassword(e.target.value);
-                      passwordStrengthCalc(e.target.value);
-                    }}
-                    onBlur={() =>
-                      setTouched((prev) => ({ ...prev, password: true }))
-                    }
-                    className={
-                      touched.password && passwordError
-                        ? "inputError"
-                        : touched.password && password
-                          ? "inputSuccess"
-                          : ""
-                    }
-                  />
-
-                  <button
-                    type="button"
-                    className="togglePassword"
-                    aria-label={
-                      showPassword ? "Hide password" : "Show password"
-                    }
-                    onClick={() => setShowPassword((prev) => !prev)}
-                  >
-                    {showPassword ? "Hide" : "Show"}
-                  </button>
-                </div>
-
-                {password && (
-                  <span
-                    className={`passwordStrength ${passwordStrength.toLowerCase()}`}
-                  >
-                    {passwordStrength}
-                  </span>
-                )}
-
-                {touched.password && passwordError && (
-                  <span
-                    id="password-error"
-                    className="fieldError animatedError"
-                  >
-                    {passwordError}
-                  </span>
-                )}
-              </div>
-
-              <div className="formField registerFormField">
-                <label htmlFor="confirmPassword">Confirm Password</label>
-
-                <div className="passwordWrapper">
-                  <input
-                    required
-                    id="confirmPassword"
-                    type={showConfirmPassword ? "text" : "password"}
-                    autoComplete="new-password"
-                    aria-describedby="confirmPassword-error"
-                    aria-invalid={
-                      !!(touched.confirmPassword && confirmPasswordError)
-                    }
-                    value={confirmPassword}
-                    onChange={(e) => setConfirmPassword(e.target.value)}
-                    onBlur={() =>
-                      setTouched((prev) => ({
-                        ...prev,
-                        confirmPassword: true,
-                      }))
-                    }
-                    className={
-                      touched.confirmPassword && confirmPasswordError
-                        ? "inputError"
-                        : touched.confirmPassword && confirmPassword
-                          ? "inputSuccess"
-                          : ""
-                    }
-                  />
-
-                  <button
-                    type="button"
-                    className="togglePassword"
-                    aria-label={
-                      showConfirmPassword
-                        ? "Hide confirm password"
-                        : "Show confirm password"
-                    }
-                    onClick={() => setShowConfirmPassword((prev) => !prev)}
-                  >
-                    {showConfirmPassword ? "Hide" : "Show"}
-                  </button>
-                </div>
-
-                {touched.confirmPassword && confirmPasswordError && (
-                  <span
-                    id="confirmPassword-error"
-                    className="fieldError animatedError"
-                  >
-                    {confirmPasswordError}
-                  </span>
-                )}
-              </div>
-
-              {error && (
-                <div
-                  className="errorMessage loginRegisterFeedbackMessage"
-                  aria-live="assertive"
-                >
-                  {error}
-                </div>
+          <form onSubmit={handleRegister} id="registerForm">
+            <div>
+              <label htmlFor="username">Username</label>
+              <input
+                required
+                id="username"
+                type="text"
+                autoComplete="username"
+                aria-describedby="username-error"
+                aria-invalid={!!(touched.username && usernameError)}
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
+                onBlur={() =>
+                  setTouched((prev) => ({ ...prev, username: true }))
+                }
+                className={
+                  touched.username && usernameError
+                    ? "inputError"
+                    : touched.username && username
+                      ? "inputSuccess"
+                      : ""
+                }
+              />
+              {touched.username && usernameError && (
+                <span id="username-error" className="fieldError">
+                  {usernameError}
+                </span>
               )}
-
-              {success && (
-                <div
-                  className="successMessage loginRegisterFeedbackMessage"
-                  aria-live="polite"
-                >
-                  {success}
-                </div>
-              )}
-            </form>
-
-            <div className="authButtonContainer">
-              <div className="uiAuthLinkContainer">
-                <p className="uiAuthLinkText">Already have an account?</p>
-                <NavLink to="/login" className="uiAuthLink">
-                  Log In <span>&gt;</span>
-                  <span>&gt;</span>
-                  <span>&gt;</span>
-                </NavLink>
-              </div>
-
-              <button type="submit" className="" form="registerForm">
-                Register
-              </button>
             </div>
+
+            <div>
+              <label htmlFor="email">Email</label>
+              <input
+                required
+                id="email"
+                type="email"
+                autoComplete="email"
+                aria-describedby="email-error"
+                aria-invalid={!!(touched.email && emailError)}
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                onBlur={() => setTouched((prev) => ({ ...prev, email: true }))}
+                className={
+                  touched.email && emailError
+                    ? "inputError"
+                    : touched.email && email
+                      ? "inputSuccess"
+                      : ""
+                }
+              />
+
+              {touched.email && emailError && (
+                <span id="email-error" className="fieldError">
+                  {emailError}
+                </span>
+              )}
+            </div>
+
+            <div>
+              <label htmlFor="password">Password</label>
+
+              <div
+                role="progressbar"
+                aria-valuenow={
+                  passwordStrength === "Weak"
+                    ? 33
+                    : passwordStrength === "Medium"
+                      ? 66
+                      : passwordStrength === "Strong"
+                        ? 100
+                        : 0
+                }
+                aria-valuemin="0"
+                aria-valuemax="100"
+                aria-label="Password strength"
+              >
+                <div className={passwordStrength.toLowerCase()}></div>
+              </div>
+
+              <div>
+                <input
+                  required
+                  id="password"
+                  type={showPassword ? "text" : "password"}
+                  autoComplete="new-password"
+                  aria-describedby="password-error"
+                  aria-invalid={!!(touched.password && passwordError)}
+                  value={password}
+                  onChange={(e) => {
+                    setPassword(e.target.value);
+                    passwordStrengthCalc(e.target.value);
+                  }}
+                  onBlur={() =>
+                    setTouched((prev) => ({ ...prev, password: true }))
+                  }
+                  className={
+                    touched.password && passwordError
+                      ? "inputError"
+                      : touched.password && password
+                        ? "inputSuccess"
+                        : ""
+                  }
+                />
+
+                <button
+                  type="button"
+                  aria-label={showPassword ? "Hide password" : "Show password"}
+                  onClick={() => setShowPassword((prev) => !prev)}
+                >
+                  {showPassword ? "Hide" : "Show"}
+                </button>
+              </div>
+
+              {password && (
+                <span className={passwordStrength.toLowerCase()}>
+                  {passwordStrength}
+                </span>
+              )}
+
+              {touched.password && passwordError && (
+                <span id="password-error" className="fieldError">
+                  {passwordError}
+                </span>
+              )}
+            </div>
+
+            <div>
+              <label htmlFor="confirmPassword">Confirm Password</label>
+
+              <div>
+                <input
+                  required
+                  id="confirmPassword"
+                  type={showConfirmPassword ? "text" : "password"}
+                  autoComplete="new-password"
+                  aria-describedby="confirmPassword-error"
+                  aria-invalid={
+                    !!(touched.confirmPassword && confirmPasswordError)
+                  }
+                  value={confirmPassword}
+                  onChange={(e) => setConfirmPassword(e.target.value)}
+                  onBlur={() =>
+                    setTouched((prev) => ({
+                      ...prev,
+                      confirmPassword: true,
+                    }))
+                  }
+                  className={
+                    touched.confirmPassword && confirmPasswordError
+                      ? "inputError"
+                      : touched.confirmPassword && confirmPassword
+                        ? "inputSuccess"
+                        : ""
+                  }
+                />
+
+                <button
+                  type="button"
+                  aria-label={
+                    showConfirmPassword
+                      ? "Hide confirm password"
+                      : "Show confirm password"
+                  }
+                  onClick={() => setShowConfirmPassword((prev) => !prev)}
+                >
+                  {showConfirmPassword ? "Hide" : "Show"}
+                </button>
+              </div>
+
+              {touched.confirmPassword && confirmPasswordError && (
+                <span id="confirmPassword-error" className="fieldError">
+                  {confirmPasswordError}
+                </span>
+              )}
+            </div>
+
+            {error && <div className="errorMessage">{error}</div>}
+
+            {success && <div className="successMessage">{success}</div>}
+          </form>
+
+          <div>
+            <div>
+              <p>Already have an account?</p>
+              <NavLink to="/login">Log In &gt;&gt;&gt;</NavLink>
+            </div>
+
+            <button type="submit" form="registerForm">
+              Register
+            </button>
           </div>
         </div>
       </div>
