@@ -6,6 +6,7 @@ import { setDoc, doc } from "firebase/firestore";
 import { db } from "../../firebaseConfig";
 import { NavLink } from "react-router-dom";
 import registerUserImage from "../../assets/registerUserPic.webp";
+import registerImage from "../../assets/registerPageArt.png";
 import { ImageWithSkeleton } from "../../components/SkeletonLoading/ImageWithSkeleton";
 import { getFirebaseErrorMessage } from "../../utils/getFireBaseErrorMessage";
 
@@ -108,9 +109,9 @@ const RegisterUserPage = () => {
         <div className="uiAuthContent">
           <div className="uiAuthHero">
             <ImageWithSkeleton
-              src={registerUserImage}
+              src={registerImage}
               alt="Pokémon Trainers"
-              className="uiCardHero square"
+              className="uiCardHero"
             />
           </div>
 
