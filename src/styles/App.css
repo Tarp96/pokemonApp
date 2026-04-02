@@ -1029,7 +1029,7 @@ body {
 }
 
 .paymentModalAuthWarning {
-  border: 2px solid #ffcb05;
+  border: 1px solid grey;
   padding: 12px;
   border-radius: 8px;
   margin-bottom: 12px;

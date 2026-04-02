@@ -3,6 +3,7 @@ import { useState, useEffect, useRef } from "react";
 import { auth } from "../firebaseConfig";
 import { listenToCoins, purchasePokemon } from "../services/coinService";
 import { useAuth } from "../contexts/authContext/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 export const PaymentModal = ({ pokemon, closeModalOnClick }) => {
   const [coinBalance, setCoinBalance] = useState();
@@ -12,6 +13,7 @@ export const PaymentModal = ({ pokemon, closeModalOnClick }) => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const { userLoggedIn } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const user = auth.currentUser;
@@ -114,6 +116,11 @@ export const PaymentModal = ({ pokemon, closeModalOnClick }) => {
 
   const delay = (ms) => new Promise((res) => setTimeout(res, ms));
 
+  const handleOverlayClick = () => {
+    if (paymentStatus === "processing") return;
+    closeModalOnClick();
+  };
+
   const handlePurchase = async () => {
     if (!user) return;
     if (!userLoggedIn) return;
@@ -135,7 +142,7 @@ export const PaymentModal = ({ pokemon, closeModalOnClick }) => {
   };
 
   return (
-    <div className="paymentModalOverlay">
+    <div className="paymentModalOverlay" onClick={handleOverlayClick}>
       <div
         className={`paymentModalContainer modalPop ${
           paymentStatus === "success"
@@ -147,6 +154,7 @@ export const PaymentModal = ({ pokemon, closeModalOnClick }) => {
         ref={modalRef}
         tabIndex={-1}
         role="dialog"
+        onClick={(e) => e.stopPropagation()}
         aria-modal="true"
         aria-labelledby="payment-modal-title"
         aria-describedby="payment-modal-description"
