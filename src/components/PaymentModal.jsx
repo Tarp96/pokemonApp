@@ -26,6 +26,49 @@ export const PaymentModal = ({ pokemon, closeModalOnClick }) => {
   }, []);
 
   useEffect(() => {
+    const modal = modalRef.current;
+    if (!modal) return;
+
+    const focusableSelectors = `
+    button,
+    [href],
+    input,
+    select,
+    textarea,
+    [tabindex]:not([tabindex="-1"])
+  `;
+
+    const focusableElements = modal.querySelectorAll(focusableSelectors);
+
+    if (focusableElements.length === 0) return;
+
+    const firstElement = focusableElements[0];
+    const lastElement = focusableElements[focusableElements.length - 1];
+
+    const handleKeyDown = (e) => {
+      if (e.key !== "Tab") return;
+
+      if (e.shiftKey) {
+        if (document.activeElement === firstElement) {
+          e.preventDefault();
+          lastElement.focus();
+        }
+      } else {
+        if (document.activeElement === lastElement) {
+          e.preventDefault();
+          firstElement.focus();
+        }
+      }
+    };
+
+    modal.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      modal.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+
+  useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
         closeModalOnClick();
