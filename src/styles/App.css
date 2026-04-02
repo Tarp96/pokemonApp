@@ -1187,6 +1187,13 @@ body {
   box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
 }
 
+.paymentModalPayBtn:focus-visible,
+.paymentModalCancelBtn:focus-visible {
+  outline: 2px solid #facc15;
+  outline-offset: 2px;
+  background-color: white;
+}
+
 .paymentModalCancelBtn {
   background-color: #e5e7eb;
   color: #111827;

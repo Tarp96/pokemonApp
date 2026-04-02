@@ -1,5 +1,5 @@
 import { getPokemonPrice } from "../data/pokemonPricing";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { auth } from "../firebaseConfig";
 import { listenToCoins, purchasePokemon } from "../services/coinService";
 
@@ -17,6 +17,23 @@ export const PaymentModal = ({ pokemon, closeModalOnClick }) => {
     const unsubscribe = listenToCoins(user.uid, setCoinBalance);
     setUser(user.uid);
     return () => unsubscribe();
+  }, []);
+
+  const modalRef = useRef(null);
+
+  useEffect(() => {
+    modalRef.current?.focus();
+  }, []);
+
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      if (e.key === "Escape") {
+        closeModalOnClick();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
   }, []);
 
   useEffect(() => {
@@ -80,6 +97,12 @@ export const PaymentModal = ({ pokemon, closeModalOnClick }) => {
               ? "errorFlash"
               : ""
         }`}
+        ref={modalRef}
+        tabIndex={-1}
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="payment-modal-title"
+        aria-describedby="payment-modal-description"
       >
         <div className="paymentModalHeaderRow">
           <img
@@ -88,13 +111,17 @@ export const PaymentModal = ({ pokemon, closeModalOnClick }) => {
               pokemon?.sprite ||
               pokemon?.sprites?.other?.["official-artwork"]?.front_default
             }
-            alt={pokemon?.name}
+            alt={`${pokemon?.name} sprite`}
             className="paymentModalSprite"
           />
 
           <div className="paymentModalHeaderInfo">
-            <h2 className="paymentModalNameTitle">{pokemon?.name}</h2>
-            <p className="paymentModalPriceTag">Price: {price} coins</p>
+            <h2 id="payment-modal-title" className="paymentModalNameTitle">
+              {pokemon?.name}
+            </h2>
+            <p id="payment-modal-description" className="paymentModalInfo">
+              Your coin balance: {Math.floor(displayCoins)}
+            </p>
           </div>
         </div>
 
