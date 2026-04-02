@@ -1028,6 +1028,13 @@ body {
   border: 3px solid #facc15;
 }
 
+.paymentModalAuthWarning {
+  border: 2px solid #ffcb05;
+  padding: 12px;
+  border-radius: 8px;
+  margin-bottom: 12px;
+}
+
 @keyframes modalPop {
   from {
     transform: translateY(10px) scale(0.95);

@@ -2,6 +2,7 @@ import { getPokemonPrice } from "../data/pokemonPricing";
 import { useState, useEffect, useRef } from "react";
 import { auth } from "../firebaseConfig";
 import { listenToCoins, purchasePokemon } from "../services/coinService";
+import { useAuth } from "../contexts/authContext/AuthContext";
 
 export const PaymentModal = ({ pokemon, closeModalOnClick }) => {
   const [coinBalance, setCoinBalance] = useState();
@@ -9,6 +10,8 @@ export const PaymentModal = ({ pokemon, closeModalOnClick }) => {
   const [paymentStatus, setPaymentStatus] = useState("idle");
   const [displayCoins, setDisplayCoins] = useState(coinBalance ?? 0);
   const [errorMessage, setErrorMessage] = useState("");
+
+  const { userLoggedIn } = useAuth();
 
   useEffect(() => {
     const user = auth.currentUser;
@@ -113,6 +116,7 @@ export const PaymentModal = ({ pokemon, closeModalOnClick }) => {
 
   const handlePurchase = async () => {
     if (!user) return;
+    if (!userLoggedIn) return;
 
     try {
       setPaymentStatus("processing");
@@ -147,69 +151,87 @@ export const PaymentModal = ({ pokemon, closeModalOnClick }) => {
         aria-labelledby="payment-modal-title"
         aria-describedby="payment-modal-description"
       >
-        <div className="paymentModalHeaderRow">
-          <img
-            src={
-              pokemon?.sprites?.front_default ||
-              pokemon?.sprite ||
-              pokemon?.sprites?.other?.["official-artwork"]?.front_default
-            }
-            alt={`${pokemon?.name} sprite`}
-            className="paymentModalSprite"
-          />
+        {!userLoggedIn ? (
+          <div className="paymentModalAuthWarning" role="alert">
+            <p>You need to be logged in to purchase Pokémon.</p>
+            <button
+              onClick={() => navigate("/login")}
+              className="paymentModalPayBtn"
+            >
+              Go to Login
+            </button>
+          </div>
+        ) : (
+          <div>
+            <div className="paymentModalHeaderRow">
+              <img
+                src={
+                  pokemon?.sprites?.front_default ||
+                  pokemon?.sprite ||
+                  pokemon?.sprites?.other?.["official-artwork"]?.front_default
+                }
+                alt={`${pokemon?.name} sprite`}
+                className="paymentModalSprite"
+              />
 
-          <div className="paymentModalHeaderInfo">
-            <h2 id="payment-modal-title" className="paymentModalNameTitle">
-              {pokemon?.name}
-            </h2>
-            <p id="payment-modal-description" className="paymentModalInfo">
+              <div className="paymentModalHeaderInfo">
+                <h2 id="payment-modal-title" className="paymentModalNameTitle">
+                  {pokemon?.name}
+                </h2>
+                <p id="payment-modal-description" className="paymentModalInfo">
+                  Your coin balance: {Math.floor(displayCoins)}
+                </p>
+              </div>
+            </div>
+
+            <p
+              className={`paymentModalInfo ${
+                displayCoins !== coinBalance ? "coinAnimating" : ""
+              }`}
+            >
               Your coin balance: {Math.floor(displayCoins)}
             </p>
+            <p className="paymentModalInfo">
+              Remaining coins:{" "}
+              {coinBalance != null
+                ? returnCoinTotalAfterPurchase(coinBalance, price)
+                : "..."}
+            </p>
+
+            {paymentStatus === "processing" && (
+              <p className="paymentModalStatus processing">
+                Payment processing...
+              </p>
+            )}
+
+            {paymentStatus === "success" && (
+              <p className="paymentModalStatus success">
+                Purchase successful! 🎉
+              </p>
+            )}
+
+            {paymentStatus === "error" && (
+              <p className="paymentModalStatus error">{errorMessage}!</p>
+            )}
+
+            <div className="paymentModalBtnRow">
+              <button
+                onClick={handlePurchase}
+                className="paymentModalPayBtn"
+                disabled={paymentStatus !== "idle"}
+              >
+                {paymentStatus === "processing" ? "Processing..." : "Buy"}
+              </button>
+              <button
+                onClick={closeModalOnClick}
+                className="paymentModalCancelBtn"
+                disabled={paymentStatus === "processing"}
+              >
+                Cancel
+              </button>
+            </div>
           </div>
-        </div>
-
-        <p
-          className={`paymentModalInfo ${
-            displayCoins !== coinBalance ? "coinAnimating" : ""
-          }`}
-        >
-          Your coin balance: {Math.floor(displayCoins)}
-        </p>
-        <p className="paymentModalInfo">
-          Remaining coins:{" "}
-          {coinBalance != null
-            ? returnCoinTotalAfterPurchase(coinBalance, price)
-            : "..."}
-        </p>
-
-        {paymentStatus === "processing" && (
-          <p className="paymentModalStatus processing">Payment processing...</p>
         )}
-
-        {paymentStatus === "success" && (
-          <p className="paymentModalStatus success">Purchase successful! 🎉</p>
-        )}
-
-        {paymentStatus === "error" && (
-          <p className="paymentModalStatus error">{errorMessage}!</p>
-        )}
-
-        <div className="paymentModalBtnRow">
-          <button
-            onClick={handlePurchase}
-            className="paymentModalPayBtn"
-            disabled={paymentStatus !== "idle"}
-          >
-            {paymentStatus === "processing" ? "Processing..." : "Buy"}
-          </button>
-          <button
-            onClick={closeModalOnClick}
-            className="paymentModalCancelBtn"
-            disabled={paymentStatus === "processing"}
-          >
-            Cancel
-          </button>
-        </div>
       </div>
     </div>
   );

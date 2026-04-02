@@ -1,7 +1,6 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { GameStartScreen } from "./GameStartScreen";
 import { GamePlayScreen } from "./GamePlayScreen";
-import { toast } from "react-toastify";
 import { useAuth } from "./../../contexts/authContext/AuthContext";
 
 export const GamePage = () => {
