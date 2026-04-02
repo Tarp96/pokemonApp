@@ -35,12 +35,31 @@
   width: 160px;
   height: 60px;
   padding: 0;
-  border: 2px solid #4a90e2;
+  border: 2px solid #2f6fd0;
   border-radius: 8px;
   overflow: hidden;
   cursor: pointer;
   display: flex;
   background: transparent;
+  transition: all 0.2s ease;
+}
+
+.prevAndNextMonButton:hover,
+.prevAndNextMonButton:focus-visible {
+  transform: scale(1.05);
+  border-color: #2f6fd0;
+  outline: none;
+}
+
+.prevAndNextMonButton:hover .firstInnerDiv,
+.prevAndNextMonButton:focus-visible .firstInnerDiv {
+  background-color: white;
+  color: #2f6fd0;
+}
+
+.prevAndNextMonButton:hover .monId,
+.prevAndNextMonButton:focus-visible .monId {
+  color: #2f6fd0;
 }
 
 .prevAndNextInnerContainer {
@@ -58,7 +77,7 @@
 }
 
 .firstInnerDiv {
-  background-color: #4a90e2;
+  background-color: #2f6fd0;
   color: white;
   flex-direction: column;
   font-weight: bold;
@@ -68,7 +87,7 @@
 
 .monId {
   font-size: 12px;
-  opacity: 0.85;
+  color: white;
 }
 
 .monName {
@@ -408,6 +427,12 @@
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
 
+.detailPageNameTitleContainer {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 2px solid var(--accent);
+}
+
 .pageTopInfoTitle {
   margin: 0 0 0.5rem 0;
   line-height: 1.1;
@@ -417,11 +442,8 @@
   font-weight: 300;
   color: var(--ink);
   padding-bottom: 8px;
-  border-bottom: 2px solid var(--accent);
-}
 
-.pageTopInfoTitle {
-  font-size: 2.5rem;
+  font-size: 2rem;
 }
 
 .pokemonName {
@@ -1142,6 +1164,10 @@
     flex-wrap: wrap;
     gap: 0.5rem;
     font-size: 1.8rem;
+  }
+
+  .bigPokemonPriceTag {
+    font-size: 14px;
   }
 
   .topInfoSectionTypeBadges {

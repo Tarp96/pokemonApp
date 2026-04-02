@@ -101,22 +101,21 @@ export const PokemonDetailOverView = () => {
     <>
       <section className="detailsTopSection">
         <div className="overviewPageTopInfoSection">
-          <h2 className="pageTopInfoTitle">
-            {firstLetterUpperCase(pokemon.name)}
-
+          <div className="detailPageNameTitleContainer">
+            <h2 className="pageTopInfoTitle">
+              {firstLetterUpperCase(pokemon.name)}
+            </h2>
+            <div></div>
             <PriceTag
               pokemonName={pokemon.name}
               displayedOnCard={false}
               onClick={() => openModal(pokemon)}
               isOwned={isOwned(pokemon.id)}
             />
-            <div
-              className="topInfoSectionTypeBadges"
-              aria-label="Pokemon types"
-            >
-              {types}
-            </div>
-          </h2>
+          </div>
+          <div className="topInfoSectionTypeBadges" aria-label="Pokemon types">
+            {types}
+          </div>
 
           <p className="flavorTextDiv">{flavorText}</p>
           <InformationList
@@ -145,6 +144,7 @@ export const PokemonDetailOverView = () => {
             <AbilitiesList abilities={abilityDetails} />
           </div>
         </div>
+
         <div className="overviewPageMainImageContainer">
           <div className="audioButtonContainer">
             {pokemon?.cries?.legacy && (

@@ -10,7 +10,7 @@ const typeColors = {
   bug: { bg: "#9f9f28", color: "#1a1a1a" },
   normal: { bg: "#828282", color: "#1a1a1a" },
   poison: { bg: "#9354cb", color: "#fff" },
-  ground: { bg: "#a4733c", color: "#fff" },
+  ground: { bg: "#a4733c", color: "#000000" },
   fighting: { bg: "#e49021", color: "#1a1a1a" },
   rock: { bg: "#a9a481", color: "#1a1a1a" },
   steel: { bg: "#74b0cb", color: "#1a1a1a" },

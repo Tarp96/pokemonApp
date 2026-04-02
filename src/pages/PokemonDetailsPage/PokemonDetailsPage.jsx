@@ -157,12 +157,13 @@ export const PokemonDetailsPage = () => {
   }
 
   return (
-    <div className="detailsPageContainer">
+    <main className="detailsPageContainer">
       <div className="detailsPageHeader">
         <NavLink to={from} className="navigateBackButton">
           <FaArrowLeft className="backIcon" />
           <span className="backText">Back</span>
         </NavLink>
+
         <div className="detailPageMainTitleContainer">
           <PrevNextMonButton mon={prevAndNextMon[0]} direction="prev" />
           <h1 className="detailsPageTitle">
@@ -170,6 +171,7 @@ export const PokemonDetailsPage = () => {
           </h1>
           <PrevNextMonButton mon={prevAndNextMon[1]} direction="next" />
         </div>
+
         <div></div>
       </div>
 
@@ -184,6 +186,6 @@ export const PokemonDetailsPage = () => {
       />
 
       <Outlet context={{ pokemon, pokemonSpecies }} />
-    </div>
+    </main>
   );
 };
