@@ -42,6 +42,7 @@ export const LeaderboardScreen = () => {
           isCurrentUser ? "leaderboardCurrentUser" : ""
         }`}
         aria-current={isCurrentUser ? "true" : undefined}
+        key={item.uid}
       >
         <Link
           key={item.uid}
