@@ -1360,7 +1360,7 @@ body {
 
 /*PROFILE PAGE*/
 .profilePageContainer {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 1.2rem auto;
   padding: 2rem;
   background-color: white;
@@ -2449,7 +2449,7 @@ body {
 
 .badgeGrid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 1.8rem;
   margin-top: 2rem;
 }
