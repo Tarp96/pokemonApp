@@ -17,6 +17,8 @@ export const LeaderboardScreen = () => {
   const currentUid = auth.currentUser?.uid;
 
   useEffect(() => {
+    setLoading(true);
+
     const unsubscribe = listenToLeaderboard((data) => {
       setLeaderboard(data);
       setLoading(false);
@@ -28,7 +30,14 @@ export const LeaderboardScreen = () => {
   if (loading) {
     return (
       <div className="leaderboardPageContainer">
-        <p>Loading leaderboard....</p>;
+        <div className="leaderboardPageLoadingContainer">
+          <img
+            src="/assets/pokeballIcon.svg"
+            alt=""
+            className="leaderboardLoadingImage"
+          />
+          <p>Loading.....</p>
+        </div>
       </div>
     );
   }

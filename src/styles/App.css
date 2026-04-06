@@ -4171,6 +4171,17 @@ body {
   outline: 4px solid #ffcb05;
 }
 
+.leaderboardPageLoadingContainer {
+  text-align: center;
+  justify-content: center;
+}
+
+.leaderboardLoadingImage {
+  height: 50px;
+  width: 50px;
+  animation: pokeballSpin 2s linear infinite;
+}
+
 .leaderboardLink {
   text-decoration: none;
   color: inherit;
