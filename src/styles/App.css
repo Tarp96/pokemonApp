@@ -145,16 +145,17 @@ body {
   padding: 0;
   display: flex;
   align-items: center;
+  border: solid 2px #ffcb05;
+  border-radius: 999px;
 }
 
 .profileAvatarImg {
-  width: 48px;
-  height: 48px;
+  width: 40px;
+  height: 40px;
   border-radius: 50%;
   object-fit: cover;
-
-  border: 3px solid #ffcc01;
-  box-shadow: 0 0 8px rgba(255, 204, 1, 0.6);
+  object-position: top;
+  cursor: pointer;
   transition: transform 0.2s ease;
 }
 

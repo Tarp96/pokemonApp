@@ -3,10 +3,12 @@ import { useAuth } from "../contexts/authContext/AuthContext";
 import { useState, useEffect, useRef } from "react";
 import pikalogo from "../assets/pikalogo.webp";
 import pokemonlogo from "../assets/pokelogo.webp";
+import { useProfileData } from "../hooks/useProfileData";
 
 export const Header = () => {
   let navigate = useNavigate();
   const { userLoggedIn, logout } = useAuth();
+  const { avatarId } = useProfileData();
 
   const [menuOpen, setMenuOpen] = useState(false);
   const menuRef = useRef(null);
@@ -67,7 +69,7 @@ export const Header = () => {
           <div className="profileMenuWrapper" ref={menuRef}>
             <button className="profileAvatarBtn" onClick={toggleMenu}>
               <img
-                src="https://boxchatter.wordpress.com/wp-content/uploads/2013/06/pkmn-trainer-red.jpg"
+                src={`/assets/trainerAvatars/pt${avatarId}.webp`}
                 alt="Profile"
                 className="profileAvatarImg"
               />
