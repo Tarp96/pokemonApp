@@ -1361,24 +1361,34 @@
 
 @media (min-width: 1250px) {
   .flavorTextDiv {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
   .listItemTopic,
   .listItemValue {
-    font-size: 1.2rem;
+    font-size: 0.8rem;
   }
 
   .abilityName {
-    font-size: 1.4rem;
+    font-size: 1rem;
   }
 
   .abilityEffect {
-    font-size: 1.2rem;
+    font-size: 0.9rem;
   }
 
   .tabButton {
-    font-size: 1.2rem;
+    font-size: 1rem;
+  }
+
+  .typeIcon {
+    height: 48px;
+    width: 48px;
+  }
+
+  .ownedLabelContainer {
+    padding: 4px 12px;
+    font-size: 18px;
   }
 }
 
