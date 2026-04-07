@@ -80,7 +80,7 @@ export const Header = () => {
                   className="dropdownItem"
                   onClick={() => setMenuOpen(false)}
                 >
-                  My Profile
+                  Profile
                 </NavLink>
 
                 <button
