@@ -30,7 +30,7 @@ export const ProfilePage = () => {
   useEffect(() => {
     console.log("avatarId in ProfilePage:", avatarId);
     console.log(`/assets/trainerAvatars/pt${avatarId}.webp`);
-  }, []);
+  }, [avatarId]);
 
   const selectedQuote = pokemonQuotes.find((q) => q.id === quoteId)?.quote;
 
@@ -104,6 +104,7 @@ export const ProfilePage = () => {
       <div className="trainerAvatarColumn">
         <div className="trainerAvatarFrame">
           <ImageWithSkeleton
+            key={avatarId}
             src={`/assets/trainerAvatars/pt${avatarId}.webp`}
             alt="Trainer Avatar"
           />
