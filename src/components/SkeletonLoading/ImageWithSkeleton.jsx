@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 export const ImageWithSkeleton = ({
   src,
@@ -7,9 +7,16 @@ export const ImageWithSkeleton = ({
   skeletonClassName = "",
 }) => {
   const [loaded, setLoaded] = useState(false);
+  const imgRef = useRef(null);
 
   useEffect(() => {
     setLoaded(false);
+  }, [src]);
+
+  useEffect(() => {
+    if (imgRef.current && imgRef.current.complete && src) {
+      setLoaded(true);
+    }
   }, [src]);
 
   return (
@@ -24,12 +31,15 @@ export const ImageWithSkeleton = ({
         </div>
       )}
 
-      <img
-        src={src}
-        alt={alt}
-        className={`imageElement ${loaded ? "loaded" : ""}`}
-        onLoad={() => setLoaded(true)}
-      />
+      {src && (
+        <img
+          ref={imgRef}
+          src={src}
+          alt={alt}
+          className={`imageElement ${loaded ? "loaded" : "hidden"}`}
+          onLoad={() => setLoaded(true)}
+        />
+      )}
     </div>
   );
 };

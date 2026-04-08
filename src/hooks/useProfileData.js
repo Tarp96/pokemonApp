@@ -15,7 +15,7 @@ export const useProfileData = () => {
   const [pokemonCaught, setPokemonCaught] = useState(null);
   const [team, setTeam] = useState([]);
   const [highScore, setHighScore] = useState(null);
-  const [avatarId, setAvatarId] = useState(0);
+  const [avatarId, setAvatarId] = useState(null);
   const [quoteId, setQuoteId] = useState(null);
   const [loading, setLoading] = useState(true);
   const [favorites, setFavorites] = useState(null);
@@ -41,6 +41,8 @@ export const useProfileData = () => {
       setAvatarId(data.avatarId ?? 1);
       setQuoteId(data.quoteId ?? 1);
       setPokemonCaught(data.pokemonCaught ?? 0);
+
+      setLoading(false);
     });
 
     const fetchTeamData = async () => {
@@ -66,10 +68,6 @@ export const useProfileData = () => {
       if (!isMounted) return;
       setHighScore(score);
     });
-
-    setTimeout(() => {
-      if (isMounted) setLoading(false);
-    }, 0);
 
     return () => {
       isMounted = false;

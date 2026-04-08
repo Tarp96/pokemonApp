@@ -1001,6 +1001,10 @@ body {
   opacity: 1;
 }
 
+.imageElement.hidden {
+  display: none;
+}
+
 /*IMAGE SKELETON LOADER END*/
 
 /*SKELETON END*/

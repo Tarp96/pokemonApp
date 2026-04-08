@@ -21,11 +21,6 @@ export const ProfilePage = () => {
   } = useOutletContext();
 
   const [isEditing, setIsEditing] = useState(false);
-  const [imageLoaded, setImageLoaded] = useState(false);
-
-  useEffect(() => {
-    setImageLoaded(false);
-  }, [avatarId]);
 
   useEffect(() => {
     console.log("avatarId in ProfilePage:", avatarId);
@@ -33,6 +28,7 @@ export const ProfilePage = () => {
   }, [avatarId]);
 
   const selectedQuote = pokemonQuotes.find((q) => q.id === quoteId)?.quote;
+  const isAvatarReady = avatarId !== null;
 
   if (loading) {
     return <ProfileTrainerSkeleton />;
@@ -104,8 +100,12 @@ export const ProfilePage = () => {
       <div className="trainerAvatarColumn">
         <div className="trainerAvatarFrame">
           <ImageWithSkeleton
-            key={avatarId}
-            src={`/assets/trainerAvatars/pt${avatarId}.webp`}
+            key={avatarId ?? "loading"}
+            src={
+              isAvatarReady
+                ? `/assets/trainerAvatars/pt${avatarId}.webp`
+                : undefined
+            }
             alt="Trainer Avatar"
           />
         </div>
