@@ -1091,7 +1091,7 @@
 
 /*MEDIA QUERIES*/
 
-@media (max-width: 480px) {
+@media (max-width: 979px) {
   .detailsPageContainer {
     width: 100%;
     max-width: none;
@@ -1200,12 +1200,8 @@
 
   /*DETAIL PAGE OVERVIEW MIDDLE SECTION*/
   .overViewMiddleSection {
-    flex-direction: column;
-    gap: 14px;
-  }
-
-  .overViewMiddleSection {
-    padding: 14px;
+    grid-template-columns: 1fr;
+    gap: 16px;
   }
 
   .relationRow {

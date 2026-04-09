@@ -5229,18 +5229,18 @@ body {
   }
 
   .podiumFirst {
-    height: 110px;
-    padding: 10px;
+    height: 125px;
+    padding: 12px;
   }
 
   .podiumSecond {
-    height: 90px;
-    padding: 10px;
+    height: 100px;
+    padding: 12px;
   }
 
   .podiumThird {
-    height: 80px;
-    padding: 10px;
+    height: 95px;
+    padding: 12px;
   }
 
   .podiumPlace {
