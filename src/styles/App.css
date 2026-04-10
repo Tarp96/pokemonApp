@@ -5452,6 +5452,11 @@ body {
     transform: none;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
+
+  .teamGridElite {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
 }
 
 @media (max-width: 899px) {
