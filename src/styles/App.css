@@ -5413,6 +5413,47 @@ body {
   /*TRAINER CARD END*/
 }
 
+@media (min-width: 670px) and (max-width: 979px) {
+  .pokemonGrid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    max-width: 100%;
+    padding: 10px;
+    max-height: none;
+  }
+
+  .pokemon-card {
+    max-width: 80%;
+    padding: 10px;
+    margin: 0;
+  }
+
+  .displayCardPokemonSprite {
+    width: 110px;
+    height: 110px;
+    margin-bottom: 10px;
+  }
+
+  .pokemon-card h3 {
+    font-size: 1rem;
+  }
+
+  .pokemon-card p {
+    font-size: 0.8rem;
+  }
+
+  .linkToDetailsPageButton {
+    font-size: 14px;
+    padding: 5px 10px;
+    margin-bottom: 25px;
+  }
+
+  .pokemon-card:hover {
+    transform: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+}
+
 @media (max-width: 899px) {
   .uiAuthButton:hover {
     transform: translateY(-3px);
@@ -5731,6 +5772,10 @@ body {
     gap: 6px;
   }
   /*SEARCHBAR END*/
+
+  .pokemonGrid {
+    max-width: 90%;
+  }
 
   .pokemon-card {
     max-width: 240px;
