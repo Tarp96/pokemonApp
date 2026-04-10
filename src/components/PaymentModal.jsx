@@ -186,9 +186,6 @@ export const PaymentModal = ({ pokemon, closeModalOnClick }) => {
                 <h2 id="payment-modal-title" className="paymentModalNameTitle">
                   {pokemon?.name}
                 </h2>
-                <p id="payment-modal-description" className="paymentModalInfo">
-                  Your coin balance: {Math.floor(displayCoins)}
-                </p>
               </div>
             </div>
 
