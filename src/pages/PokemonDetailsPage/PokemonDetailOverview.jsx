@@ -23,9 +23,9 @@ import { PriceTag } from "../../components/PriceTag";
 import { usePurchaseModal } from "./../../hooks/usePurchaseModal";
 import { PaymentModal } from "./../../components/PaymentModal";
 import { useOwnedPokemon } from "../../hooks/useOwnedPokemon";
+import { useAbilityDetails } from "../../hooks/useAbilityDetails";
 
 export const PokemonDetailOverView = () => {
-  const [abilityDetails, setAbilityDetails] = useState([]);
   const [shiny, setShiny] = useState(false);
   const [showDefense, setShowDefense] = useState(true);
 
@@ -33,6 +33,9 @@ export const PokemonDetailOverView = () => {
 
   const { isOpen, selectedPokemon, openModal, closeModal } = usePurchaseModal();
   const { isOwned } = useOwnedPokemon();
+  const { abilityDetails, loading, error } = useAbilityDetails(
+    pokemon.abilities,
+  );
 
   useEffect(() => {
     const controller = new AbortController();
