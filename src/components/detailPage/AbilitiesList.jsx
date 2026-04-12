@@ -1,4 +1,4 @@
-import { AbilityCard } from "../AbilityCard";
+import { AbilityCard } from "./AbilityCard";
 
 export const AbilitiesList = ({ abilities }) => {
   if (!abilities?.length) return null;

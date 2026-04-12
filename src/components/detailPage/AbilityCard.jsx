@@ -1,4 +1,4 @@
-import { firstLetterUpperCase } from "../utils/helperFunctions";
+import { firstLetterUpperCase } from "../../utils/helperFunctions";
 
 export const AbilityCard = ({ name, isHidden, effect }) => {
   return (

@@ -1,6 +1,6 @@
 import { useEffect, useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import { fetchPokemonDetails } from "../utils/pokeApi";
+import { fetchPokemonDetails } from "../../utils/pokeApi";
 
 export const AlternativeFormsSection = ({ species }) => {
   const navigate = useNavigate();
@@ -31,7 +31,7 @@ export const AlternativeFormsSection = ({ species }) => {
               console.warn("[AlternativeForms] details failed:", p.name, e);
               return [p.name, null];
             }
-          })
+          }),
         );
 
         setFormsMap(Object.fromEntries(entries));

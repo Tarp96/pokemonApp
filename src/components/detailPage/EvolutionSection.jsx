@@ -3,8 +3,8 @@ import {
   fetchPokemonSpeciesDetails,
   fetchEvolutionChainById,
   fetchPokemonDetails,
-} from "./../utils/pokeApi";
-import { buildEvolutionPaths } from "../utils/helperFunctions";
+} from "../../utils/pokeApi";
+import { buildEvolutionPaths } from "../../utils/helperFunctions";
 
 export const EvolutionSection = ({ pokemon }) => {
   const [paths, setPaths] = useState([]);
@@ -53,7 +53,7 @@ export const EvolutionSection = ({ pokemon }) => {
         }
 
         const uniqueNames = Array.from(
-          new Set(evoPaths.flatMap((p) => p.map((n) => n.name)))
+          new Set(evoPaths.flatMap((p) => p.map((n) => n.name))),
         );
 
         const detailEntries = await Promise.all(
@@ -65,7 +65,7 @@ export const EvolutionSection = ({ pokemon }) => {
               console.warn("[EvolutionSection] failed details for:", name, e);
               return [name, null];
             }
-          })
+          }),
         );
 
         const detailsMap = Object.fromEntries(detailEntries);

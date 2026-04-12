@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
-import { getTypeIcon } from "../utils/typeIcons";
-import { firstLetterUpperCase } from "../utils/helperFunctions";
+import { getTypeIcon } from "../../utils/typeIcons";
+import { firstLetterUpperCase } from "../../utils/helperFunctions";
 
 const ALL_TYPES = [
   "normal",
@@ -118,7 +118,7 @@ export default function TypeRelations({ pokemon, view = "offense" }) {
       try {
         setStatus("loading");
         const datas = await Promise.all(
-          pokemonTypes.map((t) => fetchTypeByUrl(t.url))
+          pokemonTypes.map((t) => fetchTypeByUrl(t.url)),
         );
         if (!cancelled) {
           setTypeDatas(datas);
@@ -147,7 +147,7 @@ export default function TypeRelations({ pokemon, view = "offense" }) {
   const defensive = useMemo(() => {
     const incoming = Object.fromEntries(ALL_TYPES.map((t) => [t, 1]));
     typeDatas.forEach((td) =>
-      applyDefensiveRelations(incoming, td.damage_relations || {})
+      applyDefensiveRelations(incoming, td.damage_relations || {}),
     );
     return incoming;
   }, [typeDatas]);
@@ -155,7 +155,7 @@ export default function TypeRelations({ pokemon, view = "offense" }) {
   const offensive = useMemo(() => {
     const best = Object.fromEntries(ALL_TYPES.map((t) => [t, 1]));
     typeDatas.forEach((td) =>
-      applyOffensiveRelations(best, td.damage_relations || {})
+      applyOffensiveRelations(best, td.damage_relations || {}),
     );
     return best;
   }, [typeDatas]);
