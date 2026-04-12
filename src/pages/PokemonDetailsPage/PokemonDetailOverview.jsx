@@ -15,7 +15,7 @@ import TypeRelations from "../../components/TypeRelations";
 import { SwitchButton } from "../../components/SwitchButton";
 import { InformationList } from "../../components/InformationList";
 import { GenderRate } from "../../components/GenderRate";
-import { AbilitiesList } from "../../components/AbilitiesList";
+import { AbilitiesList } from "../../components/ui/AbilitiesList";
 import { BsVolumeUp } from "react-icons/bs";
 import { EvolutionSection } from "../../components/EveloutionSection";
 import { AlternativeFormsSection } from "../../components/AlternativeFormsSection";
