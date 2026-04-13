@@ -3,7 +3,7 @@ import {
   fetchPokemonDetails,
   fetchPokemonSpeciesDetails,
   fetchPokemonSpeciesByUrl,
-} from "../../utils/pokeApi";
+} from "../../services/pokemon/pokeApiService";
 import { useParams, Outlet, NavLink, useLocation } from "react-router-dom";
 import { firstLetterUpperCase } from "../../utils/format/helperFunctions";
 import { FaArrowLeft } from "react-icons/fa6";

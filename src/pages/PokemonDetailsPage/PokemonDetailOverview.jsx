@@ -10,7 +10,7 @@ import { TypeBadge } from "../../components/pokemon/TypeBadge";
 import AudioPlayer from "../../components/ui/AudioPlayer";
 import "../../styles/DetailPageStyle.css";
 import { useState, useEffect, useMemo } from "react";
-import { fetchAbilityDetails } from "../../utils/pokeApi";
+import { fetchAbilityDetails } from "../../services/pokemon/pokeApiService";
 import TypeRelations from "../../components/detailPage/TypeRelations";
 import { SwitchButton } from "../../components/ui/SwitchButton";
 import { InformationList } from "../../components/detailPage/InformationList";

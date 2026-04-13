@@ -1,6 +1,10 @@
 import { useEffect, useState } from "react";
 import PokemonDisplayCard from "../../components/pokemon/PokemonDisplayCard";
-import { fetchData, fetchTypeData, safeFetchBatch } from "../../utils/pokeApi";
+import {
+  fetchData,
+  fetchTypeData,
+  safeFetchBatch,
+} from "../../services/pokemon/pokeApiService";
 import { FilterByTypeButtons } from "../../components/pokemon/FilterByTypeButtons";
 import { SearchBar } from "../../components/ui/SearchBar";
 import { NoPokemonMatchFilter } from "../../components/pokemon/NoPokemonMatchFilter";

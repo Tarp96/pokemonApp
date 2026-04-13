@@ -1,7 +1,7 @@
 import { useOutletContext } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { firstLetterUpperCase } from "../../utils/format/helperFunctions";
-import { fetchMoveData } from "../../utils/pokeApi";
+import { fetchMoveData } from "../../services/pokemon/pokeApiService";
 import { TypeBadge } from "../../components/pokemon/TypeBadge";
 import PokemonMovesSkeleton from "../../components/SkeletonLoading/PokemonMovesSkeleton";
 

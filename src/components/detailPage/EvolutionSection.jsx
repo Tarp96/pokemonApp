@@ -3,7 +3,7 @@ import {
   fetchPokemonSpeciesDetails,
   fetchEvolutionChainById,
   fetchPokemonDetails,
-} from "../../utils/pokeApi";
+} from "../../services/pokemon/pokeApiService";
 import { buildEvolutionPaths } from "../../utils/format/helperFunctions";
 
 export const EvolutionSection = ({ pokemon }) => {

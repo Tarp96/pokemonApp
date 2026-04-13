@@ -1,5 +1,5 @@
-import { cacheGet, cacheSet, cacheGetStale } from "./storage/cache";
-import { fetchPokemonCardData } from "./pokeApiCard";
+import { cacheGet, cacheSet, cacheGetStale } from "../../utils/storage/cache";
+import { toCardData } from "../../utils/pokemon/pokemonSlim";
 
 const ONE_DAY = 24 * 60 * 60 * 1000;
 
@@ -153,4 +153,21 @@ export async function safeFetchBatch(names) {
   return results
     .filter((r) => r.status === "fulfilled" && r.value !== null)
     .map((r) => r.value);
+}
+
+export async function fetchPokemonCardData(pokemonName) {
+  const detailsRes = await fetch(
+    `https://pokeapi.co/api/v2/pokemon/${pokemonName}`,
+  );
+  if (!detailsRes.ok) throw new Error(`Error fetching data for ${pokemonName}`);
+  const details = await detailsRes.json();
+
+  let species;
+  try {
+    species = await fetchPokemonSpeciesByUrl(details?.species?.url);
+  } catch (e) {
+    species = await fetchPokemonSpeciesDetails(pokemonName);
+  }
+
+  return toCardData(details, species);
 }

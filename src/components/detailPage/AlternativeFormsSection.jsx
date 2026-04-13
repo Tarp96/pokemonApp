@@ -1,6 +1,6 @@
 import { useEffect, useState, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
-import { fetchPokemonDetails } from "../../utils/pokeApi";
+import { fetchPokemonDetails } from "../../services/pokemon/pokeApiService";
 
 export const AlternativeFormsSection = ({ species }) => {
   const navigate = useNavigate();
