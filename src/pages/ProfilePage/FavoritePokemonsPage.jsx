@@ -1,4 +1,4 @@
-import PokemonDisplayCard from "../../components/PokemonDisplayCard";
+import PokemonDisplayCard from "../../components/pokemon/PokemonDisplayCard";
 import { useLocation, useNavigate, useOutletContext } from "react-router-dom";
 import PokemonDisplayCardSkeleton from "./../../components/SkeletonLoading/PokemonDisplayCardSkeleton";
 import { PaymentModal } from "../../components/modals/PaymentModal";

@@ -1,5 +1,5 @@
-import AudioPlayer from "./ui/AudioPlayer";
-import { firstLetterUpperCase } from "./../utils/helperFunctions";
+import AudioPlayer from "../ui/AudioPlayer";
+import { firstLetterUpperCase } from "../../utils/helperFunctions";
 import { FaArrowRight } from "react-icons/fa6";
 import { TypeBadge } from "./TypeBadge";
 import { FavoriteButton } from "./FavoriteButton";
@@ -9,9 +9,9 @@ import {
   addFavorite,
   removeFavorite,
   isAlreadyFavorited,
-} from "../services/favoritesService";
+} from "../../services/favoritesService";
 import { toast } from "react-toastify";
-import { useAuth } from "../contexts/authContext/AuthContext";
+import { useAuth } from "../../contexts/authContext/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { PriceTag } from "./PriceTag";
 

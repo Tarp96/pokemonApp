@@ -1,5 +1,5 @@
 import { useOutletContext } from "react-router-dom";
-import { PokemonTeamCard } from "./../../components/PokemonTeamCard";
+import { PokemonTeamCard } from "./../../components/pokemon/PokemonTeamCard";
 
 export const ProfileTeamPage = () => {
   const { team } = useOutletContext();

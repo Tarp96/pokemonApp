@@ -6,7 +6,7 @@ import {
   formatEggCycles,
   pickEnglishFlavorText,
 } from "../../utils/helperFunctions";
-import { TypeBadge } from "../../components/TypeBadge";
+import { TypeBadge } from "../../components/pokemon/TypeBadge";
 import AudioPlayer from "../../components/ui/AudioPlayer";
 import "../../styles/DetailPageStyle.css";
 import { useState, useEffect, useMemo } from "react";
@@ -19,7 +19,7 @@ import { AbilitiesList } from "../../components/detailPage/AbilitiesList";
 import { BsVolumeUp } from "react-icons/bs";
 import { EvolutionSection } from "../../components/detailPage/EvolutionSection";
 import { AlternativeFormsSection } from "../../components/detailPage/AlternativeFormsSection";
-import { PriceTag } from "../../components/PriceTag";
+import { PriceTag } from "../../components/pokemon/PriceTag";
 import { usePurchaseModal } from "./../../hooks/usePurchaseModal";
 import { PaymentModal } from "../../components/modals/PaymentModal";
 import { useOwnedPokemon } from "../../hooks/useOwnedPokemon";

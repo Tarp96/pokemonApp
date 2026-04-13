@@ -2,7 +2,7 @@ import { useOutletContext } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { firstLetterUpperCase } from "../../utils/helperFunctions";
 import { fetchMoveData } from "../../utils/pokeApi";
-import { TypeBadge } from "../../components/TypeBadge";
+import { TypeBadge } from "../../components/pokemon/TypeBadge";
 import PokemonMovesSkeleton from "../../components/SkeletonLoading/PokemonMovesSkeleton";
 
 export const PokemonMoves = () => {

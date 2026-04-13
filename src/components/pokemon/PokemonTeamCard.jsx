@@ -1,6 +1,6 @@
-import { firstLetterUpperCase } from "../utils/helperFunctions";
+import { firstLetterUpperCase } from "../../utils/helperFunctions";
 import { TypeBadge } from "./TypeBadge";
-import { getTypeIcon } from "../utils/typeIcons";
+import { getTypeIcon } from "../../utils/typeIcons";
 
 const getPrimaryType = (types) => (types?.length ? types[0] : "normal");
 

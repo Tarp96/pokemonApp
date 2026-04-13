@@ -1,6 +1,6 @@
-import typeColors from "./../utils/typecolors";
-import { firstLetterUpperCase } from "../utils/helperFunctions";
-import { getTypeIcon } from "../utils/typeIcons";
+import typeColors from "../../utils/typecolors";
+import { firstLetterUpperCase } from "../../utils/helperFunctions";
+import { getTypeIcon } from "../../utils/typeIcons";
 import { useState, useEffect } from "react";
 
 export const FilterByTypeButtons = ({

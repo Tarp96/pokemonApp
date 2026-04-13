@@ -1,6 +1,6 @@
-import { getPokemonPrice } from "../data/pokemonPricing";
-import "../styles/DetailPageStyle.css";
-import pokeball from "../assets/pokeb.webp";
+import { getPokemonPrice } from "../../data/pokemonPricing";
+import "../../styles/DetailPageStyle.css";
+import pokeball from "../../assets/pokeb.webp";
 
 export const PriceTag = ({
   pokemonName,

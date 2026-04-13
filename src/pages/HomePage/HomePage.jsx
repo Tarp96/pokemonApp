@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
-import PokemonDisplayCard from "../../components/PokemonDisplayCard";
+import PokemonDisplayCard from "../../components/pokemon/PokemonDisplayCard";
 import { fetchData, fetchTypeData, safeFetchBatch } from "../../utils/pokeApi";
-import { FilterByTypeButtons } from "../../components/FilterByTypeButtons";
+import { FilterByTypeButtons } from "../../components/pokemon/FilterByTypeButtons";
 import { SearchBar } from "../../components/ui/SearchBar";
-import { NoPokemonMatchFilter } from "../../components/NoPokemonMatchFilter";
-import { PokemonGrid } from "../../components/PokemonGrid";
+import { NoPokemonMatchFilter } from "../../components/pokemon/NoPokemonMatchFilter";
+import { PokemonGrid } from "../../components/pokemon/PokemonGrid";
 import { useNavigate, useLocation } from "react-router-dom";
 import Pagination from "../../components/ui/Pagination";
 import { getItem, setItem } from "../../utils/localStorage";
