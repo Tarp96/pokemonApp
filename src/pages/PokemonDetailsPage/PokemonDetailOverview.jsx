@@ -21,7 +21,7 @@ import { EvolutionSection } from "../../components/detailPage/EvolutionSection";
 import { AlternativeFormsSection } from "../../components/detailPage/AlternativeFormsSection";
 import { PriceTag } from "../../components/PriceTag";
 import { usePurchaseModal } from "./../../hooks/usePurchaseModal";
-import { PaymentModal } from "./../../components/PaymentModal";
+import { PaymentModal } from "../../components/modals/PaymentModal";
 import { useOwnedPokemon } from "../../hooks/useOwnedPokemon";
 import { useAbilityDetails } from "../../hooks/useAbilityDetails";
 

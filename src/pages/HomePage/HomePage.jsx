@@ -9,7 +9,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import Pagination from "../../components/ui/Pagination";
 import { getItem, setItem } from "../../utils/localStorage";
 import { setCachedPageFull } from "../../utils/cache";
-import { PaymentModal } from "../../components/PaymentModal";
+import { PaymentModal } from "../../components/modals/PaymentModal";
 import PokemonDisplayCardSkeleton from "../../components/SkeletonLoading/PokemonDisplayCardSkeleton";
 import { usePurchaseModal } from "./../../hooks/usePurchaseModal";
 import { useOwnedPokemon } from "../../hooks/useOwnedPokemon";

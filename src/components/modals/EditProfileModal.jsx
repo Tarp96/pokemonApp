@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import {
   updateUserQuote,
   updateUserAvatar,
-} from "./../services/profileService";
-import pokemonQuotes from "../data/pokemonQuotes";
+} from "../../services/profileService";
+import pokemonQuotes from "../../data/pokemonQuotes";
 
 const TOTAL_AVATARS = 26;
 

@@ -1,7 +1,7 @@
 import { firstLetterUpperCase } from "../../utils/helperFunctions";
 import { useOutletContext } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { EditProfileModal } from "../../components/EditProfileModal";
+import { EditProfileModal } from "../../components/modals/EditProfileModal";
 import { FaRegEdit } from "react-icons/fa";
 import pokemonQuotes from "../../data/pokemonQuotes";
 import ProfileTrainerSkeleton from "../../components/SkeletonLoading/ProfileTrainerSkeleton";
