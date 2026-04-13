@@ -2,7 +2,7 @@ import { toCardData } from "./pokemon/pokemonSlim";
 import {
   fetchPokemonSpeciesByUrl,
   fetchPokemonSpeciesDetails,
-} from "./pokeApi";
+} from "./pokeApiService";
 
 export async function fetchPokemonCardData(pokemonName) {
   const detailsRes = await fetch(
