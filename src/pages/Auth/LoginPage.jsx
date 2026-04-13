@@ -6,9 +6,8 @@ import {
 } from "./../../services/authService";
 import { useAuth } from "./../../contexts/authContext/AuthContext";
 import { Navigate, useNavigate } from "react-router-dom";
-import loginPic from "../../assets/loginPic.webp";
 import { ImageWithSkeleton } from "../../components/SkeletonLoading/ImageWithSkeleton";
-import { getFirebaseErrorMessage } from "../../utils/getFireBaseErrorMessage";
+import { getFirebaseErrorMessage } from "../../utils/firebase/getFireBaseErrorMessage";
 import loginImage from "../../assets/loginPageArt.jpg";
 
 const LoginPage = () => {

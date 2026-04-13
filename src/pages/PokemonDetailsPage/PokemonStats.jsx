@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
-import { firstLetterUpperCase } from "./../../utils/helperFunctions";
+import { firstLetterUpperCase } from "../../utils/format/helperFunctions";
 import ReactApexChart from "react-apexcharts";
 
 export const PokemonStats = () => {

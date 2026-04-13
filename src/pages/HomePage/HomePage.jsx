@@ -7,8 +7,8 @@ import { NoPokemonMatchFilter } from "../../components/pokemon/NoPokemonMatchFil
 import { PokemonGrid } from "../../components/pokemon/PokemonGrid";
 import { useNavigate, useLocation } from "react-router-dom";
 import Pagination from "../../components/ui/Pagination";
-import { getItem, setItem } from "../../utils/localStorage";
-import { setCachedPageFull } from "../../utils/cache";
+import { getItem, setItem } from "../../utils/storage/localStorage";
+import { setCachedPageFull } from "../../utils/storage/cache";
 import { PaymentModal } from "../../components/modals/PaymentModal";
 import PokemonDisplayCardSkeleton from "../../components/SkeletonLoading/PokemonDisplayCardSkeleton";
 import { usePurchaseModal } from "./../../hooks/usePurchaseModal";

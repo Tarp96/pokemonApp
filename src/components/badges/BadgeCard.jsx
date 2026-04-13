@@ -1,4 +1,4 @@
-import { firstLetterUpperCase } from "../../utils/helperFunctions";
+import { firstLetterUpperCase } from "../../utils/format/helperFunctions";
 
 export const BadgeCard = ({ badge, index }) => {
   const { name, threshold, largeImage, unlocked } = badge;

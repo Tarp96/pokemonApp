@@ -1,6 +1,6 @@
-import typeColors from "../../utils/typecolors";
-import { firstLetterUpperCase } from "../../utils/helperFunctions";
-import { getTypeIcon } from "../../utils/typeIcons";
+import typeColors from "../../utils/constants/typecolors";
+import { firstLetterUpperCase } from "../../utils/format/helperFunctions";
+import { getTypeIcon } from "../../utils/constants/typeIcons";
 
 export const TypeBadge = ({
   type,

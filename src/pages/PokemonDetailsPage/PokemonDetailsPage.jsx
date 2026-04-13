@@ -5,7 +5,7 @@ import {
   fetchPokemonSpeciesByUrl,
 } from "../../utils/pokeApi";
 import { useParams, Outlet, NavLink, useLocation } from "react-router-dom";
-import { firstLetterUpperCase } from "../../utils/helperFunctions";
+import { firstLetterUpperCase } from "../../utils/format/helperFunctions";
 import { FaArrowLeft } from "react-icons/fa6";
 import { PageNavigationBar } from "../../components/layout/PageNavigationbar";
 import PrevNextMonButton from "../../components/pokemon/PrevNextMonButton";

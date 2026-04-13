@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { firstLetterUpperCase } from "../../utils/helperFunctions";
+import { firstLetterUpperCase } from "../../utils/format/helperFunctions";
 import pokeball from "../../assets/pokeb.webp";
 
 export const SearchBar = ({

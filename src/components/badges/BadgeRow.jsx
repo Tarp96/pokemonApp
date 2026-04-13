@@ -1,4 +1,4 @@
-import { getUnlockedBadges } from "../../utils/BADGES";
+import { getUnlockedBadges } from "../../utils/constants/BADGES";
 
 export const BadgeRow = ({ pokemonCaught }) => {
   const badges = getUnlockedBadges(pokemonCaught);

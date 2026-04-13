@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
-import { getTypeIcon } from "../../utils/typeIcons";
-import { firstLetterUpperCase } from "../../utils/helperFunctions";
+import { getTypeIcon } from "../../utils/constants/typeIcons";
+import { firstLetterUpperCase } from "../../utils/format/helperFunctions";
 
 const ALL_TYPES = [
   "normal",

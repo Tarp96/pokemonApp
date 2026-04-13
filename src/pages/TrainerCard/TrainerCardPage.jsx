@@ -3,7 +3,7 @@ import { useParams, NavLink } from "react-router-dom";
 import { doc, getDoc, collection, getDocs } from "firebase/firestore";
 import { db } from "../../firebaseConfig";
 import pokemonQuotes from "../../data/pokemonQuotes";
-import { firstLetterUpperCase } from "./../../utils/helperFunctions";
+import { firstLetterUpperCase } from "./../../utils/format/helperFunctions";
 import pokeball from "../../assets/pokeb.webp";
 import { BadgeRow } from "./../../components/badges/BadgeRow";
 import { FaArrowLeft } from "react-icons/fa6";

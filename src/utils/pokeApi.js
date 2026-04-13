@@ -1,4 +1,4 @@
-import { cacheGet, cacheSet, cacheGetStale } from "./cache";
+import { cacheGet, cacheSet, cacheGetStale } from "./storage/cache";
 import { fetchPokemonCardData } from "./pokeApiCard";
 
 const ONE_DAY = 24 * 60 * 60 * 1000;
@@ -56,7 +56,7 @@ export const fetchPokemonDetails = async (pokemonNameOrId) => {
 
   try {
     const response = await fetch(
-      `https://pokeapi.co/api/v2/pokemon/${pokemonNameOrId}`
+      `https://pokeapi.co/api/v2/pokemon/${pokemonNameOrId}`,
     );
     if (!response.ok) {
       throw new Error(`Error fetching data for ${pokemonNameOrId}`);
@@ -79,7 +79,7 @@ export const fetchPokemonSpeciesDetails = async (pokemonName) => {
 
   try {
     const response = await fetch(
-      `https://pokeapi.co/api/v2/pokemon-species/${pokemonName}`
+      `https://pokeapi.co/api/v2/pokemon-species/${pokemonName}`,
     );
     if (!response.ok) throw new Error(`Error fetching data for ${pokemonName}`);
     const data = await response.json();
@@ -103,7 +103,7 @@ export const fetchPokemonSpeciesByUrl = async (url) => {
 export const fetchAbilityDetails = async (ability) => {
   try {
     const response = await fetch(
-      `https://pokeapi.co/api/v2/ability/${ability}/`
+      `https://pokeapi.co/api/v2/ability/${ability}/`,
     );
     if (!response.ok) {
       throw new Error(`Error fetching data for ${ability}`);
@@ -124,7 +124,7 @@ export const fetchEvolutionChainById = async (chainId) => {
 
   try {
     const res = await fetch(
-      `https://pokeapi.co/api/v2/evolution-chain/${chainId}`
+      `https://pokeapi.co/api/v2/evolution-chain/${chainId}`,
     );
     if (!res.ok) throw new Error(`Error fetching evolution chain ${chainId}`);
     const data = await res.json();
@@ -147,7 +147,7 @@ export async function safeFetchBatch(names) {
         console.error(`Failed to fetch ${name}:`, e);
         return null;
       }
-    })
+    }),
   );
 
   return results

@@ -4,7 +4,7 @@ import {
   fetchEvolutionChainById,
   fetchPokemonDetails,
 } from "../../utils/pokeApi";
-import { buildEvolutionPaths } from "../../utils/helperFunctions";
+import { buildEvolutionPaths } from "../../utils/format/helperFunctions";
 
 export const EvolutionSection = ({ pokemon }) => {
   const [paths, setPaths] = useState([]);

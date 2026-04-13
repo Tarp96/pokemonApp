@@ -1,4 +1,4 @@
-const files = import.meta.glob("../assets/typeIcons/*.svg", {
+const files = import.meta.glob("../../assets/typeIcons/*.svg", {
   eager: true,
   query: "?url",
   import: "default",
@@ -9,7 +9,7 @@ const iconMap = Object.fromEntries(
     const file = path.split("/").pop();
     const name = file.replace(".svg", "");
     return [name.toLowerCase(), url];
-  })
+  }),
 );
 
 export function normalizeType(type) {

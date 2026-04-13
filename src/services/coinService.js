@@ -1,5 +1,5 @@
 import { db } from "../firebaseConfig";
-import { formatPokemonForTeam } from "../utils/formatPokemon";
+import { formatPokemonForTeam } from "../utils/format/formatPokemon";
 import {
   doc,
   getDoc,
@@ -7,8 +7,6 @@ import {
   increment,
   onSnapshot,
   runTransaction,
-  collection,
-  query,
 } from "firebase/firestore";
 
 export const getUserCoins = async (uid) => {

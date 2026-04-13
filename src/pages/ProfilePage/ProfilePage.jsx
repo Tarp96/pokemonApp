@@ -1,4 +1,4 @@
-import { firstLetterUpperCase } from "../../utils/helperFunctions";
+import { firstLetterUpperCase } from "../../utils/format/helperFunctions";
 import { useOutletContext } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { EditProfileModal } from "../../components/modals/EditProfileModal";

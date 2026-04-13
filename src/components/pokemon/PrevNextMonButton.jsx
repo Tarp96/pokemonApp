@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import { firstLetterUpperCase } from "../../utils/helperFunctions";
+import { firstLetterUpperCase } from "../../utils/format/helperFunctions";
 
 export default function PrevNextMonButton({ mon, direction }) {
   const navigate = useNavigate();

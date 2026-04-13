@@ -1,5 +1,5 @@
 import AudioPlayer from "../ui/AudioPlayer";
-import { firstLetterUpperCase } from "../../utils/helperFunctions";
+import { firstLetterUpperCase } from "../../utils/format/helperFunctions";
 import { FaArrowRight } from "react-icons/fa6";
 import { TypeBadge } from "./TypeBadge";
 import { FavoriteButton } from "./FavoriteButton";

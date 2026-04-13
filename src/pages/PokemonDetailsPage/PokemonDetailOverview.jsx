@@ -5,7 +5,7 @@ import {
   formatWeight,
   formatEggCycles,
   pickEnglishFlavorText,
-} from "../../utils/helperFunctions";
+} from "../../utils/format/helperFunctions";
 import { TypeBadge } from "../../components/pokemon/TypeBadge";
 import AudioPlayer from "../../components/ui/AudioPlayer";
 import "../../styles/DetailPageStyle.css";

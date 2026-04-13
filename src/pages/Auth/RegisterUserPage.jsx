@@ -5,10 +5,9 @@ import { useNavigate } from "react-router-dom";
 import { setDoc, doc } from "firebase/firestore";
 import { db } from "../../firebaseConfig";
 import { NavLink } from "react-router-dom";
-import registerUserImage from "../../assets/registerUserPic.webp";
 import registerImage from "../../assets/registerPageArt.png";
 import { ImageWithSkeleton } from "../../components/SkeletonLoading/ImageWithSkeleton";
-import { getFirebaseErrorMessage } from "../../utils/getFireBaseErrorMessage";
+import { getFirebaseErrorMessage } from "../../utils/firebase/getFireBaseErrorMessage";
 
 const RegisterUserPage = () => {
   const [email, setEmail] = useState("");

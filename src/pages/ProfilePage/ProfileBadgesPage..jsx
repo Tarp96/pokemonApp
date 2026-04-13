@@ -1,5 +1,5 @@
 import { useOutletContext } from "react-router-dom";
-import { getUnlockedBadges } from "../../utils/BADGES";
+import { getUnlockedBadges } from "../../utils/constants/BADGES";
 import { BadgeCard } from "../../components/badges/BadgeCard";
 
 export const ProfileBadgesPage = () => {

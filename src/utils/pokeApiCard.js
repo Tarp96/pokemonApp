@@ -1,4 +1,4 @@
-import { toCardData } from "./pokemonSlim";
+import { toCardData } from "./pokemon/pokemonSlim";
 import {
   fetchPokemonSpeciesByUrl,
   fetchPokemonSpeciesDetails,
@@ -6,7 +6,7 @@ import {
 
 export async function fetchPokemonCardData(pokemonName) {
   const detailsRes = await fetch(
-    `https://pokeapi.co/api/v2/pokemon/${pokemonName}`
+    `https://pokeapi.co/api/v2/pokemon/${pokemonName}`,
   );
   if (!detailsRes.ok) throw new Error(`Error fetching data for ${pokemonName}`);
   const details = await detailsRes.json();

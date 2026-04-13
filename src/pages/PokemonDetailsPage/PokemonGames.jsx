@@ -1,6 +1,6 @@
 import { useOutletContext } from "react-router-dom";
 import { gameImages } from "../../data/gameImages";
-import { firstLetterUpperCase } from "../../utils/helperFunctions";
+import { firstLetterUpperCase } from "../../utils/format/helperFunctions";
 import { ImageWithSkeleton } from "./../../components/SkeletonLoading/ImageWithSkeleton";
 
 export const PokemonGames = () => {
