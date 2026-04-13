@@ -5,7 +5,7 @@ import { db } from "../../firebaseConfig";
 import pokemonQuotes from "../../data/pokemonQuotes";
 import { firstLetterUpperCase } from "./../../utils/helperFunctions";
 import pokeball from "../../assets/pokeb.webp";
-import { BadgeRow } from "./../../components/BadgeRow";
+import { BadgeRow } from "./../../components/badges/BadgeRow";
 import { FaArrowLeft } from "react-icons/fa6";
 
 export const TrainerCardPage = () => {

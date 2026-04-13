@@ -1,6 +1,6 @@
 import { useOutletContext } from "react-router-dom";
 import { getUnlockedBadges } from "../../utils/BADGES";
-import { BadgeCard } from "../../components/BadgeCard";
+import { BadgeCard } from "../../components/badges/BadgeCard";
 
 export const ProfileBadgesPage = () => {
   const { pokemonCaught } = useOutletContext();
