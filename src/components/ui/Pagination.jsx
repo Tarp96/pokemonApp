@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import pokeball from "../assets/pokeb.webp";
+import pokeball from "../../assets/pokeb.webp";
 
 const Pagination = ({ currentPage, totalPages, onPageChange }) => {
   const [maxPagesToShow, setMaxPagesToShow] = useState(5);

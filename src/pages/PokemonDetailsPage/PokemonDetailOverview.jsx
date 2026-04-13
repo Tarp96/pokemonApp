@@ -7,12 +7,12 @@ import {
   pickEnglishFlavorText,
 } from "../../utils/helperFunctions";
 import { TypeBadge } from "../../components/TypeBadge";
-import AudioPlayer from "../../components/AudioPlayer";
+import AudioPlayer from "../../components/ui/AudioPlayer";
 import "../../styles/DetailPageStyle.css";
 import { useState, useEffect, useMemo } from "react";
 import { fetchAbilityDetails } from "../../utils/pokeApi";
 import TypeRelations from "../../components/detailPage/TypeRelations";
-import { SwitchButton } from "../../components/SwitchButton";
+import { SwitchButton } from "../../components/ui/SwitchButton";
 import { InformationList } from "../../components/detailPage/InformationList";
 import { GenderRate } from "../../components/detailPage/GenderRate";
 import { AbilitiesList } from "../../components/detailPage/AbilitiesList";

@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { firstLetterUpperCase } from "../utils/helperFunctions";
-import pokeball from "../assets/pokeb.webp";
+import { firstLetterUpperCase } from "../../utils/helperFunctions";
+import pokeball from "../../assets/pokeb.webp";
 
 export const SearchBar = ({
   query,

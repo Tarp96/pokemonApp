@@ -1,4 +1,4 @@
-import AudioPlayer from "./AudioPlayer";
+import AudioPlayer from "./ui/AudioPlayer";
 import { firstLetterUpperCase } from "./../utils/helperFunctions";
 import { FaArrowRight } from "react-icons/fa6";
 import { TypeBadge } from "./TypeBadge";
