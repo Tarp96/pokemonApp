@@ -1,14 +1,14 @@
 import { useState, useEffect, useRef } from "react";
-import { addCoins, listenToCoins } from "../services/coinService";
+import { addCoins, listenToCoins } from "../../services/coinService";
 import {
   listenToHighScore,
   updateHighScore,
-} from "../services/highScoreService";
+} from "../../services/highScoreService";
 import confetti from "canvas-confetti";
-import { useProfileData } from "./useProfileData";
-import { auth } from "../firebaseConfig";
-import { updateLeaderboard } from "../services/leaderboardService";
-import { updatePokemonCaught } from "./../services/pokemonCaughtService";
+import { useProfileData } from "../useProfileData";
+import { auth } from "../../firebaseConfig";
+import { updateLeaderboard } from "../../services/leaderboardService";
+import { updatePokemonCaught } from "../../services/pokemonCaughtService";
 
 export const useGameOverLogic = (coinsEarned, score) => {
   const [userCoins, setUserCoins] = useState(0);

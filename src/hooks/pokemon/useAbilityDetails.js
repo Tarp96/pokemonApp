@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { fetchAbilityDetails } from "../utils/pokeApi";
+import { fetchAbilityDetails } from "../../utils/pokeApi";
 
 export const useAbilityDetails = (abilities) => {
   const [abilityDetails, setAbilityDetails] = useState([]);

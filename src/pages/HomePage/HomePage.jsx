@@ -12,7 +12,7 @@ import { setCachedPageFull } from "../../utils/cache";
 import { PaymentModal } from "../../components/modals/PaymentModal";
 import PokemonDisplayCardSkeleton from "../../components/SkeletonLoading/PokemonDisplayCardSkeleton";
 import { usePurchaseModal } from "./../../hooks/usePurchaseModal";
-import { useOwnedPokemon } from "../../hooks/useOwnedPokemon";
+import { useOwnedPokemon } from "../../hooks/pokemon/useOwnedPokemon";
 import { usePagination } from "./../../hooks/usePagination";
 
 export const HomePage = () => {

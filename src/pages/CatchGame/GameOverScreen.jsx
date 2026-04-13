@@ -1,4 +1,4 @@
-import { useGameOverLogic } from "../../hooks/useGameOverLogic";
+import { useGameOverLogic } from "../../hooks/game/useGameOverLogic";
 import gameOverImage from "../../assets/pokeHappy.webp";
 import pokeball from "../../assets/pokeb.webp";
 import { ImageWithSkeleton } from "../../components/SkeletonLoading/ImageWithSkeleton";

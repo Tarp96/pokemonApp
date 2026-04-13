@@ -22,8 +22,8 @@ import { AlternativeFormsSection } from "../../components/detailPage/Alternative
 import { PriceTag } from "../../components/pokemon/PriceTag";
 import { usePurchaseModal } from "./../../hooks/usePurchaseModal";
 import { PaymentModal } from "../../components/modals/PaymentModal";
-import { useOwnedPokemon } from "../../hooks/useOwnedPokemon";
-import { useAbilityDetails } from "../../hooks/useAbilityDetails";
+import { useOwnedPokemon } from "../../hooks/pokemon/useOwnedPokemon";
+import { useAbilityDetails } from "../../hooks/pokemon/useAbilityDetails";
 
 export const PokemonDetailOverView = () => {
   const [shiny, setShiny] = useState(false);

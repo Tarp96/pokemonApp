@@ -3,7 +3,7 @@ import { useLocation, useNavigate, useOutletContext } from "react-router-dom";
 import PokemonDisplayCardSkeleton from "./../../components/SkeletonLoading/PokemonDisplayCardSkeleton";
 import { PaymentModal } from "../../components/modals/PaymentModal";
 import { usePurchaseModal } from "../../hooks/usePurchaseModal";
-import { useOwnedPokemon } from "../../hooks/useOwnedPokemon";
+import { useOwnedPokemon } from "../../hooks/pokemon/useOwnedPokemon";
 
 export const FavoritePokemonsPage = () => {
   const navigate = useNavigate();
