@@ -9,7 +9,7 @@ import {
   addFavorite,
   removeFavorite,
   isAlreadyFavorited,
-} from "../../services/favoritesService";
+} from "../../services/pokemon/favoritesService";
 import { toast } from "react-toastify";
 import { useAuth } from "../../contexts/authContext/AuthContext";
 import { useNavigate } from "react-router-dom";

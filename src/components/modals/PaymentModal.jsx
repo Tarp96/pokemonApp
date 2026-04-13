@@ -1,7 +1,10 @@
 import { getPokemonPrice } from "../../data/pokemonPricing";
 import { useState, useEffect, useRef } from "react";
 import { auth } from "../../firebaseConfig";
-import { listenToCoins, purchasePokemon } from "../../services/coinService";
+import {
+  listenToCoins,
+  purchasePokemon,
+} from "../../services/user/coinService";
 import { useAuth } from "../../contexts/authContext/AuthContext";
 import { useNavigate } from "react-router-dom";
 

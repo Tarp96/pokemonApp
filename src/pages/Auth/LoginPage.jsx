@@ -3,7 +3,7 @@ import { NavLink } from "react-router-dom";
 import {
   doSignInWithEmailAndPassword,
   doSignInWithGoogle,
-} from "./../../services/authService";
+} from "./../../services/auth/authService";
 import { useAuth } from "./../../contexts/authContext/AuthContext";
 import { Navigate, useNavigate } from "react-router-dom";
 import { ImageWithSkeleton } from "../../components/SkeletonLoading/ImageWithSkeleton";

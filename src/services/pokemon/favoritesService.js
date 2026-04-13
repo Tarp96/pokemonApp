@@ -8,7 +8,7 @@ import {
   where,
   onSnapshot,
 } from "firebase/firestore";
-import { db, auth } from "../firebaseConfig";
+import { db, auth } from "../../firebaseConfig";
 
 export const isAlreadyFavorited = async (name) => {
   const user = auth.currentUser;

@@ -7,7 +7,7 @@ import {
   onSnapshot,
 } from "firebase/firestore";
 
-import { db, auth } from "../firebaseConfig";
+import { db, auth } from "../../firebaseConfig";
 
 export const getUserTeam = async () => {
   const user = auth.currentUser;

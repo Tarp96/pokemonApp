@@ -1,4 +1,4 @@
-import { listenToLeaderboard } from "../../services/leaderboardService";
+import { listenToLeaderboard } from "../../services/game/leaderboardService";
 import { useState, useEffect } from "react";
 import { auth } from "../../firebaseConfig";
 import { useNavigate } from "react-router-dom";

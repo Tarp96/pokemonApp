@@ -1,5 +1,5 @@
-import { db } from "../firebaseConfig";
-import { formatPokemonForTeam } from "../utils/format/formatPokemon";
+import { db } from "../../firebaseConfig";
+import { formatPokemonForTeam } from "../../utils/format/formatPokemon";
 import {
   doc,
   getDoc,

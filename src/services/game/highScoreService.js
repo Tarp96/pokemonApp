@@ -1,5 +1,5 @@
 import { onSnapshot } from "firebase/firestore";
-import { db } from "../firebaseConfig";
+import { db } from "../../firebaseConfig";
 import { doc, getDoc, updateDoc } from "firebase/firestore";
 
 export const getUserHighScore = async (uid) => {

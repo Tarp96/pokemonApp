@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { auth } from "../../firebaseConfig";
-import { listenToTeam } from "../../services/teamService";
+import { listenToTeam } from "../../services/pokemon/teamService";
 
 export const useOwnedPokemon = () => {
   const [ownedPokemonIds, setOwnedPokemonIds] = useState([]);

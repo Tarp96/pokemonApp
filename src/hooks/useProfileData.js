@@ -1,10 +1,10 @@
 import { useEffect, useState } from "react";
 import { auth, db } from "../firebaseConfig";
 import { doc, onSnapshot } from "firebase/firestore";
-import { listenToCoins } from "../services/coinService";
-import { getTeamSize, getUserTeam } from "../services/teamService";
-import { listenToHighScore } from "../services/highScoreService";
-import { listenToFavorites } from "../services/favoritesService";
+import { listenToCoins } from "../services/user/coinService";
+import { getTeamSize, getUserTeam } from "../services/pokemon/teamService";
+import { listenToHighScore } from "../services/game/highScoreService";
+import { listenToFavorites } from "../services/pokemon/favoritesService";
 
 export const useProfileData = () => {
   const [userId, setUserId] = useState(null);

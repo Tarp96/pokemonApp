@@ -2,7 +2,7 @@ import { useState } from "react";
 import {
   updateUserQuote,
   updateUserAvatar,
-} from "../../services/profileService";
+} from "../../services/user/profileService";
 import pokemonQuotes from "../../data/pokemonQuotes";
 
 const TOTAL_AVATARS = 26;

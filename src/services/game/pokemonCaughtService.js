@@ -1,5 +1,5 @@
 import { onSnapshot } from "firebase/firestore";
-import { db } from "../firebaseConfig";
+import { db } from "../../firebaseConfig";
 import { doc, getDoc, updateDoc, increment } from "firebase/firestore";
 
 export const getPokemonCaught = async (uid) => {
