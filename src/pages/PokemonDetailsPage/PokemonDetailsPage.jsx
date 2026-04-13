@@ -7,7 +7,7 @@ import {
 import { useParams, Outlet, NavLink, useLocation } from "react-router-dom";
 import { firstLetterUpperCase } from "../../utils/helperFunctions";
 import { FaArrowLeft } from "react-icons/fa6";
-import { PageNavigationBar } from "../../components/PageNavigationbar";
+import { PageNavigationBar } from "../../components/layout/PageNavigationbar";
 import PrevNextMonButton from "../../components/PrevNextMonButton";
 import DetailPageOverviewSkeleton from "../../components/SkeletonLoading/DetailPageOverviewSkeleton";
 

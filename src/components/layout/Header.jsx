@@ -1,9 +1,9 @@
 import { NavLink, useNavigate } from "react-router-dom";
-import { useAuth } from "../contexts/authContext/AuthContext";
+import { useAuth } from "../../contexts/authContext/AuthContext";
 import { useState, useEffect, useRef } from "react";
-import pikalogo from "../assets/pikalogo.webp";
-import pokemonlogo from "../assets/pokelogo.webp";
-import { useProfileData } from "../hooks/useProfileData";
+import pikalogo from "../../assets/pikalogo.webp";
+import pokemonlogo from "../../assets/pokelogo.webp";
+import { useProfileData } from "../../hooks/useProfileData";
 
 export const Header = () => {
   let navigate = useNavigate();

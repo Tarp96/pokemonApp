@@ -1,5 +1,5 @@
 import { Outlet, useLocation } from "react-router-dom";
-import { PageNavigationBar } from "../../components/PageNavigationbar";
+import { PageNavigationBar } from "../../components/layout/PageNavigationBar";
 import { useProfileData } from "../../hooks/useProfileData";
 
 export const ProfilePageOverview = () => {
