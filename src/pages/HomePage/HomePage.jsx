@@ -18,6 +18,7 @@ import PokemonDisplayCardSkeleton from "../../components/SkeletonLoading/Pokemon
 import { usePurchaseModal } from "./../../hooks/usePurchaseModal";
 import { useOwnedPokemon } from "../../hooks/pokemon/useOwnedPokemon";
 import { usePagination } from "./../../hooks/usePagination";
+import { usePokemonSearch } from "../../hooks/pokemon/usePokemonSearch";
 
 export const HomePage = () => {
   const [pokemon, setPokemon] = useState([]);
@@ -25,14 +26,8 @@ export const HomePage = () => {
   const [activeFilter, setActiveFilter] = useState(null);
   const [isFiltered, setIsFiltered] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [query, setQuery] = useState("");
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  const [searchHistory, setSearchHistory] = useState(() => {
-    const item = getItem("searchHistory");
-    return item || [];
-  });
-  const [showSearches, setShowSearches] = useState(false);
   const [typeLoading, setTypeLoading] = useState(false);
   const [filteredFullList, setFilteredFullList] = useState([]);
 
@@ -52,6 +47,18 @@ export const HomePage = () => {
     goToPage: goToFilteredPage,
     resetPage: resetFilteredPage,
   } = usePagination(filteredFullList, 20);
+
+  const {
+    query,
+    setQuery,
+    searchHistory,
+    showSearches,
+    setShowSearches,
+    searchPokemon,
+    searchLoading,
+    searchError,
+    resetSearch,
+  } = usePokemonSearch();
 
   useEffect(() => {
     loadPokemonData(currentPage);
@@ -93,11 +100,24 @@ export const HomePage = () => {
     }
   };
 
+  const handleSearch = async (customQuery) => {
+    const result = await searchPokemon(customQuery);
+
+    if (result) {
+      setFilteredPokemon([result]);
+      setIsFiltered(true);
+      setActiveFilter(null);
+    } else {
+      setFilteredPokemon([]);
+      setIsFiltered(true);
+    }
+  };
+
   const clearFilter = () => {
     setFilteredPokemon(pokemon);
     setActiveFilter(null);
     setIsFiltered(false);
-    setQuery("");
+    resetSearch();
   };
 
   const handlePageChange = (page) => {
@@ -147,34 +167,6 @@ export const HomePage = () => {
     setFilteredPokemon(pokemon);
     setQuery("");
     setIsFiltered(false);
-  };
-
-  const renderQueryPokemonCard = async (customQuery) => {
-    const searchTerm = String(customQuery ?? query).trim();
-    if (!searchTerm) {
-      alert("Please enter a Pokémon name before searching.");
-      return;
-    }
-
-    try {
-      const [details] = await safeFetchBatch([searchTerm.toLowerCase()]);
-      if (details) {
-        setFilteredPokemon([details]);
-        setIsFiltered(true);
-
-        const updatedHistory = Array.from(
-          new Set([searchTerm, ...searchHistory]),
-        ).slice(0, 10);
-        setSearchHistory(updatedHistory);
-        setItem("searchHistory", updatedHistory);
-        setQuery(searchTerm);
-      } else {
-        setFilteredPokemon([]);
-      }
-    } catch (error) {
-      console.log("Pokemon not found");
-      setFilteredPokemon([]);
-    }
   };
 
   const getRandomPokemon = async () => {
@@ -238,7 +230,7 @@ export const HomePage = () => {
       <SearchBar
         query={query}
         setQuery={setQuery}
-        onClick={renderQueryPokemonCard}
+        onClick={handleSearch}
         clearFilter={clearFilter}
         isFiltered={isFiltered}
         list={searchHistory}
