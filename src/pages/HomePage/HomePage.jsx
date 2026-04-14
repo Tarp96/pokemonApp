@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import PokemonDisplayCard from "../../components/pokemon/PokemonDisplayCard";
 import {
   fetchData,
-  fetchTypeData,
   safeFetchBatch,
 } from "../../services/pokemon/pokeApiService";
 import { FilterByTypeButtons } from "../../components/pokemon/FilterByTypeButtons";
@@ -18,34 +17,39 @@ import { usePurchaseModal } from "./../../hooks/usePurchaseModal";
 import { useOwnedPokemon } from "../../hooks/pokemon/useOwnedPokemon";
 import { usePagination } from "./../../hooks/usePagination";
 import { usePokemonSearch } from "../../hooks/pokemon/usePokemonSearch";
+import { usePokemonFilters } from "../../hooks/pokemon/usePokemonFilters";
 
 export const HomePage = () => {
   const [pokemon, setPokemon] = useState([]);
   const [filteredPokemon, setFilteredPokemon] = useState(pokemon);
-  const [activeFilter, setActiveFilter] = useState(null);
-  const [isFiltered, setIsFiltered] = useState(false);
   const [loading, setLoading] = useState(false);
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, setTotalPages] = useState(0);
-  const [typeLoading, setTypeLoading] = useState(false);
-  const [filteredFullList, setFilteredFullList] = useState([]);
-
-  const pageLoading = loading && !activeFilter;
-
-  const [randomLoading, setRandomLoading] = useState(false);
 
   const navigate = useNavigate();
   const location = useLocation();
 
   const { isOpen, selectedPokemon, openModal, closeModal } = usePurchaseModal();
   const { isOwned } = useOwnedPokemon();
+
+  const {
+    activeFilter,
+    isFiltered,
+    typeLoading,
+    randomLoading,
+    filteredFullList,
+    filterByType,
+    getRandomPokemon,
+    clearFilters,
+  } = usePokemonFilters();
+
   const {
     currentPage: filteredPage,
     totalPages: filteredTotalPages,
     currentData: paginatedFilteredPokemon,
     goToPage: goToFilteredPage,
     resetPage: resetFilteredPage,
-  } = usePagination(filteredFullList, 20);
+  } = usePagination(filteredFullList);
 
   const {
     query,
@@ -58,6 +62,8 @@ export const HomePage = () => {
     searchError,
     resetSearch,
   } = usePokemonSearch();
+
+  const pageLoading = loading && !activeFilter;
 
   useEffect(() => {
     loadPokemonData(currentPage);
@@ -99,24 +105,20 @@ export const HomePage = () => {
     }
   };
 
+  const clearFilter = () => {
+    clearFilters();
+    resetSearch();
+    setFilteredPokemon(pokemon);
+  };
+
   const handleSearch = async (customQuery) => {
     const result = await searchPokemon(customQuery);
 
     if (result) {
       setFilteredPokemon([result]);
-      setIsFiltered(true);
-      setActiveFilter(null);
     } else {
       setFilteredPokemon([]);
-      setIsFiltered(true);
     }
-  };
-
-  const clearFilter = () => {
-    setFilteredPokemon(pokemon);
-    setActiveFilter(null);
-    setIsFiltered(false);
-    resetSearch();
   };
 
   const handlePageChange = (page) => {
@@ -124,78 +126,10 @@ export const HomePage = () => {
     loadPokemonData(page);
   };
 
-  const filterByType = async (key) => {
-    if (isFiltered && activeFilter === key) {
-      setIsFiltered(false);
-      setActiveFilter(null);
-      resetFilteredPage();
-      return;
-    }
-
-    try {
-      setTypeLoading(true);
-
-      const result = await fetchTypeData(key);
-
-      const pokemonNames = (result?.pokemon || [])
-        .map((p) => p?.pokemon?.name)
-        .filter(Boolean);
-
-      const allPokemonDetails = await safeFetchBatch(pokemonNames);
-
-      setFilteredFullList(allPokemonDetails);
-
-      resetFilteredPage();
-      setCurrentPage(1);
-      setActiveFilter(key);
-      setIsFiltered(true);
-    } catch (error) {
-      console.error("Error fetching type data:", error);
-    } finally {
-      setTypeLoading(false);
-    }
-  };
-
   const renderSkeletonCards = (count = 20) =>
     Array.from({ length: count }, (_, i) => (
       <PokemonDisplayCardSkeleton key={i} />
     ));
-
-  const removeFilter = () => {
-    setActiveFilter(null);
-    setFilteredPokemon(pokemon);
-    setQuery("");
-    setIsFiltered(false);
-  };
-
-  const getRandomPokemon = async () => {
-    setRandomLoading(true);
-
-    try {
-      const ids = Array.from(
-        { length: 4 },
-        () => Math.floor(Math.random() * 1025) + 1,
-      );
-
-      const results = await Promise.all(
-        ids.map((id) => safeFetchBatch([String(id)])),
-      );
-
-      const pokemon = results.map(([details]) => details).filter(Boolean);
-
-      setFilteredFullList(pokemon);
-
-      resetFilteredPage();
-
-      setIsFiltered(true);
-      setActiveFilter("random");
-    } catch (error) {
-      console.log("Something went wrong");
-      setFilteredFullList([]);
-    }
-
-    setRandomLoading(false);
-  };
 
   const renderPokemonCards = () => {
     const dataToRender = isFiltered
@@ -258,7 +192,7 @@ export const HomePage = () => {
         <PokemonGrid>{renderPokemonCards()}</PokemonGrid>
       ) : (
         <NoPokemonMatchFilter
-          onClick={removeFilter}
+          onClick={clearFilter}
           type={activeFilter ? "type" : query ? "search" : null}
         />
       )}
