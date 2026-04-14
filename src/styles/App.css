@@ -600,11 +600,13 @@ body {
   gap: 20px;
   padding: 20px;
   max-width: 80%;
-  grid-template-rows: auto;
   justify-items: center;
   overflow-y: auto;
   max-height: calc(100vh - 350px);
-  padding-bottom: 20px;
+}
+
+.pokemonGrid.singlePokemonCard {
+  grid-template-columns: 1fr;
 }
 
 /*POKEMON CARD*/

@@ -1,3 +1,13 @@
+import { Children } from "react";
+
 export const PokemonGrid = ({ children }) => {
-  return <div className="pokemonGrid">{children}</div>;
+  const childCount = Children.count(children);
+
+  return (
+    <div
+      className={`pokemonGrid ${childCount === 1 ? "singlePokemonCard" : ""}`}
+    >
+      {children}
+    </div>
+  );
 };
