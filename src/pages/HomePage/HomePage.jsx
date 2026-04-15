@@ -16,60 +16,34 @@ import { usePokemonFilters } from "../../hooks/pokemon/usePokemonFilters";
 import { usePokemonList } from "../../hooks/pokemon/usePokemonList";
 
 export const HomePage = () => {
+  const [filteredPokemon, setFilteredPokemon] = useState([]);
+
+  //navigation
   const navigate = useNavigate();
   const location = useLocation();
 
-  const { isOpen, selectedPokemon, openModal, closeModal } = usePurchaseModal();
-
+  //hooks
+  const purchaseModal = usePurchaseModal();
   const { isOwned } = useOwnedPokemon();
-
-  const { pokemon, loading, currentPage, totalPages, goToPage } =
-    usePokemonList();
-
-  const [filteredPokemon, setFilteredPokemon] = useState([]);
+  const pokemonList = usePokemonList();
+  const filters = usePokemonFilters();
+  const pagination = usePagination(filters.filteredFullList);
+  const search = usePokemonSearch();
 
   useEffect(() => {
-    setFilteredPokemon(pokemon);
-  }, [pokemon]);
+    setFilteredPokemon(pokemonList.pokemon);
+  }, [pokemonList.pokemon]);
 
-  const {
-    activeFilter,
-    isFiltered,
-    typeLoading,
-    randomLoading,
-    filteredFullList,
-    filterByType,
-    getRandomPokemon,
-    clearFilters,
-  } = usePokemonFilters();
-
-  const {
-    currentPage: filteredPage,
-    totalPages: filteredTotalPages,
-    currentData: paginatedFilteredPokemon,
-    goToPage: goToFilteredPage,
-  } = usePagination(filteredFullList);
-
-  const {
-    query,
-    setQuery,
-    searchHistory,
-    showSearches,
-    setShowSearches,
-    searchPokemon,
-    resetSearch,
-  } = usePokemonSearch();
-
-  const pageLoading = loading && !activeFilter;
+  const pageLoading = pokemonList.loading && !filters.activeFilter;
 
   const clearFilter = () => {
-    clearFilters();
-    resetSearch();
-    setFilteredPokemon(pokemon);
+    filters.clearFilters();
+    search.resetSearch();
+    setFilteredPokemon(pokemonList.pokemon);
   };
 
   const handleSearch = async (customQuery) => {
-    const result = await searchPokemon(customQuery);
+    const result = await search.searchPokemon(customQuery);
 
     if (result) {
       setFilteredPokemon([result]);
@@ -83,7 +57,9 @@ export const HomePage = () => {
       <PokemonDisplayCardSkeleton key={i} />
     ));
 
-  const dataToRender = isFiltered ? paginatedFilteredPokemon : filteredPokemon;
+  const dataToRender = filters.isFiltered
+    ? pagination.currentData
+    : filteredPokemon;
 
   const renderPokemonCards = () =>
     dataToRender.map((pokemonItem) => (
@@ -103,53 +79,58 @@ export const HomePage = () => {
             state: { from: location },
           })
         }
-        priceTagOnClick={() => openModal(pokemonItem)}
+        priceTagOnClick={() => purchaseModal.openModal(pokemonItem)}
       />
     ));
 
   return (
     <div className="mainContainer">
       <SearchBar
-        query={query}
-        setQuery={setQuery}
+        query={search.query}
+        setQuery={search.setQuery}
         onClick={handleSearch}
         clearFilter={clearFilter}
-        isFiltered={isFiltered}
-        list={searchHistory}
-        showSearches={showSearches}
-        setShowSearches={setShowSearches}
-        secondOnClick={getRandomPokemon}
+        isFiltered={filters.isFiltered}
+        list={search.searchHistory}
+        showSearches={search.showSearches}
+        setShowSearches={search.setShowSearches}
+        secondOnClick={filters.getRandomPokemon}
       />
 
       <FilterByTypeButtons
-        filterByTypeFunc={filterByType}
-        activeFilter={activeFilter}
-        isFiltered={isFiltered}
+        filterByTypeFunc={filters.filterByType}
+        activeFilter={filters.activeFilter}
       />
 
       <Pagination
-        currentPage={isFiltered ? filteredPage : currentPage}
-        totalPages={isFiltered ? filteredTotalPages : totalPages}
-        onPageChange={isFiltered ? goToFilteredPage : goToPage}
+        currentPage={
+          filters.isFiltered ? pagination.currentPage : pokemonList.currentPage
+        }
+        totalPages={
+          filters.isFiltered ? pagination.totalPages : pokemonList.totalPages
+        }
+        onPageChange={
+          filters.isFiltered ? pagination.goToPage : pokemonList.goToPage
+        }
       />
 
-      {pageLoading || typeLoading ? (
+      {pageLoading || filters.typeLoading ? (
         <PokemonGrid>{renderSkeletonCards(20)}</PokemonGrid>
-      ) : randomLoading ? (
+      ) : filters.randomLoading ? (
         <PokemonGrid>{renderSkeletonCards(4)}</PokemonGrid>
       ) : dataToRender.length > 0 ? (
         <PokemonGrid>{renderPokemonCards()}</PokemonGrid>
       ) : (
         <NoPokemonMatchFilter
           onClick={clearFilter}
-          type={activeFilter ? "type" : query ? "search" : null}
+          type={filters.activeFilter ? "type" : search.query ? "search" : null}
         />
       )}
 
-      {isOpen && selectedPokemon && (
+      {purchaseModal.isOpen && purchaseModal.selectedPokemon && (
         <PaymentModal
-          pokemon={selectedPokemon}
-          closeModalOnClick={closeModal}
+          pokemon={purchaseModal.selectedPokemon}
+          closeModalOnClick={purchaseModal.closeModal}
         />
       )}
     </div>
