@@ -20,6 +20,15 @@ export const usePokemonFilters = (resetPage) => {
     resetPage?.();
   }, [resetPage]);
 
+  const activateFilter = useCallback(
+    (mode = "search") => {
+      setActiveFilter(mode);
+      setIsFiltered(true);
+      resetPage?.();
+    },
+    [resetPage],
+  );
+
   const filterByType = useCallback(
     async (type) => {
       if (isFiltered && activeFilter === type) {
@@ -93,5 +102,6 @@ export const usePokemonFilters = (resetPage) => {
     filterByType,
     getRandomPokemon,
     clearFilters,
+    activateFilter,
   };
 };

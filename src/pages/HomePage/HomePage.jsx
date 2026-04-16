@@ -88,7 +88,7 @@ export const HomePage = () => {
         setQuery={search.setQuery}
         onClick={handleSearch}
         clearFilter={clearFilter}
-        isFiltered={filters.isFiltered}
+        isFiltered={filters.isFiltered || search.query.trim() !== ""}
         list={search.searchHistory}
         showSearches={search.showSearches}
         setShowSearches={search.setShowSearches}
