@@ -18,11 +18,9 @@ import { usePokemonList } from "../../hooks/pokemon/usePokemonList";
 export const HomePage = () => {
   const [filteredPokemon, setFilteredPokemon] = useState([]);
 
-  //navigation
   const navigate = useNavigate();
   const location = useLocation();
 
-  //hooks
   const purchaseModal = usePurchaseModal();
   const { isOwned } = useOwnedPokemon();
   const pokemonList = usePokemonList();
