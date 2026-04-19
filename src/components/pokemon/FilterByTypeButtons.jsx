@@ -32,6 +32,7 @@ export const FilterByTypeButtons = ({
       {showFilters && (
         <div id="filter-buttons" className="filterButtonContainer">
           {Object.keys(myObj).map((key) => {
+            const typeData = myObj[key];
             const isActive = activeFilter === key;
             const iconUrl = getTypeIcon(key);
 
@@ -40,9 +41,9 @@ export const FilterByTypeButtons = ({
                 key={key}
                 className={isActive ? "active" : ""}
                 style={{
-                  border: `2px solid ${myObj[key]}`,
-                  backgroundColor: isActive ? myObj[key] : "white",
-                  color: isActive ? "white" : "black",
+                  border: `2px solid ${typeData.bg}`,
+                  backgroundColor: isActive ? typeData.bg : "white",
+                  color: isActive ? typeData.color : "black",
                 }}
                 onClick={() => {
                   filterByTypeFunc(key);
