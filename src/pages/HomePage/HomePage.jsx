@@ -118,6 +118,8 @@ export const HomePage = () => {
         <PokemonGrid>{renderSkeletonCards(4)}</PokemonGrid>
       ) : dataToRender.length > 0 ? (
         <PokemonGrid>{renderPokemonCards()}</PokemonGrid>
+      ) : search.searchLoading ? (
+        <PokemonGrid>{renderPokemonCards(1)}</PokemonGrid>
       ) : (
         <NoPokemonMatchFilter
           onClick={clearFilter}
