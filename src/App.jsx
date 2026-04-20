@@ -22,11 +22,13 @@ import { ProfileTeamPage } from "./pages/ProfilePage/ProfileTeamPage";
 import { LeaderboardScreen } from "./pages/CatchGame/LeaderboardScreen";
 import { TrainerCardPage } from "./pages/TrainerCard/TrainerCardPage";
 import { ProfileBadgesPage } from "./pages/ProfilePage/ProfileBadgesPage.";
+import { NotFoundPage } from "./pages/NotFoundPage";
 
 function App() {
   return (
     <>
       <Routes>
+        <Route path="*" element={<NotFoundPage />} />
         <Route path="/" element={<HomePageLayout />}>
           <Route index element={<HomePage />} />
           <Route path="profilepage" element={<ProfilePageOverview />}>
