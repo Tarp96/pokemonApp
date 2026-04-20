@@ -140,7 +140,7 @@ body {
 
 .profileAvatarBtn {
   border: none;
-  background: none;
+  background: white;
   cursor: pointer;
   padding: 0;
   display: flex;
@@ -159,7 +159,7 @@ body {
   transition: transform 0.2s ease;
 }
 
-.profileAvatarImg:hover {
+.profileAvatarBtn:hover {
   transform: scale(1.1);
   border-color: #fff176;
 }
