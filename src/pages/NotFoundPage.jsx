@@ -15,7 +15,7 @@ export const NotFoundPage = () => {
           className="notFoundImage"
         />
 
-        <button>Go Back</button>
+        <button onClick={() => navigate("/")}>Go Back</button>
       </div>
     </div>
   );
