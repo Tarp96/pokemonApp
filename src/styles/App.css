@@ -1286,7 +1286,6 @@ body {
     box-shadow 0.3s ease;
 }
 
-/* Pokeball watermark */
 .ifNoPokemonMatchFilter::before {
   content: "";
   position: absolute;
@@ -1477,6 +1476,160 @@ body {
 }
 
 /*TYPES END*/
+
+/*404 PAGE*/
+.notFoundContainer {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+
+  background: linear-gradient(135deg, #fefce8, #fde68a);
+}
+
+.notFoundCard {
+  position: relative;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 1rem;
+
+  width: 90%;
+  max-width: 420px;
+  padding: 32px 24px;
+
+  background: white;
+  border-radius: 22px;
+  border: 3px solid #ffcb05;
+
+  box-shadow:
+    0 12px 24px rgba(0, 0, 0, 0.15),
+    inset 0 0 0 2px rgba(255, 255, 255, 0.5);
+
+  transition: transform 0.3s ease;
+}
+
+.notFoundCard::before {
+  content: "";
+  position: absolute;
+  right: -40px;
+  bottom: -40px;
+
+  width: 180px;
+  height: 180px;
+
+  background-image: url("/assets/pokeb.webp");
+  background-size: contain;
+  background-repeat: no-repeat;
+
+  opacity: 0.08;
+}
+
+.notFoundCard h1 {
+  font-size: 4rem;
+  margin: 0;
+  font-weight: 900;
+  color: #ef4444;
+}
+
+.notFoundCard p {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.notFoundImage {
+  width: 220px;
+  max-width: 100%;
+  height: auto;
+
+  margin-top: 10px;
+
+  animation: floatPsyduck 3s ease-in-out infinite;
+}
+
+.notFoundCard button {
+  margin-top: 10px;
+  padding: 14px 24px;
+
+  border: none;
+  border-radius: 12px;
+
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
+  color: white;
+
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.3);
+
+  transition: transform 0.2s ease;
+}
+
+.notFoundCard button:hover {
+  transform: scale(1.05);
+}
+
+.notFoundCard button:active {
+  transform: scale(0.97);
+}
+
+@keyframes floatPsyduck {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+@media (max-width: 768px) {
+  .notFoundCard h1 {
+    font-size: 3rem;
+  }
+
+  .notFoundImage {
+    width: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .notFoundCard {
+    padding: 24px 16px;
+  }
+
+  .notFoundCard h1 {
+    font-size: 2.5rem;
+  }
+
+  .notFoundCard p {
+    font-size: 1rem;
+  }
+
+  .notFoundImage {
+    width: 150px;
+  }
+
+  .notFoundCard button {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .notFoundCard::before {
+    width: 120px;
+    height: 120px;
+    right: -20px;
+    bottom: -20px;
+  }
+}
+/*404 PAGE END*/
 
 /*PROFILE PAGE*/
 .profilePageContainer {
