@@ -1499,7 +1499,7 @@ body {
   gap: 1rem;
 
   width: 90%;
-  max-width: 420px;
+  max-width: 460px;
   padding: 32px 24px;
 
   background: white;
@@ -1544,7 +1544,7 @@ body {
 }
 
 .notFoundImage {
-  width: 220px;
+  width: 320px;
   max-width: 100%;
   height: auto;
 
@@ -1590,45 +1590,6 @@ body {
   }
 }
 
-@media (max-width: 768px) {
-  .notFoundCard h1 {
-    font-size: 3rem;
-  }
-
-  .notFoundImage {
-    width: 180px;
-  }
-}
-
-@media (max-width: 480px) {
-  .notFoundCard {
-    padding: 24px 16px;
-  }
-
-  .notFoundCard h1 {
-    font-size: 2.5rem;
-  }
-
-  .notFoundCard p {
-    font-size: 1rem;
-  }
-
-  .notFoundImage {
-    width: 150px;
-  }
-
-  .notFoundCard button {
-    width: 100%;
-    padding: 12px;
-  }
-
-  .notFoundCard::before {
-    width: 120px;
-    height: 120px;
-    right: -20px;
-    bottom: -20px;
-  }
-}
 /*404 PAGE END*/
 
 /*PROFILE PAGE*/
@@ -4786,6 +4747,34 @@ body {
   }
   /*GRID END*/
 
+  .notFoundCard {
+    padding: 24px 16px;
+  }
+
+  .notFoundCard h1 {
+    font-size: 2.5rem;
+  }
+
+  .notFoundCard p {
+    font-size: 1rem;
+  }
+
+  .notFoundImage {
+    width: 150px;
+  }
+
+  .notFoundCard button {
+    width: 100%;
+    padding: 12px;
+  }
+
+  .notFoundCard::before {
+    width: 120px;
+    height: 120px;
+    right: -20px;
+    bottom: -20px;
+  }
+
   .uiCard {
     min-width: 340px;
     margin: 6px 6px;
@@ -5321,6 +5310,14 @@ body {
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   /*GRID END*/
+
+  .notFoundCard h1 {
+    font-size: 3rem;
+  }
+
+  .notFoundImage {
+    width: 180px;
+  }
 
   /*SHARED STYLING*/
   .uiCard {
