@@ -14,7 +14,6 @@ export const NotFoundPage = () => {
           alt="confused psyduck"
           className="notFoundImage"
         />
-
         <button onClick={() => navigate("/")}>Go Back</button>
       </div>
     </div>

@@ -44,6 +44,7 @@ export const HomePage = () => {
     const result = await search.searchPokemon(customQuery);
 
     if (result) {
+      filters.clearFilters();
       setFilteredPokemon([result]);
     } else {
       setFilteredPokemon([]);
