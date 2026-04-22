@@ -90,10 +90,12 @@ export const PokemonMoves = () => {
               <td>{move.pp ?? "-"}</td>
               <td>{move.accuracy ?? "-"}</td>
               <td>
-                {move.effect_entries?.[0]?.short_effect?.replace(
-                  /\$effect_chance/g,
-                  move.effect_chance ?? "",
-                ) ?? "—"}
+                {move.effect_entries
+                  ?.find((entry) => entry.language.name === "en")
+                  ?.short_effect?.replace(
+                    /\$effect_chance/g,
+                    move.effect_chance ?? "",
+                  ) ?? "—"}
               </td>
             </tr>
           ))}
