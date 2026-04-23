@@ -16,6 +16,15 @@ export const GameOverScreen = ({
 }) => {
   const navigate = useNavigate();
 
+  const [width, setWidth] = useState(window.innerWidth);
+
+  useEffect(() => {
+    const handleResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleResize);
+
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const { userCoins, userHighScore, isNewHighScore, animateStats } =
     useGameOverLogic(coinsEarned, score);
 
@@ -25,7 +34,7 @@ export const GameOverScreen = ({
         <div className="uiAuthContent">
           <header className="uiAuthHero">
             <ImageWithSkeleton
-              src={gameOverBigImage}
+              src={width > 979 ? gameOverBigImage : gameOverImage}
               alt="Happy Pokémon celebrating your results"
               className="uiCardHero rect pokeTrophyImg"
             />

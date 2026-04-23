@@ -4183,7 +4183,7 @@ body {
 }
 
 .gameOverContainer .uiAuthSplit {
-  max-width: 1100px;
+  max-width: 1300px;
 }
 
 .gameOverTitle {
@@ -4866,7 +4866,9 @@ body {
   }
 
   .imageElement {
-    height: auto;
+    object-fit: cover;
+    height: 320px;
+    object-position: center;
   }
 
   .gameStartPageContainer .gameStartImage {
@@ -5437,6 +5439,12 @@ body {
     font-size: 0.85rem;
   }
 
+  .imageElement {
+    object-fit: cover;
+    height: 320px;
+    object-position: center;
+  }
+
   .loginReminderContainer {
     padding: 24px 18px 28px;
     border-radius: 14px;
@@ -5735,7 +5743,6 @@ body {
 
   .uiAuthSplit {
     min-width: 999px;
-    max-width: 1000px;
     display: flex;
     flex-direction: column;
   }
@@ -5756,6 +5763,11 @@ body {
     object-fit: cover;
     object-position: center 68%;
     display: block;
+  }
+
+  .uiButtonPrimary,
+  .gameStartSecondaryBtn {
+    font-size: 18px;
   }
 
   /*AUTH FORMS (LOGIN / REGISTER)*/
