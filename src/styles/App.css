@@ -1605,6 +1605,11 @@ body {
 
 .profileMainTitle {
   margin-top: 0;
+  font-size: 2.4rem;
+  font-weight: 800;
+  text-align: center;
+  text-transform: uppercase;
+  margin-bottom: 1.5rem;
 }
 
 .profileContentWrapper {
@@ -4867,8 +4872,8 @@ body {
 
   .imageElement {
     object-fit: cover;
-    height: 320px;
-    object-position: center;
+    object-position: top;
+    height: 340px;
   }
 
   .gameStartPageContainer .gameStartImage {
@@ -5050,10 +5055,18 @@ body {
     gap: 1.5rem;
   }
 
+  .profileMainTitle {
+    font-size: 1.2rem;
+  }
+
   .trainerAvatarColumn {
     order: -1;
     justify-content: center;
     padding-top: 0;
+  }
+
+  .trainerAvatarFrame {
+    border: solid 1px orange;
   }
 
   .trainerAvatar {
