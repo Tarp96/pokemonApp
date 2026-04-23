@@ -1,9 +1,11 @@
 import { useGameOverLogic } from "../../hooks/game/useGameOverLogic";
 import gameOverImage from "../../assets/pokeHappy.webp";
+import gameOverBigImage from "../../assets/gameOverImg.webp";
 import pokeball from "../../assets/pokeb.webp";
 import { ImageWithSkeleton } from "../../components/SkeletonLoading/ImageWithSkeleton";
 
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState } from "react";
 
 export const GameOverScreen = ({
   score,
@@ -23,9 +25,9 @@ export const GameOverScreen = ({
         <div className="uiAuthContent">
           <header className="uiAuthHero">
             <ImageWithSkeleton
-              src={gameOverImage}
+              src={gameOverBigImage}
               alt="Happy Pokémon celebrating your results"
-              className="uiCardHero square pokeTrophyImg"
+              className="uiCardHero rect pokeTrophyImg"
             />
           </header>
 
