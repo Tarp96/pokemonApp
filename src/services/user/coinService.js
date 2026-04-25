@@ -34,6 +34,7 @@ export const addCoins = async (uid, amount) => {
 export const purchasePokemon = async (uid, pokemon, price) => {
   const userRef = doc(db, "users", uid);
   const teamRef = doc(db, "users", uid, "team", pokemon.id.toString());
+  const teamCollectionRef = collection(db, "users", uid, "team");
 
   await runTransaction(db, async (transaction) => {
     const userSnap = await transaction.get(userRef);
@@ -47,22 +48,25 @@ export const purchasePokemon = async (uid, pokemon, price) => {
       throw new Error("You already own this Pokémon");
     }
 
+    const teamSnapshot = await getDocs(teamCollectionRef);
+    const realTeamCount = teamSnapshot.size;
+
     const userData = userSnap.data();
     const currentCoins = userData.coins ?? 0;
-    const teamCount = userData.teamCount ?? 0;
 
     if (currentCoins < price) {
       throw new Error("Not enough coins");
     }
 
-    if (teamCount >= 6) {
+    if (realTeamCount >= 6) {
       throw new Error("Team is full");
     }
 
     transaction.update(userRef, {
       coins: currentCoins - price,
       coinsSpent: (userData.coinsSpent ?? 0) + price,
-      teamCount: teamCount + 1,
+
+      teamCount: realTeamCount + 1,
     });
 
     transaction.set(teamRef, formatPokemonForTeam(pokemon));
