@@ -3,10 +3,12 @@ import { formatPokemonForTeam } from "../../utils/format/formatPokemon";
 import {
   doc,
   getDoc,
+  getDocs,
   updateDoc,
   increment,
   onSnapshot,
   runTransaction,
+  collection,
 } from "firebase/firestore";
 
 export const getUserCoins = async (uid) => {
