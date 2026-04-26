@@ -1,10 +1,13 @@
 import { firstLetterUpperCase } from "../../utils/format/helperFunctions";
 import { TypeBadge } from "./TypeBadge";
 import { getTypeIcon } from "../../utils/constants/typeIcons";
+import { useState } from "react";
 
 const getPrimaryType = (types) => (types?.length ? types[0] : "normal");
 
 export const PokemonTeamCard = ({ pokemon, slot, isLocked }) => {
+  const [isHovered, setIsHovered] = useState(false);
+
   if (isLocked) {
     return (
       <div className="teamCardElite lockedCard">
@@ -26,7 +29,26 @@ export const PokemonTeamCard = ({ pokemon, slot, isLocked }) => {
   return (
     <div className={`teamCardElite type-${primaryType}`}>
       <div className="teamCardTopRow">
-        <div className="teamSlotBadge">#{slot}</div>
+        {!isLocked ? (
+          <button
+            className="removeCornerBtn"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
+            {!isHovered ? (
+              <img
+                src="/assets/pokeb.webp"
+                className="removePokemonButtonImage"
+                alt=""
+              />
+            ) : (
+              "X"
+            )}
+          </button>
+        ) : (
+          <div className="teamSlotBadge">#{slot}</div>
+        )}
+
         <span className="teamIdPill">ID {pokemon.id}</span>
       </div>
 

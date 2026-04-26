@@ -2471,6 +2471,57 @@ body {
   );
 }
 
+.removeCornerBtn {
+  width: 32px;
+  height: 32px;
+
+  border: none;
+  border-radius: 50%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 1rem;
+  font-weight: 900;
+  line-height: 1;
+
+  cursor: pointer;
+
+  color: #d62828;
+  background: rgba(214, 40, 40, 0.08);
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.removeCornerBtn:hover {
+  background: rgba(214, 40, 40, 0.16);
+  transform: scale(1.08);
+}
+
+.removeCornerBtn:active {
+  transform: scale(0.95);
+}
+
+.removeCornerBtn:focus {
+  outline: 2px solid rgba(214, 40, 40, 0.25);
+}
+
+.removePokemonButtonImage {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+
+  transition: transform 0.25s ease;
+}
+
+.teamCardElite:hover .removePokemonButtonImage {
+  transform: scale(1.12) rotate(360deg);
+}
+
 .lockedCard {
   background: linear-gradient(145deg, #fafafa, #f0f0f0);
   border: 2px dashed rgba(59, 76, 202, 0.25);
