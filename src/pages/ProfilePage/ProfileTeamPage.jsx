@@ -24,7 +24,7 @@ export const ProfileTeamPage = () => {
 
     return (
       <PokemonTeamCard
-        key={index}
+        key={pokemon ? pokemon.id : `locked-${index}`}
         pokemon={pokemon}
         slot={index + 1}
         isLocked={!pokemon}
