@@ -44,7 +44,12 @@ export const PokemonTeamCard = ({ pokemon, slot, isLocked }) => {
 
         <div className="teamCardRemoveButtonContainer">
           <button className="confirmRemoveBtn">Yes</button>
-          <button className="cancelRemoveBtn">No</button>
+          <button
+            className="cancelRemoveBtn"
+            onClick={() => setIsClicked(false)}
+          >
+            No
+          </button>
         </div>
       </div>
     );
