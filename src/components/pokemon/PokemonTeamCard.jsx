@@ -2,6 +2,7 @@ import { firstLetterUpperCase } from "../../utils/format/helperFunctions";
 import { TypeBadge } from "./TypeBadge";
 import { getTypeIcon } from "../../utils/constants/typeIcons";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 const getPrimaryType = (types) => (types?.length ? types[0] : "normal");
 
@@ -20,7 +21,16 @@ export const PokemonTeamCard = ({ pokemon, slot, isLocked, onRemove }) => {
 
   if (isLocked) {
     return (
-      <div className="teamCardElite lockedCard">
+      <motion.div
+        transition={{
+          layout: {
+            duration: 0.35,
+            ease: "easeInOut",
+          },
+        }}
+        layout
+        className="teamCardElite lockedCard"
+      >
         <div className="teamCardTopRow">
           <div className="teamSlotBadge">#{slot}</div>
         </div>
@@ -30,7 +40,7 @@ export const PokemonTeamCard = ({ pokemon, slot, isLocked, onRemove }) => {
           <p className="lockedTitle">Locked</p>
           <p className="lockedSubtitle">Buy Pokémon to unlock this slot</p>
         </div>
-      </div>
+      </motion.div>
     );
   }
 
@@ -38,8 +48,15 @@ export const PokemonTeamCard = ({ pokemon, slot, isLocked, onRemove }) => {
 
   if (isClicked) {
     return (
-      <div
-        className={`teamCardElite removePokemonCard  ${
+      <motion.div
+        transition={{
+          layout: {
+            duration: 0.35,
+            ease: "easeInOut",
+          },
+        }}
+        layout
+        className={`teamCardElite removePokemonCard ${
           isRemoving ? "removingCard" : ""
         } type-${primaryType}`}
       >
@@ -66,12 +83,19 @@ export const PokemonTeamCard = ({ pokemon, slot, isLocked, onRemove }) => {
             No
           </button>
         </div>
-      </div>
+      </motion.div>
     );
   }
 
   return (
-    <div
+    <motion.div
+      layout
+      transition={{
+        layout: {
+          duration: 0.35,
+          ease: "easeInOut",
+        },
+      }}
       className={`teamCardElite type-${primaryType} ${
         isRemoving ? "removingCard" : ""
       }`}
@@ -139,6 +163,6 @@ export const PokemonTeamCard = ({ pokemon, slot, isLocked, onRemove }) => {
       </div>
 
       <div className="teamCardBottomGlow" />
-    </div>
+    </motion.div>
   );
 };
