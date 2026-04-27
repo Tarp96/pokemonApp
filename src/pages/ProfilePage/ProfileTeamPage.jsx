@@ -1,6 +1,7 @@
 import { useOutletContext } from "react-router-dom";
 import { PokemonTeamCard } from "./../../components/pokemon/PokemonTeamCard";
 import { removePokemonFromTeam } from "../../services/pokemon/teamService";
+import { AnimatePresence } from "motion/react";
 
 export const ProfileTeamPage = () => {
   const { team, setTeam } = useOutletContext();
@@ -33,5 +34,9 @@ export const ProfileTeamPage = () => {
     );
   });
 
-  return <div className="teamGridElite">{teamSlots}</div>;
+  return (
+    <div className="teamGridElite">
+      <AnimatePresence mode="popLayout">{teamSlots}</AnimatePresence>
+    </div>
+  );
 };

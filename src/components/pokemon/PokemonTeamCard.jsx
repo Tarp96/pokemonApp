@@ -14,9 +14,7 @@ export const PokemonTeamCard = ({ pokemon, slot, isLocked, onRemove }) => {
   const handleConfirmRemove = async () => {
     setIsRemoving(true);
 
-    setTimeout(async () => {
-      await onRemove(pokemon.id);
-    }, 350);
+    await onRemove(pokemon.id);
   };
 
   if (isLocked) {
@@ -49,16 +47,20 @@ export const PokemonTeamCard = ({ pokemon, slot, isLocked, onRemove }) => {
   if (isClicked) {
     return (
       <motion.div
+        exit={{
+          opacity: 0,
+          scale: 0.75,
+          y: -20,
+        }}
         transition={{
           layout: {
             duration: 0.35,
             ease: "easeInOut",
           },
+          duration: 0.25,
         }}
         layout
-        className={`teamCardElite removePokemonCard ${
-          isRemoving ? "removingCard" : ""
-        } type-${primaryType}`}
+        className={`teamCardElite removePokemonCard type-${primaryType}`}
       >
         <p className="removePokemonTitle">
           Release {firstLetterUpperCase(pokemon.name)} from your team?
@@ -90,15 +92,19 @@ export const PokemonTeamCard = ({ pokemon, slot, isLocked, onRemove }) => {
   return (
     <motion.div
       layout
+      exit={{
+        opacity: 0,
+        scale: 0.75,
+        y: -20,
+      }}
       transition={{
         layout: {
           duration: 0.35,
           ease: "easeInOut",
         },
+        duration: 0.25,
       }}
-      className={`teamCardElite type-${primaryType} ${
-        isRemoving ? "removingCard" : ""
-      }`}
+      className={`teamCardElite type-${primaryType}`}
     >
       <div className="teamCardTopRow">
         {!isLocked ? (
