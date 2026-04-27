@@ -8,6 +8,15 @@ const getPrimaryType = (types) => (types?.length ? types[0] : "normal");
 export const PokemonTeamCard = ({ pokemon, slot, isLocked, onRemove }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
+  const [isRemoving, setIsRemoving] = useState(false);
+
+  const handleConfirmRemove = async () => {
+    setIsRemoving(true);
+
+    setTimeout(async () => {
+      await onRemove(pokemon.id);
+    }, 350);
+  };
 
   if (isLocked) {
     return (
@@ -29,7 +38,11 @@ export const PokemonTeamCard = ({ pokemon, slot, isLocked, onRemove }) => {
 
   if (isClicked) {
     return (
-      <div className="teamCardElite removePokemonCard">
+      <div
+        className={`teamCardElite removePokemonCard  ${
+          isRemoving ? "removingCard" : ""
+        } type-${primaryType}`}
+      >
         <p className="removePokemonTitle">
           Release {firstLetterUpperCase(pokemon.name)} from your team?
         </p>
@@ -43,10 +56,7 @@ export const PokemonTeamCard = ({ pokemon, slot, isLocked, onRemove }) => {
         </div>
 
         <div className="teamCardRemoveButtonContainer">
-          <button
-            className="confirmRemoveBtn"
-            onClick={() => onRemove(pokemon.id)}
-          >
+          <button className="confirmRemoveBtn" onClick={handleConfirmRemove}>
             Yes
           </button>
           <button
@@ -61,7 +71,11 @@ export const PokemonTeamCard = ({ pokemon, slot, isLocked, onRemove }) => {
   }
 
   return (
-    <div className={`teamCardElite type-${primaryType}`}>
+    <div
+      className={`teamCardElite type-${primaryType} ${
+        isRemoving ? "removingCard" : ""
+      }`}
+    >
       <div className="teamCardTopRow">
         {!isLocked ? (
           <button
