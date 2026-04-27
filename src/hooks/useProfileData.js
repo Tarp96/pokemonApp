@@ -86,6 +86,7 @@ export const useProfileData = () => {
     pokemonCaught,
     coinsSpent,
     team,
+    setTeam,
     highScore,
     avatarId,
     quoteId,

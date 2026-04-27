@@ -5,7 +5,7 @@ import { useState } from "react";
 
 const getPrimaryType = (types) => (types?.length ? types[0] : "normal");
 
-export const PokemonTeamCard = ({ pokemon, slot, isLocked }) => {
+export const PokemonTeamCard = ({ pokemon, slot, isLocked, onRemove }) => {
   const [isHovered, setIsHovered] = useState(false);
   const [isClicked, setIsClicked] = useState(false);
 
@@ -43,7 +43,12 @@ export const PokemonTeamCard = ({ pokemon, slot, isLocked }) => {
         </div>
 
         <div className="teamCardRemoveButtonContainer">
-          <button className="confirmRemoveBtn">Yes</button>
+          <button
+            className="confirmRemoveBtn"
+            onClick={() => onRemove(pokemon.id)}
+          >
+            Yes
+          </button>
           <button
             className="cancelRemoveBtn"
             onClick={() => setIsClicked(false)}
