@@ -7,6 +7,7 @@ const getPrimaryType = (types) => (types?.length ? types[0] : "normal");
 
 export const PokemonTeamCard = ({ pokemon, slot, isLocked }) => {
   const [isHovered, setIsHovered] = useState(false);
+  const [isClicked, setIsClicked] = useState(false);
 
   if (isLocked) {
     return (
@@ -26,12 +27,36 @@ export const PokemonTeamCard = ({ pokemon, slot, isLocked }) => {
 
   const primaryType = getPrimaryType(pokemon.types);
 
+  if (isClicked) {
+    return (
+      <div className="teamCardElite removePokemonCard">
+        <p className="removePokemonTitle">
+          Release {firstLetterUpperCase(pokemon.name)} from your team?
+        </p>
+
+        <div className="removePokemonSpriteStage">
+          <img
+            src={pokemon.sprite}
+            alt={pokemon.name}
+            className="teamEliteSprite"
+          />
+        </div>
+
+        <div className="teamCardRemoveButtonContainer">
+          <button className="confirmRemoveBtn">Yes</button>
+          <button className="cancelRemoveBtn">No</button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <div className={`teamCardElite type-${primaryType}`}>
       <div className="teamCardTopRow">
         {!isLocked ? (
           <button
             className="removeCornerBtn"
+            onClick={() => setIsClicked(true)}
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
           >
