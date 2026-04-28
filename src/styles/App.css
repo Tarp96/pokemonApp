@@ -513,6 +513,18 @@ body {
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
+.typeBadge {
+  font-size: 14px;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-weight: 600;
+}
+
+.typeBadge.smallText {
+  font-size: 8px;
+  padding: 4px 8px;
+}
+
 /*PAGINATION*/
 .pagination-container {
   display: flex;
@@ -6288,13 +6300,6 @@ body {
   .statLabel,
   .statValue {
     font-size: 1.4rem;
-  }
-
-  .typeBadge.compact {
-    font-size: 16px;
-    height: 22px;
-    padding: 4px 10px;
-    gap: 5px;
   }
 
   /*HOME PAGE END*/

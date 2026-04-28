@@ -12,9 +12,11 @@ export const TypeBadge = ({
   const iconUrl = withIcon ? getTypeIcon(type) : null;
   const displayName = firstLetterUpperCase(type);
 
+  const longNameClass = type.length >= 7 ? "smallText" : "";
+
   return (
     <span
-      className={`typeBadge ${variant} ${className}`}
+      className={`typeBadge ${variant} ${longNameClass} ${className}`}
       style={{
         backgroundColor: style.bg,
         color: style.color,
