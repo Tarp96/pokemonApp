@@ -670,12 +670,17 @@ body {
   margin-bottom: 15px;
 }
 
-.pokemon-card h3 {
-  font-size: 1.2em;
+.pokemonDisplayCardNameTitle {
+  font-size: 1.4em;
   font-weight: bold;
   color: #333;
   margin: 5px 0;
   margin-bottom: 2px;
+  line-height: 1.2;
+}
+
+.smallName {
+  font-size: 1rem;
 }
 
 .pokemon-card p {
@@ -4909,7 +4914,7 @@ body {
     margin-bottom: 10px;
   }
 
-  .pokemon-card h3 {
+  .pokemonDisplayCardNameTitle {
     font-size: 1rem;
   }
 
@@ -5483,7 +5488,7 @@ body {
     margin-bottom: 10px;
   }
 
-  .pokemon-card h3 {
+  .pokemonDisplayCardNameTitle {
     font-size: 1rem;
   }
 
@@ -5897,7 +5902,7 @@ body {
     margin-bottom: 10px;
   }
 
-  .pokemon-card h3 {
+  .pokemonDisplayCardNameTitle {
     font-size: 1rem;
   }
 
@@ -6271,10 +6276,6 @@ body {
     width: 120px;
     height: 120px;
     margin-bottom: 18px;
-  }
-
-  .pokemon-card h3 {
-    font-size: 1.4rem;
   }
 
   .pokemon-card p {

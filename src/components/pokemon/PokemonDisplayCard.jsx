@@ -89,7 +89,14 @@ function PokemonDisplayCard({
         alt={`${name} artwork`}
         className="displayCardPokemonSprite"
       />
-      <h3>{firstLetterUpperCase(name)}</h3>
+
+      <h3
+        className={`pokemonDisplayCardNameTitle ${
+          name.length >= 12 ? "smallName" : ""
+        }`}
+      >
+        {firstLetterUpperCase(name)}
+      </h3>
 
       <PriceTag
         pokemonName={name}
