@@ -5,7 +5,7 @@ import earthBadge from "../../assets/gymBadges/earthBadge.webp";
 import forestBadge from "../../assets/gymBadges/forestBadge.webp";
 import rainbowBadge from "../../assets/gymBadges/rainbowBadge.webp";
 import rainBadge from "../../assets/gymBadges/rainBadge.webp";
-import icebergBadge from "../../assets/gymBadges/icebergbadge.webp";
+import icebergBadge from "../../assets/gymBadges/icebergBadge.webp";
 
 import largeCoalBadge from "../../assets/largeGymBadges/largeCoalBadge.webp";
 import largeBoulderBadge from "../../assets/largeGymBadges/largeBoulderBadge.webp";
