@@ -13,7 +13,7 @@ import largeFenBadge from "../../assets/largeGymBadges/largeFenBadge.webp";
 import largeEarthBadge from "../../assets/largeGymBadges/largeEarthBadge.webp";
 import largeForestBadge from "../../assets/largeGymBadges/largeForestBadge.webp";
 import largeRainbowBadge from "../../assets/largeGymBadges/largeRainbowBadge.webp";
-import largeRainBadge from "../../assets/largeGymBadges/largeRainBadge.webp";
+import largeRainBadge from "../../assets/largeGymBadges/largeRainbadge.webp";
 import largeIcebergBadge from "../../assets/largeGymBadges/largeIcebergBadge.webp";
 
 export const BADGES = [
