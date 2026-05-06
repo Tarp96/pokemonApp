@@ -15,7 +15,7 @@ export const useProfileData = () => {
   const [pokemonCaught, setPokemonCaught] = useState(null);
   const [team, setTeam] = useState([]);
   const [highScore, setHighScore] = useState(null);
-  const [avatarId, setAvatarId] = useState(null);
+  const [avatarId, setAvatarId] = useState(1);
   const [quoteId, setQuoteId] = useState(null);
   const [loading, setLoading] = useState(true);
   const [favorites, setFavorites] = useState(null);
