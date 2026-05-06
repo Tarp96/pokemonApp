@@ -88,6 +88,7 @@ const RegisterUserPage = () => {
         pokemonCaught: 0,
         quoteId: 1,
         avatarId: 1,
+        teamCount: 0,
         createdAt: new Date(),
       });
 
