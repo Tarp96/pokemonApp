@@ -20,6 +20,20 @@ body {
   background-repeat: no-repeat;
 }
 
+@media (max-width: 480px) {
+  html,
+  body {
+    height: auto;
+    min-height: 100%;
+  }
+
+  body {
+    min-height: 100vh;
+    background-position: top center;
+    background-attachment: scroll;
+  }
+}
+
 /*HEADER*/
 .headerContainer {
   display: grid;
