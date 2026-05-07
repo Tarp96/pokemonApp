@@ -169,7 +169,7 @@ const LoginPage = () => {
                 )}
               </div>
 
-              <NavLink to="/forgot-password" className="uiAuthForgotLink">
+              <NavLink to="forgot-password" className="uiAuthForgotLink">
                 Forgot Password?
               </NavLink>
 

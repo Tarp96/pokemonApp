@@ -3563,10 +3563,6 @@ body {
 
 /*LOGIN PAGE DESKTOP LAYOUT END*/
 
-/*LOGIN PAGE MOBILE LAYOUT*/
-
-/*LOGIN PAGE MOBILE LAYOUT END*/
-
 /*LOGIN, CREATE ACCOUNT, GAME START/END SHARED UI STYLE END*/
 
 /*LOGIN PAGE*/
@@ -3831,6 +3827,15 @@ body {
 }
 
 /*REGISTER ACCOUNT PAGE END*/
+
+/*FORGOT PASSWORD PAGE*/
+.forgotPasswordPageContainer {
+  border: solid 1px orange;
+  background-color: white;
+  display: flex;
+}
+
+/*FORGOT PASSWORD PAGE END*/
 
 /*TYPE GRADIENT BORDER*/
 .typeGradientBorder.normal {

@@ -23,6 +23,7 @@ import { LeaderboardScreen } from "./pages/CatchGame/LeaderboardScreen";
 import { TrainerCardPage } from "./pages/TrainerCard/TrainerCardPage";
 import { ProfileBadgesPage } from "./pages/ProfilePage/ProfileBadgesPage.";
 import { NotFoundPage } from "./pages/NotFoundPage";
+import { ForgotPasswordPage } from "./pages/Auth/ForgotPasswordPage";
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
           <Route path="login" element={<AuthLayout />}>
             <Route index element={<LoginPage />} />
             <Route path="register" element={<RegisterUserPage />} />
+            <Route path="forgot-password" element={<ForgotPasswordPage />} />
           </Route>
           <Route path="game" element={<GamePageLayout />}>
             <Route index element={<GamePage />} />
