@@ -32,25 +32,17 @@ Originally intended as a standard API browser to refresh my React.js skills, the
 
 ![Stats Page](./screenshots/detailsPage2.png)
 
-![Moves Page](./screenshots/detailsPage3.png)
-
 ---
 
 ## Catch Game
 
 ![Game Start](./screenshots/gamePage1.png)
 
-![Gameplay](./screenshots/gamePage2.png)
-
-![Game Over](./screenshots/gamePage3.png)
-
 ---
 
 ## Profile & Team
 
 ![Profile Team](./screenshots/teamPage1.png)
-
-![Avatar Selection](./screenshots/profilePage1.png)
 
 ---
 
