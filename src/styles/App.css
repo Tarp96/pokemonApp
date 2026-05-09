@@ -3835,6 +3835,17 @@ body {
   display: flex;
 }
 
+.forgotPasswordFormContainer {
+  border: solid 1px green;
+}
+
+.forgotPasswordForm {
+  border: solid 1px red;
+  display: flex;
+  gap: 8px;
+  flex-direction: column;
+}
+
 /*FORGOT PASSWORD PAGE END*/
 
 /*TYPE GRADIENT BORDER*/
