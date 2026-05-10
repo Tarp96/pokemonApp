@@ -1,22 +1,30 @@
 import forgotPasswordImage from "../../assets/forgotpassImage.jpg";
 import { useState } from "react";
 import { doPasswordReset } from "../../services/auth/authService";
+import { getFirebaseErrorMessage } from "../../utils/firebase/getFirebaseErrorMessage";
 
 export const ForgotPasswordPage = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
+  const [isSending, setIsSending] = useState(false);
 
 
   const handlePasswordReset = async (e) => {
     e.preventDefault();
 
+    setError("");
+    setMessage("");
+
     try {
+      setIsSending(true);
       await doPasswordReset(email);
 
       setMessage("Password reset email sent! Check your inbox")
     } catch (err) {
-      setError(err.message);
+      setError(getFirebaseErrorMessage(err.code));
+    } finally{
+      setIsSending(false);
     }
   }
 
@@ -45,7 +53,7 @@ return (
             />
 
             <button type="submit">
-              Send Reset Email
+              {isSending ? "Sending..." : "Send Reset Email"}
             </button>
           </form>
         </div>
