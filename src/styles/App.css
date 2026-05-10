@@ -3830,9 +3830,7 @@ body {
 
 /*FORGOT PASSWORD PAGE*/
 .forgotPasswordPage {
-  
   max-height: 900px;
-  
 
   display: flex;
   justify-content: center;
@@ -3861,11 +3859,9 @@ body {
 .forgotPasswordImageContainer {
   flex: 1;
   background: linear-gradient(to bottom right, #ffcb05, #f5b700);
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   padding: 2rem;
 }
 
@@ -3875,15 +3871,11 @@ body {
   object-fit: contain;
 }
 
-
-
 .forgotPasswordFormContainer {
   flex: 1;
-
   display: flex;
   justify-content: center;
   align-items: center;
-
   padding: 3rem;
 }
 
@@ -3907,9 +3899,6 @@ body {
   line-height: 1.6;
   font-size: 1rem;
 }
-
-
-
 
 .forgotPasswordForm {
   display: flex;
@@ -3959,20 +3948,30 @@ body {
   background-color: #f5b700;
 }
 
+.forgotPasswordSuccessMessage {
+  background-color: #dcfce7;
+  color: #166534;
 
+  padding: 12px;
+  border-radius: 12px;
 
-@media (max-width: 900px) {
-  .forgotPasswordPageContainer {
-    flex-direction: column;
-  }
+  margin-top: 1rem;
+}
 
-  .forgotPasswordImageContainer {
-    min-height: 300px;
-  }
+.forgotPasswordErrorMessage {
+  background-color: #fee2e2;
+  color: #991b1b;
 
-  .forgotPasswordContent h1 {
-    font-size: 2rem;
-  }
+  padding: 12px;
+  border-radius: 12px;
+
+  margin-top: 1rem;
+}
+
+.forgotPasswordForm button:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+  transform: none;
 }
 
 /*FORGOT PASSWORD PAGE END*/
@@ -5188,6 +5187,73 @@ body {
     margin: 0;
     padding: 0;
   }
+
+  /*FORGOT PASSWORD PAGE*/
+
+  .forgotPasswordPage {
+    padding: 0.5rem;
+
+    display: flex;
+    justify-content: center;
+  }
+
+  .forgotPasswordPageContainer {
+    width: 100%;
+    min-width: 340px;
+    max-width: 420px;
+
+    flex-direction: column;
+
+    margin: 0 auto;
+
+    border-radius: 20px;
+    overflow: hidden;
+  }
+
+  .forgotPasswordContent h1{
+    font-size: 24px;
+  }
+
+  .forgotPasswordFormContainer {
+    width: 100%;
+    padding: 2rem 1.5rem;
+    box-sizing: border-box;
+  }
+
+    .forgotPasswordImageContainer {
+    width: 100%;
+    height: 240px;
+
+    padding: 0;
+    background: none;
+
+    overflow: hidden;
+  }
+
+  .forgotPasswordImageContainer img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    display: block;
+  }
+
+    .forgotPasswordPageTitle {
+    font-size: 2rem;
+    line-height: 1.1;
+
+    text-align: center;
+  }
+
+  .forgotPasswordContent p {
+    font-size: 1rem;
+    line-height: 1.5;
+
+    text-align: center;
+  }
+
+  /*FORGOT PASSWORD PAGE END*/
 
   .gameStartPageContainer .uiCard,
   .gameOverContainer .uiCard {

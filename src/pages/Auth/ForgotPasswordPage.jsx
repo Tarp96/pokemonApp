@@ -9,7 +9,6 @@ export const ForgotPasswordPage = () => {
   const [error, setError] = useState("");
   const [isSending, setIsSending] = useState(false);
 
-
   const handlePasswordReset = async (e) => {
     e.preventDefault();
 
@@ -20,45 +19,51 @@ export const ForgotPasswordPage = () => {
       setIsSending(true);
       await doPasswordReset(email);
 
-      setMessage("Password reset email sent! Check your inbox")
+      setMessage("Password reset email sent! Check your inbox");
     } catch (err) {
       setError(getFirebaseErrorMessage(err.code));
-    } finally{
+    } finally {
       setIsSending(false);
     }
-  }
+  };
 
-return (
-  <div className="forgotPasswordPage">
-    <div className="forgotPasswordPageContainer">
-      <div className="forgotPasswordImageContainer">
-        <img src={forgotPasswordImage} alt="Pokemon artwork" />
-      </div>
+  return (
+    <div className="forgotPasswordPage">
+      <div className="forgotPasswordPageContainer">
+        <div className="forgotPasswordImageContainer">
+          <img src={forgotPasswordImage} alt="Pokemon artwork" />
+        </div>
 
-      <div className="forgotPasswordFormContainer">
-        <div className="forgotPasswordContent">
-          <h1>Forgot your password?</h1>
+        <div className="forgotPasswordFormContainer">
+          <div className="forgotPasswordContent">
+            <h1 className="forgotPasswordPageTitle">Forgot your password?</h1>
 
-          <p>
-            Enter your email address and we’ll send you a password reset link.
-          </p>
+            <p>
+              Enter your email address and we’ll send you a password reset link.
+            </p>
 
-          <form className="forgotPasswordForm" onSubmit={handlePasswordReset}>
-            <input
-              type="email"
-              placeholder="Enter your email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
+            <form className="forgotPasswordForm" onSubmit={handlePasswordReset}>
+              <input
+                type="email"
+                placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+              />
 
-            <button type="submit" disabled={isSending}>
-              {isSending ? "Sending..." : "Send Reset Email"}
-            </button>
-          </form>
+              <button type="submit" disabled={isSending}>
+                {isSending ? "Sending..." : "Send Reset Email"}
+              </button>
+            </form>
+
+            {message && (
+              <p className="forgotPasswordSuccessMessage">{message}</p>
+            )}
+
+            {error && <p className="forgotPasswordErrorMessage">{error}</p>}
+          </div>
         </div>
       </div>
     </div>
-  </div>
-);
+  );
 };
