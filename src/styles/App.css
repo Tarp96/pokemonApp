@@ -5281,6 +5281,10 @@ body {
     height: 340px;
   }
 
+  .loginHeroImage .imageElement {
+    object-position: bottom;
+  }
+
   .gameStartPageContainer .gameStartImage {
     width: 85%;
     margin: 10px auto 0 auto;

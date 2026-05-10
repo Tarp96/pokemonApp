@@ -90,7 +90,7 @@ const LoginPage = () => {
             <ImageWithSkeleton
               src={loginImage}
               alt="Official Pokemon Explorers of the sky artwork"
-              className="uiCardHero"
+              className="uiCardHero loginHeroImage"
             />
           </div>
 
