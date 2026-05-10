@@ -52,7 +52,7 @@ return (
               required
             />
 
-            <button type="submit">
+            <button type="submit" disabled={isSending}>
               {isSending ? "Sending..." : "Send Reset Email"}
             </button>
           </form>
