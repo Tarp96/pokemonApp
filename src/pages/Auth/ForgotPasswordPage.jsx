@@ -1,14 +1,17 @@
 import forgotPasswordImage from "../../assets/forgotpassImage.jpg";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { doPasswordReset } from "../../services/auth/authService";
 import { getFirebaseErrorMessage } from "../../utils/firebase/getFirebaseErrorMessage";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 
 export const ForgotPasswordPage = () => {
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState("");
   const [error, setError] = useState("");
   const [isSending, setIsSending] = useState(false);
+  const [redirectCountdown, setRedirectCountdown] = useState(null);
+
+  const navigate = useNavigate();
 
   const handlePasswordReset = async (e) => {
     e.preventDefault();
@@ -18,15 +21,32 @@ export const ForgotPasswordPage = () => {
 
     try {
       setIsSending(true);
+
       await doPasswordReset(email);
 
-      setMessage("Password reset email sent! Check your inbox");
+      setMessage("Password reset email sent!");
+      setRedirectCountdown(4);
     } catch (err) {
       setError(getFirebaseErrorMessage(err.code));
     } finally {
       setIsSending(false);
     }
   };
+
+  useEffect(() => {
+    if (redirectCountdown === null) return;
+
+    if (redirectCountdown === 0) {
+      navigate("/login");
+      return;
+    }
+
+    const timer = setTimeout(() => {
+      setRedirectCountdown((prev) => prev - 1);
+    }, 1000);
+
+    return () => clearTimeout(timer);
+  }, [redirectCountdown, navigate]);
 
   return (
     <div className="forgotPasswordPage">
@@ -40,10 +60,16 @@ export const ForgotPasswordPage = () => {
             <h1 className="forgotPasswordPageTitle">Forgot your password?</h1>
 
             <p>
-             {!isSending ? "Enter your email address and we’ll send you a password reset link." : "Sending...."}
+              {!isSending
+                ? "Enter your email address and we’ll send you a password reset link."
+                : "Sending...."}
             </p>
 
-            <form className="forgotPasswordForm" onSubmit={handlePasswordReset}>
+            <form
+              className="forgotPasswordForm"
+              onSubmit={handlePasswordReset}
+              disabled={isSending || message}
+            >
               <input
                 type="email"
                 placeholder="Enter your email"
@@ -57,12 +83,18 @@ export const ForgotPasswordPage = () => {
               </button>
             </form>
 
-             <NavLink to="/login" className="backToLoginLink">
-                 ← Back to Login
-              </NavLink>
+            <NavLink to="/login" className="backToLoginLink">
+              ← Back to Login
+            </NavLink>
 
             {message && (
-              <p className="forgotPasswordSuccessMessage">{message}</p>
+              <div className="forgotPasswordSuccessContainer">
+                <p className="forgotPasswordSuccessMessage">{message}</p>
+
+                <p className="forgotPasswordRedirectText">
+                  Redirecting to login in {redirectCountdown}...
+                </p>
+              </div>
             )}
 
             {error && <p className="forgotPasswordErrorMessage">{error}</p>}
