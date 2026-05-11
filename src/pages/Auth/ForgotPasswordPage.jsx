@@ -2,6 +2,7 @@ import forgotPasswordImage from "../../assets/forgotpassImage.jpg";
 import { useState } from "react";
 import { doPasswordReset } from "../../services/auth/authService";
 import { getFirebaseErrorMessage } from "../../utils/firebase/getFirebaseErrorMessage";
+import { NavLink } from "react-router-dom";
 
 export const ForgotPasswordPage = () => {
   const [email, setEmail] = useState("");
@@ -39,7 +40,7 @@ export const ForgotPasswordPage = () => {
             <h1 className="forgotPasswordPageTitle">Forgot your password?</h1>
 
             <p>
-              Enter your email address and we’ll send you a password reset link.
+             {!isSending ? "Enter your email address and we’ll send you a password reset link." : "Sending...."}
             </p>
 
             <form className="forgotPasswordForm" onSubmit={handlePasswordReset}>
@@ -55,6 +56,10 @@ export const ForgotPasswordPage = () => {
                 {isSending ? "Sending..." : "Send Reset Email"}
               </button>
             </form>
+
+             <NavLink to="/login" className="backToLoginLink">
+                 ← Back to Login
+              </NavLink>
 
             {message && (
               <p className="forgotPasswordSuccessMessage">{message}</p>

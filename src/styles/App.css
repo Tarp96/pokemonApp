@@ -3974,6 +3974,30 @@ body {
   transform: none;
 }
 
+.backToLoginLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  margin-top: 1rem;
+
+  font-size: 0.95rem;
+  font-weight: 600;
+
+  color: #4a90e2;
+
+  text-decoration: none;
+
+  transition:
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.backToLoginLink:hover {
+  color: #357abd;
+  transform: translateX(-2px);
+}
+
 /*FORGOT PASSWORD PAGE END*/
 
 /*TYPE GRADIENT BORDER*/
@@ -5249,8 +5273,11 @@ body {
   .forgotPasswordContent p {
     font-size: 1rem;
     line-height: 1.5;
-
     text-align: center;
+  }
+
+  .backToLoginLink {
+    font-size: 0.9rem;
   }
 
   /*FORGOT PASSWORD PAGE END*/
