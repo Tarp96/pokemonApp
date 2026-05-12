@@ -24,6 +24,7 @@ import { TrainerCardPage } from "./pages/TrainerCard/TrainerCardPage";
 import { ProfileBadgesPage } from "./pages/ProfilePage/ProfileBadgesPage.";
 import { NotFoundPage } from "./pages/NotFoundPage";
 import { ForgotPasswordPage } from "./pages/Auth/ForgotPasswordPage";
+import { AnimatePresence } from "framer-motion";
 
 function App() {
   const location = useLocation();

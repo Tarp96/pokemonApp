@@ -14,6 +14,7 @@ import { usePagination } from "../../hooks/usePagination";
 import { usePokemonSearch } from "../../hooks/pokemon/usePokemonSearch";
 import { usePokemonFilters } from "../../hooks/pokemon/usePokemonFilters";
 import { usePokemonList } from "../../hooks/pokemon/usePokemonList";
+import PageTransition from "../../components/animations/PageTransition";
 
 export const HomePage = () => {
   const [filteredPokemon, setFilteredPokemon] = useState([]);
@@ -83,57 +84,63 @@ export const HomePage = () => {
     ));
 
   return (
-    <div className="mainContainer">
-      <SearchBar
-        query={search.query}
-        setQuery={search.setQuery}
-        onClick={handleSearch}
-        clearFilter={clearFilter}
-        isFiltered={filters.isFiltered || search.query.trim() !== ""}
-        list={search.searchHistory}
-        showSearches={search.showSearches}
-        setShowSearches={search.setShowSearches}
-        secondOnClick={filters.getRandomPokemon}
-      />
-
-      <FilterByTypeButtons
-        filterByTypeFunc={filters.filterByType}
-        activeFilter={filters.activeFilter}
-      />
-
-      <Pagination
-        currentPage={
-          filters.isFiltered ? pagination.currentPage : pokemonList.currentPage
-        }
-        totalPages={
-          filters.isFiltered ? pagination.totalPages : pokemonList.totalPages
-        }
-        onPageChange={
-          filters.isFiltered ? pagination.goToPage : pokemonList.goToPage
-        }
-      />
-
-      {pageLoading || filters.typeLoading ? (
-        <PokemonGrid>{renderSkeletonCards(20)}</PokemonGrid>
-      ) : filters.randomLoading ? (
-        <PokemonGrid>{renderSkeletonCards(4)}</PokemonGrid>
-      ) : dataToRender.length > 0 ? (
-        <PokemonGrid>{renderPokemonCards()}</PokemonGrid>
-      ) : search.searchLoading ? (
-        <PokemonGrid>{renderPokemonCards(1)}</PokemonGrid>
-      ) : (
-        <NoPokemonMatchFilter
-          onClick={clearFilter}
-          type={filters.activeFilter ? "type" : search.query ? "search" : null}
+    <PageTransition>
+      <div className="mainContainer">
+        <SearchBar
+          query={search.query}
+          setQuery={search.setQuery}
+          onClick={handleSearch}
+          clearFilter={clearFilter}
+          isFiltered={filters.isFiltered || search.query.trim() !== ""}
+          list={search.searchHistory}
+          showSearches={search.showSearches}
+          setShowSearches={search.setShowSearches}
+          secondOnClick={filters.getRandomPokemon}
         />
-      )}
 
-      {purchaseModal.isOpen && purchaseModal.selectedPokemon && (
-        <PaymentModal
-          pokemon={purchaseModal.selectedPokemon}
-          closeModalOnClick={purchaseModal.closeModal}
+        <FilterByTypeButtons
+          filterByTypeFunc={filters.filterByType}
+          activeFilter={filters.activeFilter}
         />
-      )}
-    </div>
+
+        <Pagination
+          currentPage={
+            filters.isFiltered
+              ? pagination.currentPage
+              : pokemonList.currentPage
+          }
+          totalPages={
+            filters.isFiltered ? pagination.totalPages : pokemonList.totalPages
+          }
+          onPageChange={
+            filters.isFiltered ? pagination.goToPage : pokemonList.goToPage
+          }
+        />
+
+        {pageLoading || filters.typeLoading ? (
+          <PokemonGrid>{renderSkeletonCards(20)}</PokemonGrid>
+        ) : filters.randomLoading ? (
+          <PokemonGrid>{renderSkeletonCards(4)}</PokemonGrid>
+        ) : dataToRender.length > 0 ? (
+          <PokemonGrid>{renderPokemonCards()}</PokemonGrid>
+        ) : search.searchLoading ? (
+          <PokemonGrid>{renderPokemonCards(1)}</PokemonGrid>
+        ) : (
+          <NoPokemonMatchFilter
+            onClick={clearFilter}
+            type={
+              filters.activeFilter ? "type" : search.query ? "search" : null
+            }
+          />
+        )}
+
+        {purchaseModal.isOpen && purchaseModal.selectedPokemon && (
+          <PaymentModal
+            pokemon={purchaseModal.selectedPokemon}
+            closeModalOnClick={purchaseModal.closeModal}
+          />
+        )}
+      </div>
+    </PageTransition>
   );
 };
