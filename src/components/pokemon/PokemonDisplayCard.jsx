@@ -14,6 +14,7 @@ import { toast } from "react-toastify";
 import { useAuth } from "../../contexts/authContext/AuthContext";
 import { useNavigate } from "react-router-dom";
 import { PriceTag } from "./PriceTag";
+import { motion } from "framer-motion";
 
 function PokemonDisplayCard({
   name,
@@ -71,7 +72,22 @@ function PokemonDisplayCard({
   });
 
   return (
-    <div className={`pokemon-card pokemon-card--${variant}`}>
+    <motion.div
+      whileHover={{
+        scale: 1.02,
+        y: -4,
+      }}
+      whileTap={{
+        scale: 0.97,
+      }}
+      transition={{
+        type: "spring",
+        stiffness: 300,
+        damping: 20,
+      }}
+      layoutId={`card-${pokemon.id}`}
+      className={`pokemon-card pokemon-card--${variant}`}
+    >
       <div className="favoriteButtonContainer">
         <FavoriteButton onClick={handleFavoriteClick} isClicked={isFavorite} />
       </div>
@@ -119,7 +135,7 @@ function PokemonDisplayCard({
           <FaArrowRight />
         </button>
       </div>
-    </div>
+    </motion.div>
   );
 }
 

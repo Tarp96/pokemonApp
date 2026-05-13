@@ -658,11 +658,6 @@ body {
   }
 }
 
-.pokemon-card:hover {
-  transform: translateY(-10px);
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-}
-
 .displayCardPokemonSprite {
   width: 100px;
   height: 100px;
@@ -5234,7 +5229,7 @@ body {
     overflow: hidden;
   }
 
-  .forgotPasswordContent h1{
+  .forgotPasswordContent h1 {
     font-size: 24px;
   }
 
@@ -5244,7 +5239,7 @@ body {
     box-sizing: border-box;
   }
 
-    .forgotPasswordImageContainer {
+  .forgotPasswordImageContainer {
     width: 100%;
     height: 240px;
 
@@ -5263,7 +5258,7 @@ body {
     display: block;
   }
 
-    .forgotPasswordPageTitle {
+  .forgotPasswordPageTitle {
     font-size: 2rem;
     line-height: 1.1;
 
