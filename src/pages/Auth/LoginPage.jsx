@@ -84,143 +84,145 @@ const LoginPage = () => {
   }
 
   return (
-    <motion.div
-      initial={{
-        opacity: 0,
-        x: 30,
-      }}
-      animate={{
-        opacity: 1,
-        x: 0,
-      }}
-      exit={{
-        opacity: 0,
-        x: -30,
-      }}
-      transition={{
-        duration: 0.25,
-        ease: "easeInOut",
-      }}
-    >
-      <div className="loginContainer">
-        <div className="uiCard uiAuthSplit">
-          <div className="uiAuthContent">
-            <div className="uiAuthHero">
-              <ImageWithSkeleton
-                src={loginImage}
-                alt="Official Pokemon Explorers of the sky artwork"
-                className="uiCardHero loginHeroImage"
-              />
-            </div>
+    <div className="loginContainer">
+      <motion.div
+        className="uiCard uiAuthSplit"
+        initial={{
+          opacity: 0,
+          x: 30,
+          scale: 0.98,
+        }}
+        animate={{
+          opacity: 1,
+          x: 0,
+          scale: 1,
+        }}
+        exit={{
+          opacity: 0,
+          x: -30,
+          scale: 0.98,
+        }}
+        transition={{
+          duration: 0.25,
+          ease: "easeInOut",
+        }}
+      >
+        <div className="uiAuthContent">
+          <div className="uiAuthHero">
+            <ImageWithSkeleton
+              src={loginImage}
+              alt="Official Pokemon Explorers of the sky artwork"
+              className="uiCardHero loginHeroImage"
+            />
+          </div>
 
-            <div className="uiCardBody">
-              <h2 className="loginTitle">Welcome Trainer!</h2>
+          <div className="uiCardBody">
+            <h2 className="loginTitle">Welcome Trainer!</h2>
 
-              <p className="uiAuthInfoText">
-                Log in to use this platform to its full potential
-              </p>
+            <p className="uiAuthInfoText">
+              Log in to use this platform to its full potential
+            </p>
 
-              <form
-                onSubmit={handleLogin}
-                className="loginForm formSpaceControl loginFormSpecific"
-                id="loginForm"
-              >
-                <div className="formField">
-                  <label htmlFor="email">Email</label>
+            <form
+              onSubmit={handleLogin}
+              className="loginForm formSpaceControl loginFormSpecific"
+              id="loginForm"
+            >
+              <div className="formField">
+                <label htmlFor="email">Email</label>
+                <input
+                  id="email"
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => {
+                    setEmail(e.target.value);
+                    if (fieldErrors.email) {
+                      setFieldErrors((prev) => ({ ...prev, email: "" }));
+                    }
+                  }}
+                  disabled={submitting}
+                  autoFocus
+                  className={fieldErrors.email ? "inputError" : ""}
+                />
+
+                {fieldErrors.email && (
+                  <span className="fieldError animatedError">
+                    {fieldErrors.email}
+                  </span>
+                )}
+              </div>
+
+              <div className="formField">
+                <label htmlFor="password">Password</label>
+
+                <div className="passwordWrapper">
                   <input
-                    id="email"
-                    type="email"
+                    id="password"
+                    type={showPassword ? "text" : "password"}
                     required
-                    value={email}
+                    value={password}
                     onChange={(e) => {
-                      setEmail(e.target.value);
-                      if (fieldErrors.email) {
-                        setFieldErrors((prev) => ({ ...prev, email: "" }));
+                      setPassword(e.target.value);
+                      if (fieldErrors.password) {
+                        setFieldErrors((prev) => ({
+                          ...prev,
+                          password: "",
+                        }));
                       }
                     }}
                     disabled={submitting}
-                    autoFocus
-                    className={fieldErrors.email ? "inputError" : ""}
+                    className={fieldErrors.password ? "inputError" : ""}
                   />
 
-                  {fieldErrors.email && (
-                    <span className="fieldError animatedError">
-                      {fieldErrors.email}
-                    </span>
-                  )}
+                  <button
+                    type="button"
+                    className="togglePassword"
+                    onClick={() => setShowPassword((prev) => !prev)}
+                  >
+                    {showPassword ? "Hide" : "Show"}
+                  </button>
                 </div>
 
-                <div className="formField">
-                  <label htmlFor="password">Password</label>
-
-                  <div className="passwordWrapper">
-                    <input
-                      id="password"
-                      type={showPassword ? "text" : "password"}
-                      required
-                      value={password}
-                      onChange={(e) => {
-                        setPassword(e.target.value);
-                        if (fieldErrors.password) {
-                          setFieldErrors((prev) => ({
-                            ...prev,
-                            password: "",
-                          }));
-                        }
-                      }}
-                      disabled={submitting}
-                      className={fieldErrors.password ? "inputError" : ""}
-                    />
-
-                    <button
-                      type="button"
-                      className="togglePassword"
-                      onClick={() => setShowPassword((prev) => !prev)}
-                    >
-                      {showPassword ? "Hide" : "Show"}
-                    </button>
-                  </div>
-
-                  {fieldErrors.password && (
-                    <span className="fieldError animatedError">
-                      {fieldErrors.password}
-                    </span>
-                  )}
-                </div>
-
-                <NavLink to="forgot-password" className="uiAuthForgotLink">
-                  Forgot Password?
-                </NavLink>
-
-                {error && <div className="errorMessage">{error}</div>}
-                {success && <div className="successMessage">{success}</div>}
-              </form>
-
-              <div className="authButtonContainer">
-                <div className="uiAuthLinkContainer">
-                  <p className="uiAuthLinkText">Don't have an account?</p>
-                  <NavLink to="register" className="uiAuthLink">
-                    Register
-                    <span>&gt;</span>
-                    <span>&gt;</span>
-                    <span>&gt;</span>
-                  </NavLink>
-                </div>
-
-                <button
-                  type="submit"
-                  className="uiAuthButton"
-                  disabled={submitting || !isFormValid}
-                  form="loginForm"
-                >
-                  {submitting ? "Logging in…" : "Log In"}
-                </button>
+                {fieldErrors.password && (
+                  <span className="fieldError animatedError">
+                    {fieldErrors.password}
+                  </span>
+                )}
               </div>
+
+              <NavLink to="forgot-password" className="uiAuthForgotLink">
+                Forgot Password?
+              </NavLink>
+
+              {error && <div className="errorMessage">{error}</div>}
+              {success && <div className="successMessage">{success}</div>}
+            </form>
+
+            <div className="authButtonContainer">
+              <div className="uiAuthLinkContainer">
+                <p className="uiAuthLinkText">Don't have an account?</p>
+                <NavLink to="register" className="uiAuthLink">
+                  Register
+                  <span>&gt;</span>
+                  <span>&gt;</span>
+                  <span>&gt;</span>
+                </NavLink>
+              </div>
+
+              <button
+                type="submit"
+                className="uiAuthButton"
+                disabled={submitting || !isFormValid}
+                form="loginForm"
+              >
+                {submitting ? "Logging in…" : "Log In"}
+              </button>
             </div>
           </div>
         </div>
-      </div>
-    </motion.div>
+      </motion.div>
+    </div>
   );
 };
 
