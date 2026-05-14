@@ -31,7 +31,11 @@ function App() {
 
   const animationKey = location.pathname.startsWith("/pokemon/")
     ? "/pokemon"
-    : location.pathname;
+    : location.pathname.startsWith("/profilepage")
+      ? "/profilepage"
+      : location.pathname.startsWith("/game")
+        ? "/game"
+        : location.pathname;
 
   return (
     <>
