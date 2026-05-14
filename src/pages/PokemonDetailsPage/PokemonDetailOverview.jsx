@@ -103,179 +103,175 @@ export const PokemonDetailOverView = () => {
 
   return (
     <>
-      <PageTransition>
-        <section className="detailsTopSection">
-          <div className="overviewPageTopInfoSection">
-            <div className="detailPageNameTitleContainer">
-              <h2 className="pageTopInfoTitle">
-                {firstLetterUpperCase(pokemon.name)}
-              </h2>
-              <div></div>
-              <PriceTag
-                pokemonName={pokemon.name}
-                displayedOnCard={false}
-                onClick={() => openModal(pokemon)}
-                isOwned={isOwned(pokemon.id)}
-              />
-            </div>
-            <div
-              className="topInfoSectionTypeBadges"
-              aria-label="Pokemon types"
-            >
-              {types}
-            </div>
-
-            <p className="flavorTextDiv">{flavorText}</p>
-            <InformationList
-              className="two-columns"
-              items={[
-                { label: "Pokedex number", value: pokemon?.order ?? "—" },
-                {
-                  label: "Introduced",
-                  value: pokemonSpecies?.generation?.name ?? "—",
-                },
-                {
-                  label: "Height",
-                  value: formatHeight(pokemon?.height),
-                },
-                {
-                  label: "Weight",
-                  value: formatWeight(pokemon?.weight),
-                },
-                { label: "Shape", value: pokemonSpecies?.shape?.name ?? "—" },
-                { label: "Color", value: pokemonSpecies?.color?.name ?? "—" },
-              ]}
+      <section className="detailsTopSection">
+        <div className="overviewPageTopInfoSection">
+          <div className="detailPageNameTitleContainer">
+            <h2 className="pageTopInfoTitle">
+              {firstLetterUpperCase(pokemon.name)}
+            </h2>
+            <div></div>
+            <PriceTag
+              pokemonName={pokemon.name}
+              displayedOnCard={false}
+              onClick={() => openModal(pokemon)}
+              isOwned={isOwned(pokemon.id)}
             />
-
-            <div className="abilityInfoContainer">
-              <h3>Abilities</h3>
-              <AbilitiesList abilities={abilityDetails} />
-            </div>
+          </div>
+          <div className="topInfoSectionTypeBadges" aria-label="Pokemon types">
+            {types}
           </div>
 
-          <div className="overviewPageMainImageContainer">
-            <div className="audioButtonContainer">
-              {pokemon?.cries?.legacy && (
-                <AudioPlayer
-                  src={pokemon.cries.legacy}
-                  className="audioButtonExpanded"
-                  aria-label={`Play ${pokemon.name} legacy cry`}
-                >
-                  <BsVolumeUp aria-hidden="true" /> Legacy Cry
-                </AudioPlayer>
-              )}
+          <p className="flavorTextDiv">{flavorText}</p>
+          <InformationList
+            className="two-columns"
+            items={[
+              { label: "Pokedex number", value: pokemon?.order ?? "—" },
+              {
+                label: "Introduced",
+                value: pokemonSpecies?.generation?.name ?? "—",
+              },
+              {
+                label: "Height",
+                value: formatHeight(pokemon?.height),
+              },
+              {
+                label: "Weight",
+                value: formatWeight(pokemon?.weight),
+              },
+              { label: "Shape", value: pokemonSpecies?.shape?.name ?? "—" },
+              { label: "Color", value: pokemonSpecies?.color?.name ?? "—" },
+            ]}
+          />
 
-              {pokemon?.cries?.latest && (
-                <AudioPlayer
-                  src={pokemon.cries.latest}
-                  className="audioButtonExpanded"
-                  aria-label={`Play ${pokemon.name} latest cry`}
-                >
-                  <BsVolumeUp aria-hidden="true" /> Latest Cry
-                </AudioPlayer>
-              )}
-            </div>
-            {sprite && (
-              <img
-                src={sprite}
-                alt={`${firstLetterUpperCase(pokemon.name)} ${
-                  shiny ? "shiny" : "official"
-                } artwork`}
-                className="mainDetailImage"
-              />
+          <div className="abilityInfoContainer">
+            <h3>Abilities</h3>
+            <AbilitiesList abilities={abilityDetails} />
+          </div>
+        </div>
+
+        <div className="overviewPageMainImageContainer">
+          <div className="audioButtonContainer">
+            {pokemon?.cries?.legacy && (
+              <AudioPlayer
+                src={pokemon.cries.legacy}
+                className="audioButtonExpanded"
+                aria-label={`Play ${pokemon.name} legacy cry`}
+              >
+                <BsVolumeUp aria-hidden="true" /> Legacy Cry
+              </AudioPlayer>
             )}
 
-            <div className="overViewPageImageSwitchButtonContainer">
+            {pokemon?.cries?.latest && (
+              <AudioPlayer
+                src={pokemon.cries.latest}
+                className="audioButtonExpanded"
+                aria-label={`Play ${pokemon.name} latest cry`}
+              >
+                <BsVolumeUp aria-hidden="true" /> Latest Cry
+              </AudioPlayer>
+            )}
+          </div>
+          {sprite && (
+            <img
+              src={sprite}
+              alt={`${firstLetterUpperCase(pokemon.name)} ${
+                shiny ? "shiny" : "official"
+              } artwork`}
+              className="mainDetailImage"
+            />
+          )}
+
+          <div className="overViewPageImageSwitchButtonContainer">
+            <SwitchButton
+              condition={shiny}
+              onClick={() => setShiny((prev) => !prev)}
+              firstText="Normal"
+              secondText="Shiny"
+              className="imageSwitchButton"
+            />
+          </div>
+        </div>
+      </section>
+      <section className="overViewMiddleSection">
+        <div className="middleSectionInfo">
+          <h3 className="middleSectionTitleUnderline">Breeding</h3>
+          <InformationList
+            className="single-column"
+            items={[
+              {
+                label: "Gender",
+                value: <GenderRate rate={pokemonSpecies?.gender_rate} />,
+              },
+
+              {
+                label: "Growth rate",
+                value: pokemonSpecies?.growth_rate?.name ?? "—",
+              },
+              {
+                label: "Egg Cycles",
+                value: formatEggCycles(pokemonSpecies?.hatch_counter),
+              },
+              { label: "Egg Groups", value: eggGroupsText },
+              {
+                label: "Habitat",
+                value: pokemonSpecies?.habitat?.name ?? "—",
+              },
+            ]}
+          />
+        </div>
+        <div>
+          <h3 className="middleSectionTitleUnderline">Training</h3>
+          <InformationList
+            className="single-column"
+            items={[
+              {
+                label: "Catch Rate",
+                value: pokemonSpecies?.capture_rate ?? "—",
+              },
+              {
+                label: "Base Happiness",
+                value: pokemonSpecies?.base_happiness ?? "—",
+              },
+              { label: "Base XP", value: pokemon?.base_experience ?? "—" },
+              { label: "Held Items", value: heldItemsText },
+            ]}
+          />
+        </div>
+        <div>
+          <div className="relationsTitleContainer">
+            <h3>Relations</h3>
+            <div className="relationsSwitchGroup">
               <SwitchButton
-                condition={shiny}
-                onClick={() => setShiny((prev) => !prev)}
-                firstText="Normal"
-                secondText="Shiny"
-                className="imageSwitchButton"
+                condition={showDefense}
+                onClick={() => setShowDefense((prev) => !prev)}
+                firstText="Offense"
+                secondText="Defense"
+                className="relationsTabButton"
               />
             </div>
           </div>
-        </section>
-        <section className="overViewMiddleSection">
-          <div className="middleSectionInfo">
-            <h3 className="middleSectionTitleUnderline">Breeding</h3>
-            <InformationList
-              className="single-column"
-              items={[
-                {
-                  label: "Gender",
-                  value: <GenderRate rate={pokemonSpecies?.gender_rate} />,
-                },
+          {showDefense ? (
+            <TypeRelations pokemon={pokemon} view="defense" />
+          ) : (
+            <TypeRelations pokemon={pokemon} />
+          )}
+        </div>
+      </section>
+      <section
+        className="overViewEvolutionSection"
+        aria-labelledby="evolution-heading"
+      >
+        <h3 className="evoTitle">Evolution Chain</h3>
+        <EvolutionSection pokemon={pokemonSpecies} />
+      </section>
+      <section
+        className="overViewAlternativeFormSection"
+        aria-labelledby="alternative-form-heading"
+      >
+        <h3>Alternative Forms</h3>
+        <AlternativeFormsSection species={pokemonSpecies} />
+      </section>
 
-                {
-                  label: "Growth rate",
-                  value: pokemonSpecies?.growth_rate?.name ?? "—",
-                },
-                {
-                  label: "Egg Cycles",
-                  value: formatEggCycles(pokemonSpecies?.hatch_counter),
-                },
-                { label: "Egg Groups", value: eggGroupsText },
-                {
-                  label: "Habitat",
-                  value: pokemonSpecies?.habitat?.name ?? "—",
-                },
-              ]}
-            />
-          </div>
-          <div>
-            <h3 className="middleSectionTitleUnderline">Training</h3>
-            <InformationList
-              className="single-column"
-              items={[
-                {
-                  label: "Catch Rate",
-                  value: pokemonSpecies?.capture_rate ?? "—",
-                },
-                {
-                  label: "Base Happiness",
-                  value: pokemonSpecies?.base_happiness ?? "—",
-                },
-                { label: "Base XP", value: pokemon?.base_experience ?? "—" },
-                { label: "Held Items", value: heldItemsText },
-              ]}
-            />
-          </div>
-          <div>
-            <div className="relationsTitleContainer">
-              <h3>Relations</h3>
-              <div className="relationsSwitchGroup">
-                <SwitchButton
-                  condition={showDefense}
-                  onClick={() => setShowDefense((prev) => !prev)}
-                  firstText="Offense"
-                  secondText="Defense"
-                  className="relationsTabButton"
-                />
-              </div>
-            </div>
-            {showDefense ? (
-              <TypeRelations pokemon={pokemon} view="defense" />
-            ) : (
-              <TypeRelations pokemon={pokemon} />
-            )}
-          </div>
-        </section>
-        <section
-          className="overViewEvolutionSection"
-          aria-labelledby="evolution-heading"
-        >
-          <h3 className="evoTitle">Evolution Chain</h3>
-          <EvolutionSection pokemon={pokemonSpecies} />
-        </section>
-        <section
-          className="overViewAlternativeFormSection"
-          aria-labelledby="alternative-form-heading"
-        >
-          <h3>Alternative Forms</h3>
-          <AlternativeFormsSection species={pokemonSpecies} />
-        </section>
-      </PageTransition>
       {isOpen && selectedPokemon && (
         <PaymentModal
           pokemon={selectedPokemon}

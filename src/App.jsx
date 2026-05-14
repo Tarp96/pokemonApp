@@ -29,10 +29,14 @@ import { AnimatePresence } from "framer-motion";
 function App() {
   const location = useLocation();
 
+  const animationKey = location.pathname.startsWith("/pokemon/")
+    ? "/pokemon"
+    : location.pathname;
+
   return (
     <>
       <AnimatePresence mode="wait">
-        <Routes location={location} key={location.pathname}>
+        <Routes location={location} key={animationKey}>
           <Route path="*" element={<NotFoundPage />} />
 
           <Route path="/" element={<HomePageLayout />}>
