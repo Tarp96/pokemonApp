@@ -6,6 +6,7 @@ import psyduckSign from "../../assets/psyduckSign.webp";
 import gameStartImage from "../../assets/gameStartImg.webp";
 import pokeball from "../../assets/pokeb.webp";
 import { ImageWithSkeleton } from "../../components/SkeletonLoading/ImageWithSkeleton";
+import { motion } from "framer-motion";
 
 export const GameStartScreen = ({
   selectedDifficulty,
@@ -35,9 +36,28 @@ export const GameStartScreen = ({
   return (
     <div className="gameScreenContainer gameStartPageContainer">
       {!isLoggedIn ? (
-        <section
+        <motion.section
           className="loginReminderContainer"
           aria-labelledby="login-reminder-title"
+          initial={{
+            opacity: 0,
+            y: 10,
+            scale: 0.98,
+          }}
+          animate={{
+            opacity: 1,
+            y: 0,
+            scale: 1,
+          }}
+          exit={{
+            opacity: 0,
+            y: -10,
+            scale: 0.98,
+          }}
+          transition={{
+            duration: 0.2,
+            ease: "easeOut",
+          }}
         >
           <ImageWithSkeleton
             src={psyduckSign}
@@ -57,10 +77,31 @@ export const GameStartScreen = ({
           >
             Log In to Play <span aria-hidden="true">🎮</span>
           </NavLink>
-        </section>
+        </motion.section>
       ) : (
         <main className="gameStartContainer">
-          <section className="uiCard uiAuthSplit">
+          <motion.section
+            className="uiCard uiAuthSplit"
+            initial={{
+              opacity: 0,
+              y: 10,
+              scale: 0.98,
+            }}
+            animate={{
+              opacity: 1,
+              y: 0,
+              scale: 1,
+            }}
+            exit={{
+              opacity: 0,
+              y: -10,
+              scale: 0.98,
+            }}
+            transition={{
+              duration: 0.2,
+              ease: "easeOut",
+            }}
+          >
             <div className="uiAuthContent">
               <header className="uiAuthHero">
                 <ImageWithSkeleton
@@ -177,7 +218,7 @@ export const GameStartScreen = ({
                 </div>
               </div>
             </div>
-          </section>
+          </motion.section>
         </main>
       )}
     </div>

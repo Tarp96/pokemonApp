@@ -72,7 +72,25 @@ export const LeaderboardScreen = () => {
 
   return (
     <>
-      <div className="leaderboardPageContainer">
+      <motion.div
+        className="leaderboardPageContainer"
+        initial={{
+          opacity: 0,
+          y: 10,
+        }}
+        animate={{
+          opacity: 1,
+          y: 0,
+        }}
+        exit={{
+          opacity: 0,
+          y: -10,
+        }}
+        transition={{
+          duration: 0.2,
+          ease: "easeOut",
+        }}
+      >
         <div className="leaderboardTitleContainer">
           <img src={pokemonTrophy} alt="" className="leaderboardTrophyPic" />
           <h1 className="leaderboardPageTitle">Top 10</h1>
@@ -141,7 +159,7 @@ export const LeaderboardScreen = () => {
             ⬅ Back to Game
           </button>
         </div>
-      </div>
+      </motion.div>
     </>
   );
 };
