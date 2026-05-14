@@ -1,5 +1,6 @@
 import { useOutletContext } from "react-router-dom";
 import { useEffect, useState } from "react";
+import TabTransition from "../../components/animations/TabTransition";
 
 export const PokemonPhotos = () => {
   const { pokemon } = useOutletContext();
@@ -50,43 +51,45 @@ export const PokemonPhotos = () => {
   }, {});
 
   return (
-    <div className="photosPageContainer">
-      <div className="modeToggle">
-        <button
-          className={`modeButton ${mode === "normal" ? "active" : ""}`}
-          onClick={() => setMode("normal")}
-        >
-          Normal
-        </button>
-        <button
-          className={`modeButton ${mode === "shiny" ? "active" : ""}`}
-          onClick={() => setMode("shiny")}
-        >
-          Shiny
-        </button>
-      </div>
-
-      {Object.entries(groupedImages).map(([section, images]) => (
-        <div key={section} className="imageSection">
-          <h2 className="sectionTitle">
-            {section
-              .replace(/_/g, " ")
-              .replace(/\b\w/g, (c) => c.toUpperCase())}
-          </h2>
-          <div className="imageGrid">
-            {images.map((img) => (
-              <div key={img.key + img.url} className="imageCard">
-                <img src={img.url} alt={img.key} />
-                <p>
-                  {img.key
-                    .replace(/_/g, " ")
-                    .replace(/\b\w/g, (c) => c.toUpperCase())}
-                </p>
-              </div>
-            ))}
-          </div>
+    <TabTransition>
+      <div className="photosPageContainer">
+        <div className="modeToggle">
+          <button
+            className={`modeButton ${mode === "normal" ? "active" : ""}`}
+            onClick={() => setMode("normal")}
+          >
+            Normal
+          </button>
+          <button
+            className={`modeButton ${mode === "shiny" ? "active" : ""}`}
+            onClick={() => setMode("shiny")}
+          >
+            Shiny
+          </button>
         </div>
-      ))}
-    </div>
+
+        {Object.entries(groupedImages).map(([section, images]) => (
+          <div key={section} className="imageSection">
+            <h2 className="sectionTitle">
+              {section
+                .replace(/_/g, " ")
+                .replace(/\b\w/g, (c) => c.toUpperCase())}
+            </h2>
+            <div className="imageGrid">
+              {images.map((img) => (
+                <div key={img.key + img.url} className="imageCard">
+                  <img src={img.url} alt={img.key} />
+                  <p>
+                    {img.key
+                      .replace(/_/g, " ")
+                      .replace(/\b\w/g, (c) => c.toUpperCase())}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    </TabTransition>
   );
 };

@@ -4,6 +4,7 @@ import { firstLetterUpperCase } from "../../utils/format/helperFunctions";
 import { fetchMoveData } from "../../services/pokemon/pokeApiService";
 import { TypeBadge } from "../../components/pokemon/TypeBadge";
 import PokemonMovesSkeleton from "../../components/SkeletonLoading/PokemonMovesSkeleton";
+import TabTransition from "../../components/animations/TabTransition";
 
 export const PokemonMoves = () => {
   const { pokemon } = useOutletContext();
@@ -49,58 +50,60 @@ export const PokemonMoves = () => {
   }
 
   return (
-    <div className="movesPage">
-      <div className="movesHeader">
-        <img
-          className="pokemonImage"
-          src={pokemon.sprites?.other["official-artwork"]?.front_default}
-          alt={pokemon.name}
-        />
-        <h1 className="movesTitle">{`${firstLetterUpperCase(
-          pokemon.name,
-        )} Moves`}</h1>
-      </div>
+    <TabTransition>
+      <div className="movesPage">
+        <div className="movesHeader">
+          <img
+            className="pokemonImage"
+            src={pokemon.sprites?.other["official-artwork"]?.front_default}
+            alt={pokemon.name}
+          />
+          <h1 className="movesTitle">{`${firstLetterUpperCase(
+            pokemon.name,
+          )} Moves`}</h1>
+        </div>
 
-      <table className="movesTable">
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Type</th>
-            <th>Category</th>
-            <th>Power</th>
-            <th>PP</th>
-            <th>Accuracy</th>
-            <th>Effect</th>
-          </tr>
-        </thead>
-        <tbody>
-          {moveDetails.map((move) => (
-            <tr key={move.id}>
-              <td>{firstLetterUpperCase(move.name)}</td>
-              <td>
-                <TypeBadge
-                  key={move.type.name}
-                  type={move.type.name}
-                  withIcon
-                  variant="detail"
-                />
-              </td>
-              <td>{firstLetterUpperCase(move.damage_class.name)}</td>
-              <td>{move.power ?? "-"}</td>
-              <td>{move.pp ?? "-"}</td>
-              <td>{move.accuracy ?? "-"}</td>
-              <td>
-                {move.effect_entries
-                  ?.find((entry) => entry.language.name === "en")
-                  ?.short_effect?.replace(
-                    /\$effect_chance/g,
-                    move.effect_chance ?? "",
-                  ) ?? "—"}
-              </td>
+        <table className="movesTable">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Type</th>
+              <th>Category</th>
+              <th>Power</th>
+              <th>PP</th>
+              <th>Accuracy</th>
+              <th>Effect</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+          </thead>
+          <tbody>
+            {moveDetails.map((move) => (
+              <tr key={move.id}>
+                <td>{firstLetterUpperCase(move.name)}</td>
+                <td>
+                  <TypeBadge
+                    key={move.type.name}
+                    type={move.type.name}
+                    withIcon
+                    variant="detail"
+                  />
+                </td>
+                <td>{firstLetterUpperCase(move.damage_class.name)}</td>
+                <td>{move.power ?? "-"}</td>
+                <td>{move.pp ?? "-"}</td>
+                <td>{move.accuracy ?? "-"}</td>
+                <td>
+                  {move.effect_entries
+                    ?.find((entry) => entry.language.name === "en")
+                    ?.short_effect?.replace(
+                      /\$effect_chance/g,
+                      move.effect_chance ?? "",
+                    ) ?? "—"}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </TabTransition>
   );
 };

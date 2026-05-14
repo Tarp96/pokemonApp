@@ -2,6 +2,7 @@ import { useOutletContext } from "react-router-dom";
 import { gameImages } from "../../data/gameImages";
 import { firstLetterUpperCase } from "../../utils/format/helperFunctions";
 import { ImageWithSkeleton } from "./../../components/SkeletonLoading/ImageWithSkeleton";
+import TabTransition from "../../components/animations/TabTransition";
 
 export const PokemonGames = () => {
   const { pokemon } = useOutletContext();
@@ -24,9 +25,11 @@ export const PokemonGames = () => {
   });
 
   return (
-    <div>
-      <h1 className="gamePageTitle">Games {pokemon.name} features in</h1>
-      <div className="gamePageContainer">{displayGames}</div>
-    </div>
+    <TabTransition>
+      <div>
+        <h1 className="gamePageTitle">Games {pokemon.name} features in</h1>
+        <div className="gamePageContainer">{displayGames}</div>
+      </div>
+    </TabTransition>
   );
 };

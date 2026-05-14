@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useOutletContext } from "react-router-dom";
 import { firstLetterUpperCase } from "../../utils/format/helperFunctions";
 import ReactApexChart from "react-apexcharts";
+import TabTransition from "../../components/animations/TabTransition";
 
 export const PokemonStats = () => {
   const { pokemon } = useOutletContext();
@@ -51,84 +52,88 @@ export const PokemonStats = () => {
   const totalBaseStats = statNums.reduce((sum, stat) => sum + stat, 0);
 
   return (
-    <div className="statsPageContainer">
-      <h1 className="statsTitle">{firstLetterUpperCase(pokemon.name)} Stats</h1>
-      {statNames.length > 0 && statNums.length > 0 && (
-        <div className="chartCard">
-          <ReactApexChart
-            type="bar"
-            width="100%"
-            height={400}
-            series={[
-              {
-                name: "Stats",
-                data: statNums,
-              },
-            ]}
-            options={{
-              chart: {
-                type: "bar",
-                height: 700,
-              },
-              colors: statColors,
-              grid: {
-                padding: {
-                  top: 0,
-                  bottom: 0,
+    <TabTransition>
+      <div className="statsPageContainer">
+        <h1 className="statsTitle">
+          {firstLetterUpperCase(pokemon.name)} Stats
+        </h1>
+        {statNames.length > 0 && statNums.length > 0 && (
+          <div className="chartCard">
+            <ReactApexChart
+              type="bar"
+              width="100%"
+              height={400}
+              series={[
+                {
+                  name: "Stats",
+                  data: statNums,
                 },
-              },
-              plotOptions: {
-                bar: {
-                  borderRadius: 4,
-                  distributed: true,
+              ]}
+              options={{
+                chart: {
+                  type: "bar",
+                  height: 700,
                 },
-              },
-              dataLabels: {
-                enabled: false,
-              },
-              xaxis: {
-                categories: statNames,
-                labels: {
-                  rotate: -20,
-                },
-              },
-              yaxis: {
-                min: 0,
-                max: 252,
-                labels: {
-                  style: {
-                    fontSize: "14px",
+                colors: statColors,
+                grid: {
+                  padding: {
+                    top: 0,
+                    bottom: 0,
                   },
                 },
-              },
-              responsive: [
-                {
-                  breakpoint: 480,
-                  options: {
-                    chart: {
-                      height: 300,
+                plotOptions: {
+                  bar: {
+                    borderRadius: 4,
+                    distributed: true,
+                  },
+                },
+                dataLabels: {
+                  enabled: false,
+                },
+                xaxis: {
+                  categories: statNames,
+                  labels: {
+                    rotate: -20,
+                  },
+                },
+                yaxis: {
+                  min: 0,
+                  max: 252,
+                  labels: {
+                    style: {
+                      fontSize: "14px",
                     },
-                    xaxis: {
-                      labels: {
-                        rotate: -30,
+                  },
+                },
+                responsive: [
+                  {
+                    breakpoint: 480,
+                    options: {
+                      chart: {
+                        height: 300,
+                      },
+                      xaxis: {
+                        labels: {
+                          rotate: -30,
+                        },
                       },
                     },
                   },
-                },
-              ],
-            }}
-          />
+                ],
+              }}
+            />
+          </div>
+        )}
+        <div className="totalStatsCard">
+          <span className="totalStatsLabel">Total Base Stats</span>
+          <span
+            className="totalStatsValue"
+            style={{ color: getTotalColor(totalBaseStats) }}
+          >
+            {totalBaseStats}
+          </span>
         </div>
-      )}
-      <div className="totalStatsCard">
-        <span className="totalStatsLabel">Total Base Stats</span>
-        <span
-          className="totalStatsValue"
-          style={{ color: getTotalColor(totalBaseStats) }}
-        >
-          {totalBaseStats}
-        </span>
       </div>
-    </div>
+    </TabTransition>
   );
 };
