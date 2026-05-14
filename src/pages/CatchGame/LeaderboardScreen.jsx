@@ -4,6 +4,7 @@ import { auth } from "../../firebaseConfig";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import pokemonTrophy from "../../assets/poketrophy.webp";
+import { motion } from "framer-motion";
 
 export const LeaderboardScreen = () => {
   const [leaderboard, setLeaderboard] = useState([]);
