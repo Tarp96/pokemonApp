@@ -107,14 +107,30 @@ export const LeaderboardScreen = () => {
               to={`/trainer/${podium[1].uid}`}
               className="leaderboardLink"
             >
-              <div
+              <motion.div
                 className="podiumSecond"
+                className="podiumSecond"
+                initial={{
+                  opacity: 0,
+                  y: 20,
+                  scale: 0.9,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                  scale: 1,
+                }}
+                transition={{
+                  duration: 0.35,
+                  delay: 0.1,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
                 aria-label={`Second place: ${podium[1].username}, ${podium[1].score} points`}
               >
                 <div className="podiumPlace">🥈</div>
                 <div className="podiumName">{podium[1].username}</div>
                 <div className="podiumScore">{podium[1].score} pts</div>
-              </div>
+              </motion.div>
             </Link>
           )}
 
@@ -124,14 +140,29 @@ export const LeaderboardScreen = () => {
               to={`/trainer/${podium[0].uid}`}
               className="leaderboardLink"
             >
-              <div
+              <motion.div
                 className="podiumFirst"
+                initial={{
+                  opacity: 0,
+                  y: 20,
+                  scale: 0.9,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                  scale: 1,
+                }}
+                transition={{
+                  duration: 0.35,
+                  delay: 0.2,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
                 aria-label={`First place: ${podium[0].username}, ${podium[0].score} points`}
               >
                 <div className="podiumPlace">🥇</div>
                 <div className="podiumName">{podium[0].username}</div>
                 <div className="podiumScore">{podium[0].score} pts</div>
-              </div>
+              </motion.div>
             </Link>
           )}
 
@@ -141,14 +172,29 @@ export const LeaderboardScreen = () => {
               to={`/trainer/${podium[2].uid}`}
               className="leaderboardLink"
             >
-              <div
+              <motion.div
                 className="podiumThird"
+                initial={{
+                  opacity: 0,
+                  y: 20,
+                  scale: 0.9,
+                }}
+                animate={{
+                  opacity: 1,
+                  y: 0,
+                  scale: 1,
+                }}
+                transition={{
+                  duration: 0.35,
+                  delay: 0.3,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
                 aria-label={`Third place: ${podium[2].username}, ${podium[2].score} points`}
               >
                 <div className="podiumPlace">🥉</div>
                 <div className="podiumName">{podium[2].username}</div>
                 <div className="podiumScore">{podium[2].score} pts</div>
-              </div>
+              </motion.div>
             </Link>
           )}
         </div>
