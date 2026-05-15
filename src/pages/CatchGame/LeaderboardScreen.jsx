@@ -109,7 +109,6 @@ export const LeaderboardScreen = () => {
             >
               <motion.div
                 className="podiumSecond"
-                className="podiumSecond"
                 initial={{
                   opacity: 0,
                   y: 20,
